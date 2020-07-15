@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    color: theme.palette.common.white,
+    color: 'white',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
@@ -16,13 +16,6 @@ const useStyles = makeStyles((theme) => ({
       height: '80vh',
       minHeight: 500,
     },
-  },
-  container: {
-    marginTop: theme.spacing(3),
-    marginBottom: 0,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
   },
   backdrop: {
     position: 'absolute',
@@ -51,11 +44,9 @@ function HomepageLayout({ backgroundClassName, children, ...props }) {
 
   return (
     <section className={classes.root}>
-      <Container className={classes.container}>
-        {children}
-        <div className={classes.backdrop} />
-        <div className={`${classes.background} ${backgroundClassName}`} />
-      </Container>
+      {children}
+      <div className={classes.backdrop} />
+      <div className={`${classes.background} ${backgroundClassName}`} />
     </section>
   );
 }

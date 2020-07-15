@@ -56,9 +56,11 @@ const useStyles = makeStyles((theme) => ({
   boldHomeText: {
     fontWeight: 'bold',
   },
-  textDiv: {
+  textGrid: {
     textAlign: 'right',
     width: '100%',
+    padding: 0,
+    paddingRight: theme.spacing(2),
   },
 }));
 
@@ -75,23 +77,33 @@ function Landing(props) {
           src={backgroundImage}
           alt='increase priority'
         />
-        <div className={classes.textDiv}>
-          <Typography
-            color='inherit'
-            variant='h2'
-            className={classes.boldHomeText}
-          >
-            NOW IS THE TIME FOR HOPE
+        <Grid container direction='row' justify='flex-end'>
+          <Grid item xs={4} />
+          <Grid item xs={8} className={classes.textGrid}>
+            <Typography
+              color='inherit'
+              variant='h2'
+              className={classes.boldHomeText}
+            >
+              NOW IS THE TIME FOR HOPE
+            </Typography>
             <br />
-          </Typography>
-          <Typography
-            color='inherit'
-            variant='h3'
-            className={classes.boldHomeText}
-          >
-            SHARE YOUR VOICE
-          </Typography>
-        </div>
+          </Grid>
+          <Grid item xs={4} className={classes.textGrid}>
+            <Typography
+              color='inherit'
+              variant='h3'
+              className={classes.boldHomeText}
+            >
+              SHARE YOUR VOICE
+            </Typography>
+            <br />
+            <Typography color='inherit' variant='h4'>
+              A foundation dedicated toward helping first-generation/low-income
+              students achieve their academic potential.
+            </Typography>
+          </Grid>
+        </Grid>
       </HomepageLayout>
       <Typography>
         yoyoyo my name is paula zhu and my teeth hurt so fricken bad
