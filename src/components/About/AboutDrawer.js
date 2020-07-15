@@ -25,6 +25,14 @@ const useStyles = makeStyles((theme) => ({
     width: 240,
     position: 'absolute',
   },
+  sidebarItem: {
+    borderRadius: '10px',
+  },
+  sidebarItemSelected: {
+    backgroundColor: `${theme.palette.secondary.main} !important`,
+    color: 'white',
+    fontWeight: 600,
+  },
 }));
 
 function AboutDrawer({ selectedAbout, setSelectedAbout, ...props }) {
@@ -41,6 +49,10 @@ function AboutDrawer({ selectedAbout, setSelectedAbout, ...props }) {
       <List>
         {aboutChoices.map((choice, index) => (
           <ListItem
+            classes={{
+              root: classes.sidebarItem,
+              selected: classes.sidebarItemSelected,
+            }}
             button
             key={choice.label}
             onClick={() => {
