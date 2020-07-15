@@ -55,7 +55,11 @@ function Three(props) {
       <Grid item xs={3}>
         <Grid container direction='column' alignItems='center'>
           <Grid item>
-            <img className={classes.imgResponsive} alt='weekly seminars' />
+            <img
+              src={require('../../assets/calGrad.PNG')}
+              className={classes.imgResponsive}
+              alt='weekly seminars'
+            />
           </Grid>
           <Grid item className={classes.textGrid}>
             <Typography className={classes.title}>WEEKLY SEMINARS</Typography>
@@ -75,6 +79,7 @@ function Three(props) {
         <Grid container direction='column' alignItems='center'>
           <Grid item>
             <img
+              src={require('../../assets/tableGrad.PNG')}
               className={classes.imgResponsive}
               alt='one-on-one mentorship'
             />
@@ -98,7 +103,11 @@ function Three(props) {
       <Grid item xs={3}>
         <Grid container direction='column' alignItems='center'>
           <Grid item>
-            <img className={classes.imgResponsive} alt='optional workshops' />
+            <img
+              src={require('../../assets/computerGrad.PNG')}
+              className={classes.imgResponsive}
+              alt='optional workshops'
+            />
           </Grid>
           <Grid item className={classes.textGrid}>
             <Typography className={classes.title}>

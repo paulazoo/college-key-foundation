@@ -157,7 +157,7 @@ function Landing(props) {
           </Grid>
         </Grid>
       </HomepageLayout>
-      <WordDivider>
+      <WordDivider spacing={225}>
         <Typography variant='h3' className={classes.wordDivider}>
           Our Fellowship Program
         </Typography>

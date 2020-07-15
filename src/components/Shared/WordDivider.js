@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Typography, Divider } from '@material-ui/core';
 
 // Theme
+import { theme } from '../../theme';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
@@ -20,18 +21,24 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     padding: '0 5px 0 5px',
-    width: theme.spacing(280),
     textAlign: 'center',
   },
 }));
 
-export default function WordDivider({ children }) {
+export default function WordDivider({ children, spacing }) {
   const classes = useStyles();
 
   return (
     <div className={classes.container}>
       <div className={classes.border} />
-      <span className={classes.content}>{children}</span>
+      <span
+        className={classes.content}
+        style={{
+          width: theme.spacing(spacing),
+        }}
+      >
+        {children}
+      </span>
       <div className={classes.border} />
     </div>
   );

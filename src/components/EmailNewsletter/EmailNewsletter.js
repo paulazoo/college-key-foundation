@@ -21,9 +21,17 @@ const useStyles = makeStyles((theme) => ({}));
 function EmailNewsletter(props) {
   const classes = useStyles();
 
+  const handleEmailNewsletter = () => {};
+
   return (
     <>
-      <Grid container direction='row' justify='center' alignItems='center'>
+      <Grid
+        container
+        direction='row'
+        justify='center'
+        alignItems='center'
+        spacing={2}
+      >
         <Grid item>
           <Typography>Sign up for our email newsletter!</Typography>
         </Grid>
@@ -36,7 +44,11 @@ function EmailNewsletter(props) {
           />
         </Grid>
         <Grid item>
-          <Button color='secondary' variant='contained'>
+          <Button
+            color='secondary'
+            variant='contained'
+            onClick={handleEmailNewsletter}
+          >
             Submit!
           </Button>
         </Grid>

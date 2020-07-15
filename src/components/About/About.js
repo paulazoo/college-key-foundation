@@ -34,7 +34,7 @@ function About(props) {
   return (
     <>
       <Navbar />
-      <WordDivider>
+      <WordDivider spacing={65}>
         <Typography variant='h3' className={classes.wordDivider}>
           About Us
         </Typography>
