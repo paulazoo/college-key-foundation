@@ -18,6 +18,7 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../Landing/Footer';
 import Team from './Team';
 import WordDivider from '../Shared/WordDivider';
+import AboutDrawer from './AboutDrawer';
 
 // Custom Components
 
@@ -34,6 +35,7 @@ function About(props) {
   return (
     <>
       <Navbar />
+      <AboutDrawer />
       <WordDivider spacing={65}>
         <Typography variant='h3' className={classes.wordDivider}>
           About Us

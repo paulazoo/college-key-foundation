@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     height: theme.spacing(15),
     justifyContent: 'center',
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: theme.palette.primary.dark,
   },
 }));
 
@@ -75,7 +75,7 @@ function NavBar({ ...props }) {
                 <Grid item>
                   <Button onClick={logoClick}>
                     <img
-                      src={require('../../assets/collegeKeyNavbar.JPG')}
+                      src={require('../../assets/collegeKeyNavbarDark.JPG')}
                       alt='fancy banner :D'
                       width='250'
                       height='75'
