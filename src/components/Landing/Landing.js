@@ -68,6 +68,10 @@ const useStyles = makeStyles((theme) => ({
   wordDivider: {
     fontWeight: 'bold',
   },
+  applyButton: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
 }));
 
 function Landing(props) {
@@ -113,7 +117,11 @@ function Landing(props) {
               of underprivileged backgrounds
             </Typography>
             <br />
-            <Button color='secondary' variant='contained'>
+            <Button
+              color='secondary'
+              variant='contained'
+              className={classes.applyButton}
+            >
               APPLY NOW
             </Button>
           </Grid>
