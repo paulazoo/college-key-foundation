@@ -28,6 +28,7 @@ import WordDivider from '../Shared/WordDivider';
 import AsSeenIn from './AsSeenIn';
 import Partners from './Partners';
 import Overview from './Overview';
+import EmailNewsletter from '../EmailNewsletter/EmailNewsletter';
 
 const backgroundImage =
   'https://img1.looper.com/img/gallery/locke-key-season-2-release-date-cast-and-plot/intro-1583844452.jpg';
@@ -197,6 +198,8 @@ function Landing(props) {
       <div className={classes.spacing} />
       <AsSeenIn />
       <Partners />
+      <div className={classes.spacing} />
+      <EmailNewsletter />
       <div className={classes.spacing} />
       <Typography>
         yoyoyo my name is paula zhu and my teeth hurt so fricken bad

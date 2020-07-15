@@ -24,20 +24,21 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   leftLinkActive: {
-    color: theme.palette.common.white,
+    color: theme.palette.common.black,
   },
   rightLink: {
     fontSize: 16,
-    color: theme.palette.common.white,
+    color: theme.palette.common.black,
+    fontWeight: 'bold',
     marginLeft: theme.spacing(3),
   },
   linkSecondary: {
     color: theme.palette.secondary.main,
   },
   appBar: {
-    height: theme.spacing(15),
+    height: theme.spacing(20),
     justifyContent: 'center',
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.common.white,
   },
 }));
 
@@ -57,7 +58,12 @@ function NavBar({ ...props }) {
     <div>
       <MuiAppBar elevation={0} position='static' className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <Grid container direction='row' justify='space-between'>
+          <Grid
+            container
+            direction='row'
+            justify='space-between'
+            alignItems='center'
+          >
             <Grid item xs={4}>
               <Grid
                 container
@@ -68,24 +74,13 @@ function NavBar({ ...props }) {
               >
                 <Grid item>
                   <Button onClick={logoClick}>
-                    {/* <img
-                    src={require('..//logo.ico')}
-                    alt='fancy favicon :D'
-                    width='64'
-                    height='64'
-                  /> */}
+                    <img
+                      src={require('../../assets/collegeKeyBanner.JPG')}
+                      alt='fancy banner :D'
+                      width='250'
+                      height='125'
+                    />
                   </Button>
-                </Grid>
-                <Grid item>
-                  <Link
-                    variant='h6'
-                    underline='none'
-                    className={classes.title}
-                    component={NavLink}
-                    to='/'
-                  >
-                    College blah blah
-                  </Link>
                 </Grid>
               </Grid>
             </Grid>
