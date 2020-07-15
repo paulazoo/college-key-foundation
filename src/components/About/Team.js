@@ -82,13 +82,23 @@ const useStyles = makeStyles((theme) => ({
   memberItem: {
     backgroundColor: theme.palette.common.white,
     margin: theme.spacing(4),
+    padding: theme.spacing(4),
   },
   totalGrid: {
     padding: theme.spacing(6),
   },
-  memberName: {},
-  memberPosition: {},
-  memberText: {},
+  memberName: {
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  memberPosition: {
+    fontSize: 18,
+    color: theme.palette.primary.dark,
+  },
+  memberText: {
+    color: theme.palette.common.gray,
+    fontSize: 16,
+  },
   memberTextContainer: {
     textAlign: 'left',
   },
@@ -113,9 +123,31 @@ function Team(props) {
       image: '',
     },
     {
-      name: 'Nalani Santos',
-      position: 'Program Director',
-      text: "hi'",
+      name: 'Natalie Winter',
+      position: 'Co-Director Hawaii Branch',
+      text:
+        "Natalie, part of Tufts' Class of 2023, is  in charge of high school outreach in Hawaii. She is also proactively working with organizations in Hawaii to maximize the breadth and positive impact of the College Key Foundation.",
+      image: '',
+    },
+    {
+      name: 'Sahir Qureshi',
+      position: 'Co-Director, Western Region',
+      text:
+        "Sahir, part of Stanford's Class of 2024, coordinates outreach to the Northern California region for the organization and is excited about helping underserved students in his area get the resources they need to succeed.",
+      image: '',
+    },
+    {
+      name: 'Luis Rubio',
+      position: 'Co-Director, Mid Western Region',
+      text:
+        "Luis, part of Johns Hopkin's Class of 2024, communicates with students across the Mid Western United States and is eager to ease the college application process for many driven and talented students.",
+      image: '',
+    },
+    {
+      name: 'Melissa Meng',
+      position: 'Outreach Co-Director',
+      text:
+        "Melissa, part of Harvard's Class of 2024, helps to manage the creative aspects and design of College Key, and is excited to take part in reaching out to students, regardless of socio-economic background, to help them succeed with their career-oriented goals. ",
       image: '',
     },
   ];
@@ -129,11 +161,45 @@ function Team(props) {
       image: '',
     },
     {
-      name: 'Nalani Santos',
-      position: 'Program Director',
-      text: "hi'",
+      name: 'Rina Nagashima',
+      position: 'Co-Director Hawaii Branch',
+      text:
+        "Rina, a transfer student from Wellesley to Scripps' Class of 2023, is in charge of mentor outreach and organizational partnership at the Hawaii branch. Having gone through the application process twice, she is enthusiastic in her outreach and mission to Hawaii's rising seniors and their unique situations.",
       image: '',
     },
+    {
+      name: 'Linda Lin',
+      position: 'Program Co-Director/Finance Director',
+      text:
+        "Linda, part of Harvard's Class of 2024, is in charge of  partnerships, panels, as well as  financial aspects of the organization, including setting up donation systems, applying to grants, and ensuring donor payment processing.",
+      image: '',
+    },
+    {
+      name: 'Kobi Khong',
+      position: 'Co-Director, Western Region',
+      text:
+        "Kobi, part of Johns Hopkin's Class of 2024, liaises with schools and organizations throughout the Southern California region for College Key in order to ensure equal opportunities for students who strive their goals and for their education, regardless of socio-economic status.",
+      image: '',
+    },
+    {
+      name: 'Iandra Ramos',
+      position: 'Outreach Co-Director, Northeastern Region',
+      text:
+        "Iandra, part of Harvard's Class of 2024, helps to coordinate partnerships with other organizations that have similar goals as College Key, and is dedicated to providing unique  academic opportunities to underprivileged students.",
+      image: '',
+    },
+    {
+      name: 'Paula Zhu',
+      position: 'hello',
+      text: 'whaddup i coded this website',
+      image: '',
+    },
+    // {
+    //   name: 'Nalani Santos',
+    //   position: 'Program Director',
+    //   text: "hi'",
+    //   image: '',
+    // },
   ];
 
   return (
