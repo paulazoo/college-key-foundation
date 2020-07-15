@@ -86,6 +86,12 @@ const useStyles = makeStyles((theme) => ({
   totalGrid: {
     padding: theme.spacing(6),
   },
+  memberName: {},
+  memberPosition: {},
+  memberText: {},
+  memberTextContainer: {
+    textAlign: 'left',
+  },
 }));
 
 function Team(props) {
@@ -93,28 +99,40 @@ function Team(props) {
 
   const teamMembersLeft = [
     {
-      name: 'Paula Zhu',
-      position: 'Co-Director',
-      text: 'some text',
+      name: 'Jacky Huang',
+      position: 'President',
+      text:
+        "Jacky, part of Harvard's Class of 2024, was inspired by his mentorship with Lucas to model a one-on-one system to help underrepresented students. He comes from an comprehensive marketing and outreach background and is in charge of the broad logistical aspects of the organization.",
       image: '',
     },
     {
-      name: 'Paula Zhu',
-      position: 'Co-Director',
-      text: 'some text',
+      name: 'Nalani Santos',
+      position: 'Program Director',
+      text:
+        "Nalani, part of Stanford's Class of 2024, is in charge of the logistics of the month-long fellowship program, including lectures and workshops as well as coordinating with admission officers, other organizations and scholarship representatives.",
+      image: '',
+    },
+    {
+      name: 'Nalani Santos',
+      position: 'Program Director',
+      text: "hi'",
+      image: '',
     },
   ];
 
   const teamMembersRight = [
     {
-      name: 'Paula Zhu',
-      position: 'Co-Director',
-      text: 'some text',
+      name: 'Lucas Leanza',
+      position: 'Vice-President',
+      text:
+        "Lucas, part of Stanford's Class of 2023, is in charge of the organization's broad logistical, outreach, coding and optimization aspects. With a background in educational non-profits, Lucas worked with Jacky last year to create the groundwork for the foundation.",
+      image: '',
     },
     {
-      name: 'Paula Zhu',
-      position: 'Co-Director',
-      text: 'some text',
+      name: 'Nalani Santos',
+      position: 'Program Director',
+      text: "hi'",
+      image: '',
     },
   ];
 
@@ -134,19 +152,19 @@ function Team(props) {
               <Typography className={classes.headText}>OUR TEAM</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Grid container direction='column'>
+              <Grid container direction='column' justify='space-between'>
                 {teamMembersLeft.map((member) => (
                   <Grid item className={classes.memberItem}>
                     <Grid
                       container
                       justify='center'
                       alignItems='center'
-                      direction='column'
+                      direction='row'
                     >
                       <Grid item xs={5}>
-                        <img>image</img>
+                        image
                       </Grid>
-                      <Grid item xs={7}>
+                      <Grid item xs={7} className={classes.memberTextContainer}>
                         <Typography className={classes.memberName}>
                           {member.name}
                         </Typography>
@@ -163,20 +181,20 @@ function Team(props) {
               </Grid>
             </Grid>
             <Grid item xs={6}>
-              <Grid container direction='column'>
+              <Grid container direction='column' justify='space-between'>
                 {teamMembersRight.map((member) => (
                   <Grid item className={classes.memberItem}>
                     <Grid
                       container
                       justify='center'
                       alignItems='center'
-                      direction='column'
+                      direction='row'
                       p={10}
                     >
                       <Grid item xs={5}>
-                        <img>image</img>
+                        image
                       </Grid>
-                      <Grid item xs={7}>
+                      <Grid item xs={7} className={classes.memberTextContainer}>
                         <Typography className={classes.memberName}>
                           {member.name}
                         </Typography>
