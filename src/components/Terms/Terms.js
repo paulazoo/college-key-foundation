@@ -1,33 +1,27 @@
-import React, { useState } from 'react';
-import { Button, TextField, Grid, CardContent } from '@material-ui/core';
-
-// Theme
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect } from 'react';
+import { Box, Container } from '@material-ui/core';
 
 // Redux
-import { connect } from 'react-redux';
-import { userLogout, setUser } from '../../store/actions/index';
+
+// Theme
 
 // Custom Components
+import TermsContent from './TermsContent';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Landing/Footer';
 
-const useStyles = makeStyles((theme) => ({}));
-
-function Terms(props) {
-  const classes = useStyles();
-
-  const handleClick = () => {
-    props.userLogout();
-  };
-
-  return <Button onClick={handleClick}>click me to reset and logout</Button>;
+function Terms() {
+  return (
+    <>
+      <Box>
+        <Navbar />
+        <Container maxWidth='lg'>
+          <TermsContent />
+        </Container>
+        <Footer />
+      </Box>
+    </>
+  );
 }
 
-const mapStateToProps = (state) => ({});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    userLogout: () => dispatch(userLogout()),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Terms);
+export default Terms;
