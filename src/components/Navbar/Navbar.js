@@ -45,7 +45,7 @@ function NavBar({ ...props }) {
   const history = useHistory();
 
   useEffect(() => {
-    document.body.style.backgroundColor = theme.palette.background;
+    document.body.style.backgroundColor = 'white';
   }, []);
 
   const logoClick = () => {

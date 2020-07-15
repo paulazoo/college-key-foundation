@@ -5,6 +5,7 @@ import {
   Grid,
   CardContent,
   Typography,
+  Divider,
 } from '@material-ui/core';
 
 // Theme
@@ -18,6 +19,8 @@ import { userLogout, setUser } from '../../store/actions/index';
 import Navbar from '../Navbar/Navbar';
 import HomepageLayout from './HomepageLayout';
 import Footer from './Footer';
+import Three from './Three';
+import WordDivider from '../Shared/WordDivider';
 
 const backgroundImage =
   'https://img1.looper.com/img/gallery/locke-key-season-2-release-date-cast-and-plot/intro-1583844452.jpg';
@@ -62,6 +65,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     paddingRight: theme.spacing(2),
   },
+  wordDivider: {
+    fontWeight: 'bold',
+  },
 }));
 
 function Landing(props) {
@@ -89,22 +95,39 @@ function Landing(props) {
             </Typography>
             <br />
           </Grid>
-          <Grid item xs={4} className={classes.textGrid}>
+          <Grid item xs={6} />
+          <Grid item xs={6} className={classes.textGrid}>
             <Typography
               color='inherit'
-              variant='h3'
+              variant='h4'
               className={classes.boldHomeText}
             >
-              SHARE YOUR VOICE
+              From underrepresented students to underrepresented students
             </Typography>
             <br />
-            <Typography color='inherit' variant='h4'>
-              A foundation dedicated toward helping first-generation/low-income
-              students achieve their academic potential.
+          </Grid>
+          <Grid item xs={4} className={classes.textGrid}>
+            <Typography color='inherit' variant='h5'>
+              The College Key Foundation was founded on the idea of free,
+              accessible guidance to the college application process for those
+              of underprivileged backgrounds
             </Typography>
+            <br />
+            <Button color='secondary' variant='contained'>
+              APPLY NOW
+            </Button>
           </Grid>
         </Grid>
       </HomepageLayout>
+      <br />
+      <WordDivider>
+        <Typography variant='h3' className={classes.wordDivider}>
+          Our Fellowship Program
+        </Typography>
+      </WordDivider>
+      <br />
+      <Three />
+      <br />
       <Typography>
         yoyoyo my name is paula zhu and my teeth hurt so fricken bad
         <br />

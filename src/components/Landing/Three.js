@@ -26,31 +26,23 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '500px',
   },
   title: {
-    width: '30rem',
-    maxWidth: '80vw',
+    width: '20rem',
     fontFamily: theme.typography.fontFamily,
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 24,
     color: '#183951',
   },
-  threeContainer: {
-    padding: theme.spacing(4),
-  },
   textGrid: {
     textAlign: 'center',
   },
   text: {
-    width: '30rem',
-    maxWidth: '80vw',
+    width: '20rem',
     fontFamily: theme.typography.fontFamily,
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 14,
     color: '#183951',
-  },
-  item: {
-    padding: theme.spacing(4),
   },
 }));
 
@@ -58,114 +50,66 @@ function Three(props) {
   const classes = useStyles();
 
   return (
-    <Grid
-      container
-      direction='row'
-      className={classes.threeContainer}
-      spacing={5}
-    >
-      <Grid item xs={4} className={classes.item}>
-        <Grid
-          container
-          direction='column'
-          justify='space-around'
-          alignItems='center'
-        >
+    <Grid container direction='row' spacing={0}>
+      <Grid item xs={4}>
+        <Grid container direction='column' alignItems='center'>
           <Grid item>
             <img className={classes.imgResponsive} alt='weekly seminars' />
           </Grid>
-          <Grid item>
-            <Grid
-              container
-              direction='column'
-              justify='center'
-              alignItems='center'
-              spacing={2}
-            >
-              <Grid item className={classes.textGrid}>
-                <Typography className={classes.title}>
-                  WEEKLY SEMINARS
-                </Typography>
-              </Grid>
-              <Grid item className={classes.textGrid}>
-                <Typography className={classes.text}>
-                  From standardized testing with by prominent authors of
-                  Kaplan’s testing material to college apps, college admissions
-                  with Admissions Officers from top universities, to financial
-                  aid and FAFSA.
-                </Typography>
-              </Grid>
-            </Grid>
+          <Grid item className={classes.textGrid}>
+            <Typography className={classes.title}>WEEKLY SEMINARS</Typography>
+          </Grid>
+          <Grid item className={classes.textGrid}>
+            <Typography className={classes.text}>
+              College Key Foundation's weekly seminars cover a multitude of
+              subjects, including standardized testing led by a prominent author
+              of Kaplan’s testing material to college apps, led by Admissions
+              Officers from top universities and even financial aid and FAFSA.
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={4} className={classes.item}>
-        <Grid
-          container
-          direction='column'
-          justify='space-around'
-          alignItems='center'
-        >
+
+      <Grid item xs={4}>
+        <Grid container direction='column' alignItems='center'>
           <Grid item>
-            <img className={classes.imgResponsive} alt='weekly seminars' />
+            <img
+              className={classes.imgResponsive}
+              alt='one-on-one mentorship'
+            />
           </Grid>
-          <Grid item>
-            <Grid
-              container
-              direction='column'
-              justify='center'
-              alignItems='center'
-              spacing={2}
-            >
-              <Grid item className={classes.textGrid}>
-                <Typography className={classes.title}>
-                  WEEKLY SEMINARS
-                </Typography>
-              </Grid>
-              <Grid item className={classes.textGrid}>
-                <Typography className={classes.text}>
-                  From standardized testing with by prominent authors of
-                  Kaplan’s testing material to college apps, college admissions
-                  with Admissions Officers from top universities, to financial
-                  aid and FAFSA.
-                </Typography>
-              </Grid>
-            </Grid>
+          <Grid item className={classes.textGrid}>
+            <Typography className={classes.title}>
+              ONE-ON-ONE MENTORSHIP
+            </Typography>
+          </Grid>
+          <Grid item className={classes.textGrid}>
+            <Typography className={classes.text}>
+              Our program matches rising high school seniors to college students
+              of similar backgrounds. College mentors can help answer questions,
+              proofread essays and applications, and personally guide mentees
+              through the process.
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={4} className={classes.item}>
-        <Grid
-          container
-          direction='column'
-          justify='space-around'
-          alignItems='center'
-        >
+
+      <Grid item xs={4}>
+        <Grid container direction='column' alignItems='center'>
           <Grid item>
-            <img className={classes.imgResponsive} alt='weekly seminars' />
+            <img className={classes.imgResponsive} alt='optional workshops' />
           </Grid>
-          <Grid item>
-            <Grid
-              container
-              direction='column'
-              justify='center'
-              alignItems='center'
-              spacing={2}
-            >
-              <Grid item className={classes.textGrid}>
-                <Typography className={classes.title}>
-                  WEEKLY SEMINARS
-                </Typography>
-              </Grid>
-              <Grid item className={classes.textGrid}>
-                <Typography className={classes.text}>
-                  From standardized testing with by prominent authors of
-                  Kaplan’s testing material to college apps, college admissions
-                  with Admissions Officers from top universities, to financial
-                  aid and FAFSA.
-                </Typography>
-              </Grid>
-            </Grid>
+          <Grid item className={classes.textGrid}>
+            <Typography className={classes.title}>
+              OPTIONAL WORKSHOPS
+            </Typography>
+          </Grid>
+          <Grid item className={classes.textGrid}>
+            <Typography className={classes.text}>
+              Our optional workshops are designed to provide additional support
+              in essay-writing, scholarship-searching and local university
+              admissions to those interested.
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
