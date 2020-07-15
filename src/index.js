@@ -36,6 +36,7 @@ import Landing from './components/Landing/Landing';
 import About from './components/About/About';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Testing from './components/Testing/Testing';
+import FellowshipProgram from './components/FellowshipProgram/FellowshipProgram';
 
 require('dotenv').config();
 
@@ -70,8 +71,12 @@ ReactDOM.render(
             <Switch>
               <Route exact path='/' component={Landing} />
               <Route exact path='/about-us' component={About} />
-              <Route exact path='/' component={Landing} />
-              <Route exact path='/' component={Landing} />
+              <Route
+                exact
+                path='/fellowship-program'
+                component={FellowshipProgram}
+              />
+              <Route exact path='/home' component={Landing} />
               <PrivateRoute exact path='/testing' component={Testing} />
               <Redirect to='/' />
             </Switch>
