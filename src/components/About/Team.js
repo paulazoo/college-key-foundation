@@ -75,9 +75,9 @@ const useStyles = makeStyles((theme) => ({
   teamCard: {
     backgroundColor: theme.palette.secondary.light,
     margin: 0,
-    marginRight: theme.spacing(20),
-    marginLeft: theme.spacing(20),
-    marginBottom: theme.spacing(10),
+    marginRight: theme.spacing(6),
+    marginLeft: theme.spacing(6),
+    marginBottom: theme.spacing(6),
   },
   memberItem: {
     backgroundColor: theme.palette.common.white,
@@ -101,6 +101,10 @@ const useStyles = makeStyles((theme) => ({
   },
   memberTextContainer: {
     textAlign: 'left',
+  },
+  wordDivider: {
+    fontWeight: 'bold',
+    color: theme.palette.common.gray,
   },
 }));
 
@@ -203,83 +207,95 @@ function Team(props) {
   ];
 
   return (
-    <Card className={classes.teamCard}>
-      <Grid container spacing={0}>
-        <Grid item xs={12} sm={12} height='100%' width='80%'>
-          <Grid
-            container
-            justify='space-between'
-            alignItems='center'
-            direction='row'
-            spacing={6}
-            className={classes.totalGrid}
-          >
-            <Grid item xs={12} className={classes.headTextContainer}>
-              <Typography className={classes.headText}>OUR TEAM</Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Grid container direction='column' justify='space-between'>
-                {teamMembersLeft.map((member) => (
-                  <Grid item className={classes.memberItem}>
-                    <Grid
-                      container
-                      justify='center'
-                      alignItems='center'
-                      direction='row'
-                    >
-                      <Grid item xs={5}>
-                        image
-                      </Grid>
-                      <Grid item xs={7} className={classes.memberTextContainer}>
-                        <Typography className={classes.memberName}>
-                          {member.name}
-                        </Typography>
-                        <Typography className={classes.memberPosition}>
-                          {member.position}
-                        </Typography>
-                        <Typography className={classes.memberText}>
-                          {member.text}
-                        </Typography>
+    <>
+      <WordDivider spacing={125}>
+        <Typography variant='h3' className={classes.wordDivider}>
+          Meet The Team
+        </Typography>
+      </WordDivider>
+      <Card className={classes.teamCard}>
+        <Grid container spacing={0}>
+          <Grid item xs={12} sm={12} height='100%' width='80%'>
+            <Grid
+              container
+              justify='space-between'
+              alignItems='center'
+              direction='row'
+              spacing={6}
+              className={classes.totalGrid}
+            >
+              <Grid item xs={6}>
+                <Grid container direction='column' justify='space-between'>
+                  {teamMembersLeft.map((member) => (
+                    <Grid item className={classes.memberItem}>
+                      <Grid
+                        container
+                        justify='center'
+                        alignItems='center'
+                        direction='row'
+                      >
+                        <Grid item xs={5}>
+                          image
+                        </Grid>
+                        <Grid
+                          item
+                          xs={7}
+                          className={classes.memberTextContainer}
+                        >
+                          <Typography className={classes.memberName}>
+                            {member.name}
+                          </Typography>
+                          <Typography className={classes.memberPosition}>
+                            {member.position}
+                          </Typography>
+                          <Typography className={classes.memberText}>
+                            {member.text}
+                          </Typography>
+                        </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                ))}
+                  ))}
+                </Grid>
               </Grid>
-            </Grid>
-            <Grid item xs={6}>
-              <Grid container direction='column' justify='space-between'>
-                {teamMembersRight.map((member) => (
-                  <Grid item className={classes.memberItem}>
-                    <Grid
-                      container
-                      justify='center'
-                      alignItems='center'
-                      direction='row'
-                      p={10}
-                    >
-                      <Grid item xs={5}>
-                        image
-                      </Grid>
-                      <Grid item xs={7} className={classes.memberTextContainer}>
-                        <Typography className={classes.memberName}>
-                          {member.name}
-                        </Typography>
-                        <Typography className={classes.memberPosition}>
-                          {member.position}
-                        </Typography>
-                        <Typography className={classes.memberText}>
-                          {member.text}
-                        </Typography>
+              <Grid item xs={6}>
+                <Grid container direction='column' justify='space-between'>
+                  {teamMembersRight.map((member) => (
+                    <Grid item className={classes.memberItem}>
+                      <Grid
+                        container
+                        justify='center'
+                        alignItems='center'
+                        direction='row'
+                        p={10}
+                      >
+                        <Grid item xs={5}>
+                          image
+                        </Grid>
+                        <Grid
+                          item
+                          xs={7}
+                          className={classes.memberTextContainer}
+                        >
+                          <Typography className={classes.memberName}>
+                            {member.name}
+                          </Typography>
+                          <Typography className={classes.memberPosition}>
+                            {member.position}
+                          </Typography>
+                          <Typography className={classes.memberText}>
+                            {member.text}
+                          </Typography>
+                        </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                ))}
+                  ))}
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Card>
+      </Card>
+    </>
   );
 }
 

@@ -19,6 +19,8 @@ import Footer from '../Landing/Footer';
 import Team from './Team';
 import WordDivider from '../Shared/WordDivider';
 import AboutDrawer from './AboutDrawer';
+import MissionPurpose from './MissionPurpose';
+import OurStory from './OurStory';
 
 // Custom Components
 
@@ -35,20 +37,31 @@ const useStyles = makeStyles((theme) => ({
 function About(props) {
   const classes = useStyles();
 
+  const [selectedAbout, setSelectedAbout] = useState('Mission and Purpose');
+
+  const renderAbout = () => {
+    switch (selectedAbout) {
+      case 'Mission and Purpose':
+        return <MissionPurpose />;
+      case 'Our Story':
+        return <OurStory />;
+      case 'Meet The Team':
+        return <Team />;
+      default:
+        return <MissionPurpose />;
+    }
+  };
+
   return (
     <>
       <Navbar />
       <Grid container direction='row'>
         <Grid item>
-          <AboutDrawer />
-          <div className={classes.mainAbout}>
-            <WordDivider spacing={65}>
-              <Typography variant='h3' className={classes.wordDivider}>
-                About Us
-              </Typography>
-            </WordDivider>
-            <Team />
-          </div>
+          <AboutDrawer
+            selectedAbout={selectedAbout}
+            setSelectedAbout={setSelectedAbout}
+          />
+          <div className={classes.mainAbout}>{renderAbout()}</div>
         </Grid>
       </Grid>
       <Footer />

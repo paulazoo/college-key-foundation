@@ -27,19 +27,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AboutDrawer(props) {
+function AboutDrawer({ selectedAbout, setSelectedAbout, ...props }) {
   const classes = useStyles();
+
+  const aboutChoices = [
+    { label: 'Mission and Purpose' },
+    { label: 'Our Story' },
+    { label: 'Meet The Team' },
+  ];
 
   return (
     <div className={classes.drawerContainer}>
       <List>
-        {['Mission and Purpose', 'Our Story', 'Meet the Team'].map(
-          (text, index) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} />
-            </ListItem>
-          )
-        )}
+        {aboutChoices.map((choice, index) => (
+          <ListItem
+            button
+            key={choice.label}
+            onClick={() => {
+              setSelectedAbout(choice.label);
+            }}
+            selected={selectedAbout === choice.label}
+          >
+            <ListItemText primary={choice.label} />
+          </ListItem>
+        ))}
       </List>
     </div>
   );
