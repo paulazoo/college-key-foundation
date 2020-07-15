@@ -1,0 +1,94 @@
+/* eslint-disable import/prefer-default-export */
+import { normalize } from 'normalizr';
+import history from '../history';
+
+import { eventSchema } from '../../util/Normalize';
+import {
+  setUser
+} from './index';
+import { wsConnect } from './websocket';
+
+const api = (path, requestOptions) => {
+  return fetch(`${process.env.REACT_APP_API_URL}${path}`, requestOptions).then(
+    (res) => {
+      // check for error response
+      if (!res.ok) {
+        // get error message from body or default to response status
+        const error = res.status;
+        return Promise.reject(error);
+      }
+      // otherwise return json response
+      return res.json();
+    }
+  );
+};
+
+// TODO: fill out error catch with error handler, currentlyLoading
+// Order of possible arguments: path, body, callback
+// Each api call gets its own action
+// Api Calls:
+
+// GET Calls:
+export const getLoginMentee = (userToken, callback) => {
+  return (dispatch) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${userToken}`,
+      },
+    };
+    api(`login_mentee`, requestOptions)
+      .then((response) => {
+        dispatch(setUser(response));
+
+        callback(response);
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const getLoginMentor = (userToken, callback) => {
+  return (dispatch) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${userToken}`,
+      },
+    };
+    api(`login_mentor`, requestOptions)
+      .then((response) => {
+        dispatch(setUser(response));
+
+        callback(response);
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const getUser = () => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+    };
+    api(`users/${getState().user.id}`, requestOptions)
+      .then((response) => {
+        // dispatch to set state
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
