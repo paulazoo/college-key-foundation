@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     color: theme.palette.common.gray,
   },
+  mainAbout: {
+    marginLeft: 240,
+  },
 }));
 
 function About(props) {
@@ -35,13 +38,19 @@ function About(props) {
   return (
     <>
       <Navbar />
-      <AboutDrawer />
-      <WordDivider spacing={65}>
-        <Typography variant='h3' className={classes.wordDivider}>
-          About Us
-        </Typography>
-      </WordDivider>
-      <Team />
+      <Grid container direction='row'>
+        <Grid item>
+          <AboutDrawer />
+          <div className={classes.mainAbout}>
+            <WordDivider spacing={65}>
+              <Typography variant='h3' className={classes.wordDivider}>
+                About Us
+              </Typography>
+            </WordDivider>
+            <Team />
+          </div>
+        </Grid>
+      </Grid>
       <Footer />
     </>
   );
