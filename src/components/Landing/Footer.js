@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
   container: {
     height: theme.spacing(8),
     display: 'flex',
+    padding: 0,
+    paddingRight: theme.spacing(8),
   },
   text: {
     fontFamily: theme.typography.fontFamily,

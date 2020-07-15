@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Button,
   TextField,
@@ -77,6 +78,12 @@ const useStyles = makeStyles((theme) => ({
 function Landing(props) {
   const classes = useStyles();
 
+  const history = useHistory();
+
+  const handleApply = () => {
+    history.push('/apply');
+  };
+
   return (
     <>
       <Navbar />
@@ -121,6 +128,7 @@ function Landing(props) {
               color='secondary'
               variant='contained'
               className={classes.applyButton}
+              onClick={handleApply}
             >
               APPLY NOW
             </Button>
