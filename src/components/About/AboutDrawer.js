@@ -57,7 +57,7 @@ function AboutDrawer(props) {
       <Toolbar className={classes.toolbarSpacing} />
       <div className={classes.drawerContainer}>
         <List>
-          {['Mission', 'Our Story', 'Send email', 'Meet the Team'].map(
+          {['Mission and Purpose', 'Our Story', 'Meet the Team'].map(
             (text, index) => (
               <ListItem button key={text}>
                 <ListItemText primary={text} />

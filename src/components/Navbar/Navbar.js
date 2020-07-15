@@ -73,14 +73,13 @@ function NavBar({ ...props }) {
                 spacing={1}
               >
                 <Grid item>
-                  <Button onClick={logoClick}>
-                    <img
-                      src={require('../../assets/collegeKeyNavbarDark.JPG')}
-                      alt='fancy banner :D'
-                      width='250'
-                      height='75'
-                    />
-                  </Button>
+                  <img
+                    src={require('../../assets/collegeKeyNavbarDarkShadow.jpg')}
+                    alt='fancy banner :D'
+                    width='250'
+                    height='75'
+                    onClick={logoClick}
+                  />
                 </Grid>
               </Grid>
             </Grid>
