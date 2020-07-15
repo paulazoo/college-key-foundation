@@ -20,7 +20,7 @@ import HomepageLayout from './HomepageLayout';
 import Footer from './Footer';
 
 const backgroundImage =
-  'https://www.insidehighered.com/sites/default/server_files/media/image_4.png';
+  'https://img1.looper.com/img/gallery/locke-key-season-2-release-date-cast-and-plot/intro-1583844452.jpg';
 
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -53,6 +53,13 @@ const useStyles = makeStyles((theme) => ({
   more: {
     marginTop: theme.spacing(2),
   },
+  boldHomeText: {
+    fontWeight: 'bold',
+  },
+  textDiv: {
+    textAlign: 'right',
+    width: '100%',
+  },
 }));
 
 function Landing(props) {
@@ -68,9 +75,23 @@ function Landing(props) {
           src={backgroundImage}
           alt='increase priority'
         />
-        <Typography color='inherit' align='center' variant='h2' marked='center'>
-          Now is the time for hope.
-        </Typography>
+        <div className={classes.textDiv}>
+          <Typography
+            color='inherit'
+            variant='h2'
+            className={classes.boldHomeText}
+          >
+            NOW IS THE TIME FOR HOPE
+            <br />
+          </Typography>
+          <Typography
+            color='inherit'
+            variant='h3'
+            className={classes.boldHomeText}
+          >
+            SHARE YOUR VOICE
+          </Typography>
+        </div>
       </HomepageLayout>
       <Typography>
         yoyoyo my name is paula zhu and my teeth hurt so fricken bad
