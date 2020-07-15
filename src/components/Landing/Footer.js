@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    backgroundColor: theme.palette.background,
+    backgroundColor: theme.palette.primary.main,
   },
   container: {
     height: theme.spacing(8),

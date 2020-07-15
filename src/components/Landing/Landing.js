@@ -167,7 +167,7 @@ function Landing(props) {
       <Card elevation={2}>
         <Box
           bgcolor={theme.palette.secondary.light}
-          color={theme.palette.primary.dark}
+          color={theme.palette.primary.main}
           textAlign='center'
         >
           <Typography className={classes.memberCount}>

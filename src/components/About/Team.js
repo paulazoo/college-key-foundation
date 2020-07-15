@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   },
   memberPosition: {
     fontSize: 18,
-    color: theme.palette.primary.dark,
+    color: theme.palette.primary.main,
   },
   memberText: {
     color: theme.palette.common.gray,

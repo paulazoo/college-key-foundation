@@ -24,11 +24,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   leftLinkActive: {
-    color: theme.palette.common.black,
+    color: theme.palette.common.white,
   },
   rightLink: {
     fontSize: 16,
-    color: theme.palette.common.black,
+    color: theme.palette.common.white,
     fontWeight: 'bold',
     marginLeft: theme.spacing(3),
   },
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     height: theme.spacing(15),
     justifyContent: 'center',
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.primary.main,
   },
 }));
 
