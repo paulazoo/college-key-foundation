@@ -24,7 +24,8 @@ export const theme = createMuiTheme({
       main: '#DC453D',
       dark: '#C33C23',
     },
-    yellow: '#ffde59'
+    yellow: '#ffde59',
+    background: '#84c6c8',
   },
   typography: {
     useNextVariants: true,
