@@ -16,10 +16,17 @@ import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Landing/Footer';
+import Team from './Team';
+import WordDivider from '../Shared/WordDivider';
 
 // Custom Components
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  wordDivider: {
+    fontWeight: 'bold',
+    color: theme.palette.common.gray,
+  },
+}));
 
 function About(props) {
   const classes = useStyles();
@@ -27,9 +34,12 @@ function About(props) {
   return (
     <>
       <Navbar />
-      <Card>
-        <Typography>About Us Page</Typography>
-      </Card>
+      <WordDivider>
+        <Typography variant='h3' className={classes.wordDivider}>
+          About Us
+        </Typography>
+      </WordDivider>
+      <Team />
       <Footer />
     </>
   );
