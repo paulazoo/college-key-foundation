@@ -37,6 +37,10 @@ import About from './components/About/About';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Testing from './components/Testing/Testing';
 import FellowshipProgram from './components/FellowshipProgram/FellowshipProgram';
+import LoginPage from './components/LoginPage/LoginPage';
+import MenteesPage from './components/MenteesPage/MenteesPage';
+import MentorsPage from './components/MentorsPage/MentorsPage';
+import Terms from './components/Terms/Terms';
 
 require('dotenv').config();
 
@@ -76,6 +80,10 @@ ReactDOM.render(
                 path='/fellowship-program'
                 component={FellowshipProgram}
               />
+              <Route exact path='/mentees' component={MenteesPage} />
+              <Route exact path='/mentors' component={MentorsPage} />
+              <Route exact path='/terms' component={Terms} />
+              <Route exact path='/login' component={LoginPage} />
               <Route exact path='/home' component={Landing} />
               <PrivateRoute exact path='/testing' component={Testing} />
               <Redirect to='/' />

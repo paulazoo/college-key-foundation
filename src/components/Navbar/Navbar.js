@@ -155,6 +155,18 @@ function NavBar({ ...props }) {
                 </Button>
               </Tooltip>
             </Grid>
+            <Grid item>
+              <Tooltip title='Mentees'>
+                <Button
+                  color='inherit'
+                  className={classes.rightLink}
+                  component={NavLink}
+                  to='/login'
+                >
+                  Login
+                </Button>
+              </Tooltip>
+            </Grid>
             <Grid item xs={1} />
           </Grid>
         </Toolbar>
