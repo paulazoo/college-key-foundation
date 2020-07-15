@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
   imgResponsive: {
     height: 'auto',
     width: 'auto',
-    maxWidth: '80vw',
-    maxHeight: '500px',
+    maxWidth: '250px',
+    maxHeight: '250px',
   },
   title: {
     width: '15rem',
