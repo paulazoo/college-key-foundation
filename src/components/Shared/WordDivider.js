@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
   },
   border: {
-    borderBottom: '1px solid black',
+    borderBottom: '1px solid gray',
     width: '100%',
   },
   content: {

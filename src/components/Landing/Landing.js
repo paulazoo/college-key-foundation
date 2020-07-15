@@ -70,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
   wordDivider: {
     fontWeight: 'bold',
+    color: theme.palette.common.gray,
   },
   applyButton: {
     fontWeight: 'bold',

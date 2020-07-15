@@ -26,6 +26,8 @@ export const theme = createMuiTheme({
     },
     common: {
       white: 'white',
+      black: 'black',
+      gray: 'gray',
       yellow: '#ffde59',
     },
     background: '#84c6c8',

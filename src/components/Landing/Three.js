@@ -26,23 +26,23 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '500px',
   },
   title: {
-    width: '20rem',
+    width: '15rem',
     fontFamily: theme.typography.fontFamily,
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 24,
-    color: '#183951',
+    color: theme.palette.common.gray,
   },
   textGrid: {
     textAlign: 'center',
   },
   text: {
-    width: '20rem',
+    width: '15rem',
     fontFamily: theme.typography.fontFamily,
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 14,
-    color: '#183951',
+    color: theme.palette.common.gray,
   },
 }));
 
@@ -50,8 +50,9 @@ function Three(props) {
   const classes = useStyles();
 
   return (
-    <Grid container direction='row' spacing={0}>
-      <Grid item xs={4}>
+    <Grid container direction='row' justify='space-between' spacing={0}>
+      <Grid item xs={1} />
+      <Grid item xs={3}>
         <Grid container direction='column' alignItems='center'>
           <Grid item>
             <img className={classes.imgResponsive} alt='weekly seminars' />
@@ -70,7 +71,7 @@ function Three(props) {
         </Grid>
       </Grid>
 
-      <Grid item xs={4}>
+      <Grid item xs={3}>
         <Grid container direction='column' alignItems='center'>
           <Grid item>
             <img
@@ -94,7 +95,7 @@ function Three(props) {
         </Grid>
       </Grid>
 
-      <Grid item xs={4}>
+      <Grid item xs={3}>
         <Grid container direction='column' alignItems='center'>
           <Grid item>
             <img className={classes.imgResponsive} alt='optional workshops' />
@@ -113,6 +114,7 @@ function Three(props) {
           </Grid>
         </Grid>
       </Grid>
+      <Grid item xs={1} />
     </Grid>
   );
 }
