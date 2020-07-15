@@ -32,7 +32,8 @@ import { theme } from './theme.js';
 import { MuiThemeProvider } from '@material-ui/core';
 
 // Custom Components
-import Landing from './components/Landing/Landing'
+import Landing from './components/Landing/Landing';
+import About from './components/About/About';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Testing from './components/Testing/Testing';
 
@@ -67,6 +68,9 @@ ReactDOM.render(
         <AppStateProvider>
           <MuiThemeProvider theme={theme}>
             <Switch>
+              <Route exact path='/' component={Landing} />
+              <Route exact path='/about-us' component={About} />
+              <Route exact path='/' component={Landing} />
               <Route exact path='/' component={Landing} />
               <PrivateRoute exact path='/testing' component={Testing} />
               <Redirect to='/' />
