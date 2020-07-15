@@ -22,6 +22,8 @@ import HomepageLayout from './HomepageLayout';
 import Footer from './Footer';
 import Three from './Three';
 import WordDivider from '../Shared/WordDivider';
+import AsSeenIn from './AsSeenIn';
+import Partners from './Partners';
 
 const backgroundImage =
   'https://img1.looper.com/img/gallery/locke-key-season-2-release-date-cast-and-plot/intro-1583844452.jpg';
@@ -37,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     // 'url("https://images.pexels.com/photos/116720/pexels-photo-116720.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")',
     backgroundColor: theme.palette.primary.main,
     backgroundPosition: 'center',
-    color: 'white',
+    color: theme.palette.common.white,
     paddingTop: '4vw',
     paddingRight: '10vw',
     paddingLeft: '10vw',
@@ -143,6 +145,9 @@ function Landing(props) {
       </WordDivider>
       <br />
       <Three />
+      <br />
+      <AsSeenIn />
+      <Partners />
       <br />
       <Typography>
         yoyoyo my name is paula zhu and my teeth hurt so fricken bad

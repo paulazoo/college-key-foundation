@@ -18,7 +18,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: 24,
-    color: 'white',
+    color: theme.palette.common.white,
   },
   toolbar: {
     justifyContent: 'space-between',
@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     height: theme.spacing(15),
     justifyContent: 'center',
+    backgroundColor: theme.palette.primary.dark,
   },
 }));
 
@@ -45,7 +46,7 @@ function NavBar({ ...props }) {
   const history = useHistory();
 
   useEffect(() => {
-    document.body.style.backgroundColor = 'white';
+    document.body.style.backgroundColor = theme.palette.common.white;
   }, []);
 
   const logoClick = () => {

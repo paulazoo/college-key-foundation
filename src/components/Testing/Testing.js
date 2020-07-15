@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  TextField,
-  Grid,
-  CardContent,
-} from '@material-ui/core';
+import { Button, TextField, Grid, CardContent } from '@material-ui/core';
 
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,11 +10,10 @@ import { userLogout, setUser } from '../../store/actions/index';
 
 // Custom Components
 
-const useStyles = makeStyles((theme) => ({
-
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 function Testing(props) {
+  const classes = useStyles();
 
   const handleClick = () => {
     props.userLogout();

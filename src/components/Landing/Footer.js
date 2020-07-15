@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontStyle: 'normal',
     fontWeight: 'normal',
-    color: 'white',
+    color: theme.palette.common.white,
   },
 }));
 
