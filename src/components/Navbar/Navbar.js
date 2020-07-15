@@ -148,8 +148,8 @@ function NavBar({ ...props }) {
                 <Button
                   color='inherit'
                   className={classes.rightLink}
-                  component={NavLink}
-                  to='/donate'
+                  target='_blank'
+                  href='https://www.gofundme.com/f/the-college-key'
                 >
                   Donate
                 </Button>
