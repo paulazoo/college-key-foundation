@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'normal',
     color: theme.palette.common.white,
   },
+  socialMediaContainer: {
+    textAlign: 'center',
+  },
 }));
 
 export default function Footer() {
@@ -53,6 +56,9 @@ export default function Footer() {
             <Link href='/terms' className={classes.text}>
               Privacy Policy & Terms of Use
             </Link>
+          </Grid>
+          <Grid item xs={12} className={classes.socialMediaContainer}>
+            <Typography>social media</Typography>
           </Grid>
         </Grid>
       </Container>

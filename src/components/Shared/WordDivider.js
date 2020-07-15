@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(1),
+    padding: theme.spacing(4),
   },
   border: {
     borderBottom: '1px solid gray',

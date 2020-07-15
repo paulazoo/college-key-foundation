@@ -108,7 +108,7 @@ function Three(props) {
           <Grid item className={classes.textGrid}>
             <Typography className={classes.text}>
               Our optional workshops are designed to provide additional support
-              in essay-writing, scholarship-searching and local university
+              in essay-writing, scholarship-searching, and local university
               admissions to those interested.
             </Typography>
           </Grid>

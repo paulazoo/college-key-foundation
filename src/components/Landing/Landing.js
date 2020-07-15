@@ -7,9 +7,12 @@ import {
   CardContent,
   Typography,
   Divider,
+  Card,
+  Box,
 } from '@material-ui/core';
 
 // Theme
+import { theme } from '../../theme';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
@@ -24,6 +27,7 @@ import Three from './Three';
 import WordDivider from '../Shared/WordDivider';
 import AsSeenIn from './AsSeenIn';
 import Partners from './Partners';
+import Overview from './Overview';
 
 const backgroundImage =
   'https://img1.looper.com/img/gallery/locke-key-season-2-release-date-cast-and-plot/intro-1583844452.jpg';
@@ -75,6 +79,20 @@ const useStyles = makeStyles((theme) => ({
   applyButton: {
     fontWeight: 'bold',
     fontSize: 24,
+  },
+  dueDateContainer: {
+    textAlign: 'center',
+  },
+  dueDate: {
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  spacing: {
+    height: theme.spacing(8),
+  },
+  memberCount: {
+    fontWeight: 'bold',
+    fontSize: 64,
   },
 }));
 
@@ -138,23 +156,50 @@ function Landing(props) {
           </Grid>
         </Grid>
       </HomepageLayout>
-      <br />
       <WordDivider>
         <Typography variant='h3' className={classes.wordDivider}>
           Our Fellowship Program
         </Typography>
       </WordDivider>
-      <br />
       <Three />
-      <br />
+      <div className={classes.spacing} />
+      <Card elevation={2}>
+        <Box
+          bgcolor={theme.palette.secondary.light}
+          color={theme.palette.primary.dark}
+          textAlign='center'
+        >
+          <Typography className={classes.memberCount}>
+            250+ Fellows and 250+ Mentors
+          </Typography>
+        </Box>
+      </Card>
+      <div className={classes.spacing} />
+      <Overview />
+      <div className={classes.spacing} />
+      <Grid container direction='row' justify='center' alignItems='center'>
+        <Grid item>
+          <Button
+            variant='contained'
+            color='secondary'
+            className={classes.applyButton}
+          >
+            APPLY NOW
+          </Button>
+        </Grid>
+        <Grid item xs={12} className={classes.dueDateContainer}>
+          <br />
+          <Typography className={classes.dueDate}>
+            Applications due 203982982 who knows? lolll
+          </Typography>
+        </Grid>
+      </Grid>
+      <div className={classes.spacing} />
       <AsSeenIn />
       <Partners />
-      <br />
+      <div className={classes.spacing} />
       <Typography>
         yoyoyo my name is paula zhu and my teeth hurt so fricken bad
-        <br />
-        <br />
-        <br />
       </Typography>
       <Footer />
     </>
