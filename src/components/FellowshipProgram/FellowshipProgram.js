@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Button, TextField, Grid, CardContent, Card } from '@material-ui/core';
+import {
+  Button,
+  TextField,
+  Grid,
+  CardContent,
+  Card,
+  Typography,
+} from '@material-ui/core';
 
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +16,7 @@ import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Landing/Footer';
+import WordDivider from '../Shared/WordDivider';
 
 // Custom Components
 
@@ -24,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(10),
     padding: theme.spacing(5),
   },
+  wordDivider: {
+    fontWeight: 'bold',
+    color: theme.palette.common.gray,
+  },
 }));
 
 function FellowshipProgram(props) {
@@ -32,6 +44,11 @@ function FellowshipProgram(props) {
   return (
     <>
       <Navbar />
+      <WordDivider spacing={175}>
+        <Typography variant='h3' className={classes.wordDivider}>
+          Fellowship Program
+        </Typography>
+      </WordDivider>
       <Card className={classes.fellowshipCard}>
         <p>
           <strong>

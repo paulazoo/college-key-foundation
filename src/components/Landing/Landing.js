@@ -184,6 +184,7 @@ function Landing(props) {
             variant='contained'
             color='secondary'
             className={classes.applyButton}
+            onClick={handleApply}
           >
             APPLY NOW
           </Button>
