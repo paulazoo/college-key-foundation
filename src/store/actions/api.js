@@ -37,6 +37,7 @@ export const getLogin = (userToken, callback) => {
     };
     api(`login`, requestOptions)
       .then((response) => {
+        console.log(response);
         dispatch(setUser(response));
 
         callback(response);
