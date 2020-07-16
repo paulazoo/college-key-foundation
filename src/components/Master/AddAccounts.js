@@ -14,11 +14,11 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
+
+// Custom Components
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
-
-// Custom Components
 
 const useStyles = makeStyles((theme) => ({
   card: {

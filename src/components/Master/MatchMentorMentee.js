@@ -16,11 +16,12 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
+import { postMatch } from '../../store/actions/api';
+
+// Custom Components
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
-
-// Custom Components
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -37,23 +38,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MatchMentorMentee(props) {
+function MatchMentorMentee({ mentees, mentors, ...props }) {
   const classes = useStyles();
 
   const [mentee, setMentee] = useState('');
   const [mentor, setMentor] = useState('');
-
-  const mentees = [
-    {
-      name: 'Example Name',
-      email: 'exampleemail@gmail.com',
-      id: 7,
-      image_url:
-        'https://lh3.googleusercontent.com/a-/AOh14GhIgVDyqkmlWla6t2jFW-LnRVRSELVB_1lUgW2Y=s96-c',
-    },
-  ];
-
-  const mentors = [];
 
   const handleMenteeChange = (e) => {
     setMentee(e.target.value);
@@ -63,8 +52,8 @@ function MatchMentorMentee(props) {
     setMentee(e.target.value);
   };
 
-  const handleNewMentor = () => {
-    props.postNewsletterEmails({ email: mentor });
+  const handleMatch = () => {
+    props.postMatch({ mentor_id: mentor, mentee_id: mentee });
     setMentee('');
     setMentor('');
   };
@@ -124,7 +113,7 @@ function MatchMentorMentee(props) {
         </Select>
       </Grid>
       <Grid item xs={2}>
-        <Button color='secondary' variant='contained' onClick={handleNewMentor}>
+        <Button color='secondary' variant='contained' onClick={handleMatch}>
           Match
         </Button>
       </Grid>
@@ -140,6 +129,7 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
+    postMatch: (body) => dispatch(postMatch(body)),
   };
 }
 

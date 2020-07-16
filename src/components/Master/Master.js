@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   TextField,
@@ -14,14 +14,15 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
+import { getAccounts } from '../../store/actions/api';
+
+// Custom Components
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import AddAccounts from './AddAccounts';
 import ShowAccounts from './ShowAccounts';
 import MatchMentorMentee from './MatchMentorMentee';
-
-// Custom Components
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -40,6 +41,16 @@ const useStyles = makeStyles((theme) => ({
 
 function Master(props) {
   const classes = useStyles();
+
+  const [people, setPeople] = useState([]);
+
+  const getAccountsCallback = (accounts) => {
+    setPeople(accounts);
+  };
+
+  useEffect(() => {
+    props.getAccounts(getAccountsCallback);
+  }, []);
 
   return (
     <>
@@ -62,8 +73,11 @@ function Master(props) {
                 </Grid>
                 <AddAccounts />
 
-                <ShowAccounts />
-                <MatchMentorMentee />
+                <ShowAccounts people={people} />
+                <MatchMentorMentee
+                  mentees={people.filter((p) => p.user_type === 'Mentee')}
+                  mentors={people.filter((p) => p.user_type === 'Mentor')}
+                />
               </Grid>
             </Card>
           </Grid>
@@ -102,6 +116,8 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
+    getAccounts: (user, body, callback) =>
+      dispatch(getAccounts(user, body, callback)),
   };
 }
 

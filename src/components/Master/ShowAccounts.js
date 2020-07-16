@@ -79,21 +79,12 @@ const rows = [
 
 const rowsPerPage = 10;
 
-function ShowAccounts(props) {
+function ShowAccounts({ people, ...props }) {
   const classes = useStyles();
 
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState(null);
   const [page, setPage] = useState(0);
-  const [people, setPeople] = useState([]);
-
-  const getAccountsCallback = (accounts) => {
-    setPeople(accounts);
-  };
-
-  useEffect(() => {
-    props.getAccounts(getAccountsCallback);
-  }, []);
 
   const handleRequestSort = (__, property) => {
     const _orderBy = property;

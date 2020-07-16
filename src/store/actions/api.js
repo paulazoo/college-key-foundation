@@ -194,3 +194,24 @@ export const postMentees = (body) => {
       });
   };
 };
+
+export const postMatch = (body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    api(`mentees/match`, requestOptions)
+      .then((response) => {
+        // set state and personal snackbar
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
