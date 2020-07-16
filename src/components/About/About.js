@@ -15,7 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../Landing/Footer';
+import Footer from '../Footer/Footer';
 import Team from './Team';
 import WordDivider from '../Shared/WordDivider';
 import AboutDrawer from './AboutDrawer';

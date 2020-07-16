@@ -22,7 +22,7 @@ import { userLogout, setUser } from '../../store/actions/index';
 // Custom Components
 import Navbar from '../Navbar/Navbar';
 import HomepageLayout from './HomepageLayout';
-import Footer from './Footer';
+import Footer from '../Footer/Footer';
 import Three from './Three';
 import WordDivider from '../Shared/WordDivider';
 import AsSeenIn from './AsSeenIn';
@@ -202,9 +202,6 @@ function Landing(props) {
       <div className={classes.spacing} />
       <EmailNewsletter />
       <div className={classes.spacing} />
-      <Typography>
-        yoyoyo my name is paula zhu and my teeth hurt so fricken bad
-      </Typography>
       <Footer />
     </>
   );

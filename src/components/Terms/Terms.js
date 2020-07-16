@@ -8,7 +8,7 @@ import { Box, Container } from '@material-ui/core';
 // Custom Components
 import TermsContent from './TermsContent';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../Landing/Footer';
+import Footer from '../Footer/Footer';
 
 function Terms() {
   return (

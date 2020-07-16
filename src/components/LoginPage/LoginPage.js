@@ -23,7 +23,7 @@ import { getLogin } from '../../store/actions/api';
 
 // Custom Components
 import WordDivider from '../Shared/WordDivider';
-import Footer from '../Landing/Footer';
+import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 
 const useStyles = makeStyles((theme) => ({

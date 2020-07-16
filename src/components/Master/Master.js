@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../Landing/Footer';
+import Footer from '../Footer/Footer';
 import AddAccounts from './AddAccounts';
 import ShowAccounts from './ShowAccounts';
 

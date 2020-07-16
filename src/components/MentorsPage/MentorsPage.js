@@ -17,7 +17,7 @@ import { userLogout, setUser } from '../../store/actions/index';
 // Custom Components
 import WordDivider from '../Shared/WordDivider';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../Landing/Footer';
+import Footer from '../Footer/Footer';
 
 const useStyles = makeStyles((theme) => ({
   wordDivider: {
