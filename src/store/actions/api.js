@@ -104,3 +104,73 @@ export const postNewsletterEmails = (body) => {
       });
   };
 };
+
+export const postMentors = (body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    api(`mentors`, requestOptions)
+      .then((response) => {
+        if (response.message === 'Account already exists') {
+          dispatch(
+            setPersonalSnackbar({
+              open: true,
+              content: `Error: Account with email ${body.email} already exists!`,
+            })
+          );
+        } else {
+          dispatch(
+            setPersonalSnackbar({
+              open: true,
+              content: `Mentor with email ${body.email} was added!`,
+            })
+          );
+        }
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const postMentees = (body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    api(`mentees`, requestOptions)
+      .then((response) => {
+        if (response.message === 'Account already exists') {
+          dispatch(
+            setPersonalSnackbar({
+              open: true,
+              content: `Error: Account with email ${body.email} already exists!`,
+            })
+          );
+        } else {
+          dispatch(
+            setPersonalSnackbar({
+              open: true,
+              content: `Mentee with email ${body.email} was added!`,
+            })
+          );
+        }
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
