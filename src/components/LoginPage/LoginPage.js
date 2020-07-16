@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   loginCard: {
     margin: theme.spacing(8),
     padding: theme.spacing(8),
+    height: '40vh',
   },
   loginTextContainer: {
     textAlign: 'center',
@@ -44,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
   },
   applyLink: {
     color: theme.palette.primary.main,
+  },
+  spacing: {
+    height: theme.spacing(1),
   },
 }));
 
@@ -153,7 +157,13 @@ function LoginPage(props) {
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
+                    <div className={classes.spacing} />
+                  </Grid>
+                  <Grid item xs={12}>
                     <Divider />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <div className={classes.spacing} />
                   </Grid>
                   <Grid item>
                     <Box>{renderGoogleLogin()}</Box>

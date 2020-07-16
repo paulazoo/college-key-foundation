@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Button, TextField, Grid, CardContent } from '@material-ui/core';
+import {
+  Button,
+  TextField,
+  Grid,
+  CardContent,
+  Typography,
+} from '@material-ui/core';
 
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,6 +26,7 @@ function Apply(props) {
   return (
     <>
       <Navbar />
+      <Typography>Application page</Typography>
       <Footer />
     </>
   );
