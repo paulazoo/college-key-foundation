@@ -31,6 +31,18 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     color: theme.palette.common.gray,
   },
+  card: {
+    margin: theme.spacing(8),
+    padding: theme.spacing(8),
+    height: '40vh',
+  },
+  textContainer: {
+    textAlign: 'center',
+  },
+  text: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
 }));
 
 function Dashboard(props) {
@@ -42,7 +54,21 @@ function Dashboard(props) {
     <>
       <Navbar />
       <Grid container direction='row' alignItems='center' justify='center'>
-        <Typography>Dashboard</Typography>
+        <Grid item xs={12}>
+          <Card className={classes.card}>
+            <Grid
+              container
+              direction='row'
+              alignItems='center'
+              justify='center'
+              spacing={3}
+            >
+              <Grid item xs={12} className={classes.textContainer}>
+                <Typography className={classes.text}>Dashboard</Typography>
+              </Grid>
+            </Grid>
+          </Card>
+        </Grid>
       </Grid>
       <Footer />
     </>
