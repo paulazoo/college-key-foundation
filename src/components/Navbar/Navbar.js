@@ -156,7 +156,7 @@ function NavBar({ ...props }) {
               </Tooltip>
             </Grid>
             <Grid item>
-              <Tooltip title='Mentees'>
+              <Tooltip title='Login'>
                 <Button
                   color='inherit'
                   className={classes.rightLink}

@@ -17,6 +17,7 @@ import { userLogout, setUser } from '../../store/actions/index';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Landing/Footer';
 import WordDivider from '../Shared/WordDivider';
+import ReadyApply from './ReadyApply';
 
 // Custom Components
 
@@ -105,6 +106,7 @@ function FellowshipProgram(props) {
           DEADLINE TO SUBMIT YOUR APPLICATION: June 30 @ 11:59 pm (eastern daily
           time)
         </p>
+        <ReadyApply />
       </Card>
       <Footer />
     </>
