@@ -6,6 +6,7 @@ import {
   CardContent,
   Typography,
   Card,
+  Divider,
 } from '@material-ui/core';
 
 // Theme
@@ -27,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   applyCard: {
     margin: theme.spacing(8),
+    marginTop: 0,
     padding: theme.spacing(8),
     height: '40vh',
   },
@@ -35,7 +37,15 @@ const useStyles = makeStyles((theme) => ({
   },
   applyText: {
     fontWeight: 'bold',
+    fontSize: 28,
+  },
+  applyButton: {
+    fontWeight: 'bold',
     fontSize: 24,
+  },
+  applyDivider: {
+    margin: theme.spacing(4),
+    height: '20vh',
   },
 }));
 
@@ -65,6 +75,29 @@ function Apply(props) {
                 <Typography className={classes.applyText}>
                   Apply to be a College Key Foundation Mentee or Mentor!
                 </Typography>
+              </Grid>
+              <Grid item>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  className={classes.applyButton}
+                >
+                  Mentee
+                </Button>
+              </Grid>
+              <Divider
+                orientation='vertical'
+                flexItem
+                className={classes.applyDivider}
+              />
+              <Grid item>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  className={classes.applyButton}
+                >
+                  Mentor
+                </Button>
               </Grid>
             </Grid>
           </Card>
