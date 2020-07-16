@@ -105,30 +105,6 @@ function LoggedOutNavBar({ ...props }) {
             </Tooltip>
           </Grid>
           <Grid item>
-            <Tooltip title='Mentors'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                component={NavLink}
-                to='/mentors'
-              >
-                Mentors
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item>
-            <Tooltip title='Mentees'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                component={NavLink}
-                to='/mentees'
-              >
-                Mentees
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item>
             <Tooltip title='Fellowship Program'>
               <Button
                 color='inherit'
@@ -149,6 +125,18 @@ function LoggedOutNavBar({ ...props }) {
                 href='https://www.gofundme.com/f/the-college-key'
               >
                 Donate
+              </Button>
+            </Tooltip>
+          </Grid>
+          <Grid item>
+            <Tooltip title='Apply'>
+              <Button
+                color='inherit'
+                className={classes.rightLink}
+                component={NavLink}
+                to='/apply'
+              >
+                Apply
               </Button>
             </Tooltip>
           </Grid>
