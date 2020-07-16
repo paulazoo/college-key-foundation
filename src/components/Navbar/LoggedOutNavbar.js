@@ -71,9 +71,9 @@ function LoggedOutNavBar({ ...props }) {
             >
               <Grid item>
                 <img
-                  src={require('../../assets/collegeKeyNavbarDarkShadow.jpg')}
+                  src={require('../../assets/collegeKeyNavbarNew.JPG')}
                   alt='fancy banner :D'
-                  width='250'
+                  width='275'
                   height='75'
                   onClick={logoClick}
                 />
