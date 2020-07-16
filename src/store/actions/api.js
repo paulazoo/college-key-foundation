@@ -57,7 +57,7 @@ export const getLogin = (userToken, callback) => {
   };
 };
 
-export const getUser = () => {
+export const getAccount = () => {
   return (dispatch, getState) => {
     const requestOptions = {
       method: 'GET',
@@ -67,9 +67,29 @@ export const getUser = () => {
         Authorization: `Bearer ${localStorage.getItem('user_token')}`,
       },
     };
-    api(`users/${getState().user.id}`, requestOptions)
+    api(`accounts/${getState().account.id}`, requestOptions)
       .then((response) => {
         // dispatch to set state
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const getAccounts = (callback) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+    };
+    api(`accounts`, requestOptions)
+      .then((response) => {
+        callback(response);
       })
       .catch((error) => {
         console.error('API Error: ', error);

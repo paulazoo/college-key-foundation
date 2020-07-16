@@ -17,6 +17,8 @@ import { userLogout, setUser } from '../../store/actions/index';
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Landing/Footer';
+import AddAccounts from './AddAccounts';
+import ShowAccounts from './ShowAccounts';
 
 // Custom Components
 
@@ -38,27 +40,6 @@ const useStyles = makeStyles((theme) => ({
 function Master(props) {
   const classes = useStyles();
 
-  const [mentorEmailValue, setMentorEmailValue] = useState('');
-  const [menteeEmailValue, setMenteeEmailValue] = useState('');
-
-  const handleMentorEmailValueChange = (e) => {
-    setMentorEmailValue(e.target.value);
-  };
-
-  const handleMenteeEmailValueChange = (e) => {
-    setMenteeEmailValue(e.target.value);
-  };
-
-  const handleNewMentor = () => {
-    props.postNewsletterEmails({ email: mentorEmailValue });
-    setMentorEmailValue('');
-  };
-
-  const handleNewMentee = () => {
-    props.postNewsletterEmails({ email: menteeEmailValue });
-    setMenteeEmailValue('');
-  };
-
   return (
     <>
       <Navbar />
@@ -78,54 +59,9 @@ function Master(props) {
                     whatsup paula ;)
                   </Typography>
                 </Grid>
-                <Grid item xs={6}>
-                  <Typography className={classes.text}>
-                    Add a Mentor Account with their email
-                  </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography className={classes.text}>
-                    Add a Mentee Account with their email
-                  </Typography>
-                </Grid>
-                <Grid item xs={4}>
-                  <TextField
-                    fullWidth
-                    variant='outlined'
-                    label="Mentor's Email"
-                    placeholder='mentorexample@gmail.com'
-                    value={mentorEmailValue}
-                    onChange={handleMentorEmailValueChange}
-                  />
-                </Grid>
-                <Grid item xs={2}>
-                  <Button
-                    color='secondary'
-                    variant='contained'
-                    onClick={handleNewMentor}
-                  >
-                    Add Mentor
-                  </Button>
-                </Grid>
-                <Grid item xs={4}>
-                  <TextField
-                    fullWidth
-                    variant='outlined'
-                    label="Mentee's Email"
-                    placeholder='menteeexample@gmail.com'
-                    value={menteeEmailValue}
-                    onChange={handleMenteeEmailValueChange}
-                  />
-                </Grid>
-                <Grid item xs={2}>
-                  <Button
-                    color='secondary'
-                    variant='contained'
-                    onClick={handleNewMentee}
-                  >
-                    Add Mentee
-                  </Button>
-                </Grid>
+                <AddAccounts />
+
+                <ShowAccounts />
               </Grid>
             </Card>
           </Grid>
