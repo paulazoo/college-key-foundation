@@ -1,11 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import { normalize } from 'normalizr';
 import history from '../history';
 
-import { eventSchema } from '../../util/Normalize';
-import {
-  setUser
-} from './index';
+import { setUser } from './index';
 import { wsConnect } from './websocket';
 
 const api = (path, requestOptions) => {
@@ -29,7 +25,7 @@ const api = (path, requestOptions) => {
 // Api Calls:
 
 // GET Calls:
-export const getLoginMentee = (userToken, callback) => {
+export const getLogin = (userToken, callback) => {
   return (dispatch) => {
     const requestOptions = {
       method: 'GET',
@@ -39,29 +35,7 @@ export const getLoginMentee = (userToken, callback) => {
         Authorization: `Bearer ${userToken}`,
       },
     };
-    api(`login_mentee`, requestOptions)
-      .then((response) => {
-        dispatch(setUser(response));
-
-        callback(response);
-      })
-      .catch((error) => {
-        console.error('API Error: ', error);
-      });
-  };
-};
-
-export const getLoginMentor = (userToken, callback) => {
-  return (dispatch) => {
-    const requestOptions = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Bearer ${userToken}`,
-      },
-    };
-    api(`login_mentor`, requestOptions)
+    api(`login`, requestOptions)
       .then((response) => {
         dispatch(setUser(response));
 

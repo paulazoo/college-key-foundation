@@ -19,6 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
+import { getLogin } from '../../store/actions/api';
 
 // Custom Components
 import WordDivider from '../Shared/WordDivider';
@@ -67,9 +68,11 @@ function LoginPage(props) {
     history.push('/apply');
   };
 
+  const getLoginCallback = () => {};
+
   const responseGoogle = (response) => {
     localStorage.setItem('user_token', response.tokenId);
-    props.getLogin(response.tokenId);
+    props.getLogin(response.tokenId, getLoginCallback);
   };
 
   const responseGoogleErrors = (response) => {
@@ -86,7 +89,7 @@ function LoginPage(props) {
   const renderGoogleLogin = () => {
     return (
       <GoogleLogin
-        clientId='685495882737-786nrl739albgc8jms1ck4nimnpa13gq.apps.googleusercontent.com'
+        clientId='322643072137-r7mupmjsg74h6g16o6k5vpi7cgsqvlmq.apps.googleusercontent.com'
         buttonText='Log in with Google'
         onSuccess={responseGoogle}
         onFailure={responseGoogleErrors}
@@ -159,6 +162,7 @@ const mapStateToProps = (state) => ({});
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
+    getLogin: (userToken, callback) => dispatch(getLogin(userToken, callback)),
   };
 }
 
