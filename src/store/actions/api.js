@@ -76,3 +76,31 @@ export const getUser = () => {
       });
   };
 };
+
+// POST Calls:
+export const postNewsletterEmails = (body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    api(`newsletter_emails`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: `Your email ${response.email} was added to our newsletter list!`,
+          })
+        );
+        // dispatch to set state
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};

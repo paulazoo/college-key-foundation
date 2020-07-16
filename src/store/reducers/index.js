@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 // different reducer files
 import { initialState } from './initialState';
 import homeReducer from './homeReducer';
-import userReducer from './userReducer'
+import userReducer from './userReducer';
+import accountReducer from './accountReducer';
 
 const rootReducer = (state, action) => {
   let newState = state;
@@ -17,7 +18,8 @@ const rootReducer = (state, action) => {
 
 const appReducer = combineReducers({
   home: homeReducer,
-  user: userReducer
+  user: userReducer,
+  account: accountReducer,
 });
 
 export default rootReducer;

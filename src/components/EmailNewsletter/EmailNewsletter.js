@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
+import { postNewsletterEmails } from '../../store/actions/api';
 
 // Custom Components
 
@@ -21,7 +22,16 @@ const useStyles = makeStyles((theme) => ({}));
 function EmailNewsletter(props) {
   const classes = useStyles();
 
-  const handleEmailNewsletter = () => {};
+  const [emailValue, setEmailValue] = useState('');
+
+  const handleEmailValueChange = (e) => {
+    setEmailValue(e.target.value);
+  };
+
+  const handleNewsletterEmail = () => {
+    props.postNewsletterEmails({ email: emailValue });
+    setEmailValue('');
+  };
 
   return (
     <>
@@ -41,13 +51,15 @@ function EmailNewsletter(props) {
             variant='outlined'
             label='Your Email'
             placeholder='example@gmail.com'
+            value={emailValue}
+            onChange={handleEmailValueChange}
           />
         </Grid>
         <Grid item>
           <Button
             color='secondary'
             variant='contained'
-            onClick={handleEmailNewsletter}
+            onClick={handleNewsletterEmail}
           >
             Submit!
           </Button>
@@ -62,6 +74,7 @@ const mapStateToProps = (state) => ({});
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
+    postNewsletterEmails: (body) => dispatch(postNewsletterEmails(body)),
   };
 }
 
