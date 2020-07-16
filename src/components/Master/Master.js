@@ -19,6 +19,7 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import AddAccounts from './AddAccounts';
 import ShowAccounts from './ShowAccounts';
+import MatchMentorMentee from './MatchMentorMentee';
 
 // Custom Components
 
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(8),
     padding: theme.spacing(8),
-    height: '40vh',
+    height: '100vh',
   },
   textContainer: {
     textAlign: 'center',
@@ -62,6 +63,7 @@ function Master(props) {
                 <AddAccounts />
 
                 <ShowAccounts />
+                <MatchMentorMentee />
               </Grid>
             </Card>
           </Grid>
