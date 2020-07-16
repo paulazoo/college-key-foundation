@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
+import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 
 // Custom Components
 
@@ -19,7 +20,12 @@ function Testing(props) {
     props.userLogout();
   };
 
-  return <Button onClick={handleClick}>click me to reset and logout</Button>;
+  return (
+    <>
+      <PersonalSnackbar />
+      <Button onClick={handleClick}>click me to reset and logout</Button>
+    </>
+  );
 }
 
 const mapStateToProps = (state) => ({});

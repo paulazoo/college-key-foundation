@@ -14,6 +14,10 @@ import MuiAppBar from '@material-ui/core/AppBar';
 // Theme
 import { theme } from '../../theme';
 import { makeStyles } from '@material-ui/styles';
+import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
+import { userLogout } from '../../store/actions';
+import LoggedOutNavbar from './LoggedOutNavbar';
+import LoggedInNavbar from './LoggedInNavbar';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -50,135 +54,20 @@ function NavBar({ ...props }) {
     document.body.style.backgroundColor = theme.palette.common.white;
   }, []);
 
-  const logoClick = () => {
-    history.push('/');
-  };
-
   return (
-    <div>
-      <MuiAppBar elevation={0} position='static' className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          <Grid
-            container
-            direction='row'
-            justify='space-between'
-            alignItems='center'
-          >
-            <Grid item xs={4}>
-              <Grid
-                container
-                direction='row'
-                alignItems='center'
-                // justify="center"
-                spacing={1}
-              >
-                <Grid item>
-                  <img
-                    src={require('../../assets/collegeKeyNavbarDarkShadow.jpg')}
-                    alt='fancy banner :D'
-                    width='250'
-                    height='75'
-                    onClick={logoClick}
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Tooltip title='Home'>
-                <Button
-                  color='inherit'
-                  className={classes.rightLink}
-                  component={NavLink}
-                  to='/home'
-                >
-                  Home
-                </Button>
-              </Tooltip>
-            </Grid>
-            <Grid item>
-              <Tooltip title='About Us'>
-                <Button
-                  color='inherit'
-                  className={classes.rightLink}
-                  component={NavLink}
-                  to='/about-us'
-                >
-                  About Us
-                </Button>
-              </Tooltip>
-            </Grid>
-            <Grid item>
-              <Tooltip title='Mentors'>
-                <Button
-                  color='inherit'
-                  className={classes.rightLink}
-                  component={NavLink}
-                  to='/mentors'
-                >
-                  Mentors
-                </Button>
-              </Tooltip>
-            </Grid>
-            <Grid item>
-              <Tooltip title='Mentees'>
-                <Button
-                  color='inherit'
-                  className={classes.rightLink}
-                  component={NavLink}
-                  to='/mentees'
-                >
-                  Mentees
-                </Button>
-              </Tooltip>
-            </Grid>
-            <Grid item>
-              <Tooltip title='Fellowship Program'>
-                <Button
-                  color='inherit'
-                  className={classes.rightLink}
-                  component={NavLink}
-                  to='/fellowship-program'
-                >
-                  Fellowship Program
-                </Button>
-              </Tooltip>
-            </Grid>
-            <Grid item>
-              <Tooltip title='Donate'>
-                <Button
-                  color='inherit'
-                  className={classes.rightLink}
-                  target='_blank'
-                  href='https://www.gofundme.com/f/the-college-key'
-                >
-                  Donate
-                </Button>
-              </Tooltip>
-            </Grid>
-            <Grid item>
-              <Tooltip title='Login'>
-                <Button
-                  color='inherit'
-                  className={classes.rightLink}
-                  component={NavLink}
-                  to='/login'
-                >
-                  Login
-                </Button>
-              </Tooltip>
-            </Grid>
-            <Grid item xs={1} />
-          </Grid>
-        </Toolbar>
-      </MuiAppBar>
-    </div>
+    <>
+      <PersonalSnackbar />
+      {props.user.id ? <LoggedInNavbar /> : <LoggedOutNavbar />}
+    </>
   );
 }
 
 const mapStateToProps = (state) => ({
-  backgroundColor: state.backgroundColor,
+  user: state.user,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  userLogout: () => dispatch(userLogout()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

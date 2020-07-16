@@ -29,8 +29,8 @@ export const theme = createMuiTheme({
       black: 'black',
       gray: 'gray',
       yellow: '#ffde59',
+      muted: '#84c6c8',
     },
-    background: '#84c6c8',
   },
   typography: {
     useNextVariants: true,

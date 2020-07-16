@@ -1,8 +1,13 @@
 export const initialState = {
   // set up default audio and video devices
   user: {
-    role: 'mentee'
+    user_type: 'Mentee',
   },
+  account: {},
   home: {
-  }
+    personalSnackbar: {
+      content: '',
+      open: false,
+    },
+  },
 };

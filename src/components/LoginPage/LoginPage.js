@@ -94,7 +94,6 @@ function LoginPage(props) {
         onSuccess={responseGoogle}
         onFailure={responseGoogleErrors}
         cookiePolicy='single_host_origin'
-        isSignedIn
       />
     );
   };
@@ -126,28 +125,41 @@ function LoginPage(props) {
               justify='center'
               spacing={3}
             >
-              <Grid item xs={12} className={classes.loginTextContainer}>
-                <Typography className={classes.loginText}>
-                  Mentee / Mentor Login
-                </Typography>
-              </Grid>
-              <Grid item xs={12} className={classes.loginTextContainer}>
-                <Typography>
-                  Don't have an account?
+              {props.user.id ? (
+                <Grid item xs={12} className={classes.loginTextContainer}>
+                  <Typography className={classes.loginText}>
+                    You are logged in!
+                  </Typography>
+                </Grid>
+              ) : (
+                <>
+                  <Grid item xs={12} className={classes.loginTextContainer}>
+                    <Typography className={classes.loginText}>
+                      Mentee / Mentor Login
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} className={classes.loginTextContainer}>
+                    <Typography>
+                      Don't have an account?
 {' '}
-                  <a className={classes.applyLink} onClick={handleApplyLink}>
-                    {' '}
-                    Apply today!
+                      <a
+                        className={classes.applyLink}
+                        onClick={handleApplyLink}
+                      >
+                        {' '}
+                        Apply today!
 {' '}
-                  </a>
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Divider />
-              </Grid>
-              <Grid item>
-                <Box>{renderGoogleLogin()}</Box>
-              </Grid>
+                      </a>
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Divider />
+                  </Grid>
+                  <Grid item>
+                    <Box>{renderGoogleLogin()}</Box>
+                  </Grid>
+                </>
+              )}
             </Grid>
           </Card>
         </Grid>
@@ -157,7 +169,9 @@ function LoginPage(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 
 function mapDispatchToProps(dispatch) {
   return {

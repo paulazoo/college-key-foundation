@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import history from '../history';
 
-import { setUser } from './index';
+import { setUser, setAccount, setPersonalSnackbar } from './index';
 import { wsConnect } from './websocket';
 
 const api = (path, requestOptions) => {
@@ -37,8 +37,17 @@ export const getLogin = (userToken, callback) => {
     };
     api(`login`, requestOptions)
       .then((response) => {
-        console.log(response);
-        dispatch(setUser(response));
+        if (response.message === 'Logged in successfully!') {
+          dispatch(setPersonalSnackbar({ open: false, content: '' }));
+          dispatch(setAccount(response.account));
+          dispatch(setUser(response.user));
+
+          history.push('/dashboard');
+        } else if (response.message === 'You are not a mentor or mentee!') {
+          dispatch(
+            setPersonalSnackbar({ open: true, content: response.message })
+          );
+        }
 
         callback(response);
       })

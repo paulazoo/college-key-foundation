@@ -42,6 +42,7 @@ import MenteesPage from './components/MenteesPage/MenteesPage';
 import MentorsPage from './components/MentorsPage/MentorsPage';
 import Terms from './components/Terms/Terms';
 import Apply from './components/Apply/Apply';
+import Dashboard from './components/Dashboard/Dashboard';
 
 require('dotenv').config();
 
@@ -86,8 +87,8 @@ ReactDOM.render(
               <Route exact path='/apply' component={Apply} />
               <Route exact path='/terms' component={Terms} />
               <Route exact path='/login' component={LoginPage} />
-              <Route exact path='/home' component={Landing} />
-              <PrivateRoute exact path='/testing' component={Testing} />
+              <Route exact path='/testing' component={Testing} />
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <Redirect to='/' />
             </Switch>
           </MuiThemeProvider>

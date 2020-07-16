@@ -5,6 +5,7 @@ import { Grid, Container, Typography, Link } from '@material-ui/core';
 
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
+import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 
 // Custom Components
 

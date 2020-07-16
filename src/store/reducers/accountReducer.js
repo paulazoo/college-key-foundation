@@ -1,8 +1,8 @@
 import { initialState } from './initialState';
 
-export default function userReducer(state = initialState.user, action) {
+export default function accountReducer(state = initialState.account, action) {
   switch (action.type) {
-    case 'SET_USER':
+    case 'SET_ACCOUNT':
       return action.payload;
 
     default:
