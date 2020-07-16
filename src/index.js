@@ -44,6 +44,7 @@ import Terms from './components/Terms/Terms';
 import Apply from './components/Apply/Apply';
 import Dashboard from './components/Dashboard/Dashboard';
 import Master from './components/Master/Master';
+import Profile from './components/Profile/Profile';
 
 require('dotenv').config();
 
@@ -91,6 +92,7 @@ ReactDOM.render(
               <Route exact path='/testing' component={Testing} />
 
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute exact path='/profile' component={Profile} />
               <PrivateRoute exact path='/master' component={Master} />
               <Redirect to='/' />
             </Switch>

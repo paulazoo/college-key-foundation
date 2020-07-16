@@ -195,6 +195,35 @@ export const postMentees = (body) => {
   };
 };
 
+// PUT Calls:
+export const putAccount = (body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    console.log(requestOptions);
+    api(`accounts/${getState().account.id}`, requestOptions)
+      .then((response) => {
+        dispatch(setAccount(response));
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: 'Profile details saved!',
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
 export const postMatch = (body) => {
   return (dispatch, getState) => {
     const requestOptions = {

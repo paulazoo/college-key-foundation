@@ -146,14 +146,14 @@ function Landing(props) {
               of underprivileged backgrounds
             </Typography>
             <br />
-            <Button
+            {/* <Button
               color='secondary'
               variant='contained'
               className={classes.applyButton}
               onClick={handleApply}
             >
               APPLY NOW
-            </Button>
+            </Button> */}
           </Grid>
         </Grid>
       </HomepageLayout>
@@ -179,7 +179,7 @@ function Landing(props) {
       <Overview />
       <div className={classes.spacing} />
       <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item>
+        {/* <Grid item>
           <Button
             variant='contained'
             color='secondary'
@@ -188,11 +188,11 @@ function Landing(props) {
           >
             APPLY NOW
           </Button>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} className={classes.dueDateContainer}>
           <br />
           <Typography className={classes.dueDate}>
-            Applications due 203982982 who knows? lolll
+            Fellowship applications will be open again in January 2021
           </Typography>
         </Grid>
       </Grid>

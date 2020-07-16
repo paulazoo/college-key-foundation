@@ -103,9 +103,9 @@ function LoggedInNavBar({ ...props }) {
                 color='inherit'
                 className={classes.rightLink}
                 component={NavLink}
-                to='/events'
+                to='/profile'
               >
-                Events
+                Profile
               </Button>
             </Tooltip>
           </Grid>

@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Template(props) {
+function CreateEvent(props) {
   const classes = useStyles();
 
   const [mentorEmailValue, setMentorEmailValue] = useState('');
@@ -50,24 +50,39 @@ function Template(props) {
 
   return (
     <>
-      <Grid item xs={6}>
-        <Typography className={classes.text}>
-          Add a Mentor Account with their email
-        </Typography>
+      <Grid item xs={12}>
+        <Typography className={classes.text}>Create An Event</Typography>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12}>
         <TextField
           fullWidth
           variant='outlined'
-          label="Mentor's Email"
-          placeholder='mentorexample@gmail.com'
+          label='Event Name'
+          value={mentorEmailValue}
+          onChange={handleMentorEmailValueChange}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <TextField
+          fullWidth
+          variant='outlined'
+          label='Kind'
+          value={mentorEmailValue}
+          onChange={handleMentorEmailValueChange}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <TextField
+          fullWidth
+          variant='outlined'
+          label='Description'
           value={mentorEmailValue}
           onChange={handleMentorEmailValueChange}
         />
       </Grid>
       <Grid item xs={2}>
         <Button color='secondary' variant='contained' onClick={handleNewMentor}>
-          Add Mentor
+          Create
         </Button>
       </Grid>
     </>
@@ -85,4 +100,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Template);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateEvent);
