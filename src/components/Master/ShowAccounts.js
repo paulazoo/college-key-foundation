@@ -25,7 +25,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../../theme';
 
 // Custom Components
-// import ProfilePic from '../ProfilePic/ProfilePic';
+import ProfilePic from '../ProfilePic/ProfilePic';
 import EnhancedTableHead from '../Shared/EnhancedTableHead';
 import stableSort from '../Shared/stableSort';
 import getSorting from '../Shared/getSorting';
@@ -131,7 +131,7 @@ function ShowAccounts(props) {
                       scope='row'
                       style={{ padding: 0, paddingLeft: 20 }}
                     >
-                      {/* <ProfilePic user={person.user} buttonHeight={64} /> */}
+                      <ProfilePic account={person} buttonHeight={64} />
                     </TableCell>
                     <TableCell
                       component='th'
