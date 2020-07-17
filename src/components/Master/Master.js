@@ -102,7 +102,7 @@ function Master(props) {
                   setMenteeResults={setMenteeResults}
                 />
                 <Grid item xs={6} className={classes.textContainer}>
-                  <Typography className={classes.text}>Menters</Typography>
+                  <Typography className={classes.text}>Mentors</Typography>
                 </Grid>
                 <Grid item xs={6} className={classes.textContainer}>
                   <Typography className={classes.text}>Mentees</Typography>
