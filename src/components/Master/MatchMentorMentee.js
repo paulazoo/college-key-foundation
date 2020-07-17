@@ -49,7 +49,7 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
   };
 
   const handleMentorChange = (e) => {
-    setMentee(e.target.value);
+    setMentor(e.target.value);
   };
 
   const handleMatch = () => {
@@ -60,7 +60,7 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
 
   const renderMatchMenuItem = (person) => {
     return (
-      <MenuItem value={person.id}>
+      <MenuItem value={person.user_id}>
         <Grid container direction='row' alignItems='center' spacing={1}>
           <Grid item>
             {person.image_url && (

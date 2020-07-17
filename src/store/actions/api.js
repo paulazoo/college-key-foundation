@@ -235,9 +235,15 @@ export const postMatch = (body) => {
       },
       body: JSON.stringify(body),
     };
-    api(`mentees/match`, requestOptions)
+    console.log(requestOptions);
+    api(`mentees/${body.mentee_id}/match`, requestOptions)
       .then((response) => {
-        // set state and personal snackbar
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: 'Mentee and mentor matched!',
+          })
+        );
       })
       .catch((error) => {
         console.error('API Error: ', error);
