@@ -129,7 +129,8 @@ function Profile(props) {
                     label='Tell Us About Yourself :)'
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} />
+                <Grid item xs={5}>
                   <Grid container direction='row' justify='flex-end'>
                     <Grid item>
                       <Button

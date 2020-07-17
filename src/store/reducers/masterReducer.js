@@ -1,0 +1,26 @@
+import { initialState } from './initialState';
+
+export default function homeReducer(state = initialState.home, action) {
+  switch (action.type) {
+    case 'SET_ACCOUNTS':
+      return {
+        ...state,
+        accounts: action.payload,
+      };
+
+    case 'SET_MENTORS':
+      return {
+        ...state,
+        mentors: action.payload,
+      };
+
+    case 'SET_MENTEES':
+      return {
+        ...state,
+        mentees: action.payload,
+      };
+
+    default:
+      return state;
+  }
+}

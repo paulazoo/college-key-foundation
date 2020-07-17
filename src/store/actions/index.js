@@ -13,3 +13,15 @@ export function setPersonalSnackbar(payload) {
 export function userLogout(payload) {
   return { type: 'USER_LOGOUT', payload };
 }
+
+export function setAccounts(payload) {
+  return { type: 'SET_ACCOUNTS', payload };
+}
+
+export function setMentors(payload) {
+  return { type: 'SET_MENTORS', payload };
+}
+
+export function setMentees(payload) {
+  return { type: 'SET_MENTEES', payload };
+}

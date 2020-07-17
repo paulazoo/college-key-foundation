@@ -97,6 +97,46 @@ export const getAccounts = (callback) => {
   };
 };
 
+export const getMentors = (callback) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+    };
+    api(`mentors`, requestOptions)
+      .then((response) => {
+        callback(response);
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const getMentees = (callback) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+    };
+    api(`mentees`, requestOptions)
+      .then((response) => {
+        callback(response);
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
 // POST Calls:
 export const postNewsletterEmails = (body) => {
   return (dispatch, getState) => {

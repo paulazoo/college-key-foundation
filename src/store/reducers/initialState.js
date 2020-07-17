@@ -10,4 +10,9 @@ export const initialState = {
       content: '',
     },
   },
+  master: {
+    accounts: [],
+    mentors: [],
+    mentees: [],
+  },
 };
