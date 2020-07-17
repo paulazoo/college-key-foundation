@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontWeight: 'bold',
-    fontSize: 24,
+    fontSize: 48,
   },
 }));
 
@@ -63,8 +63,16 @@ function Dashboard(props) {
               justify='center'
               spacing={3}
             >
+              <Grid item xs={12}>
+                <Typography className={classes.text}>
+                  {`Welcome, ${props.account.name}!`}
+                </Typography>
+              </Grid>
               <Grid item xs={12} className={classes.textContainer}>
-                <Typography className={classes.text}>Dashboard</Typography>
+                {JSON.stringify(props.account)}
+              </Grid>
+              <Grid item xs={12} className={classes.textContainer}>
+                {JSON.stringify(props.user)}
               </Grid>
             </Grid>
           </Card>
@@ -75,7 +83,10 @@ function Dashboard(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  account: state.account,
+  user: state.user,
+});
 
 function mapDispatchToProps(dispatch) {
   return {

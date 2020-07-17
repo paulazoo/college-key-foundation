@@ -12,6 +12,8 @@ import {
   Card,
   Divider,
   TextField,
+  Select,
+  MenuItem,
 } from '@material-ui/core';
 
 // Theme
@@ -58,6 +60,9 @@ function Profile(props) {
 
   const [bio, setBio] = useState(props.account.bio);
   const [phone, setPhone] = useState(props.account.phone);
+  const [school, setSchool] = useState(props.account.school);
+  const [gradYear, setGradYear] = useState(props.account.grad_year);
+  const [gradYearError, setGradYearError] = useState(false);
 
   const handleBioChange = (e) => {
     setBio(e.target.value);
@@ -67,11 +72,26 @@ function Profile(props) {
     setPhone(e.target.value);
   };
 
+  const handleSchoolChange = (e) => {
+    setSchool(e.target.value);
+  };
+
+  const handleGradYearChange = (e) => {
+    setGradYear(e.target.value);
+  };
+
   const handleSubmitAccount = () => {
-    props.putAccount({
-      bio,
-      phone,
-    });
+    if (+gradYear === parseInt(gradYear)) {
+      setGradYearError(false);
+      props.putAccount({
+        bio,
+        phone,
+        school,
+        grad_year: gradYear,
+      });
+    } else {
+      setGradYearError(true);
+    }
   };
 
   return (
@@ -115,6 +135,28 @@ function Profile(props) {
                     value={phone}
                     onChange={handlePhoneChange}
                     label='Phone Number'
+                  />
+                </Grid>
+                <Grid item xs={12} />
+                <Grid item xs={4}>
+                  <TextField
+                    fullWidth
+                    variant='outlined'
+                    value={school}
+                    onChange={handleSchoolChange}
+                    label='School'
+                  />
+                </Grid>
+                <Grid item xs={12} />
+                <Grid item xs={4}>
+                  <TextField
+                    fullWidth
+                    variant='outlined'
+                    value={gradYear}
+                    onChange={handleGradYearChange}
+                    label='Graduation Year'
+                    error={gradYearError}
+                    helperText='Must be an integer'
                   />
                 </Grid>
                 <Grid item xs={12} />
