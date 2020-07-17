@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { setPersonalSnackbar } from '../../store/actions/index';
+import { setPersonalSnackbar, userLogout } from '../../store/actions/index';
 
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,6 +14,12 @@ const useStyles = makeStyles((theme) => ({}));
 
 function PersonalSnackbar(props) {
   const classes = useStyles();
+
+  useEffect(() => {
+    if (typeof props.personalSnackbar === 'undefined') {
+      props.userLogout();
+    }
+  }, []);
 
   // TODO: move to overall personal snackbar component
   const handleClosePersonalSnackbar = (e, reason) => {
@@ -45,6 +51,7 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
   return {
     setPersonalSnackbar: (payload) => dispatch(setPersonalSnackbar(payload)),
+    userLogout: () => dispatch(userLogout()),
   };
 }
 
