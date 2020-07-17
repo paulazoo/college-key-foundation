@@ -137,28 +137,32 @@ function Profile(props) {
                     label='Phone Number'
                   />
                 </Grid>
-                <Grid item xs={12} />
-                <Grid item xs={4}>
-                  <TextField
-                    fullWidth
-                    variant='outlined'
-                    value={school}
-                    onChange={handleSchoolChange}
-                    label='School'
-                  />
-                </Grid>
-                <Grid item xs={12} />
-                <Grid item xs={4}>
-                  <TextField
-                    fullWidth
-                    variant='outlined'
-                    value={gradYear}
-                    onChange={handleGradYearChange}
-                    label='Graduation Year'
-                    error={gradYearError}
-                    helperText='Must be an integer'
-                  />
-                </Grid>
+                {props.account.user_type === 'Mentor' && (
+                  <>
+                    <Grid item xs={12} />
+                    <Grid item xs={4}>
+                      <TextField
+                        fullWidth
+                        variant='outlined'
+                        value={school}
+                        onChange={handleSchoolChange}
+                        label='School'
+                      />
+                    </Grid>
+                    <Grid item xs={12} />
+                    <Grid item xs={4}>
+                      <TextField
+                        fullWidth
+                        variant='outlined'
+                        value={gradYear}
+                        onChange={handleGradYearChange}
+                        label='Graduation Year'
+                        error={gradYearError}
+                        helperText='Must be an integer'
+                      />
+                    </Grid>
+                  </>
+                )}
                 <Grid item xs={12} />
                 <Grid item xs={4}>
                   <TextField
