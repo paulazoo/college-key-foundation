@@ -52,6 +52,7 @@ require('dotenv').config();
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['home'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

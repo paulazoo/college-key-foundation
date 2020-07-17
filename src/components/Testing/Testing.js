@@ -22,7 +22,6 @@ function Testing(props) {
 
   return (
     <>
-      <PersonalSnackbar />
       <Button onClick={handleClick}>click me to reset and logout</Button>
     </>
   );
