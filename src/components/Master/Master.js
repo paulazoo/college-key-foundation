@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
-import { getAccounts } from '../../store/actions/api';
+import { getAccounts, getMentees, getMentors } from '../../store/actions/api';
 
 // Custom Components
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
@@ -43,27 +43,22 @@ const useStyles = makeStyles((theme) => ({
 function Master(props) {
   const classes = useStyles();
 
-  const [people, setPeople] = useState([]);
-
-  const getAccountsCallback = (accounts) => {
-    setPeople(accounts);
-  };
-
   useEffect(() => {
-    props.getAccounts(getAccountsCallback);
+    props.getAccounts();
+    props.getMentors();
+    props.getMentees();
   }, []);
 
   const [allOptions, setAllOptions] = useState([]);
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState({});
-  const [mentors, setMentors] = useState([]);
-  const [mentees, setMentees] = useState([]);
+  const [results, setResults] = useState([]);
 
   // get attendee and room options for search
   useEffect(() => {
-    setOptions(people);
-    setAllOptions(people);
-  }, [people]);
+    setOptions(props.accounts);
+    setAllOptions(props.accounts);
+  }, [props.accounts]);
 
   return (
     <>
@@ -87,15 +82,19 @@ function Master(props) {
                 </Grid>
                 <AddAccounts />
                 <MatchMentorMentee
-                  mentees={people.filter((p) => p.user_type === 'Mentee')}
-                  mentors={people.filter((p) => p.user_type === 'Mentor')}
+                  mentees={props.accounts.filter(
+                    (p) => p.user_type === 'Mentee'
+                  )}
+                  mentors={props.accounts.filter(
+                    (p) => p.user_type === 'Mentor'
+                  )}
                 />
                 <AccountSearch
                   options={options}
                   allOptions={allOptions}
                   selected={selected}
                   setSelected={setSelected}
-                  setResults={setMentors}
+                  setResults={setResults}
                 />
                 <Grid item xs={6} className={classes.textContainer}>
                   <Typography className={classes.text}>Menters</Typography>
@@ -105,12 +104,16 @@ function Master(props) {
                 </Grid>
                 <Grid item xs={6}>
                   <ShowAccounts
-                    people={people.filter((p) => p.user_type === 'Mentor')}
+                    people={props.accounts.filter(
+                      (p) => p.user_type === 'Mentor'
+                    )}
                   />
                 </Grid>
                 <Grid item xs={6}>
                   <ShowAccounts
-                    people={people.filter((p) => p.user_type === 'Mentee')}
+                    people={props.accounts.filter(
+                      (p) => p.user_type === 'Mentee'
+                    )}
                   />
                 </Grid>
               </Grid>
@@ -146,13 +149,17 @@ function Master(props) {
 const mapStateToProps = (state) => ({
   user: state.user,
   account: state.account,
+  accounts: state.master.accounts,
+  mentors: state.master.mentors,
+  mentees: state.master.mentees,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
-    getAccounts: (user, body, callback) =>
-      dispatch(getAccounts(user, body, callback)),
+    getAccounts: () => dispatch(getAccounts()),
+    getMentors: () => dispatch(getMentors()),
+    getMentees: () => dispatch(getMentees()),
   };
 }
 

@@ -1,6 +1,6 @@
 import { initialState } from './initialState';
 
-export default function homeReducer(state = initialState.home, action) {
+export default function masterReducer(state = initialState.master, action) {
   switch (action.type) {
     case 'SET_ACCOUNTS':
       return {

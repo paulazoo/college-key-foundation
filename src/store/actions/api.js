@@ -1,7 +1,14 @@
 /* eslint-disable import/prefer-default-export */
 import history from '../history';
 
-import { setUser, setAccount, setPersonalSnackbar } from './index';
+import {
+  setUser,
+  setAccount,
+  setPersonalSnackbar,
+  setMentees,
+  setMentors,
+  setAccounts,
+} from './index';
 import { wsConnect } from './websocket';
 
 const api = (path, requestOptions) => {
@@ -77,7 +84,7 @@ export const getAccount = () => {
   };
 };
 
-export const getAccounts = (callback) => {
+export const getAccounts = () => {
   return (dispatch, getState) => {
     const requestOptions = {
       method: 'GET',
@@ -89,7 +96,7 @@ export const getAccounts = (callback) => {
     };
     api(`accounts`, requestOptions)
       .then((response) => {
-        callback(response);
+        dispatch(setAccounts(response));
       })
       .catch((error) => {
         console.error('API Error: ', error);
@@ -97,7 +104,7 @@ export const getAccounts = (callback) => {
   };
 };
 
-export const getMentors = (callback) => {
+export const getMentors = () => {
   return (dispatch, getState) => {
     const requestOptions = {
       method: 'GET',
@@ -109,7 +116,7 @@ export const getMentors = (callback) => {
     };
     api(`mentors`, requestOptions)
       .then((response) => {
-        callback(response);
+        dispatch(setMentors(response));
       })
       .catch((error) => {
         console.error('API Error: ', error);
@@ -117,7 +124,7 @@ export const getMentors = (callback) => {
   };
 };
 
-export const getMentees = (callback) => {
+export const getMentees = () => {
   return (dispatch, getState) => {
     const requestOptions = {
       method: 'GET',
@@ -129,7 +136,7 @@ export const getMentees = (callback) => {
     };
     api(`mentees`, requestOptions)
       .then((response) => {
-        callback(response);
+        dispatch(setMentees(response));
       })
       .catch((error) => {
         console.error('API Error: ', error);
