@@ -55,7 +55,8 @@ function Master(props) {
   return (
     <>
       <Navbar />
-      {props.account.email === 'paulazhu@college.harvard.edu' ? (
+      {props.account.email === 'paulazhu@college.harvard.edu' ||
+      props.account.email === 'collegekeyfoundation@gmail.com' ? (
         <Grid container direction='row' alignItems='center' justify='center'>
           <Grid item xs={12}>
             <Card className={classes.card}>
