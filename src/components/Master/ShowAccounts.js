@@ -102,7 +102,7 @@ function ShowAccounts({ people, ...props }) {
 
   return (
     <>
-      <Box width='100%'>
+      <Box>
         {people.length > 0 ? (
           <Table aria-labelledby='tableTitle'>
             <EnhancedTableHead

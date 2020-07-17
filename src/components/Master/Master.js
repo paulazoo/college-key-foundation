@@ -23,6 +23,7 @@ import Footer from '../Footer/Footer';
 import AddAccounts from './AddAccounts';
 import ShowAccounts from './ShowAccounts';
 import MatchMentorMentee from './MatchMentorMentee';
+import AccountSearch from './AccountSearch';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -52,6 +53,18 @@ function Master(props) {
     props.getAccounts(getAccountsCallback);
   }, []);
 
+  const [allOptions, setAllOptions] = useState([]);
+  const [options, setOptions] = useState([]);
+  const [selected, setSelected] = useState({});
+  const [mentors, setMentors] = useState([]);
+  const [mentees, setMentees] = useState([]);
+
+  // get attendee and room options for search
+  useEffect(() => {
+    setOptions(people);
+    setAllOptions(people);
+  }, [people]);
+
   return (
     <>
       <Navbar />
@@ -69,16 +82,37 @@ function Master(props) {
               >
                 <Grid item xs={12} className={classes.textContainer}>
                   <Typography className={classes.text}>
-                    whatsup paula ;)
+                    Master Controls
                   </Typography>
                 </Grid>
                 <AddAccounts />
-
-                <ShowAccounts people={people} />
                 <MatchMentorMentee
                   mentees={people.filter((p) => p.user_type === 'Mentee')}
                   mentors={people.filter((p) => p.user_type === 'Mentor')}
                 />
+                <AccountSearch
+                  options={options}
+                  allOptions={allOptions}
+                  selected={selected}
+                  setSelected={setSelected}
+                  setResults={setMentors}
+                />
+                <Grid item xs={6} className={classes.textContainer}>
+                  <Typography className={classes.text}>Menters</Typography>
+                </Grid>
+                <Grid item xs={6} className={classes.textContainer}>
+                  <Typography className={classes.text}>Mentees</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <ShowAccounts
+                    people={people.filter((p) => p.user_type === 'Mentor')}
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <ShowAccounts
+                    people={people.filter((p) => p.user_type === 'Mentee')}
+                  />
+                </Grid>
               </Grid>
             </Card>
           </Grid>
