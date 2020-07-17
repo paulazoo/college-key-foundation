@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     backgroundColor: theme.palette.primary.main,
+    padding: theme.spacing(1),
   },
   text: {
     fontFamily: theme.typography.fontFamily,

@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
+import { postMentors, postMentees } from '../../store/actions/api';
 
 // Custom Components
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
@@ -50,12 +51,12 @@ function AddAccounts(props) {
   };
 
   const handleNewMentor = () => {
-    props.postNewsletterEmails({ email: mentorEmailValue });
+    props.postMentors({ email: mentorEmailValue });
     setMentorEmailValue('');
   };
 
   const handleNewMentee = () => {
-    props.postNewsletterEmails({ email: menteeEmailValue });
+    props.postMentees({ email: menteeEmailValue });
     setMenteeEmailValue('');
   };
 
@@ -113,6 +114,8 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
+    postMentors: (body) => dispatch(postMentors(body)),
+    postMentees: (body) => dispatch(postMentees(body)),
   };
 }
 

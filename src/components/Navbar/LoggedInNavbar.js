@@ -98,7 +98,7 @@ function LoggedInNavBar({ ...props }) {
             </Tooltip>
           </Grid>
           <Grid item>
-            <Tooltip title='Events'>
+            <Tooltip title='Profile'>
               <Button
                 color='inherit'
                 className={classes.rightLink}

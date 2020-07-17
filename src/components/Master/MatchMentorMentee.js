@@ -92,6 +92,11 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
           Match a Mentee with Mentor
         </Typography>
       </Grid>
+      <Grid item xs={12}>
+        <Typography>
+          WARNING: Mentees only have one mentor at a time.
+        </Typography>
+      </Grid>
       <Grid item xs={5}>
         <Select
           fullWidth

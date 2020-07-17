@@ -31,7 +31,7 @@ import Overview from './Overview';
 import EmailNewsletter from '../EmailNewsletter/EmailNewsletter';
 
 const backgroundImage =
-  'https://img1.looper.com/img/gallery/locke-key-season-2-release-date-cast-and-plot/intro-1583844452.jpg';
+  'https://static.wixstatic.com/media/6f9a2f9dd5574440a18d95f4679c14a7.jpg/v1/fit/w_924,h_520/6f9a2f9dd5574440a18d95f4679c14a7.jpg';
 
 const useStyles = makeStyles((theme) => ({
   background: {

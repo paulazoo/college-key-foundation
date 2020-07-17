@@ -62,7 +62,7 @@ function FooterSocialMedia() {
           <IconButton
             size='small'
             target='_blank'
-            href='https://www.google.com'
+            href='https://www.linkedin.com/company/68288939/admin/'
           >
             <Icon>
               <img src={WhiteLinkedinSvg} width={24} height={24} />

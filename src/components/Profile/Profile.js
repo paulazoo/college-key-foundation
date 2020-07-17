@@ -109,7 +109,7 @@ function Profile(props) {
                   {`Email: ${props.account.email}`}
                 </Typography>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={4}>
                 <TextField
                   fullWidth
                   variant='outlined'
@@ -118,7 +118,8 @@ function Profile(props) {
                   label='Phone Number'
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} />
+              <Grid item xs={4}>
                 <TextField
                   fullWidth
                   variant='outlined'
