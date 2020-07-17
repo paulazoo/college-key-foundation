@@ -6,8 +6,8 @@ export const initialState = {
   account: {},
   home: {
     personalSnackbar: {
-      content: '',
       open: false,
+      content: '',
     },
   },
 };
