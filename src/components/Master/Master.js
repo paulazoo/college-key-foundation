@@ -52,12 +52,16 @@ function Master(props) {
   const [allOptions, setAllOptions] = useState([]);
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState({});
-  const [results, setResults] = useState([]);
+  const [mentorResults, setMentorResults] = useState([]);
+  const [menteeResults, setMenteeResults] = useState([]);
 
   // get attendee and room options for search
   useEffect(() => {
     setOptions(props.accounts);
     setAllOptions(props.accounts);
+
+    setMentorResults(props.accounts.filter((p) => p.user_type === 'Mentor'));
+    setMenteeResults(props.accounts.filter((p) => p.user_type === 'Mentee'));
   }, [props.accounts]);
 
   return (
@@ -94,7 +98,8 @@ function Master(props) {
                   allOptions={allOptions}
                   selected={selected}
                   setSelected={setSelected}
-                  setResults={setResults}
+                  setMentorResults={setMentorResults}
+                  setMenteeResults={setMenteeResults}
                 />
                 <Grid item xs={6} className={classes.textContainer}>
                   <Typography className={classes.text}>Menters</Typography>
@@ -103,18 +108,10 @@ function Master(props) {
                   <Typography className={classes.text}>Mentees</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <ShowAccounts
-                    people={props.accounts.filter(
-                      (p) => p.user_type === 'Mentor'
-                    )}
-                  />
+                  <ShowAccounts people={mentorResults} />
                 </Grid>
                 <Grid item xs={6}>
-                  <ShowAccounts
-                    people={props.accounts.filter(
-                      (p) => p.user_type === 'Mentee'
-                    )}
-                  />
+                  <ShowAccounts people={menteeResults} />
                 </Grid>
               </Grid>
             </Card>

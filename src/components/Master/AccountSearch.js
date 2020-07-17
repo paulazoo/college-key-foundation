@@ -22,7 +22,8 @@ function AccountSearch({
   allOptions = [],
   selected,
   setSelected,
-  setResults,
+  setMentorResults,
+  setMenteeResults,
   ...props
 }) {
   const classes = useStyles();
@@ -31,12 +32,21 @@ function AccountSearch({
 
   const handleChange = (event, newValue) => {
     setSelected(newValue);
-    if (newValue !== null) {
-      const preMentors = [];
+    const preMentors = [];
+    const preMentees = [];
+    if (newValue !== null && newValue.user_type === 'Mentor') {
       preMentors.push(newValue);
-      setResults(preMentors);
+      setMentorResults(preMentors);
+
+      // if (newValue.user.mentees) {
+      //   preMentees.push()
+      // }
+    } else if (newValue !== null && newValue.user_type === 'Mentee') {
+      preMentees.push(newValue);
+      setMenteeResults(preMentees);
     } else if (newValue === null) {
-      setResults(allOptions);
+      setMentorResults(allOptions.filter((p) => p.user_type === 'Mentor'));
+      setMenteeResults(allOptions.filter((p) => p.user_type === 'Mentee'));
     }
   };
 

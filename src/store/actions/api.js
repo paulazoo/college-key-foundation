@@ -116,7 +116,11 @@ export const getMentors = () => {
     };
     api(`mentors`, requestOptions)
       .then((response) => {
-        dispatch(setMentors(response));
+        const preMentors = {};
+        response.forEach((mentor) => {
+          preMentors[mentor.id] = mentor;
+        });
+        dispatch(setMentors(preMentors));
       })
       .catch((error) => {
         console.error('API Error: ', error);
@@ -136,7 +140,11 @@ export const getMentees = () => {
     };
     api(`mentees`, requestOptions)
       .then((response) => {
-        dispatch(setMentees(response));
+        const preMentees = {};
+        response.forEach((mentee) => {
+          preMentees[mentee.id] = mentee;
+        });
+        dispatch(setMentees(preMentees));
       })
       .catch((error) => {
         console.error('API Error: ', error);
