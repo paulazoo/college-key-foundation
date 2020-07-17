@@ -16,7 +16,7 @@ function PersonalSnackbar(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    if (typeof props.personalSnackbar === 'undefined') {
+    if (typeof props.personalSnackbar.open === 'undefined') {
       props.userLogout();
     }
   }, []);
