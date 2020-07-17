@@ -6,6 +6,7 @@ import { InputAdornment, Grid, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 // Redux
+import { connect } from 'react-redux';
 
 // Theme
 import { theme } from '../../theme.js';
@@ -34,16 +35,29 @@ function AccountSearch({
     setSelected(newValue);
     const preMentors = [];
     const preMentees = [];
+    let user = {};
     if (newValue !== null && newValue.user_type === 'Mentor') {
       preMentors.push(newValue);
       setMentorResults(preMentors);
 
-      // if (newValue.user.mentees) {
-      //   preMentees.push()
-      // }
+      user = props.mentors[newValue.user_id];
+      if (user.mentees) {
+        user.mentees.forEach((m) => {
+          preMentees.push(m.account);
+        });
+      }
+
+      setMenteeResults(preMentees);
     } else if (newValue !== null && newValue.user_type === 'Mentee') {
       preMentees.push(newValue);
       setMenteeResults(preMentees);
+
+      user = props.mentees[newValue.user_id];
+      if (user.mentor) {
+        preMentors.push(user.mentor.account);
+      }
+
+      setMentorResults(preMentors);
     } else if (newValue === null) {
       setMentorResults(allOptions.filter((p) => p.user_type === 'Mentor'));
       setMenteeResults(allOptions.filter((p) => p.user_type === 'Mentee'));
@@ -91,4 +105,14 @@ function AccountSearch({
   );
 }
 
-export default AccountSearch;
+const mapStateToProps = (state) => ({
+  accounts: state.master.accounts,
+  mentors: state.master.mentors,
+  mentees: state.master.mentees,
+});
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountSearch);

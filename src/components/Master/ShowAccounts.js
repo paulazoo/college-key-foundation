@@ -103,7 +103,7 @@ function ShowAccounts({ people, ...props }) {
   return (
     <>
       <Box>
-        {people.length > 0 ? (
+        {people && people.length > 0 ? (
           <Table aria-labelledby='tableTitle'>
             <EnhancedTableHead
               order={order}
