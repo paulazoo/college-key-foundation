@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(8),
     padding: theme.spacing(8),
-    height: '100vh',
+    minHeight: '100vh',
   },
   textContainer: {
     textAlign: 'center',
