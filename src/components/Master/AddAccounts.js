@@ -71,12 +71,12 @@ function AddAccounts(props) {
       >
         <Grid item xs={6}>
           <Typography className={classes.text}>
-            Add a Mentor Account with their email
+            Add an accepted Mentor Account with their email
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography className={classes.text}>
-            Add a Mentee Account with their email
+            Add an accepted Mentee Account with their email
           </Typography>
         </Grid>
         <Grid item xs={4}>

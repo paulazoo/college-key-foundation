@@ -29,6 +29,9 @@ import MentorDashboard from './MentorDashboard';
 import MenteeDashboard from './MenteeDashboard';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.common.teamGreen,
+  },
   wordDivider: {
     fontWeight: 'bold',
     color: theme.palette.common.gray,
@@ -57,7 +60,7 @@ function Dashboard(props) {
   }, []);
 
   return (
-    <>
+    <div className={classes.root}>
       <Navbar />
       <Grid container direction='row' alignItems='center' justify='center'>
         <Grid item xs={12}>
@@ -86,7 +89,7 @@ function Dashboard(props) {
         </Grid>
       </Grid>
       <Footer />
-    </>
+    </div>
   );
 }
 

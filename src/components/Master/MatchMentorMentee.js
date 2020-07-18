@@ -104,7 +104,10 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
             WARNING: Mentees only have one mentor at a time.
           </Typography>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item>
+          <Typography>{'Match Mentee '}</Typography>
+        </Grid>
+        <Grid item xs={4}>
           <Select
             fullWidth
             label='Select Mentee'
@@ -114,7 +117,10 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
             {mentees.map((person) => renderMatchMenuItem(person))}
           </Select>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item>
+          <Typography>{' with Mentor '}</Typography>
+        </Grid>
+        <Grid item xs={4}>
           <Select
             fullWidth
             label='Select Mentor'
@@ -124,7 +130,7 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
             {mentors.map((person) => renderMatchMenuItem(person))}
           </Select>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item>
           <Button color='secondary' variant='contained' onClick={handleMatch}>
             Match
           </Button>

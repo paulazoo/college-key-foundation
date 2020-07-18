@@ -27,10 +27,17 @@ import MatchMentorMentee from './MatchMentorMentee';
 import AccountSearch from './AccountSearch';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.common.teamGreen,
+  },
+  main: {
+    padding: theme.spacing(10),
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
   card: {
     margin: theme.spacing(2),
     marginTop: 0,
-    marginBottom: 0,
     padding: theme.spacing(2),
   },
   textContainer: {
@@ -67,11 +74,12 @@ function Master(props) {
   }, [props.accounts]);
 
   return (
-    <>
+    <div className={classes.root}>
       <Navbar />
       {props.account.email === 'paulazhu@college.harvard.edu' ||
       props.account.email === 'collegekeyfoundation@gmail.com' ? (
         <Grid
+          className={classes.main}
           container
           direction='row'
           alignItems='center'
@@ -155,7 +163,7 @@ function Master(props) {
         </Grid>
       )}
       <Footer />
-    </>
+    </div>
   );
 }
 

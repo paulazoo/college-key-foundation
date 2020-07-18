@@ -31,6 +31,9 @@ import Navbar from '../Navbar/Navbar';
 import ProfilePic from '../ProfilePic/ProfilePic';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.common.teamGreen,
+  },
   wordDivider: {
     fontWeight: 'bold',
     color: theme.palette.common.gray,
@@ -99,7 +102,7 @@ function Profile(props) {
   }, []);
 
   return (
-    <>
+    <div className={classes.root}>
       <Navbar />
       <Grid container direction='row' alignItems='center' justify='center'>
         <Grid item xs={12} className={classes.cardContainer}>
@@ -199,7 +202,7 @@ function Profile(props) {
         </Grid>
       </Grid>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -15,6 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
+import ProfileCard from '../ProfilePic/ProfileCard';
 
 // Custom Components
 
@@ -27,12 +28,7 @@ function MentorDashboard(props) {
     <>
       <Typography>Your Mentees:</Typography>
       {props.user.mentees.map((mentee) => (
-        <Card>
-          <Typography>{`Name: ${mentee.account.name}`}</Typography>
-          <Typography>{`Email: ${mentee.account.email}`}</Typography>
-          <Typography>{`Phone: ${mentee.account.phone}`}</Typography>
-          <Typography>{`Bio: ${mentee.account.bio}`}</Typography>
-        </Card>
+        <ProfileCard account={mentee.account} />
       ))}
     </>
   );

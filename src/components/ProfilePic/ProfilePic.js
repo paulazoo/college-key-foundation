@@ -9,6 +9,8 @@ import {
   Box,
 } from '@material-ui/core';
 import EmailIcon from '@material-ui/icons/Email';
+import PhoneIcon from '@material-ui/icons/Phone';
+import SchoolIcon from '@material-ui/icons/School';
 
 // Redux
 import { connect } from 'react-redux';
@@ -20,7 +22,6 @@ import { theme } from '../../theme.js';
 
 // Custom Components
 import GmailSvg from '../../assets/Gmail.svg';
-import PhoneIcon from '@material-ui/icons/Phone';
 
 const useStyles = makeStyles((theme) => ({
   welcomeName: {
@@ -193,11 +194,37 @@ function ProfilePic({
                           </Grid>
                         </Grid>
                       )}
+                    {typeof account.school !== 'undefined' &&
+                      account.school !== null &&
+                      account.school !== '' && (
+                        <Grid item>
+                          <Grid
+                            container
+                            direction='row'
+                            spacing={1}
+                            alignItems='center'
+                          >
+                            <Grid item>
+                              <IconButton size='small'>
+                                <SchoolIcon />
+                              </IconButton>
+                            </Grid>
+                            <Grid item>
+                              <Typography>
+                                <a className={classes.link}>
+                                  {account.grad_year
+                                    ? `${account.school} (${account.grad_year})`
+                                    : `${account.school}`}
+                                </a>
+                              </Typography>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      )}
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
-
             {/* If user does not have a bio */}
             {typeof account.bio !== 'undefined' &&
               account.bio !== null &&

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Autocomplete, {
   createFilterOptions,
 } from '@material-ui/lab/Autocomplete';
-import { InputAdornment, Grid, TextField } from '@material-ui/core';
+import { InputAdornment, Grid, TextField, Typography } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 // Redux
@@ -16,6 +16,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   autocomplete: { width: 300 },
+  text: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
 }));
 
 function AccountSearch({
@@ -77,6 +81,15 @@ function AccountSearch({
   return (
     <>
       <Grid container spacing={1} alignItems='center' justify='flex-start'>
+        <Grid item xs={12}>
+          <Typography className={classes.text}>All Accounts</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>
+            Searching for a mentor or mentee will show both them and their
+            respective mentees/mentor.
+          </Typography>
+        </Grid>
         <Grid item>
           <SearchIcon />
         </Grid>
