@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.teamGreen,
   },
   main: {
-    padding: theme.spacing(10),
+    padding: theme.spacing(4),
     paddingTop: 0,
     paddingBottom: 0,
   },
