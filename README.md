@@ -62,7 +62,7 @@ _ROUTE: https://www.collegekeyfoundation.org/terms_
 
 - Terms and privacy policy
 
-## LoginPage
+### LoginPage
 
 _ROUTE: https://www.collegekeyfoundation.org/login_
 
