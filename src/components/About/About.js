@@ -32,9 +32,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     color: theme.palette.common.gray,
   },
-  mainAbout: {
-    marginLeft: 240,
-  },
 }));
 
 function About(props) {
@@ -64,7 +61,9 @@ function About(props) {
             selectedAbout={selectedAbout}
             setSelectedAbout={setSelectedAbout}
           />
-          <div className={classes.mainAbout}>{renderAbout()}</div>
+        </Grid>
+        <Grid item xs={12} style={{ marginLeft: 264 }}>
+          {renderAbout()}
         </Grid>
       </Grid>
       <Footer />
