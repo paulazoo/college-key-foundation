@@ -48,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 48,
   },
+  cardsIntro: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
 }));
 
 function Dashboard(props) {
@@ -58,6 +62,25 @@ function Dashboard(props) {
   useEffect(() => {
     props.getAccount();
   }, []);
+
+  const renderRightDashboard = () => {
+    if (props.account.user_type === 'Mentor') {
+      return (
+        <>
+          <Typography className={classes.cardsIntro}>Your Mentees:</Typography>
+          <MentorDashboard />
+        </>
+      );
+    }
+    if (props.account.user_type === 'Mentee') {
+      return (
+        <>
+          <Typography className={classes.cardsIntro}>Your Mentor:</Typography>
+          <MenteeDashboard />
+        </>
+      );
+    }
+  };
 
   return (
     <div className={classes.root}>
@@ -78,11 +101,7 @@ function Dashboard(props) {
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                {props.account.user_type === 'Mentor' ? (
-                  <MentorDashboard />
-                ) : (
-                  <MenteeDashboard />
-                )}
+                {renderRightDashboard()}
               </Grid>
             </Grid>
           </Card>

@@ -26,7 +26,6 @@ function MenteeDashboard(props) {
 
   return (
     <>
-      <Typography>Your Mentor:</Typography>
       <ProfileCard account={props.user.mentor.account} />
     </>
   );

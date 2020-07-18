@@ -26,7 +26,6 @@ function MentorDashboard(props) {
 
   return (
     <>
-      <Typography>Your Mentees:</Typography>
       {props.user.mentees.map((mentee) => (
         <ProfileCard account={mentee.account} />
       ))}
