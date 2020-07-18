@@ -77,7 +77,8 @@ export const getAccount = () => {
     };
     api(`accounts/${getState().account.id}`, requestOptions)
       .then((response) => {
-        // dispatch to set state
+        dispatch(setAccount(response.account));
+        dispatch(setUser(response.user));
       })
       .catch((error) => {
         console.error('API Error: ', error);

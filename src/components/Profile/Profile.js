@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -22,7 +22,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
-import { getLogin, putAccount } from '../../store/actions/api';
+import { getLogin, putAccount, getAccount } from '../../store/actions/api';
 
 // Custom Components
 import WordDivider from '../Shared/WordDivider';
@@ -93,6 +93,10 @@ function Profile(props) {
       setGradYearError(true);
     }
   };
+
+  useEffect(() => {
+    props.getAccount();
+  }, []);
 
   return (
     <>
@@ -209,6 +213,7 @@ function mapDispatchToProps(dispatch) {
     userLogout: () => dispatch(userLogout()),
     getLogin: (userToken, callback) => dispatch(getLogin(userToken, callback)),
     putAccount: (body) => dispatch(putAccount(body)),
+    getAccount: () => dispatch(getAccount()),
   };
 }
 
