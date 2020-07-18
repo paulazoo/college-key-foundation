@@ -45,7 +45,8 @@ export const recruitmentDirectors = [
   {
     name: 'Ireland Parrish',
     position: 'Northern Region Director',
-    text: '?????.',
+    text:
+      'Ireland Parrish is a member of the Johns Hopkins University class of 2024, and plans to double major in Physics and Astronomy and Applied Mathematics with a minor in Computer Science. She is the co-director for recruitment in the northern region of the United States.',
     image: '',
   },
   {
