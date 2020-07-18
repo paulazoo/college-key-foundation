@@ -48,13 +48,13 @@ _ROUTE: https://www.collegekeyfoundation.org/apply_
 
 _ROUTE: https://www.collegekeyfoundation.org/mentees_
 
-- Page for submitting a mentee application
+- Page for submitting a mentee application (NOT IMPLEMENTED)
 
 ### MentorsPage
 
 _ROUTE: https://www.collegekeyfoundation.org/mentors_
 
-- Page for submitting a mentor application
+- Page for submitting a mentor application (NOT IMPLEMENTED)
 
 ### Terms
 
