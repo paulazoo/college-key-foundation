@@ -34,7 +34,7 @@ export const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontFamily: 'museo-sans',
+    fontFamily: 'Work Sans',
   },
   spacing: 8,
 });

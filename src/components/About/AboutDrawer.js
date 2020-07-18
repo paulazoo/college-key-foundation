@@ -22,7 +22,7 @@ import { userLogout, setUser } from '../../store/actions/index';
 
 const useStyles = makeStyles((theme) => ({
   drawerContainer: {
-    width: 200,
+    width: 240,
     position: 'absolute',
   },
   sidebarItem: {

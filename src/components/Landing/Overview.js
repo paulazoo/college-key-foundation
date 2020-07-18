@@ -15,7 +15,7 @@ import { userLogout, setUser } from '../../store/actions/index';
 const useStyles = makeStyles((theme) => ({
   headTextContainer: {
     textAlign: 'center',
-    padding: theme.spacing(1),
+    padding: theme.spacing(4),
   },
   headText: {
     fontWeight: 'bold',
@@ -38,47 +38,55 @@ function Overview(props) {
 
   return (
     <Box>
-      <Grid container direction='row'>
+      <Grid
+        container
+        direction='row'
+        justify='center'
+        alignItems='center'
+        spacing={2}
+      >
         <Grid item xs={6}>
           <img
-            height='95%'
-            width='95%'
+            height='90%'
+            width='100%'
             alt='Overview Image'
             src={require('../../assets/foundationCover.png')}
           />
         </Grid>
-        <Grid item xs={5} className={classes.headTextContainer}>
-          <Typography className={classes.headText}>
-            HOPE DURING A PANDEMIC
-          </Typography>
-          <Typography>
-            The College Key Foundation is an incorporated non-profit
-            organization led by low-income and minority students. The
-            organization was founded with the intent of helping underrepresented
-            students aim high and guide them through the complex process of
-            college admissions.
-            <br />
-            <br />
-            Our team attempts to reimagine the way guidance for the admission
-            process works. We believe in one-on-one mentorship and guidance, in
-            free resources to those who need it, and, above all, in creating
-            fairness and equity out of a process that has long served to expand
-            the achievement gap between affluent and underrepresented
-            communities. We believe in this method because we have lived through
-            it - because we were those underrepresented, perplexed rising
-            seniors who were behind in the process and needed the guidance just
-            a few years ago.
-            <br />
-            <br />
-          </Typography>
-          <Button
-            variant='contained'
-            color='primary'
-            className={classes.learnMore}
-            onClick={handleLearnMore}
-          >
-            Learn More
-          </Button>
+        <Grid item xs={6}>
+          <div className={classes.headTextContainer}>
+            <Typography className={classes.headText}>
+              HOPE DURING A PANDEMIC
+            </Typography>
+            <Typography>
+              The College Key Foundation is an incorporated non-profit
+              organization led by low-income and minority students. The
+              organization was founded with the intent of helping
+              underrepresented students aim high and guide them through the
+              complex process of college admissions.
+              <br />
+              <br />
+              Our team attempts to reimagine the way guidance for the admission
+              process works. We believe in one-on-one mentorship and guidance,
+              in free resources to those who need it, and, above all, in
+              creating fairness and equity out of a process that has long served
+              to expand the achievement gap between affluent and
+              underrepresented communities. We believe in this method because we
+              have lived through it - because we were those underrepresented,
+              perplexed rising seniors who were behind in the process and needed
+              the guidance just a few years ago.
+              <br />
+              <br />
+            </Typography>
+            <Button
+              variant='contained'
+              color='primary'
+              className={classes.learnMore}
+              onClick={handleLearnMore}
+            >
+              Learn More
+            </Button>
+          </div>
         </Grid>
       </Grid>
     </Box>

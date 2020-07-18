@@ -1,0 +1,181 @@
+// executiveTeam
+// outreachTeam
+// recruitmentDirectors
+// programTeam
+// graphicsMarketingTeam
+// curriculumTeam
+// technicalTeam
+
+export const executiveTeam = [
+  {
+    name: 'Jacky Huang',
+    team: 'Executive Team',
+    position: 'President',
+    text:
+      "Jacky, part of Harvard's Class of 2024, was inspired by his mentorship with Lucas to model a one-on-one system to help underrepresented students. He comes from an comprehensive marketing and outreach background and is in charge of the broad logistical aspects of the organization.",
+    image: '',
+  },
+  {
+    name: 'Lucas Leanza',
+    team: 'Executive Team',
+    position: 'Vice-President',
+    text:
+      "Lucas, part of Stanford's Class of 2023, is in charge of the organization's broad logistical, outreach, coding and optimization aspects. With a background in educational non-profits, Lucas worked with Jacky last year to create the groundwork for the foundation.",
+    image: '',
+  },
+];
+
+export const outreachTeam = [
+  {
+    name: 'Iandra Ramos',
+    position: 'Outreach Director',
+    text:
+      "Iandra, part of Harvard's Class of 2024, helps to coordinate partnerships with other organizations that have similar goals as College Key, and is dedicated to providing unique  academic opportunities to underprivileged students.",
+    image: '',
+  },
+  {
+    name: 'Brandon Zhang',
+    position: 'Outreach Director',
+    text: '?????????? Stanford Class of 2024',
+    image: '',
+  },
+];
+
+export const recruitmentDirectors = [
+  {
+    name: 'Ireland Parrish',
+    position: 'Northern Region Director',
+    text: '?????.',
+    image: '',
+  },
+  {
+    name: 'Violet Wang',
+    position: 'Northern Region Director',
+    text: '???????.',
+    image: '',
+  },
+  {
+    name: 'Sahir Qureshi',
+    team: 'Recruitment Team',
+    position: 'Western Region Director',
+    text:
+      "Sahir, part of Stanford's Class of 2024, coordinates outreach to the Northern California region for the organization and is excited about helping underserved students in his area get the resources they need to succeed.",
+    image: '',
+  },
+  {
+    name: 'Kobi Khong',
+    position: 'Western Region Director',
+    text:
+      "Kobi, part of Johns Hopkins' Class of 2024, liaises with schools and organizations throughout the Southern California region for College Key in order to ensure equal opportunities for students who strive their goals and for their education, regardless of socio-economic status.",
+    image: '',
+  },
+  {
+    name: 'Luis Rubio',
+    position: 'Midwestern Region Director',
+    text:
+      "Luis, part of Johns Hopkin's Class of 2024, communicates with students across the Mid Western United States and is eager to ease the college application process for many driven and talented students.",
+    image: '',
+  },
+  {
+    name: 'Kathleen Beetner',
+    position: 'Midwestern Region Director',
+    text: '???????.',
+    image: '',
+  },
+  {
+    name: 'Caillou Pena',
+    position: 'Southern Region Director',
+    text: '??????.',
+    image: '',
+  },
+  {
+    name: 'Rina Nagashima',
+    position: 'Hawaii Region Director',
+    text:
+      "Rina, a transfer student from Wellesley to Scripps' Class of 2023, is in charge of mentor outreach and organizational partnership at the Hawaii branch. Having gone through the application process twice, she is enthusiastic in her outreach and mission to Hawaii's rising seniors and their unique situations.",
+    image: '',
+  },
+  {
+    name: 'Natalie Winter',
+    position: 'Hawaii Region Director',
+    text:
+      "Natalie, part of Tufts' Class of 2023, coordinates outreach to all schools in the state of Hawaii. She is also in charge of compiling resources for Hawaii students and proactively works with organizations in Hawaii to maximize the breadth and positive impact of the College Key Foundation.",
+    image: '',
+  },
+];
+
+export const programTeam = [
+  {
+    name: 'Nalani Santos',
+    position: 'Program Director',
+    text:
+      "Nalani Cicely Santos, part of Stanford's Class of 2024, is one of two Program Directors. Nalani works to plan out details of the program's workshops and events as well coordinating communications with admissions officers, partners, and any other opportunities for the organization. Having participated in a similar college access program at Pomona College, she is excited to provide similar underrepresented students with resources for the college application process.",
+    image: '',
+  },
+  {
+    name: 'Linda Lin',
+    position: 'Program Director',
+    text:
+      "Linda Lin is part of Harvard's class of 2020. As a first-gen student, she is excited to connect underserved students with resources in the college application process. As Program Director, Linda plans program activities and events, coordinates with admissions officers and other partners, and oversees fundraising events.",
+    image: '',
+  },
+  {
+    name: 'Amara Okoli',
+    team: 'Program Team',
+    position: 'Program Designer',
+    text:
+      'Amara Okoli is from Houston, Texas and will be starting her freshman year at Stanford University in the fall. Having done speech and debate along with volunteer-work for her local food bank in high school, Amara is interested in policy data and will likely pursue studies in both computer science and public policy. In her free time, Amara likes watching political documentaries, driving around with friends, and eating sour patch kids.',
+    image: '',
+  },
+  {
+    name: 'Sarah Chen',
+    team: 'Program Team',
+    position: 'Program Designer',
+    text:
+      "Sarah, part of Washington University in St. Louis's Class of 2024, works alongside her fellow Program Team members to organize College Key events. She is excited to coordinate informative and helpful panels to guide students in their application process.",
+    image: '',
+  },
+];
+
+export const graphicsMarketingTeam = [
+  {
+    name: 'Melissa Meng',
+    position: 'Graphics/Marketing Director',
+    text:
+      "Melissa, part of Harvard's Class of 2024, helps to manage the creative aspects and design of College Key, and is excited to take part in reaching out to students, regardless of socio-economic background, to help them succeed with their career-oriented goals. ",
+    image: '',
+  },
+  {
+    name: 'Emily Bennett',
+    position: 'Graphics/Marketing Director',
+    text: '???????.',
+    image: '',
+  },
+];
+
+export const curriculumTeam = [
+  {
+    name: 'Audrey Kang',
+    team: 'Curriculum Team',
+    position: 'Curriculum Director',
+    text:
+      "Audrey Kang, part of Harvard College's Class of 2024, is one of two Curriculum Directors at College Key. She's looking forward to help increase college access to all students through helpful resources, talks, witty comments.",
+    image: '',
+  },
+  {
+    name: 'Ikshu Pandey',
+    team: 'Curriculum Team',
+    position: 'Curriculum Director',
+    text: '????????.',
+    image: '',
+  },
+];
+
+export const technicalTeam = [
+  {
+    name: 'Paula Zhu',
+    position: 'hello',
+    text: 'whaddup i coded this website',
+    image: '',
+  },
+];
