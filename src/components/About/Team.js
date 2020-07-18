@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   totalGrid: {
-    padding: theme.spacing(6),
+    padding: theme.spacing(4),
   },
   memberName: {
     fontWeight: 'bold',
@@ -153,7 +153,7 @@ function Team(props) {
               direction='row'
               justify='center'
               alignItems='center'
-              spacing={6}
+              spacing={4}
               className={classes.totalGrid}
             >
               <Grid item xs={12} className={classes.teamNameContainer}>
