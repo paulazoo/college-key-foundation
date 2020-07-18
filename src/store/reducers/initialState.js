@@ -13,7 +13,8 @@ export const initialState = {
   },
   master: {
     accounts: [],
-    mentors: [],
-    mentees: [],
+    mentors: {},
+    mentees: {},
+    newsletterEmails: [],
   },
 };

@@ -7,6 +7,9 @@ import {
   Typography,
   Card,
   Divider,
+  ListItem,
+  ListItemText,
+  List,
 } from '@material-ui/core';
 
 // Theme
@@ -15,7 +18,12 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
-import { getAccounts, getMentees, getMentors } from '../../store/actions/api';
+import {
+  getAccounts,
+  getMentees,
+  getMentors,
+  getNewsletterEmails,
+} from '../../store/actions/api';
 
 // Custom Components
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
@@ -57,6 +65,7 @@ function Master(props) {
     props.getAccounts();
     props.getMentors();
     props.getMentees();
+    props.getNewsletterEmails();
   }, []);
 
   const [allOptions, setAllOptions] = useState([]);
@@ -143,6 +152,21 @@ function Master(props) {
           </Grid>
           <Grid item xs={12}>
             <Card className={classes.card}>
+              <Typography className={classes.text}>
+                Newsletter Emails
+              </Typography>
+              <List>
+                {props.newsletterEmails &&
+                  props.newsletterEmails.map((newsletterEmail) => (
+                    <ListItem>
+                      <ListItemText>{`${newsletterEmail.email}, `}</ListItemText>
+                    </ListItem>
+                  ))}
+              </List>
+            </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <Card className={classes.card}>
               <CreateEvent />
             </Card>
           </Grid>
@@ -179,6 +203,7 @@ const mapStateToProps = (state) => ({
   accounts: state.master.accounts,
   mentors: state.master.mentors,
   mentees: state.master.mentees,
+  newsletterEmails: state.master.newsletterEmails,
 });
 
 function mapDispatchToProps(dispatch) {
@@ -187,6 +212,7 @@ function mapDispatchToProps(dispatch) {
     getAccounts: () => dispatch(getAccounts()),
     getMentors: () => dispatch(getMentors()),
     getMentees: () => dispatch(getMentees()),
+    getNewsletterEmails: () => dispatch(getNewsletterEmails()),
   };
 }
 

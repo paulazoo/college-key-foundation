@@ -20,6 +20,12 @@ export default function masterReducer(state = initialState.master, action) {
         mentees: action.payload,
       };
 
+    case 'SET_NEWSLETTEREMAILS':
+      return {
+        ...state,
+        newsletterEmails: action.payload,
+      };
+
     default:
       return state;
   }

@@ -8,6 +8,7 @@ import {
   setMentees,
   setMentors,
   setAccounts,
+  setNewsletterEmails,
   setCurrentlyLoading,
 } from './index';
 import { wsConnect } from './websocket';
@@ -147,6 +148,26 @@ export const getMentees = () => {
           preMentees[mentee.id] = mentee;
         });
         dispatch(setMentees(preMentees));
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const getNewsletterEmails = () => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+    };
+    api(`newsletter_emails`, requestOptions)
+      .then((response) => {
+        dispatch(setNewsletterEmails(response));
       })
       .catch((error) => {
         console.error('API Error: ', error);

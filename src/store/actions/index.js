@@ -29,3 +29,7 @@ export function setMentors(payload) {
 export function setMentees(payload) {
   return { type: 'SET_MENTEES', payload };
 }
+
+export function setNewsletterEmails(payload) {
+  return { type: 'SET_NEWSLETTEREMAILS', payload };
+}
