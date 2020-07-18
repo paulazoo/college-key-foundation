@@ -25,6 +25,9 @@ import OurStory from './OurStory';
 // Custom Components
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    overflow: 'hidden',
+  },
   wordDivider: {
     fontWeight: 'bold',
     color: theme.palette.common.gray,
@@ -53,7 +56,7 @@ function About(props) {
   };
 
   return (
-    <>
+    <div className={classes.root}>
       <Navbar />
       <Grid container direction='row'>
         <Grid item>
@@ -65,7 +68,7 @@ function About(props) {
         </Grid>
       </Grid>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -34,6 +34,9 @@ const backgroundImage =
   'https://static.wixstatic.com/media/6f9a2f9dd5574440a18d95f4679c14a7.jpg/v1/fit/w_924,h_520/6f9a2f9dd5574440a18d95f4679c14a7.jpg';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    overflow: 'hidden',
+  },
   background: {
     backgroundImage: `url(${backgroundImage})`,
     backgroundColor: '#7fc7d9', // Average color of the background image.
@@ -111,10 +114,9 @@ function Landing(props) {
   };
 
   return (
-    <>
+    <div className={classes.root}>
       <Navbar />
       <HomepageLayout backgroundClassName={classes.background}>
-        {/* Increase the network loading priority of the background image. */}
         <img
           style={{ display: 'none' }}
           src={backgroundImage}
@@ -221,7 +223,7 @@ function Landing(props) {
       <EmailNewsletter />
       <div className={classes.spacing} />
       <Footer />
-    </>
+    </div>
   );
 }
 

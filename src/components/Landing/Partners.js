@@ -26,135 +26,147 @@ function Partners(props) {
 
   return (
     <Box bgcolor={theme.palette.secondary.light}>
-      <Grid
-        container
-        direction='row'
-        alignItems='center'
-        justify='center'
-        spacing={3}
-      >
-        <Grid item xs={12} className={classes.headTextContainer}>
-          <Typography className={classes.headText}>PARTNERS</Typography>
-        </Grid>
-        <Grid item>
-          <a
-            rel='noreferrer'
-            target='_blank'
-            href='https://www.collegeessayguy.com/'
+      <Grid container direction='row' alignItems='center' justify='center'>
+        <Grid item xs={8}>
+          <Grid
+            container
+            direction='row'
+            alignItems='center'
+            justify='center'
+            spacing={4}
           >
-            <img
-              alt='College Essay Guy'
-              height={128}
-              width={128}
-              src={require('../../assets/Partners/CollegeEssayGuy.PNG')}
-            />
-          </a>
+            <Grid item xs={12} className={classes.headTextContainer}>
+              <Typography className={classes.headText}>PARTNERS</Typography>
+            </Grid>
+            <Grid item>
+              <a
+                rel='noreferrer'
+                target='_blank'
+                href='https://www.collegeessayguy.com/'
+              >
+                <img
+                  alt='College Essay Guy'
+                  height={128}
+                  width={128}
+                  src={require('../../assets/Partners/CollegeEssayGuy.PNG')}
+                />
+              </a>
+            </Grid>
+            <Grid item>
+              <a
+                rel='noreferrer'
+                target='_blank'
+                href='https://www.dearasianyouth.org/home/'
+              >
+                <img
+                  alt='Dear Asian Youth'
+                  height={128}
+                  width={128}
+                  src={require('../../assets/Partners/DearAsianYouth.PNG')}
+                />
+              </a>
+            </Grid>
+            <Grid item>
+              <a
+                rel='noreferrer'
+                target='_blank'
+                href='https://destineddoctors.wixsite.com/website'
+              >
+                <img
+                  alt='Destined Doctors'
+                  height={128}
+                  width={128}
+                  src={require('../../assets/Partners/DestinedDoctors.PNG')}
+                />
+              </a>
+            </Grid>
+            <Grid item>
+              <a
+                rel='noreferrer'
+                target='_blank'
+                href='https://socratespost.com/'
+              >
+                <img
+                  alt='Socrates Post'
+                  height={128}
+                  width={128}
+                  src={require('../../assets/Partners/SocratesPost.PNG')}
+                />
+              </a>
+            </Grid>
+            <Grid item>
+              <a
+                rel='noreferrer'
+                target='_blank'
+                href='https://weriseabove.org/'
+              >
+                <img
+                  alt='We Rise Above'
+                  height={128}
+                  width={128}
+                  src={require('../../assets/Partners/WeRiseAbove.PNG')}
+                />
+              </a>
+            </Grid>
+            <Grid item>
+              <a
+                rel='noreferrer'
+                target='_blank'
+                href='https://www.wonsulting.com/'
+              >
+                <img
+                  alt='Wonsulting'
+                  height={128}
+                  width={128}
+                  src={require('../../assets/Partners/Wonsulting.PNG')}
+                />
+              </a>
+            </Grid>
+            <Grid item>
+              <a
+                rel='noreferrer'
+                target='_blank'
+                href='https://www.ymcahonolulu.org/'
+              >
+                <img
+                  alt='YMCA Honolulu'
+                  height={128}
+                  width={128}
+                  src={require('../../assets/Partners/YMCAHonolulu.PNG')}
+                />
+              </a>
+            </Grid>
+            <Grid item>
+              <a
+                rel='noreferrer'
+                target='_blank'
+                href='https://girlgeniusmag.tech/'
+              >
+                <img
+                  alt='Girl Genius Magazine'
+                  height={128}
+                  width={128}
+                  src={require('../../assets/Partners/GirlGeniusMagazine.PNG')}
+                />
+              </a>
+            </Grid>
+            <Grid item>
+              <a
+                rel='noreferrer'
+                target='_blank'
+                href='https://www.girltechboss.com/'
+              >
+                <img
+                  alt='Girl Tech Boss'
+                  height={128}
+                  width={128}
+                  src={require('../../assets/Partners/GirlTechBoss.PNG')}
+                />
+              </a>
+            </Grid>
+            <Grid item xs={12} />
+          </Grid>
         </Grid>
-        <Grid item>
-          <a
-            rel='noreferrer'
-            target='_blank'
-            href='https://www.dearasianyouth.org/home/'
-          >
-            <img
-              alt='Dear Asian Youth'
-              height={128}
-              width={128}
-              src={require('../../assets/Partners/DearAsianYouth.PNG')}
-            />
-          </a>
-        </Grid>
-        <Grid item>
-          <a
-            rel='noreferrer'
-            target='_blank'
-            href='https://destineddoctors.wixsite.com/website'
-          >
-            <img
-              alt='Destined Doctors'
-              height={128}
-              width={128}
-              src={require('../../assets/Partners/DestinedDoctors.PNG')}
-            />
-          </a>
-        </Grid>
-        <Grid item>
-          <a rel='noreferrer' target='_blank' href='https://socratespost.com/'>
-            <img
-              alt='Socrates Post'
-              height={128}
-              width={128}
-              src={require('../../assets/Partners/SocratesPost.PNG')}
-            />
-          </a>
-        </Grid>
-        <Grid item>
-          <a rel='noreferrer' target='_blank' href='https://weriseabove.org/'>
-            <img
-              alt='We Rise Above'
-              height={128}
-              width={128}
-              src={require('../../assets/Partners/WeRiseAbove.PNG')}
-            />
-          </a>
-        </Grid>
-        <Grid item>
-          <a
-            rel='noreferrer'
-            target='_blank'
-            href='https://www.wonsulting.com/'
-          >
-            <img
-              alt='Wonsulting'
-              height={128}
-              width={128}
-              src={require('../../assets/Partners/Wonsulting.PNG')}
-            />
-          </a>
-        </Grid>
-        <Grid item>
-          <a
-            rel='noreferrer'
-            target='_blank'
-            href='https://www.ymcahonolulu.org/'
-          >
-            <img
-              alt='YMCA Honolulu'
-              height={128}
-              width={128}
-              src={require('../../assets/Partners/YMCAHonolulu.PNG')}
-            />
-          </a>
-        </Grid>
-        <Grid item>
-          <a
-            rel='noreferrer'
-            target='_blank'
-            href='https://girlgeniusmag.tech/'
-          >
-            <img
-              alt='Girl Genius Magazine'
-              height={128}
-              width={128}
-              src={require('../../assets/Partners/GirlGeniusMagazine.PNG')}
-            />
-          </a>
-        </Grid>
-        <Grid item>
-          <a
-            rel='noreferrer'
-            target='_blank'
-            href='https://www.girltechboss.com/'
-          >
-            <img
-              alt='Girl Tech Boss'
-              height={128}
-              width={128}
-              src={require('../../assets/Partners/GirlTechBoss.PNG')}
-            />
-          </a>
-        </Grid>
-        <Grid item xs={12} />
       </Grid>
     </Box>
   );

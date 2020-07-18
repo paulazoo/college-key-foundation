@@ -41,8 +41,8 @@ function Overview(props) {
       <Grid container direction='row'>
         <Grid item xs={6}>
           <img
-            height='90%'
-            width='90%'
+            height='95%'
+            width='95%'
             alt='Overview Image'
             src={require('../../assets/foundationCover.png')}
           />
