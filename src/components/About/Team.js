@@ -89,12 +89,6 @@ const useStyles = makeStyles((theme) => ({
   headTextContainer: {
     textAlign: 'center',
   },
-  teamCard: {
-    margin: 0,
-    marginRight: theme.spacing(6),
-    marginLeft: theme.spacing(6),
-    marginBottom: theme.spacing(6),
-  },
   memberItemContainer: {},
   memberItem: {
     backgroundColor: theme.palette.common.white,
@@ -107,13 +101,18 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 20,
   },
-  memberPosition: {
+  memberTeamName: {
+    fontWeight: 'bold',
     fontSize: 18,
+    color: theme.palette.primary.main,
+  },
+  memberPosition: {
+    fontSize: 16,
     color: theme.palette.primary.main,
   },
   memberText: {
     color: theme.palette.common.gray,
-    fontSize: 12,
+    fontSize: 14,
   },
   memberTextContainer: {
     textAlign: 'left',
@@ -124,21 +123,27 @@ const useStyles = makeStyles((theme) => ({
   },
   teamName: {
     fontWeight: 'bold',
-    fontSize: 64,
+    fontSize: 32,
     color: theme.palette.common.white,
     padding: 0,
+  },
+  teamNameContainer: {
+    padding: '0 !important',
   },
 }));
 
 function Team(props) {
   const classes = useStyles();
 
-  const renderTeam = (team, teamName, color = 'green') => {
+  const renderTeam = (team, teamName, teamColor) => {
     return (
       <Card
-        className={classes.teamCard}
         style={{
-          backgroundColor: color,
+          margin: 0,
+          marginRight: theme.spacing(6),
+          marginLeft: theme.spacing(6),
+          marginBottom: theme.spacing(6),
+          backgroundColor: teamColor,
         }}
       >
         <Grid container spacing={0}>
@@ -151,9 +156,14 @@ function Team(props) {
               spacing={10}
               className={classes.totalGrid}
             >
-              <Grid item xs={12}>
-                <Grid container direction='row' justify='center'>
-                  <Grid item>
+              <Grid item xs={12} className={classes.teamNameContainer}>
+                <Grid
+                  container
+                  direction='row'
+                  justify='center'
+                  className={classes.teamNameContainer}
+                >
+                  <Grid item className={classes.teamNameContainer}>
                     <Typography className={classes.teamName}>
                       {teamName}
                     </Typography>
@@ -199,6 +209,9 @@ function Team(props) {
                       <Typography className={classes.memberName}>
                         {member.name}
                       </Typography>
+                      <Typography className={classes.memberTeamName}>
+                        {teamName}
+                      </Typography>
                       <Typography className={classes.memberPosition}>
                         {member.position}
                       </Typography>
@@ -230,24 +243,32 @@ function Team(props) {
           Meet The Team
         </Typography>
       </WordDivider>
-      {renderTeam(executiveTeam, 'Executive Team', theme.palette.common.green)}
-      {renderTeam(programTeam, 'Program Team', theme.palette.common.blue)}
+      {renderTeam(
+        executiveTeam,
+        'Executive Team',
+        theme.palette.common.teamGreen
+      )}
+      {renderTeam(programTeam, 'Program Team', theme.palette.common.teamBlue)}
       {renderTeam(
         curriculumTeam,
         'Curriculum Team',
-        theme.palette.common.green
+        theme.palette.common.teamGreen
       )}
-      {renderTeam(outreachTeam, 'Outreach Team', theme.palette.common.blue)}
+      {renderTeam(outreachTeam, 'Outreach Team', theme.palette.common.teamBlue)}
       {renderTeam(
         graphicsMarketingTeam,
         'Graphics and Marketing Team',
-        theme.palette.common.green
+        theme.palette.common.teamGreen
       )}
-      {renderTeam(technicalTeam, 'Technical Team', theme.palette.common.blue)}
+      {renderTeam(
+        technicalTeam,
+        'Technical Team',
+        theme.palette.common.teamBlue
+      )}
       {renderTeam(
         recruitmentDirectors,
         'Recruitment Directors',
-        theme.palette.common.green
+        theme.palette.common.teamGreen
       )}
     </>
   );
