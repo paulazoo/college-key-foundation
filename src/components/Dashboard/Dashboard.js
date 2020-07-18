@@ -27,6 +27,7 @@ import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import MentorDashboard from './MentorDashboard';
 import MenteeDashboard from './MenteeDashboard';
+import EventsList from '../EventsList/EventsList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -107,6 +108,9 @@ function Dashboard(props) {
                 <Typography className={classes.cardsIntro}>
                   Upcoming Public Events:
                 </Typography>
+              </Grid>
+              <Grid item>
+                <EventsList />
               </Grid>
               <Grid item xs={12}>
                 <Typography className={classes.cardsIntro}>
