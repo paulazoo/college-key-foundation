@@ -25,6 +25,7 @@ import AddAccounts from './AddAccounts';
 import ShowAccounts from './ShowAccounts';
 import MatchMentorMentee from './MatchMentorMentee';
 import AccountSearch from './AccountSearch';
+import CreateEvent from '../CreateEvent/CreateEvent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -138,6 +139,11 @@ function Master(props) {
                   <ShowAccounts people={menteeResults} />
                 </Grid>
               </Grid>
+            </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <CreateEvent />
             </Card>
           </Grid>
         </Grid>
