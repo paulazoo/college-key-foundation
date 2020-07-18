@@ -26,10 +26,25 @@ function AsSeenIn(props) {
 
   return (
     <Box bgcolor={theme.palette.primary.light}>
-      <Grid container direction='row'>
+      <Grid
+        container
+        direction='row'
+        alignItems='center'
+        justify='center'
+        spacing={3}
+      >
         <Grid item xs={12} className={classes.headTextContainer}>
           <Typography className={classes.headText}>AS SEEN IN</Typography>
         </Grid>
+        <Grid item>
+          <img
+            alt='Honolulu Civil Beat'
+            height={128}
+            width={128}
+            src={require('../../assets/AsSeenIn/HonoluluCivilBeat.PNG')}
+          />
+        </Grid>
+        <Grid item xs={12} />
       </Grid>
     </Box>
   );

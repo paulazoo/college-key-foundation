@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react';
-import { Divider, Card, Typography, Box, Grid, Paper } from '@material-ui/core';
+import {
+  Divider,
+  Card,
+  Typography,
+  Box,
+  Grid,
+  Paper,
+  Button,
+} from '@material-ui/core';
 
 // Redux
 import { connect } from 'react-redux';
@@ -85,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
   },
   totalGrid: {
-    padding: theme.spacing(6),
+    padding: theme.spacing(1),
   },
   memberName: {
     fontWeight: 'bold',
@@ -97,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
   },
   memberText: {
     color: theme.palette.common.gray,
-    fontSize: 16,
+    fontSize: 12,
   },
   memberTextContainer: {
     textAlign: 'left',
@@ -221,7 +229,7 @@ function Team(props) {
               justify='space-between'
               alignItems='center'
               direction='row'
-              spacing={6}
+              spacing={3}
               className={classes.totalGrid}
             >
               <Grid item xs={6}>
@@ -235,7 +243,30 @@ function Team(props) {
                         direction='row'
                       >
                         <Grid item xs={5}>
-                          image
+                          <Button
+                            color='primary'
+                            edge='end'
+                            size='small'
+                            style={{
+                              height: 128,
+                              width: 128,
+                              placeSelf: 'center',
+                            }}
+                          >
+                            <img
+                              style={{
+                                height: 128,
+                                width: 128,
+                                borderRadius: '50%',
+                                padding: 0,
+
+                                borderColor: 'red',
+                                borderWidth: 5,
+                              }}
+                              src={require('../../assets/MelissaMeng.jpg')}
+                              alt={member.name}
+                            />
+                          </Button>
                         </Grid>
                         <Grid
                           item

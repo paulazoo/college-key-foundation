@@ -29,7 +29,9 @@ import AccountSearch from './AccountSearch';
 const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(2),
-    padding: theme.spacing(1),
+    marginTop: 0,
+    marginBottom: 0,
+    padding: theme.spacing(2),
   },
   textContainer: {
     textAlign: 'center',
@@ -96,7 +98,13 @@ function Master(props) {
 
           <Grid item xs={12}>
             <Card className={classes.card}>
-              <Grid container direction='row' alignItems='center' spacing={3}>
+              <Grid
+                container
+                direction='row'
+                alignItems='center'
+                justify='center'
+                spacing={3}
+              >
                 <Grid item xs={12}>
                   <AccountSearch
                     options={options}
