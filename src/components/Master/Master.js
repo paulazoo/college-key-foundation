@@ -56,6 +56,11 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 24,
   },
+  cardUnauthorized: {
+    margin: theme.spacing(2),
+    padding: theme.spacing(2),
+    height: '100vh',
+  },
 }));
 
 function Master(props) {
@@ -174,7 +179,7 @@ function Master(props) {
       ) : (
         <Grid container direction='row' alignItems='center' justify='center'>
           <Grid item xs={6}>
-            <Card className={classes.card}>
+            <Card className={classes.cardUnauthorized}>
               <Grid
                 container
                 direction='row'
