@@ -92,10 +92,10 @@ const useStyles = makeStyles((theme) => ({
   memberItemContainer: {},
   memberItem: {
     backgroundColor: theme.palette.common.white,
-    padding: theme.spacing(4),
+    padding: theme.spacing(2),
   },
   totalGrid: {
-    padding: theme.spacing(10),
+    padding: theme.spacing(6),
   },
   memberName: {
     fontWeight: 'bold',
@@ -153,7 +153,7 @@ function Team(props) {
               direction='row'
               justify='center'
               alignItems='center'
-              spacing={10}
+              spacing={6}
               className={classes.totalGrid}
             >
               <Grid item xs={12} className={classes.teamNameContainer}>
@@ -230,13 +230,6 @@ function Team(props) {
   };
 
   return (
-    // executiveTeam
-    // outreachTeam
-    // recruitmentDirectors
-    // programTeam
-    // graphicsMarketingTeam
-    // curriculumTeam
-    // technicalTeam
     <>
       <WordDivider spacing={125}>
         <Typography variant='h3' className={classes.wordDivider}>
