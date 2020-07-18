@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Divider,
   Card,
@@ -110,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
   },
   memberTextContainer: {
-    textAlign: 'left',
+    textAlign: 'center',
   },
   wordDivider: {
     fontWeight: 'bold',
@@ -125,15 +126,30 @@ const useStyles = makeStyles((theme) => ({
   teamNameContainer: {
     padding: '0 !important',
   },
+  applyButton: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+  dueDate: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: theme.palette.common.black,
+  },
 }));
 
 function FellowshipProgram(props) {
   const classes = useStyles();
 
+  const history = useHistory();
+
+  const handleApply = () => {
+    history.push('/apply');
+  };
+
   return (
     <>
       <Navbar />
-      <WordDivider spacing={175}>
+      <WordDivider spacing={200}>
         <Typography variant='h3' className={classes.wordDivider}>
           Fellowship Program
         </Typography>
@@ -181,6 +197,24 @@ function FellowshipProgram(props) {
                 >
                   <FellowshipGeneral />
                   <ReadyApply />
+                  <Grid item>
+                    <Button
+                      color='secondary'
+                      variant='contained'
+                      className={classes.applyButton}
+                      onClick={handleApply}
+                      disabled
+                      style={{ backgroundColor: 'gray' }}
+                    >
+                      APPLY NOW
+                    </Button>
+                  </Grid>
+                  <Grid xs={12} />
+                  <Grid item className={classes.memberText}>
+                    <Typography className={classes.dueDate}>
+                      Fellowship applications will be open again in January 2021
+                    </Typography>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
