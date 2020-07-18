@@ -133,7 +133,7 @@ function FellowshipProgram(props) {
   return (
     <>
       <Navbar />
-      <WordDivider spacing={125}>
+      <WordDivider spacing={175}>
         <Typography variant='h3' className={classes.wordDivider}>
           Fellowship Program
         </Typography>
@@ -166,7 +166,7 @@ function FellowshipProgram(props) {
                 >
                   <Grid item className={classes.teamNameContainer}>
                     <Typography className={classes.teamName}>
-                      {'Fellowsip progam '}
+                      Become a Mentee or Mentor in our Fellowship Program!
                     </Typography>
                   </Grid>
                 </Grid>

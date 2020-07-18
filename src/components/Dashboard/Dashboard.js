@@ -103,6 +103,21 @@ function Dashboard(props) {
               <Grid item xs={12}>
                 {renderRightDashboard()}
               </Grid>
+              <Grid item xs={12}>
+                <Typography className={classes.cardsIntro}>
+                  Upcoming Public Events:
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography className={classes.cardsIntro}>
+                  Upcoming Private Events:
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography className={classes.cardsIntro}>
+                  Past Events:
+                </Typography>
+              </Grid>
             </Grid>
           </Card>
         </Grid>

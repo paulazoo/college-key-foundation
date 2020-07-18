@@ -124,7 +124,7 @@ function Landing(props) {
         />
         <Grid container direction='row' justify='flex-end'>
           <Grid item xs={4} />
-          <Grid item xs={10} className={classes.textGrid}>
+          <Grid item xs={12} className={classes.textGrid}>
             <Typography
               color='inherit'
               variant='h2'
@@ -135,7 +135,7 @@ function Landing(props) {
             <br />
           </Grid>
           <Grid item xs={6} />
-          <Grid item xs={6} className={classes.textGrid}>
+          <Grid item xs={5} className={classes.textGrid}>
             <Typography
               color='inherit'
               variant='h4'

@@ -159,11 +159,11 @@ function OurStory(props) {
                   justify='center'
                   className={classes.teamNameContainer}
                 >
-                  <Grid item className={classes.teamNameContainer}>
+                  {/* <Grid item className={classes.teamNameContainer}>
                     <Typography className={classes.teamName}>
                       {'ou rtory '}
                     </Typography>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
               <Grid item xs={12} className={classes.memberItemContainer}>
@@ -174,7 +174,44 @@ function OurStory(props) {
                   direction='row'
                   className={classes.memberItem}
                 >
-                  hi
+                  <Typography>
+                    <p>
+                      The founders of the College Key Foundation, Jacky Huang
+                      (Harvard ’24) and Lucas Leanza (Stanford ’23), are both
+                      FGLI students who met through Questbridge, a college match
+                      program for high achieving low-income students. They not
+                      only formed a mentor-mentee relationship, but also a
+                      friendship that helped with the college application
+                      process and inspired the mentorship model for their
+                      organization. For many first generation students, having
+                      this kind of peer support while navigating the many
+                      aspects in the college application process can make the
+                      process feel less stressful.
+                    </p>
+                    <p>
+                      Thus, Jacky Huang, founder and president of the
+                      organization, realized that individualized support was a
+                      key factor missing from existing guidance programs.
+                    </p>
+                    <p>
+                      His hopes are that the College Key Foundation’s
+                      combination of one-on-one mentorship in addition to
+                      traditional information sessions will help support
+                      students in all aspects of the college application
+                      process.
+                    </p>
+                    <p>
+                      The extra hurdles facing FGLI students and those from
+                      other disadvantaged backgrounds in the college admissions
+                      process are too often overlooked, and the current economic
+                      crisis exacerbates these difficulties. But just as the
+                      COVID-19 pandemic has forced the nation’s education model
+                      to change, the growing inequalities in our education
+                      system has caused the College Key Foundation to reimagine
+                      the way college prep is delivered to students of
+                      disadvantaged backgrounds.
+                    </p>
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>

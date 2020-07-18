@@ -145,7 +145,7 @@ export const graphicsMarketingTeam = [
     name: 'Melissa Meng',
     position: 'Graphics/Marketing Director',
     text:
-      "Melissa, part of Harvard's Class of 2024, helps to manage the creative aspects and design of College Key, and is excited to take part in reaching out to students, regardless of socio-economic background, to help them succeed with their career-oriented goals. ",
+      "Melissa, part of Harvard's Class of 2024, helps to manage the creative aspects and design of College Key, and is excited to take part in reaching out to students, regardless of socio-economic background, to help them succeed with their career-oriented goals.",
     image: '',
   },
   {
@@ -177,8 +177,9 @@ export const curriculumTeam = [
 export const technicalTeam = [
   {
     name: 'Paula Zhu',
-    position: 'hello',
-    text: 'whaddup i coded this website',
+    position: 'Website Development Director',
+    text:
+      "Paula, part of Harvard's Class of 2024, helps to manage the technology aspects of College Key, and is excited to take part in reaching out to students, regardless of socio-economic background, to help them succeed with their career-oriented goals.",
     image: '',
   },
 ];

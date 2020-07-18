@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Button, TextField, Grid, CardContent } from '@material-ui/core';
+import {
+  Button,
+  TextField,
+  Grid,
+  CardContent,
+  Typography,
+} from '@material-ui/core';
 
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,33 +23,35 @@ function ReadyApply(props) {
 
   return (
     <>
-      <h2>Ready to Apply?</h2>
-      <ul>
-        <li>
-          By joining us this Summer, you are joining a network of mentors,
-          mentees, scholars, and college students dedicated to improving other
-          underrepresented people's lives. As such, we expect satisfactory
-          attendance and behavior that represents enthusiasm, civility, and
-          tolerance during and after the program
-        </li>
-        <br />
+      <Typography>
+        <h2>Ready to Apply?</h2>
+        <ul>
+          <li>
+            By joining us this Summer, you are joining a network of mentors,
+            mentees, scholars, and college students dedicated to improving other
+            underrepresented people's lives. As such, we expect satisfactory
+            attendance and behavior that represents enthusiasm, civility, and
+            tolerance during and after the program
+          </li>
+          <br />
 
-        <li>
-          All meetings will be conducted through Zoom, with the link and
-          password provided when accepted to the program.
-        </li>
-        <br />
+          <li>
+            All meetings will be conducted through Zoom, with the link and
+            password provided when accepted to the program.
+          </li>
+          <br />
 
-        <li>
-          By applying, you are allowing us to contact you through email and/or
-          any other preferred method of contact.
-        </li>
-        <br />
+          <li>
+            By applying, you are allowing us to contact you through email and/or
+            any other preferred method of contact.
+          </li>
+          <br />
 
-        <li>
-          The program begins on July 7 and runs until the week of August 7
-        </li>
-      </ul>
+          <li>
+            The program begins on July 7 and runs until the week of August 7
+          </li>
+        </ul>
+      </Typography>
     </>
   );
 }

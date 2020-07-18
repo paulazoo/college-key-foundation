@@ -121,6 +121,10 @@ const useStyles = makeStyles((theme) => ({
   teamNameContainer: {
     padding: '0 !important',
   },
+  mission: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
 }));
 
 function MissionPurpose(props) {
@@ -161,7 +165,7 @@ function MissionPurpose(props) {
                 >
                   <Grid item className={classes.teamNameContainer}>
                     <Typography className={classes.teamName}>
-                      {'ou rtory '}
+                      Here at the College Key Foundation, we strive to...
                     </Typography>
                   </Grid>
                 </Grid>
@@ -174,7 +178,30 @@ function MissionPurpose(props) {
                   direction='row'
                   className={classes.memberItem}
                 >
-                  hi mission
+                  <Typography className={classes.mission}>
+                    <ul>
+                      <li>
+                        Make the college application process more accessible for
+                        students of underrepresented backgrounds
+                      </li>
+                      <br />
+                      <li>
+                        Show students of all backgrounds that there is space for
+                        them in elite institutions of higher education
+                      </li>
+                      <br />
+                      <li>
+                        Offer a support system for students that reflects their
+                        backgrounds, needs, and interests
+                      </li>
+                      <br />
+                      <li>
+                        Provide clarity and motivation for students that are
+                        struggling in this time of uncertainty
+                      </li>
+                      <br />
+                    </ul>
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>
