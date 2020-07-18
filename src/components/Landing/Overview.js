@@ -55,9 +55,7 @@ function Overview(props) {
         </Grid>
         <Grid item xs={6}>
           <div className={classes.headTextContainer}>
-            <Typography className={classes.headText}>
-              HOPE DURING A PANDEMIC
-            </Typography>
+            <Typography className={classes.headText}>WHO ARE WE?</Typography>
             <Typography>
               The College Key Foundation is an incorporated non-profit
               organization led by low-income and minority students. The

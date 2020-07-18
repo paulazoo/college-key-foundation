@@ -124,13 +124,13 @@ function Landing(props) {
         />
         <Grid container direction='row' justify='flex-end'>
           <Grid item xs={4} />
-          <Grid item xs={8} className={classes.textGrid}>
+          <Grid item xs={10} className={classes.textGrid}>
             <Typography
               color='inherit'
               variant='h2'
               className={classes.boldHomeText}
             >
-              NOW IS THE TIME FOR HOPE
+              REIMAGINING COLLEGE GUIDANCE
             </Typography>
             <br />
           </Grid>
