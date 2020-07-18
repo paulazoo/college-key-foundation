@@ -38,13 +38,6 @@ const useStyles = makeStyles((theme) => ({
   dNone: {
     display: 'none',
   },
-  submitButton: {
-    bottom: 0,
-    right: 0,
-    position: 'absolute',
-    marginRight: 80,
-    marginBottom: 80,
-  },
   headText: {
     color: theme.palette.primary.dark,
     fontSize: 20,
@@ -237,15 +230,20 @@ function EventDetails(props) {
               </Grid>
             </Grid>
           </Grid>
+          <Grid item xs={12}>
+            <Grid container direction='row' justify='flex-end'>
+              <Grid item>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={onSubmit}
+                >
+                  Save
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
-        <Button
-          variant='contained'
-          color='secondary'
-          onClick={onSubmit}
-          className={classes.submitButton}
-        >
-          Save
-        </Button>
       </CardContent>
     </>
   );
