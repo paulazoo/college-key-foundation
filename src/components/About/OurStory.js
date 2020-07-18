@@ -18,15 +18,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
 import WordDivider from '../Shared/WordDivider';
-import {
-  executiveTeam,
-  outreachTeam,
-  recruitmentDirectors,
-  programTeam,
-  graphicsMarketingTeam,
-  curriculumTeam,
-  technicalTeam,
-} from './teamMembers';
 
 const useStyles = makeStyles((theme) => ({
   googleButton: {

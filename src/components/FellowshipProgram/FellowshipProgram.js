@@ -1,41 +1,129 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import {
-  Button,
-  TextField,
-  Grid,
-  CardContent,
+  Divider,
   Card,
   Typography,
+  Box,
+  Grid,
+  Paper,
+  Button,
 } from '@material-ui/core';
-
-// Theme
-import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { connect } from 'react-redux';
-import { userLogout, setUser } from '../../store/actions/index';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
-import WordDivider from '../Shared/WordDivider';
-import ReadyApply from './ReadyApply';
+
+// Theme
+import { theme } from '../../theme';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
+import WordDivider from '../Shared/WordDivider';
+import Footer from '../Footer/Footer';
+import Navbar from '../Navbar/Navbar';
+import FellowshipGeneral from './FellowshipGeneral';
+import ReadyApply from './ReadyApply';
 
 const useStyles = makeStyles((theme) => ({
-  underline: {
-    textDecoration: 'underline',
+  googleButton: {
+    paddingLeft: '22px',
   },
-  fellowshipCard: {
+  prefix: {
+    paddingLeft: '8px',
+    color: '#005086',
+    fontSize: '200%',
+  },
+  suffix: {
+    color: '#61CCD7',
+    fontSize: '200%',
+  },
+  description: {
+    paddingLeft: '8px',
+    color: '#777272',
+  },
+  navleft: {
+    color: '#005086',
+  },
+  navright: {
+    color: '#005086',
+  },
+  button: {
+    minWidth: 200,
+  },
+  h5: {
+    marginTop: theme.spacing(4),
+    [theme.breakpoints.up('sm')]: {
+      marginTop: theme.spacing(25),
+    },
+  },
+  title: {
+    paddingLeft: '8px',
+  },
+  more: {
+    marginTop: theme.spacing(2),
+  },
+  paper: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  imgResponsive: {
+    height: 'auto',
+    width: 'auto',
+    maxHeight: '40px',
+    maxWidth: '250px',
+  },
+  img: {
+    width: '30vh',
+    borderRadius: '50%',
+  },
+  headText: {
+    fontWeight: 'bold',
+    color: theme.palette.common.black,
+    fontSize: 32,
+  },
+  headTextContainer: {
+    textAlign: 'center',
+  },
+  memberItemContainer: {},
+  memberItem: {
     backgroundColor: theme.palette.common.white,
-    marginTop: theme.spacing(10),
-    marginRight: theme.spacing(10),
-    marginLeft: theme.spacing(10),
-    marginBottom: theme.spacing(10),
-    padding: theme.spacing(5),
+    padding: theme.spacing(2),
+  },
+  totalGrid: {
+    padding: theme.spacing(4),
+  },
+  memberName: {
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  memberTeamName: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: theme.palette.primary.main,
+  },
+  memberPosition: {
+    fontSize: 16,
+    color: theme.palette.primary.main,
+  },
+  memberText: {
+    color: theme.palette.common.gray,
+    fontSize: 14,
+  },
+  memberTextContainer: {
+    textAlign: 'left',
   },
   wordDivider: {
     fontWeight: 'bold',
     color: theme.palette.common.gray,
+  },
+  teamName: {
+    fontWeight: 'bold',
+    fontSize: 32,
+    color: theme.palette.common.white,
+    padding: 0,
+  },
+  teamNameContainer: {
+    padding: '0 !important',
   },
 }));
 
@@ -45,80 +133,63 @@ function FellowshipProgram(props) {
   return (
     <>
       <Navbar />
-      <WordDivider spacing={175}>
+      <WordDivider spacing={125}>
         <Typography variant='h3' className={classes.wordDivider}>
           Fellowship Program
         </Typography>
       </WordDivider>
-      <Card className={classes.fellowshipCard}>
-        <p>
-          <strong>
-            <span className={classes.underline}>
-              GENERAL INFORMATION ABOUT THE PROGRAM:
-            </span>
-          </strong>
-        </p>
-        <p>
-          The College Key Foundation's summer fellowship is a 4-week FREE
-          program where fellows attend two virtual workshops (over zoom) each
-          week to learn about the college application process, get paired with a
-          college mentor (from Harvard, Yale, Princeton, MIT, and other
-          colleges) and will also receive additional resources during the 4-week
-          programming to learn.
-        </p>
-        <p>
-          <strong>
-            <span className={classes.underline}>PROGRAM STRUCTURE:</span>
-          </strong>
-        </p>
-        <p>week 1: Standardized testing (SAT/ACT)</p>
-        <p>
-          week 2: College essays (workshops led by Harvard, Stanford, Hopkins
-          students, and more!)
-        </p>
-        <p>
-          week 3: Learning about colleges and building your college list (get
-          the opportunity to meet and speak with admissions officers
-        </p>
-        <p>week 4: Career panel</p>
-        <p>
-          <strong>
-            <span className={classes.underline}>FELLOWS ELIGIBILITY:</span>
-          </strong>
-        </p>
-        <p>
-          This program is open to ONLY rising high school seniors from
-          marginalized backgrounds (ex: traditionally underrepresent minorities,
-          first-generation and/or low-income, LGBTQ+, undocumented students,
-          immigrants, women in STEAM, etc.)
-        </p>
-        <p>
-          <strong>
-            <span className={classes.underline}>FELLOWS COMMITMENT:</span>
-          </strong>
-        </p>
-        <p>
-          Fellows MUST commit to attending the virtual workshops over zoom.
-          However, we will be extremely flexible and accommodating because of
-          the current circumstances.
-        </p>
-        <p>
-          DEADLINE TO SUBMIT YOUR APPLICATION: June 30 @ 11:59 pm (eastern daily
-          time)
-        </p>
-        <ReadyApply />
+      <Card
+        style={{
+          margin: 0,
+          marginRight: theme.spacing(6),
+          marginLeft: theme.spacing(6),
+          marginBottom: theme.spacing(6),
+          backgroundColor: theme.palette.common.teamBlue,
+        }}
+      >
+        <Grid container spacing={0}>
+          <Grid item xs={12} sm={12} height='100%' width='80%'>
+            <Grid
+              container
+              direction='row'
+              justify='center'
+              alignItems='center'
+              spacing={4}
+              className={classes.totalGrid}
+            >
+              <Grid item xs={12} className={classes.teamNameContainer}>
+                <Grid
+                  container
+                  direction='row'
+                  justify='center'
+                  className={classes.teamNameContainer}
+                >
+                  <Grid item className={classes.teamNameContainer}>
+                    <Typography className={classes.teamName}>
+                      {'Fellowsip progam '}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={12} className={classes.memberItemContainer}>
+                <Grid
+                  container
+                  justify='center'
+                  alignItems='center'
+                  direction='row'
+                  className={classes.memberItem}
+                >
+                  <FellowshipGeneral />
+                  <ReadyApply />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </Card>
       <Footer />
     </>
   );
 }
 
-const mapStateToProps = (state) => ({});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    userLogout: () => dispatch(userLogout()),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FellowshipProgram);
+export default FellowshipProgram;
