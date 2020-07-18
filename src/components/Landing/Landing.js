@@ -95,6 +95,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 64,
   },
+  mentorsFrom: {
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
 }));
 
 function Landing(props) {
@@ -173,6 +177,16 @@ function Landing(props) {
           <Typography className={classes.memberCount}>
             250+ Fellows and 250+ Mentors
           </Typography>
+          <Grid container direction='row' alignItems='center' justify='center'>
+            <Grid item xs={8}>
+              <Typography className={classes.mentorsFrom}>
+                With mentors from Harvard, Johns Hopkins, Columbia, UCLA, Yale,
+                MIT, Dartmouth, USC, Duke, Emory, Brown, Georgetown, Princeton,
+                Cornell, WashU, UPenn, Stanford, and more.
+              </Typography>
+              <br />
+            </Grid>
+          </Grid>
         </Box>
       </Card>
       <div className={classes.spacing} />
