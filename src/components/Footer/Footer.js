@@ -32,7 +32,8 @@ export default function Footer() {
 
   return (
     <div className={classes.root}>
-      <Grid container direction='row' spacing={0} justify='space-between'>
+      <Grid container direction='row' spacing={2} justify='space-between'>
+        <Grid item xs={12} />
         <Grid item xs={4}>
           <Grid container direction='row' alignItems='center' justify='center'>
             <Typography className={classes.text}>
@@ -55,6 +56,7 @@ export default function Footer() {
           </Grid>
         </Grid>
         <FooterSocialMedia />
+        <Grid item xs={12} />
       </Grid>
     </div>
   );
