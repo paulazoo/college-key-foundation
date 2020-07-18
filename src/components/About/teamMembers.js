@@ -67,7 +67,7 @@ export const recruitmentDirectors = [
     name: 'Kobi Khong',
     position: 'Western Region Director',
     text:
-      "Kobi, part of Johns Hopkins' Class of 2024, liaises with schools and organizations throughout the Southern California region for College Key in order to ensure equal opportunities for students who strive their goals and for their education, regardless of socio-economic status.",
+      "Kobi, part of Johns Hopkin's Class of 2024, is studying Public Health with a minor in Bioethics, and liaises with schools and organizations throughout the Southern California region for College Key in order to ensure equal opportunities for students who strive their goals and for their education, regardless of socio-economic status.",
     image: '',
   },
   {
