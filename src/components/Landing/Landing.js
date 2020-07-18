@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'right',
     width: '100%',
     padding: 0,
-    paddingRight: theme.spacing(2),
+    paddingRight: theme.spacing(3),
   },
   wordDivider: {
     fontWeight: 'bold',

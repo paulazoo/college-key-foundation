@@ -85,6 +85,21 @@ function LoggedInNavBar({ ...props }) {
               </Grid>
             </Grid>
           </Grid>
+          {(props.account.email === 'paulazhu@college.harvard.edu' ||
+            props.account.email === 'collegekeyfoundation@gmail.com') && (
+            <Grid item>
+              <Tooltip title='Secret Master Controller!'>
+                <Button
+                  color='inherit'
+                  className={classes.rightLink}
+                  component={NavLink}
+                  to='/master'
+                >
+                  Master
+                </Button>
+              </Tooltip>
+            </Grid>
+          )}
           <Grid item>
             <Tooltip title='Dashboard'>
               <Button
@@ -141,6 +156,7 @@ function LoggedInNavBar({ ...props }) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  account: state.account,
 });
 
 const mapDispatchToProps = (dispatch) => ({

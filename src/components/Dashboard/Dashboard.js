@@ -25,6 +25,8 @@ import { getLogin } from '../../store/actions/api';
 import WordDivider from '../Shared/WordDivider';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
+import MentorDashboard from './MentorDashboard';
+import MenteeDashboard from './MenteeDashboard';
 
 const useStyles = makeStyles((theme) => ({
   wordDivider: {
@@ -68,11 +70,12 @@ function Dashboard(props) {
                   {`Welcome, ${props.account.name}!`}
                 </Typography>
               </Grid>
-              <Grid item xs={12} className={classes.textContainer}>
-                {JSON.stringify(props.account)}
-              </Grid>
-              <Grid item xs={12} className={classes.textContainer}>
-                {JSON.stringify(props.user)}
+              <Grid item xs={12}>
+                {props.account.user_type === 'Mentor' ? (
+                  <MentorDashboard />
+                ) : (
+                  <MenteeDashboard />
+                )}
               </Grid>
             </Grid>
           </Card>
