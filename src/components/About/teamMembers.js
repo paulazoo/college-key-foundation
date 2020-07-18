@@ -52,7 +52,8 @@ export const recruitmentDirectors = [
   {
     name: 'Violet Wang',
     position: 'Northern Region Director',
-    text: '???????.',
+    text:
+      'Violet, part of Duke’s class of 2024, works to recruit and communicate with students in the Northern region to access resources to help them in their college admissions journey!',
     image: '',
   },
   {
@@ -80,7 +81,8 @@ export const recruitmentDirectors = [
   {
     name: 'Kathleen Beetner',
     position: 'Midwestern Region Director',
-    text: '???????.',
+    text:
+      "Kathleen, part of University of Illinois at Urbana-Champaign's Class of 2021, identifies and communicates with schools across the Midwest region and is dedicated to facilitating help and instruction to students from all backgrounds.",
     image: '',
   },
   {
