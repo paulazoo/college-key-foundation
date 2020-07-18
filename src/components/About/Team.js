@@ -126,6 +126,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 64,
     color: theme.palette.common.white,
+    padding: 0,
   },
 }));
 
@@ -216,16 +217,37 @@ function Team(props) {
   };
 
   return (
+    // executiveTeam
+    // outreachTeam
+    // recruitmentDirectors
+    // programTeam
+    // graphicsMarketingTeam
+    // curriculumTeam
+    // technicalTeam
     <>
       <WordDivider spacing={125}>
         <Typography variant='h3' className={classes.wordDivider}>
           Meet The Team
         </Typography>
       </WordDivider>
+      {renderTeam(executiveTeam, 'Executive Team', theme.palette.common.green)}
+      {renderTeam(programTeam, 'Program Team', theme.palette.common.blue)}
+      {renderTeam(
+        curriculumTeam,
+        'Curriculum Team',
+        theme.palette.common.green
+      )}
+      {renderTeam(outreachTeam, 'Outreach Team', theme.palette.common.blue)}
       {renderTeam(
         graphicsMarketingTeam,
         'Graphics and Marketing Team',
-        'green'
+        theme.palette.common.green
+      )}
+      {renderTeam(technicalTeam, 'Technical Team', theme.palette.common.blue)}
+      {renderTeam(
+        recruitmentDirectors,
+        'Recruitment Directors',
+        theme.palette.common.green
       )}
     </>
   );
