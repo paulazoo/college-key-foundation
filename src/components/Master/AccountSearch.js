@@ -76,7 +76,7 @@ function AccountSearch({
 
   return (
     <>
-      <Grid container spacing={1} alignItems='center' justify='center'>
+      <Grid container spacing={1} alignItems='center' justify='flex-start'>
         <Grid item>
           <SearchIcon />
         </Grid>

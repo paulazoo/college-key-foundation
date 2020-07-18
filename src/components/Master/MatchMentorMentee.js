@@ -87,40 +87,48 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
 
   return (
     <>
-      <Grid item xs={12}>
-        <Typography className={classes.text}>
-          Match a Mentee with Mentor
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Typography>
-          WARNING: Mentees only have one mentor at a time.
-        </Typography>
-      </Grid>
-      <Grid item xs={5}>
-        <Select
-          fullWidth
-          label='Select Mentee'
-          value={mentee}
-          onChange={handleMenteeChange}
-        >
-          {mentees.map((person) => renderMatchMenuItem(person))}
-        </Select>
-      </Grid>
-      <Grid item xs={5}>
-        <Select
-          fullWidth
-          label='Select Mentor'
-          value={mentor}
-          onChange={handleMentorChange}
-        >
-          {mentors.map((person) => renderMatchMenuItem(person))}
-        </Select>
-      </Grid>
-      <Grid item xs={2}>
-        <Button color='secondary' variant='contained' onClick={handleMatch}>
-          Match
-        </Button>
+      <Grid
+        container
+        direction='row'
+        alignItems='center'
+        justify='center'
+        spacing={3}
+      >
+        <Grid item xs={12}>
+          <Typography className={classes.text}>
+            Match a Mentee with Mentor
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>
+            WARNING: Mentees only have one mentor at a time.
+          </Typography>
+        </Grid>
+        <Grid item xs={5}>
+          <Select
+            fullWidth
+            label='Select Mentee'
+            value={mentee}
+            onChange={handleMenteeChange}
+          >
+            {mentees.map((person) => renderMatchMenuItem(person))}
+          </Select>
+        </Grid>
+        <Grid item xs={5}>
+          <Select
+            fullWidth
+            label='Select Mentor'
+            value={mentor}
+            onChange={handleMentorChange}
+          >
+            {mentors.map((person) => renderMatchMenuItem(person))}
+          </Select>
+        </Grid>
+        <Grid item xs={2}>
+          <Button color='secondary' variant='contained' onClick={handleMatch}>
+            Match
+          </Button>
+        </Grid>
       </Grid>
     </>
   );

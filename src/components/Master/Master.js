@@ -6,6 +6,7 @@ import {
   CardContent,
   Typography,
   Card,
+  Divider,
 } from '@material-ui/core';
 
 // Theme
@@ -27,9 +28,8 @@ import AccountSearch from './AccountSearch';
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    margin: theme.spacing(8),
-    padding: theme.spacing(8),
-    height: '100vh',
+    margin: theme.spacing(2),
+    padding: theme.spacing(1),
   },
   textContainer: {
     textAlign: 'center',
@@ -69,43 +69,51 @@ function Master(props) {
       <Navbar />
       {props.account.email === 'paulazhu@college.harvard.edu' ||
       props.account.email === 'collegekeyfoundation@gmail.com' ? (
-        <Grid container direction='row' alignItems='center' justify='center'>
+        <Grid
+          container
+          direction='row'
+          alignItems='center'
+          justify='center'
+          spacing={3}
+        >
+          <Grid item xs={12} className={classes.textContainer}>
+            <Typography className={classes.text}>Master Controls</Typography>
+          </Grid>
           <Grid item xs={12}>
             <Card className={classes.card}>
-              <Grid
-                container
-                direction='row'
-                alignItems='center'
-                justify='center'
-                spacing={3}
-              >
-                <Grid item xs={12} className={classes.textContainer}>
-                  <Typography className={classes.text}>
-                    Master Controls
-                  </Typography>
+              <AddAccounts />
+            </Card>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <MatchMentorMentee
+                mentees={props.accounts.filter((p) => p.user_type === 'Mentee')}
+                mentors={props.accounts.filter((p) => p.user_type === 'Mentor')}
+              />
+            </Card>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <Grid container direction='row' alignItems='center' spacing={3}>
+                <Grid item xs={12}>
+                  <AccountSearch
+                    options={options}
+                    allOptions={allOptions}
+                    selected={selected}
+                    setSelected={setSelected}
+                    setMentorResults={setMentorResults}
+                    setMenteeResults={setMenteeResults}
+                  />
                 </Grid>
-                <AddAccounts />
-                <MatchMentorMentee
-                  mentees={props.accounts.filter(
-                    (p) => p.user_type === 'Mentee'
-                  )}
-                  mentors={props.accounts.filter(
-                    (p) => p.user_type === 'Mentor'
-                  )}
-                />
-                <AccountSearch
-                  options={options}
-                  allOptions={allOptions}
-                  selected={selected}
-                  setSelected={setSelected}
-                  setMentorResults={setMentorResults}
-                  setMenteeResults={setMenteeResults}
-                />
                 <Grid item xs={6} className={classes.textContainer}>
                   <Typography className={classes.text}>Mentors</Typography>
+                  <Divider />
                 </Grid>
                 <Grid item xs={6} className={classes.textContainer}>
                   <Typography className={classes.text}>Mentees</Typography>
+                  <Divider />
                 </Grid>
                 <Grid item xs={6}>
                   <ShowAccounts people={mentorResults} />
