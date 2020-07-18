@@ -157,9 +157,14 @@ function Landing(props) {
               variant='contained'
               className={classes.applyButton}
               onClick={handleApply}
+              disabled
+              style={{ backgroundColor: 'gray' }}
             >
               APPLY NOW
             </Button>
+            <Typography className={classes.dueDate}>
+              Fellowship applications will be open again in January 2021
+            </Typography>
           </Grid>
         </Grid>
       </HomepageLayout>
@@ -201,6 +206,7 @@ function Landing(props) {
             color='secondary'
             className={classes.applyButton}
             onClick={handleApply}
+            disabled
           >
             APPLY NOW
           </Button>

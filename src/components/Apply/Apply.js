@@ -47,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(4),
     height: '20vh',
   },
+  dueDate: {
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
 }));
 
 function Apply(props) {
@@ -75,12 +79,16 @@ function Apply(props) {
                 <Typography className={classes.applyText}>
                   Apply to be a College Key Foundation Mentee or Mentor!
                 </Typography>
+                <Typography className={classes.dueDate}>
+                  Fellowship applications will be open again in January 2021
+                </Typography>
               </Grid>
               <Grid item>
                 <Button
                   variant='contained'
                   color='secondary'
                   className={classes.applyButton}
+                  disabled
                 >
                   Mentee
                 </Button>
@@ -95,6 +103,7 @@ function Apply(props) {
                   variant='contained'
                   color='secondary'
                   className={classes.applyButton}
+                  disabled
                 >
                   Mentor
                 </Button>
