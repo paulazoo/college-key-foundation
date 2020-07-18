@@ -40,6 +40,9 @@ function CreateEvent(props) {
 
   return (
     <>
+      <Grid item xs={6}>
+        <Typography className={classes.text}>Create Event</Typography>
+      </Grid>
       <EventDetails />
     </>
   );

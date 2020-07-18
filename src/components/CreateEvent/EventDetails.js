@@ -49,13 +49,15 @@ function EventDetails(props) {
   const classes = useStyles();
   const [eventName, setEventName] = useState('');
   const [eventKind, setEventKind] = useState('open');
+  const [eventDescription, setEventDescription] = useState('');
+  const [eventLink, setEventLink] = useState('');
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [notPossible, setNotPossible] = useState(false);
   const inputs = [
     {
       value: eventName,
-      label: 'Event Name',
+      label: 'Name',
       valueName: 'eventName',
       placeholder: 'Event Name',
       disabled: false,
@@ -66,6 +68,20 @@ function EventDetails(props) {
       valueName: 'eventKind',
       options: ['Public', 'Invite-Only'],
       optionValues: ['open', 'invite_only'],
+    },
+    {
+      value: eventDescription,
+      label: 'Description',
+      valueName: 'eventDescription',
+      placeholder: 'Description of Event',
+      disabled: false,
+    },
+    {
+      value: eventLink,
+      label: 'Link',
+      valueName: 'eventLink',
+      placeholder: 'www.harvard.zoom.us/j/example',
+      disabled: false,
     },
   ];
 
@@ -211,8 +227,6 @@ function EventDetails(props) {
                   style={{ alignSelf: 'center' }}
                 >
                   Event Time
-                  <br />
-                  <small>(optional)</small>
                 </Typography>
               </Grid>
               <Grid item xs={9}>
@@ -238,7 +252,7 @@ function EventDetails(props) {
                   color='secondary'
                   onClick={onSubmit}
                 >
-                  Save
+                  Create
                 </Button>
               </Grid>
             </Grid>
