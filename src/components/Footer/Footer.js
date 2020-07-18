@@ -33,21 +33,21 @@ export default function Footer() {
   return (
     <div className={classes.root}>
       <Grid container direction='row' spacing={0} justify='space-between'>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <Grid container direction='row' alignItems='center' justify='center'>
             <Typography className={classes.text}>
               © Copyright 2020 College Key Foundation
             </Typography>
           </Grid>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <Grid container direction='row' alignItems='center' justify='center'>
             <Typography className={classes.text}>
               Made with 💗 by College Key Foundation
             </Typography>
           </Grid>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <Grid container direction='row' alignItems='center' justify='center'>
             <Link href='/terms' className={classes.text}>
               Privacy Policy & Terms of Use
