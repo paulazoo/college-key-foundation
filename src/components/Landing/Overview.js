@@ -15,6 +15,7 @@ import { userLogout, setUser } from '../../store/actions/index';
 const useStyles = makeStyles((theme) => ({
   headTextContainer: {
     textAlign: 'center',
+    padding: theme.spacing(1),
   },
   headText: {
     fontWeight: 'bold',
@@ -39,9 +40,14 @@ function Overview(props) {
     <Box>
       <Grid container direction='row'>
         <Grid item xs={6}>
-          image
+          <img
+            height='90%'
+            width='90%'
+            alt='Overview Image'
+            src={require('../../assets/foundationCover.png')}
+          />
         </Grid>
-        <Grid item xs={6} className={classes.headTextContainer}>
+        <Grid item xs={5} className={classes.headTextContainer}>
           <Typography className={classes.headText}>
             HOPE DURING A PANDEMIC
           </Typography>

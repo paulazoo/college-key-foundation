@@ -150,14 +150,14 @@ function Landing(props) {
               of underprivileged backgrounds
             </Typography>
             <br />
-            {/* <Button
+            <Button
               color='secondary'
               variant='contained'
               className={classes.applyButton}
               onClick={handleApply}
             >
               APPLY NOW
-            </Button> */}
+            </Button>
           </Grid>
         </Grid>
       </HomepageLayout>
@@ -193,7 +193,7 @@ function Landing(props) {
       <Overview />
       <div className={classes.spacing} />
       <Grid container direction='row' justify='center' alignItems='center'>
-        {/* <Grid item>
+        <Grid item>
           <Button
             variant='contained'
             color='secondary'
@@ -202,7 +202,7 @@ function Landing(props) {
           >
             APPLY NOW
           </Button>
-        </Grid> */}
+        </Grid>
         <Grid item xs={12} className={classes.dueDateContainer}>
           <br />
           <Typography className={classes.dueDate}>
@@ -211,8 +211,12 @@ function Landing(props) {
         </Grid>
       </Grid>
       <div className={classes.spacing} />
-      <AsSeenIn />
-      <Partners />
+      <Grid item xs={12}>
+        <AsSeenIn />
+      </Grid>
+      <Grid item xs={12}>
+        <Partners />
+      </Grid>
       <div className={classes.spacing} />
       <EmailNewsletter />
       <div className={classes.spacing} />
