@@ -8,6 +8,12 @@ export default function homeReducer(state = initialState.home, action) {
         personalSnackbar: { ...action.payload },
       };
 
+    case 'SET_CURRENTLY':
+      return {
+        ...state,
+        personalSnackbar: { ...action.payload },
+      };
+
     default:
       return state;
   }

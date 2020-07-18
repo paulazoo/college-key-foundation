@@ -11,6 +11,7 @@ import {
   Snackbar,
   Card,
   Divider,
+  CircularProgress,
 } from '@material-ui/core';
 
 // Theme
@@ -18,7 +19,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { connect } from 'react-redux';
-import { userLogout, setUser } from '../../store/actions/index';
+import {
+  userLogout,
+  setUser,
+  setCurrentlyLoading,
+} from '../../store/actions/index';
 import { getLogin } from '../../store/actions/api';
 
 // Custom Components
@@ -72,11 +77,10 @@ function LoginPage(props) {
     history.push('/apply');
   };
 
-  const getLoginCallback = () => {};
-
   const responseGoogle = (response) => {
+    props.setCurrentlyLoading(true);
     localStorage.setItem('user_token', response.tokenId);
-    props.getLogin(response.tokenId, getLoginCallback);
+    props.getLogin(response.tokenId);
   };
 
   const responseGoogleErrors = (response) => {
@@ -99,6 +103,49 @@ function LoginPage(props) {
         onFailure={responseGoogleErrors}
         cookiePolicy='single_host_origin'
       />
+    );
+  };
+
+  const renderLogin = () => {
+    if (props.currentlyLoading === true) {
+      return (
+        <Grid item xs={12}>
+          <CircularProgress />
+        </Grid>
+      );
+    }
+
+    return (
+      <>
+        <Grid item xs={12} className={classes.loginTextContainer}>
+          <Typography className={classes.loginText}>
+            Mentee / Mentor Login
+          </Typography>
+        </Grid>
+        <Grid item xs={12} className={classes.loginTextContainer}>
+          <Typography>
+            Don't have an account?
+{' '}
+            <a className={classes.applyLink} onClick={handleApplyLink}>
+              {' '}
+              Apply today!
+{' '}
+            </a>
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <div className={classes.spacing} />
+        </Grid>
+        <Grid item xs={12}>
+          <Divider />
+        </Grid>
+        <Grid item xs={12}>
+          <div className={classes.spacing} />
+        </Grid>
+        <Grid item>
+          <Box>{renderGoogleLogin()}</Box>
+        </Grid>
+      </>
     );
   };
 
@@ -136,39 +183,7 @@ function LoginPage(props) {
                   </Typography>
                 </Grid>
               ) : (
-                <>
-                  <Grid item xs={12} className={classes.loginTextContainer}>
-                    <Typography className={classes.loginText}>
-                      Mentee / Mentor Login
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} className={classes.loginTextContainer}>
-                    <Typography>
-                      Don't have an account?
-{' '}
-                      <a
-                        className={classes.applyLink}
-                        onClick={handleApplyLink}
-                      >
-                        {' '}
-                        Apply today!
-{' '}
-                      </a>
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <div className={classes.spacing} />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Divider />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <div className={classes.spacing} />
-                  </Grid>
-                  <Grid item>
-                    <Box>{renderGoogleLogin()}</Box>
-                  </Grid>
-                </>
+                renderLogin()
               )}
             </Grid>
           </Card>
@@ -181,12 +196,15 @@ function LoginPage(props) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  currentlyLoading: state.home.currentlyLoading,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
-    getLogin: (userToken, callback) => dispatch(getLogin(userToken, callback)),
+    getLogin: (userToken) => dispatch(getLogin(userToken)),
+    setCurrentlyLoading: (currentlyLoading) =>
+      dispatch(setCurrentlyLoading(currentlyLoading)),
   };
 }
 

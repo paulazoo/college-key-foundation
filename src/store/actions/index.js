@@ -10,6 +10,10 @@ export function setPersonalSnackbar(payload) {
   return { type: 'SET_PERSONALSNACKBAR', payload };
 }
 
+export function setCurrentlyLoading(payload) {
+  return { type: 'SET_CURRENTLYLOADING', payload };
+}
+
 export function userLogout(payload) {
   return { type: 'USER_LOGOUT', payload };
 }

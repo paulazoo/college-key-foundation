@@ -9,6 +9,7 @@ export const initialState = {
       open: false,
       content: '',
     },
+    currentlyLoading: false,
   },
   master: {
     accounts: [],

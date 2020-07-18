@@ -8,6 +8,7 @@ import {
   setMentees,
   setMentors,
   setAccounts,
+  setCurrentlyLoading,
 } from './index';
 import { wsConnect } from './websocket';
 
@@ -32,7 +33,7 @@ const api = (path, requestOptions) => {
 // Api Calls:
 
 // GET Calls:
-export const getLogin = (userToken, callback) => {
+export const getLogin = (userToken) => {
   return (dispatch) => {
     const requestOptions = {
       method: 'GET',
@@ -48,15 +49,15 @@ export const getLogin = (userToken, callback) => {
           dispatch(setPersonalSnackbar({ open: false, content: '' }));
           dispatch(setAccount(response.account));
           dispatch(setUser(response.user));
+          dispatch(setCurrentlyLoading(false));
 
           history.push('/dashboard');
         } else if (response.message === 'You are not a mentor or mentee!') {
           dispatch(
             setPersonalSnackbar({ open: true, content: response.message })
           );
+          dispatch(setCurrentlyLoading(false));
         }
-
-        callback(response);
       })
       .catch((error) => {
         console.error('API Error: ', error);

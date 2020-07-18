@@ -57,7 +57,11 @@ function NavBar({ ...props }) {
   return (
     <>
       <PersonalSnackbar />
-      {props.user.id ? <LoggedInNavbar /> : <LoggedOutNavbar />}
+      {localStorage.getItem('user_token') ? (
+        <LoggedInNavbar />
+      ) : (
+        <LoggedOutNavbar />
+      )}
     </>
   );
 }
