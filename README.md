@@ -85,7 +85,7 @@ _ROUTE: https://www.collegekeyfoundation.org/dashboard_
 - Also shows events:
   - upcoming public events open to the entire foundation
   - upcoming private events where you have been specifically have been invited
-  - upcoming past events
+  - your past events
 
 ### Profile
 
