@@ -189,6 +189,7 @@ export const postNewsletterEmails = (body) => {
     };
     api(`newsletter_emails`, requestOptions)
       .then((response) => {
+        console.log(response);
         dispatch(
           setPersonalSnackbar({
             open: true,
