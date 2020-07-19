@@ -274,36 +274,6 @@ export const postMentees = (body) => {
   };
 };
 
-// PUT Calls:
-export const putAccount = (body) => {
-  console.log('put account api call');
-  return (dispatch, getState) => {
-    const requestOptions = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
-      },
-      body: JSON.stringify(body),
-    };
-    console.log(requestOptions);
-    api(`accounts/${getState().account.id}`, requestOptions)
-      .then((response) => {
-        dispatch(setAccount(response));
-        dispatch(
-          setPersonalSnackbar({
-            open: true,
-            content: 'Profile details saved!',
-          })
-        );
-      })
-      .catch((error) => {
-        console.error('API Error: ', error);
-      });
-  };
-};
-
 export const postMatch = (body) => {
   return (dispatch, getState) => {
     const requestOptions = {
@@ -322,6 +292,62 @@ export const postMatch = (body) => {
           setPersonalSnackbar({
             open: true,
             content: 'Mentee and mentor matched!',
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const postEvents = (body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    api(`events`, requestOptions)
+      .then((response) => {
+        console.log(response);
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: `Event ${body.name} created!`,
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+// PUT Calls:
+export const putAccount = (body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    console.log(requestOptions);
+    api(`accounts/${getState().account.id}`, requestOptions)
+      .then((response) => {
+        dispatch(setAccount(response));
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: 'Profile details saved!',
           })
         );
       })

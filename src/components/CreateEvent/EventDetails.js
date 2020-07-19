@@ -16,7 +16,7 @@ import moment from 'moment';
 
 // Redux
 import { connect } from 'react-redux';
-import {} from '../../store/actions/api';
+import { postEvents } from '../../store/actions/api';
 
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
 function EventDetails(props) {
   const classes = useStyles();
   const [eventName, setEventName] = useState('');
+  const [eventHost, setEventHost] = useState('');
   const [eventKind, setEventKind] = useState('open');
   const [eventDescription, setEventDescription] = useState('');
   const [eventLink, setEventLink] = useState('');
@@ -68,6 +69,13 @@ function EventDetails(props) {
       valueName: 'eventKind',
       options: ['Public', 'Invite-Only'],
       optionValues: ['open', 'invite_only'],
+    },
+    {
+      value: eventHost,
+      label: 'Hosted by',
+      valueName: 'eventHost',
+      placeholder: 'Event Host',
+      disabled: false,
     },
     {
       value: eventDescription,
@@ -93,8 +101,20 @@ function EventDetails(props) {
         setEventName(value);
         break;
       }
+      case 'eventHost': {
+        setEventHost(value);
+        break;
+      }
       case 'eventKind': {
         setEventKind(value);
+        break;
+      }
+      case 'eventDescription': {
+        setEventDescription(value);
+        break;
+      }
+      case 'eventLink': {
+        setEventLink(value);
         break;
       }
       default:
@@ -119,7 +139,15 @@ function EventDetails(props) {
         end_time = [];
       }
 
-      // TODO: actual api call
+      props.postEvents({
+        name: eventName,
+        host: eventHost,
+        kind: eventKind,
+        description: eventDescription,
+        link: eventLink,
+        start_time,
+        end_time,
+      });
     } else {
       setNotPossible(true);
     }
@@ -268,7 +296,9 @@ const mapStateToProps = (state) => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    postEvents: (body) => dispatch(postEvents(body)),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);
