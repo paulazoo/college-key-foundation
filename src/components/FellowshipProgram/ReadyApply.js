@@ -16,15 +16,30 @@ import { userLogout, setUser } from '../../store/actions/index';
 
 // Custom Components
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  text: {
+    fontSize: 18,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 9,
+    },
+  },
+  readyText: {
+    fontSize: 32,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
+  },
+}));
 
 function ReadyApply(props) {
   const classes = useStyles();
 
   return (
     <>
-      <Typography>
+      <Typography className={classes.readyText}>
         <h2>Ready to Apply?</h2>
+      </Typography>
+      <Typography className={classes.text}>
         <ul>
           <li>
             By joining us this Summer, you are joining a network of mentors,

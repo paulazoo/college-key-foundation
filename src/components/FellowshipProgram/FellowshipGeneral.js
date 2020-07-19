@@ -16,14 +16,21 @@ import { userLogout, setUser } from '../../store/actions/index';
 
 // Custom Components
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  text: {
+    fontSize: 18,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 9,
+    },
+  },
+}));
 
 function FellowshipGeneral(props) {
   const classes = useStyles();
 
   return (
     <>
-      <Typography>
+      <Typography className={classes.text}>
         <p>
           <strong>
             <span style={{ textDecoration: 'underline' }}>
