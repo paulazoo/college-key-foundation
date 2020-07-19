@@ -12,15 +12,22 @@ import FooterSocialMedia from './FooterSocialMedia';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
     backgroundColor: theme.palette.primary.main,
-    // padding: theme.spacing(1),
+    padding: 0,
+    paddingTop: theme.spacing(1),
   },
   text: {
     fontFamily: theme.typography.fontFamily,
     fontStyle: 'normal',
     fontWeight: 'normal',
     color: theme.palette.common.white,
+    fontSize: 24,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+    },
+  },
+  textContainer: {
+    textAlign: 'center',
   },
   socialMediaContainer: {
     textAlign: 'center',
@@ -33,30 +40,30 @@ export default function Footer() {
   return (
     <div className={classes.root}>
       <Grid container direction='row' spacing={2} justify='space-between'>
-        <Grid item xs={12} />
-        <Grid item xs={4}>
-          <Grid container direction='row' alignItems='center' justify='center'>
+        <Grid item md={12} />
+        <Grid item xs={12} md={4}>
+          <div className={classes.textContainer}>
             <Typography className={classes.text}>
               © Copyright 2020 College Key Foundation
             </Typography>
-          </Grid>
+          </div>
         </Grid>
-        <Grid item xs={4}>
-          <Grid container direction='row' alignItems='center' justify='center'>
+        <Grid item xs={12} md={4}>
+          <div className={classes.textContainer}>
             <Typography className={classes.text}>
               Made with 💗 by College Key Foundation
             </Typography>
-          </Grid>
+          </div>
         </Grid>
-        <Grid item xs={4}>
-          <Grid container direction='row' alignItems='center' justify='center'>
+        <Grid item xs={12} md={4}>
+          <div className={classes.textContainer}>
             <Link href='/terms' className={classes.text}>
               Privacy Policy & Terms of Use
             </Link>
-          </Grid>
+          </div>
         </Grid>
         <FooterSocialMedia />
-        <Grid item xs={12} />
+        <Grid item md={12} />
       </Grid>
     </div>
   );

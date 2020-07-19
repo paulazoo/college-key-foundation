@@ -20,10 +20,23 @@ const useStyles = makeStyles((theme) => ({
   headText: {
     fontWeight: 'bold',
     fontSize: 32,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 14,
+    },
+  },
+  mainText: {
+    fontWeight: 'normal',
+    fontSize: 16,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 9,
+    },
   },
   learnMore: {
     fontWeight: 'bold',
     fontSize: 20,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
 }));
 
@@ -45,7 +58,7 @@ function Overview(props) {
         alignItems='center'
         spacing={2}
       >
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <img
             height='90%'
             width='100%'
@@ -53,10 +66,10 @@ function Overview(props) {
             src={require('../../assets/foundationCover.png')}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <div className={classes.headTextContainer}>
             <Typography className={classes.headText}>WHO ARE WE?</Typography>
-            <Typography>
+            <Typography className={classes.mainText}>
               The College Key Foundation is an incorporated non-profit
               organization led by low-income and minority students. The
               organization was founded with the intent of helping

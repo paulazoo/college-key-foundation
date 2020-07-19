@@ -14,10 +14,30 @@ import { userLogout, setUser } from '../../store/actions/index';
 const useStyles = makeStyles((theme) => ({
   headTextContainer: {
     textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      padding: 0,
+    },
   },
   headText: {
     fontWeight: 'bold',
     fontSize: 32,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 24,
+    },
+  },
+  logoImg: {
+    width: 128,
+    height: 128,
+    [theme.breakpoints.down('sm')]: {
+      width: 64,
+      height: 64,
+    },
+  },
+  logoItem: {
+    padding: theme.spacing(2),
+    [theme.breakpoints.down('sm')]: {
+      padding: `5px !important`,
+    },
   },
 }));
 
@@ -33,12 +53,12 @@ function AsSeenIn(props) {
             direction='row'
             alignItems='center'
             justify='center'
-            spacing={3}
+            spacing={props.isMobile ? 1 : 3}
           >
             <Grid item xs={12} className={classes.headTextContainer}>
               <Typography className={classes.headText}>AS SEEN IN</Typography>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -46,13 +66,12 @@ function AsSeenIn(props) {
               >
                 <img
                   alt='Honolulu Civil Beat'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/AsSeenIn/HonoluluCivilBeat.PNG')}
                 />
               </a>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -60,8 +79,7 @@ function AsSeenIn(props) {
               >
                 <img
                   alt='TheCasaRevista'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/AsSeenIn/TheCasaRevista.PNG')}
                 />
               </a>
@@ -74,7 +92,9 @@ function AsSeenIn(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  isMobile: state.home.isMobile,
+});
 
 function mapDispatchToProps(dispatch) {
   return {

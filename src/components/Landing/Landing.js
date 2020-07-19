@@ -126,14 +126,23 @@ const useStyles = makeStyles((theme) => ({
   },
   spacing: {
     height: theme.spacing(8),
+    [theme.breakpoints.down('sm')]: {
+      height: theme.spacing(1),
+    },
   },
   memberCount: {
     fontWeight: 'bold',
     fontSize: 64,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 28,
+    },
   },
   mentorsFrom: {
     fontWeight: 'bold',
     fontSize: 18,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 9,
+    },
   },
 }));
 

@@ -14,10 +14,30 @@ import { userLogout, setUser } from '../../store/actions/index';
 const useStyles = makeStyles((theme) => ({
   headTextContainer: {
     textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      padding: 0,
+    },
   },
   headText: {
     fontWeight: 'bold',
     fontSize: 32,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 24,
+    },
+  },
+  logoImg: {
+    width: 128,
+    height: 128,
+    [theme.breakpoints.down('sm')]: {
+      width: 64,
+      height: 64,
+    },
+  },
+  logoItem: {
+    padding: theme.spacing(2),
+    [theme.breakpoints.down('sm')]: {
+      padding: `5px !important`,
+    },
   },
 }));
 
@@ -27,18 +47,18 @@ function Partners(props) {
   return (
     <Box bgcolor={theme.palette.secondary.light}>
       <Grid container direction='row' alignItems='center' justify='center'>
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <Grid
             container
             direction='row'
             alignItems='center'
             justify='center'
-            spacing={4}
+            spacing={props.isMobile ? 1 : 4}
           >
             <Grid item xs={12} className={classes.headTextContainer}>
               <Typography className={classes.headText}>PARTNERS</Typography>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -46,13 +66,12 @@ function Partners(props) {
               >
                 <img
                   alt='College Essay Guy'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/Partners/CollegeEssayGuy.PNG')}
                 />
               </a>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -60,13 +79,12 @@ function Partners(props) {
               >
                 <img
                   alt='Dear Asian Youth'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/Partners/DearAsianYouth.PNG')}
                 />
               </a>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -74,13 +92,12 @@ function Partners(props) {
               >
                 <img
                   alt='Destined Doctors'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/Partners/DestinedDoctors.PNG')}
                 />
               </a>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -88,13 +105,12 @@ function Partners(props) {
               >
                 <img
                   alt='Socrates Post'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/Partners/SocratesPost.PNG')}
                 />
               </a>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -102,13 +118,12 @@ function Partners(props) {
               >
                 <img
                   alt='We Rise Above'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/Partners/WeRiseAbove.PNG')}
                 />
               </a>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -116,13 +131,12 @@ function Partners(props) {
               >
                 <img
                   alt='Wonsulting'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/Partners/Wonsulting.PNG')}
                 />
               </a>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -130,13 +144,12 @@ function Partners(props) {
               >
                 <img
                   alt='YMCA Honolulu'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/Partners/YMCAHonolulu.PNG')}
                 />
               </a>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -144,13 +157,12 @@ function Partners(props) {
               >
                 <img
                   alt='Girl Genius Magazine'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/Partners/GirlGeniusMagazine.PNG')}
                 />
               </a>
             </Grid>
-            <Grid item>
+            <Grid item className={classes.logoItem}>
               <a
                 rel='noreferrer'
                 target='_blank'
@@ -158,8 +170,7 @@ function Partners(props) {
               >
                 <img
                   alt='Girl Tech Boss'
-                  height={128}
-                  width={128}
+                  className={classes.logoImg}
                   src={require('../../assets/Partners/GirlTechBoss.PNG')}
                 />
               </a>
