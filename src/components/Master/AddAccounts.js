@@ -83,7 +83,7 @@ function AddAccounts(props) {
           <TextField
             fullWidth
             variant='outlined'
-            label="Mentor's Email"
+            label="Mentor's Email (Must be gmail)"
             placeholder='mentorexample@gmail.com'
             value={mentorEmailValue}
             onChange={handleMentorEmailValueChange}
@@ -102,7 +102,7 @@ function AddAccounts(props) {
           <TextField
             fullWidth
             variant='outlined'
-            label="Mentee's Email"
+            label="Mentee's Email (Must be gmail)"
             placeholder='menteeexample@gmail.com'
             value={menteeEmailValue}
             onChange={handleMenteeEmailValueChange}
