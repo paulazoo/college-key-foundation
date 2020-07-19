@@ -89,35 +89,81 @@ const useStyles = makeStyles((theme) => ({
   headTextContainer: {
     textAlign: 'center',
   },
-  memberItemContainer: {},
+  memberItemContainer: {
+    padding: theme.spacing(2),
+    [theme.breakpoints.down('sm')]: {
+      padding: `${theme.spacing(1)}px !important`,
+    },
+  },
   memberItem: {
     backgroundColor: theme.palette.common.white,
     padding: theme.spacing(2),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(1),
+    },
   },
   totalGrid: {
     padding: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(1),
+    },
+  },
+  memberImgButton: {
+    height: 128,
+    width: 128,
+    placeSelf: 'center',
+    [theme.breakpoints.down('sm')]: {
+      height: 64,
+      width: 64,
+    },
+  },
+  memberImg: {
+    height: 128,
+    width: 128,
+    borderRadius: '50%',
+    padding: 0,
+    borderWidth: 5,
+    [theme.breakpoints.down('sm')]: {
+      height: 64,
+      width: 64,
+    },
   },
   memberName: {
     fontWeight: 'bold',
     fontSize: 20,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
   memberTeamName: {
     fontWeight: 'bold',
     fontSize: 18,
     color: theme.palette.primary.main,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 9,
+    },
   },
   memberPosition: {
     fontSize: 16,
     color: theme.palette.primary.main,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 8,
+    },
   },
   memberText: {
     color: theme.palette.common.gray,
     fontSize: 14,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 7,
+    },
   },
   memberTextContainer: {
     textAlign: 'left',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+    },
   },
-wordDivider: {
+  wordDivider: {
     fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
@@ -130,9 +176,24 @@ wordDivider: {
     fontSize: 32,
     color: theme.palette.common.white,
     padding: 0,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
   },
   teamNameContainer: {
     padding: '0 !important',
+  },
+  card: {
+    margin: 0,
+    marginRight: theme.spacing(6),
+    marginLeft: theme.spacing(6),
+    marginBottom: theme.spacing(6),
+    [theme.breakpoints.down('sm')]: {
+      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(1),
+      marginBottom: theme.spacing(1),
+      padding: theme.spacing(1),
+    },
   },
 }));
 
@@ -142,11 +203,8 @@ function Team(props) {
   const renderTeam = (team, teamName, teamColor) => {
     return (
       <Card
+        className={classes.card}
         style={{
-          margin: 0,
-          marginRight: theme.spacing(6),
-          marginLeft: theme.spacing(6),
-          marginBottom: theme.spacing(6),
           backgroundColor: teamColor,
         }}
       >
@@ -175,7 +233,12 @@ function Team(props) {
                 </Grid>
               </Grid>
               {team.map((member) => (
-                <Grid item xs={6} className={classes.memberItemContainer}>
+                <Grid
+                  item
+                  xs={12}
+                  md={6}
+                  className={classes.memberItemContainer}
+                >
                   <Grid
                     container
                     justify='center'
@@ -183,33 +246,26 @@ function Team(props) {
                     direction='row'
                     className={classes.memberItem}
                   >
-                    <Grid item xs={5}>
+                    <Grid item xs={0} md={5}>
                       <Button
                         color='primary'
                         edge='end'
                         size='small'
-                        style={{
-                          height: 128,
-                          width: 128,
-                          placeSelf: 'center',
-                        }}
+                        className={classes.memberImgButton}
                       >
                         <img
-                          style={{
-                            height: 128,
-                            width: 128,
-                            borderRadius: '50%',
-                            padding: 0,
-
-                            borderColor: 'red',
-                            borderWidth: 5,
-                          }}
+                          className={classes.memberImg}
                           src={require(`../../assets/TeamMembers/${member.name}.JPG`)}
                           alt={member.name}
                         />
                       </Button>
                     </Grid>
-                    <Grid item xs={7} className={classes.memberTextContainer}>
+                    <Grid
+                      item
+                      xs={12}
+                      md={7}
+                      className={classes.memberTextContainer}
+                    >
                       <Typography className={classes.memberName}>
                         {member.name}
                       </Typography>
@@ -271,4 +327,12 @@ function Team(props) {
   );
 }
 
-export default Team;
+const mapStateToProps = (state) => ({
+  isMobile: state.home.isMobile,
+});
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Team);

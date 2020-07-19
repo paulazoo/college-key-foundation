@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(6),
     marginLeft: theme.spacing(6),
     marginBottom: theme.spacing(6),
-    backgroundColor: theme.palette.common.teamGreen,
+    backgroundColor: theme.palette.common.teamBlue,
     [theme.breakpoints.down('sm')]: {
       marginRight: theme.spacing(1),
       marginLeft: theme.spacing(1),
