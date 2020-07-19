@@ -288,7 +288,7 @@ export const putAccount = (body) => {
       body: JSON.stringify(body),
     };
     console.log(requestOptions);
-    api(`accounts/${getState().account.id}/update`, requestOptions)
+    api(`accounts/${getState().account.id}`, requestOptions)
       .then((response) => {
         dispatch(setAccount(response));
         dispatch(

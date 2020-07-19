@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Autocomplete, {
   createFilterOptions,
 } from '@material-ui/lab/Autocomplete';
-import { InputAdornment, Grid, TextField, Typography } from '@material-ui/core';
+import {
+  InputAdornment,
+  Grid,
+  TextField,
+  Typography,
+  MenuItem,
+} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 // Redux
@@ -15,7 +21,6 @@ import { makeStyles } from '@material-ui/core/styles';
 // Custom Components
 
 const useStyles = makeStyles((theme) => ({
-  autocomplete: { width: 300 },
   text: {
     fontWeight: 'bold',
     fontSize: 24,
@@ -78,6 +83,33 @@ function AccountSearch({
     limit: 5,
   });
 
+  const renderMatchMenuItem = (person) => {
+    return (
+      <MenuItem value={person.user_id} key={person.id}>
+        <Grid container direction='row' alignItems='center' spacing={1}>
+          <Grid item>
+            {person.image_url && (
+              <img
+                style={{
+                  height: '24px',
+                  width: '24px',
+                  display: 'block',
+                  borderRadius: '50%',
+                }}
+                src={person.image_url}
+                alt='Profile picture'
+              />
+            )}
+          </Grid>
+          <Grid item>{person.email}</Grid>
+          <Grid item xs={12}>
+            {person.name && `(${person.name})`}
+          </Grid>
+        </Grid>
+      </MenuItem>
+    );
+  };
+
   return (
     <>
       <Grid container spacing={1} alignItems='center' justify='flex-start'>
@@ -93,8 +125,9 @@ function AccountSearch({
         <Grid item>
           <SearchIcon />
         </Grid>
-        <Grid item>
+        <Grid item xs={4}>
           <Autocomplete
+            fullWidth
             value={selected}
             onChange={handleChange}
             inputValue={inputValue}
@@ -103,6 +136,9 @@ function AccountSearch({
             filterOptions={filterOptions}
             // freeSolo
             getOptionLabel={(option) => option.email}
+            renderOption={(option, { selected }) => (
+              <>{renderMatchMenuItem(option)}</>
+            )}
             className={classes.autocomplete}
             renderInput={(params) => (
               <TextField

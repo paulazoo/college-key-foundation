@@ -50,6 +50,7 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
   const [inputMentorValue, setInputMentorValue] = useState('');
 
   const handleMenteeChange = (event, newValue) => {
+    console.log(newValue);
     setMentee(newValue);
   };
 
@@ -171,7 +172,7 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
             renderInput={(params) => (
               <TextField
                 {...params}
-                placeholder='Select Mentee'
+                placeholder='Select Mentor'
                 variant='outlined'
               />
             )}
