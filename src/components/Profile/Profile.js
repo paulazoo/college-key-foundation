@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.common.teamGreen,
   },
-wordDivider: {
+  wordDivider: {
     fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
@@ -88,7 +88,17 @@ function Profile(props) {
   };
 
   const handleSubmitAccount = () => {
-    if (+gradYear === parseInt(gradYear)) {
+    console.log({
+      bio,
+      phone,
+      school,
+      grad_year: gradYear,
+    });
+    if (
+      +gradYear === parseInt(gradYear) ||
+      props.account.user_type === 'Mentee' ||
+      gradYear === null
+    ) {
       setGradYearError(false);
       props.putAccount({
         bio,

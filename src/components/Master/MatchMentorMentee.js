@@ -9,6 +9,9 @@ import {
   MenuItem,
   Select,
 } from '@material-ui/core';
+import Autocomplete, {
+  createFilterOptions,
+} from '@material-ui/lab/Autocomplete';
 
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
@@ -43,20 +46,36 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
 
   const [mentee, setMentee] = useState('');
   const [mentor, setMentor] = useState('');
+  const [inputMenteeValue, setInputMenteeValue] = useState('');
+  const [inputMentorValue, setInputMentorValue] = useState('');
 
-  const handleMenteeChange = (e) => {
-    setMentee(e.target.value);
+  const handleMenteeChange = (event, newValue) => {
+    setMentee(newValue);
   };
 
-  const handleMentorChange = (e) => {
-    setMentor(e.target.value);
+  const handleMentorChange = (event, newValue) => {
+    setMentor(newValue);
   };
 
   const handleMatch = () => {
-    props.postMatch({ mentor_id: mentor, mentee_id: mentee });
+    props.postMatch({ mentor_id: mentor.user.id, mentee_id: mentee.user.id });
     setMentee('');
     setMentor('');
   };
+
+  const handleInputMenteeChange = (event, newInputValue) => {
+    setInputMenteeValue(newInputValue);
+  };
+
+  const handleInputMentorChange = (event, newInputValue) => {
+    setInputMentorValue(newInputValue);
+  };
+
+  const filterOptions = createFilterOptions({
+    // matchFrom: 'start',
+    stringify: (option) => option.email,
+    limit: 5,
+  });
 
   const renderMatchMenuItem = (person) => {
     return (
@@ -108,27 +127,55 @@ function MatchMentorMentee({ mentees, mentors, ...props }) {
           <Typography>{'Match Mentee '}</Typography>
         </Grid>
         <Grid item xs={4}>
-          <Select
+          <Autocomplete
             fullWidth
-            label='Select Mentee'
             value={mentee}
             onChange={handleMenteeChange}
-          >
-            {mentees.map((person) => renderMatchMenuItem(person))}
-          </Select>
+            inputValue={inputMenteeValue}
+            onInputChange={handleInputMenteeChange}
+            options={mentees} // TODO: only unmatched mentees
+            filterOptions={filterOptions}
+            // freeSolo
+            getOptionLabel={(person) => person.email}
+            renderOption={(option, { selected }) => (
+              <>{renderMatchMenuItem(option)}</>
+            )}
+            className={classes.autocomplete}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                placeholder='Select Mentee'
+                variant='outlined'
+              />
+            )}
+          />
         </Grid>
         <Grid item>
           <Typography>{' with Mentor '}</Typography>
         </Grid>
         <Grid item xs={4}>
-          <Select
+          <Autocomplete
             fullWidth
-            label='Select Mentor'
             value={mentor}
             onChange={handleMentorChange}
-          >
-            {mentors.map((person) => renderMatchMenuItem(person))}
-          </Select>
+            inputValue={inputMentorValue}
+            onInputChange={handleInputMentorChange}
+            options={mentors}
+            filterOptions={filterOptions}
+            // freeSolo
+            getOptionLabel={(person) => person.email}
+            renderOption={(option, { selected }) => (
+              <>{renderMatchMenuItem(option)}</>
+            )}
+            className={classes.autocomplete}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                placeholder='Select Mentee'
+                variant='outlined'
+              />
+            )}
+          />
         </Grid>
         <Grid item>
           <Button color='secondary' variant='contained' onClick={handleMatch}>

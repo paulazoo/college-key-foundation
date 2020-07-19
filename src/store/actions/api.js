@@ -276,6 +276,7 @@ export const postMentees = (body) => {
 
 // PUT Calls:
 export const putAccount = (body) => {
+  console.log('put account api call');
   return (dispatch, getState) => {
     const requestOptions = {
       method: 'PUT',
@@ -286,6 +287,7 @@ export const putAccount = (body) => {
       },
       body: JSON.stringify(body),
     };
+    console.log(requestOptions);
     api(`accounts/${getState().account.id}/update`, requestOptions)
       .then((response) => {
         dispatch(setAccount(response));
