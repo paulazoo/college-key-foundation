@@ -198,7 +198,7 @@ function LoginPage(props) {
               justify='center'
               spacing={3}
             >
-              {localStorage.getItem('user_token') ? (
+              {localStorage.getItem('user_token') && props.account.id ? (
                 <Grid item xs={12} className={classes.loginTextContainer}>
                   <Typography className={classes.loginText}>
                     You are logged in!
@@ -218,6 +218,7 @@ function LoginPage(props) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  account: state.account,
   currentlyLoading: state.home.currentlyLoading,
 });
 

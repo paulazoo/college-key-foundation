@@ -26,7 +26,7 @@ function MenteeDashboard(props) {
 
   return (
     <>
-      <ProfileCard account={props.user.mentor.account} />
+      {props.user.mentor && <ProfileCard account={props.user.mentor.account} />}
     </>
   );
 }

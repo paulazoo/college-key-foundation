@@ -26,9 +26,10 @@ function MentorDashboard(props) {
 
   return (
     <>
-      {props.user.mentees.map((mentee) => (
-        <ProfileCard account={mentee.account} />
-      ))}
+      {props.user.mentees &&
+        props.user.mentees.map((mentee) => (
+          <ProfileCard account={mentee.account} />
+        ))}
     </>
   );
 }
