@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
 import {
   IconButton,
   Button,
@@ -11,11 +10,16 @@ import {
 } from '@material-ui/core';
 import MuiAppBar from '@material-ui/core/AppBar';
 
+// Redux
+import { connect } from 'react-redux';
+import { userLogout } from '../../store/actions';
+
 // Theme
 import { theme } from '../../theme';
 import { makeStyles } from '@material-ui/styles';
+
+// Custom Components
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
-import { userLogout } from '../../store/actions';
 
 const useStyles = makeStyles((theme) => ({
   title: {

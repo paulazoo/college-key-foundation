@@ -8,10 +8,16 @@ export default function homeReducer(state = initialState.home, action) {
         personalSnackbar: { ...action.payload },
       };
 
-    case 'SET_CURRENTLY':
+    case 'SET_CURRENTLYLOADING':
       return {
         ...state,
-        personalSnackbar: { ...action.payload },
+        currentlyLoading: action.payload,
+      };
+
+    case 'SET_ONMOBILE':
+      return {
+        ...state,
+        onMobile: action.payload,
       };
 
     default:

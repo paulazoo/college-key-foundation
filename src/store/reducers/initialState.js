@@ -5,6 +5,7 @@ export const initialState = {
   },
   account: {},
   home: {
+    onMobile: false,
     personalSnackbar: {
       open: false,
       content: '',

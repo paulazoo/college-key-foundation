@@ -14,6 +14,10 @@ export function setCurrentlyLoading(payload) {
   return { type: 'SET_CURRENTLYLOADING', payload };
 }
 
+export function setOnMobile(payload) {
+  return { type: 'SET_ONMOBILE', payload };
+}
+
 export function userLogout(payload) {
   return { type: 'USER_LOGOUT', payload };
 }
