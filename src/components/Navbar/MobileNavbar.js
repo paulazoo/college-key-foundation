@@ -50,23 +50,28 @@ function MobileNavbar({ ...props }) {
 
   const menuItems = [
     {
-      text: 'Our Story',
-      link: '/statement',
+      text: 'Home',
+      link: '/',
       icon: <FeedbackIcon />,
     },
     {
-      text: 'Timeline',
-      link: '/timeline',
+      text: 'About Us',
+      link: '/about-us',
       icon: <ListAltIcon />,
     },
     {
-      text: 'Evidence',
-      link: '/evidence',
+      text: 'Fellowship Program',
+      link: '/fellowship-program',
       icon: <ViewQuiltIcon />,
     },
     {
-      text: 'Personal Statements',
-      link: '/personalstatements',
+      text: 'Apply',
+      link: '/apply',
+      icon: <VerticalSplitIcon />,
+    },
+    {
+      text: 'Login',
+      link: '/login',
       icon: <VerticalSplitIcon />,
     },
   ];

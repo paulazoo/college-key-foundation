@@ -32,10 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 12,
-    color: theme.palette.common.white
-  }
-})
-);
+    color: theme.palette.common.white,
+  },
+}));
 
 export default function MobileDrawer({ menuItems, ...props }) {
   const classes = useStyles();
@@ -68,7 +67,12 @@ export default function MobileDrawer({ menuItems, ...props }) {
     >
       <List>
         {menuItems.map((item, index) => (
-          <Button color='inherit' component={NavLink} to={item.link} key={item.text}>
+          <Button
+            color='inherit'
+            component={NavLink}
+            to={item.link}
+            key={item.text}
+          >
             <ListItem button key={item.text}>
               <ListItemIcon style={{ color: 'white' }}>
                 {item.icon}
@@ -77,6 +81,19 @@ export default function MobileDrawer({ menuItems, ...props }) {
             </ListItem>
           </Button>
         ))}
+        <Button
+          color='inherit'
+          target='_blank'
+          key='Donate'
+          href='https://www.gofundme.com/f/the-college-key'
+        >
+          <ListItem button key='Donate'>
+            <ListItemIcon style={{ color: 'white' }}>
+              <MenuOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText style={{ color: 'white' }} primary='Donate' />
+          </ListItem>
+        </Button>
       </List>
     </div>
   );
@@ -90,55 +107,50 @@ export default function MobileDrawer({ menuItems, ...props }) {
   return (
     <div>
       <MuiAppBar
-elevation={0}
-position="static"
-color= 'primary'
-        style={{height:60}}
+        elevation={0}
+        position='static'
+        color='primary'
+        style={{ height: 60 }}
       >
         <Grid
-container
-direction="row"
+          container
+          direction='row'
           alignItems='center'
           // justify="center"
           spacing={1}
         >
           <Grid item>
             <IconButton onClick={toggleDrawer(anchor, true)}>
-            <MenuOutlinedIcon />
+              <MenuOutlinedIcon />
             </IconButton>
           </Grid>
           <Grid item>
-            <Button
-            onClick={logoClick}
-          >
+            <Button onClick={logoClick}>
               <img
                 src={require('../../assets/squareLogo.PNG')}
                 alt='fancy favicon :D'
                 width='48'
                 height='48'
-               />
-          </Button>
+              />
+            </Button>
           </Grid>
           <Grid item>
             <Link
-            underline="none"
-            className={classes.title}
-            component={NavLink}
-            to="/"
+              underline='none'
+              className={classes.title}
+              component={NavLink}
+              to='/'
             >
-              <Typography>
-              College Key Foundation
-              </Typography>
+              <Typography>College Key Foundation</Typography>
             </Link>
           </Grid>
         </Grid>
       </MuiAppBar>
       <Drawer
         classes={{ paper: classes.paper }}
-            anchor={anchor} 
-            open={state[anchor]} 
-            onClose={toggleDrawer(anchor, false)}
-          >
+        anchor={anchor}
+        open={state[anchor]}
+        onClose={toggleDrawer(anchor, false)}
       >
         {list(anchor)}
       </Drawer>
