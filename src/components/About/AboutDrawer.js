@@ -9,6 +9,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Typography,
 } from '@material-ui/core';
 
 // Theme
@@ -24,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
   drawerContainer: {
     width: '20vw',
     position: 'absolute',
+    [theme.breakpoints.down('sm')]: {
+      width: '25vw',
+    },
   },
   sidebarItem: {
     borderRadius: '10px',
@@ -32,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: `${theme.palette.secondary.main} !important`,
     color: 'white',
     fontWeight: 600,
+  },
+  itemText: {
+    fontSize: 18,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 9,
+    },
   },
 }));
 
@@ -60,7 +70,7 @@ function AboutDrawer({ selectedAbout, setSelectedAbout, ...props }) {
             }}
             selected={selectedAbout === choice.label}
           >
-            <ListItemText primary={choice.label} />
+            <Typography className={classes.itemText}>{choice.label}</Typography>
           </ListItem>
         ))}
       </List>

@@ -20,58 +20,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import WordDivider from '../Shared/WordDivider';
 
 const useStyles = makeStyles((theme) => ({
-  googleButton: {
-    paddingLeft: '22px',
-  },
-  prefix: {
-    paddingLeft: '8px',
-    color: '#005086',
-    fontSize: '200%',
-  },
-  suffix: {
-    color: '#61CCD7',
-    fontSize: '200%',
-  },
-  description: {
-    paddingLeft: '8px',
-    color: '#777272',
-  },
-  navleft: {
-    color: '#005086',
-  },
-  navright: {
-    color: '#005086',
-  },
-  button: {
-    minWidth: 200,
-  },
-  h5: {
-    marginTop: theme.spacing(4),
-    [theme.breakpoints.up('sm')]: {
-      marginTop: theme.spacing(25),
-    },
-  },
-  title: {
-    paddingLeft: '8px',
-  },
-  more: {
-    marginTop: theme.spacing(2),
-  },
-  paper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  imgResponsive: {
-    height: 'auto',
-    width: 'auto',
-    maxHeight: '40px',
-    maxWidth: '250px',
-  },
-  img: {
-    width: '30vh',
-    borderRadius: '50%',
-  },
   headText: {
     fontWeight: 'bold',
     color: theme.palette.common.black,
@@ -87,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
   },
   totalGrid: {
     padding: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(1),
+    },
   },
   memberName: {
     fontWeight: 'bold',
@@ -108,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   memberTextContainer: {
     textAlign: 'left',
   },
-wordDivider: {
+  wordDivider: {
     fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
@@ -121,9 +72,31 @@ wordDivider: {
     fontSize: 32,
     color: theme.palette.common.white,
     padding: 0,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
   },
   teamNameContainer: {
     padding: '0 !important',
+  },
+  story: {
+    fontSize: 18,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 9,
+    },
+  },
+  card: {
+    margin: 0,
+    marginRight: theme.spacing(6),
+    marginLeft: theme.spacing(6),
+    marginBottom: theme.spacing(6),
+    backgroundColor: theme.palette.common.teamGreen,
+    [theme.breakpoints.down('sm')]: {
+      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(1),
+      marginBottom: theme.spacing(1),
+      padding: theme.spacing(1),
+    },
   },
 }));
 
@@ -137,15 +110,7 @@ function OurStory(props) {
           Our Story
         </Typography>
       </WordDivider>
-      <Card
-        style={{
-          margin: 0,
-          marginRight: theme.spacing(6),
-          marginLeft: theme.spacing(6),
-          marginBottom: theme.spacing(6),
-          backgroundColor: theme.palette.common.teamBlue,
-        }}
-      >
+      <Card className={classes.card}>
         <Grid container spacing={0}>
           <Grid item xs={12} sm={12} height='100%' width='80%'>
             <Grid
@@ -178,7 +143,7 @@ function OurStory(props) {
                   direction='row'
                   className={classes.memberItem}
                 >
-                  <Typography>
+                  <Typography className={classes.story}>
                     <p>
                       The founders of the College Key Foundation, Jacky Huang
                       (Harvard ’24) and Lucas Leanza (Stanford ’23), are both

@@ -28,12 +28,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
     overflow: 'hidden',
   },
-wordDivider: {
+  wordDivider: {
     fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
     [theme.breakpoints.down('sm')]: {
       fontSize: 16,
+    },
+  },
+  mainAbout: {
+    marginLeft: '20vw',
+    padding: 0,
+    paddingRight: theme.spacing(2),
+    width: 'calc(100% - 20vw)',
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '25vw',
+      paddingRight: 0,
+      width: 'calc(100% - 25vw)',
     },
   },
 }));
@@ -66,7 +77,7 @@ function About(props) {
             setSelectedAbout={setSelectedAbout}
           />
         </Grid>
-        <Grid item xs={12} style={{ marginLeft: 264 }}>
+        <Grid item xs={12} className={classes.mainAbout}>
           {renderAbout()}
         </Grid>
       </Grid>

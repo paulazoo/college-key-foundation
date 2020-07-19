@@ -20,58 +20,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import WordDivider from '../Shared/WordDivider';
 
 const useStyles = makeStyles((theme) => ({
-  googleButton: {
-    paddingLeft: '22px',
-  },
-  prefix: {
-    paddingLeft: '8px',
-    color: '#005086',
-    fontSize: '200%',
-  },
-  suffix: {
-    color: '#61CCD7',
-    fontSize: '200%',
-  },
-  description: {
-    paddingLeft: '8px',
-    color: '#777272',
-  },
-  navleft: {
-    color: '#005086',
-  },
-  navright: {
-    color: '#005086',
-  },
-  button: {
-    minWidth: 200,
-  },
-  h5: {
-    marginTop: theme.spacing(4),
-    [theme.breakpoints.up('sm')]: {
-      marginTop: theme.spacing(25),
-    },
-  },
-  title: {
-    paddingLeft: '8px',
-  },
-  more: {
-    marginTop: theme.spacing(2),
-  },
-  paper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  imgResponsive: {
-    height: 'auto',
-    width: 'auto',
-    maxHeight: '40px',
-    maxWidth: '250px',
-  },
-  img: {
-    width: '30vh',
-    borderRadius: '50%',
-  },
   headText: {
     fontWeight: 'bold',
     color: theme.palette.common.black,
@@ -87,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
   },
   totalGrid: {
     padding: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(1),
+    },
   },
   memberName: {
     fontWeight: 'bold',
@@ -121,13 +72,36 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 32,
     color: theme.palette.common.white,
     padding: 0,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
   },
   teamNameContainer: {
     padding: '0 !important',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '5px !important',
+      paddingRight: '5px !important',
+      paddingTop: '5px !important',
+    },
   },
   mission: {
     fontWeight: 'bold',
     fontSize: 24,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+    },
+  },
+  card: {
+    margin: 0,
+    marginRight: theme.spacing(6),
+    marginLeft: theme.spacing(6),
+    marginBottom: theme.spacing(6),
+    backgroundColor: theme.palette.common.teamGreen,
+    [theme.breakpoints.down('sm')]: {
+      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(1),
+      marginBottom: theme.spacing(1),
+    },
   },
 }));
 
@@ -141,15 +115,7 @@ function MissionPurpose(props) {
           Mission and Purpose
         </Typography>
       </WordDivider>
-      <Card
-        style={{
-          margin: 0,
-          marginRight: theme.spacing(6),
-          marginLeft: theme.spacing(6),
-          marginBottom: theme.spacing(6),
-          backgroundColor: theme.palette.common.teamGreen,
-        }}
-      >
+      <Card className={classes.card}>
         <Grid container spacing={0}>
           <Grid item xs={12} sm={12} height='100%' width='80%'>
             <Grid
