@@ -32,7 +32,7 @@ import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 
 const useStyles = makeStyles((theme) => ({
-wordDivider: {
+  wordDivider: {
     fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
@@ -40,10 +40,16 @@ wordDivider: {
       fontSize: 16,
     },
   },
-  loginCard: {
+  card: {
     margin: theme.spacing(8),
+    marginTop: 0,
     padding: theme.spacing(8),
     height: '40vh',
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(3),
+      margin: theme.spacing(1),
+      marginTop: '15vh',
+    },
   },
   loginTextContainer: {
     textAlign: 'center',
@@ -57,6 +63,12 @@ wordDivider: {
   },
   spacing: {
     height: theme.spacing(1),
+  },
+  main: {
+    margin: 0,
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: '15vh',
+    },
   },
 }));
 
@@ -170,9 +182,15 @@ function LoginPage(props) {
         </MuiAlert>
       </Snackbar>
       <Navbar />
-      <Grid container direction='row' alignItems='center' justify='center'>
-        <Grid item xs={6}>
-          <Card className={classes.loginCard}>
+      <Grid
+        container
+        direction='row'
+        alignItems='center'
+        justify='center'
+        className={classes.main}
+      >
+        <Grid item xs={12} md={6}>
+          <Card className={classes.card}>
             <Grid
               container
               direction='row'

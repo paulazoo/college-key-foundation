@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 16,
     },
   },
-  applyCard: {
+  card: {
     margin: theme.spacing(8),
     marginTop: 0,
     padding: theme.spacing(8),
@@ -100,7 +100,7 @@ function Apply(props) {
         className={classes.main}
       >
         <Grid item xs={12} md={8}>
-          <Card className={classes.applyCard}>
+          <Card className={classes.card}>
             <Grid
               container
               direction='row'
