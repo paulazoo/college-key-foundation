@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.common.teamGreen,
   },
-wordDivider: {
+  wordDivider: {
     fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
@@ -113,9 +113,7 @@ function Dashboard(props) {
                   Upcoming Public Events:
                 </Typography>
               </Grid>
-              <Grid item>
-                <EventsList />
-              </Grid>
+              <EventsList />
               <Grid item xs={12}>
                 <Typography className={classes.cardsIntro}>
                   Upcoming Private Events:

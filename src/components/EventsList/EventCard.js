@@ -8,7 +8,10 @@ import {
   CardActions,
   CardMedia,
   Box,
+  Grid,
+  IconButton,
 } from '@material-ui/core';
+import InfoIcon from '@material-ui/icons/Info';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 
@@ -19,25 +22,16 @@ import { makeStyles } from '@material-ui/styles';
 
 // Custom Components
 import EventButton from './EventButton';
-
-// const noImageFound = require('../../assets/no-image-found.png');
+import EventPopup from './EventPopup';
 
 const useStyles = makeStyles((theme) => ({
   eventCard: {
-    width: 300 * theme.singleSpacing,
-    height: 300 * theme.singleSpacing,
+    width: '100%',
     position: 'relative',
   },
   eventActionArea: {
     position: 'relative',
     height: '100%',
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-    width: '100%',
-    position: 'absolute',
-    bottom: 0,
   },
   actions: {
     position: 'absolute',
@@ -48,11 +42,21 @@ const useStyles = makeStyles((theme) => ({
   cardTitle: {
     alignItems: 'center',
     alignContent: 'center',
+    fontSize: 22,
+    padding: '5px !important',
+  },
+  cardTime: {
+    fontSize: 20,
+    fontWeight: 'light',
+    color: theme.palette.common.gray,
+    margin: 0,
+    padding: '5px !important',
+    paddingRight: '15px !important',
   },
   desc: {
     padding: theme.spacing(4),
     paddingTop: 0,
-    width: 300,
+    // width: 300,
   },
   descContainer: {
     wordBreak: 'break-word',
@@ -61,68 +65,79 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.black,
     textDecoration: 'none',
   },
+  infoButton: {
+    width: 32,
+    height: 32,
+  },
 }));
 
 function EventCard({ event, ...props }) {
   const classes = useStyles();
 
-  const renderEventType = (type) => {
-    if (type === 'invite_only') {
-      return <p>(Invite Required)</p>;
-    }
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  const handleEventCardClick = () => {
+    setPopupOpen(true);
   };
 
   return (
-    <Card className={classes.eventCard}>
-      <a
-        rel='noreferrer'
-        target='_blank'
-        href='https://www.civilbeat.org/2020/06/we-must-reimagine-college-guidance-programs/?fbclid=IwAR2Tad_5RBylBf9U99mrej4n4G5f2-EfiZzlHLlFu_R3DIWk4XVrKD7PvJE'
-        className={classes.linkText}
-      >
-        <CardActionArea className={classes.eventActionArea}>
+    <>
+      <EventPopup
+        popupOpen={popupOpen}
+        setPopupOpen={setPopupOpen}
+        event={event}
+      />
+      <Card className={classes.eventCard}>
+        <CardActionArea
+          className={classes.eventActionArea}
+          onClick={handleEventCardClick}
+        >
           <CardHeader
             title={
-              <div className={classes.cardTitle}>
-                <strong className={classes.nameText}>{`${event.name} `}</strong>
-              </div>
+              <Grid
+                container
+                direction='row'
+                alignItems='center'
+                justify='space-between'
+                spacing={5}
+              >
+                <Grid item className={classes.cardTitle}>
+                  <IconButton onClick={handleEventCardClick}>
+                    <InfoIcon className={classes.infoButton} />
+                  </IconButton>
+                  <strong className={classes.nameText}>
+                    {`${event.name} `}
+                  </strong>
+                </Grid>
+                <Grid item className={classes.cardTime}>
+                  {event.start_time !== null ? (
+                    <>
+                      {`${moment(event.start_time).format(
+                        'ddd, MMMM Do, h:mm A'
+                      )} to ${moment(event.end_time).format('h:mm A')}`}
+                    </>
+                  ) : (
+                    <>Always open.</>
+                  )}
+                </Grid>
+              </Grid>
             }
             subheader={
-              <div>
-                <EventButton className={classes.actions} link={event.link} />
-                {event.start_time !== null ? (
-                  <>
-                    <p>
-                      {moment(event.start_time).format('ddd, MMMM Do, h:mm A')}
-                    </p>
-                    <br />
-                  </>
-                ) : (
-                  <>
-                    <p>Always open.</p>
-                    <br />
-                  </>
-                )}
-                {renderEventType(event.kind)}
-              </div>
+              <Grid
+                container
+                direction='row'
+                alignItems='center'
+                justify='center'
+              >
+                <Grid item>
+                  <EventButton className={classes.actions} link={event.link} />
+                </Grid>
+              </Grid>
             }
           />
-          <Box className={classes.descContainer}>
-            <Typography className={classes.desc}>
-              {event.description && event.description}
-            </Typography>
-          </Box>
-          {/* {theme ? (
-          <CardMedia
-            className={classes.media}
-            image={`${theme.card_image_url}`}
-          />
-        ) : (
-          <CardMedia className={classes.media} image={noImageFound} />
-        )} */}
         </CardActionArea>
-      </a>
-    </Card>
+      </Card>
+    </>
   );
 }
 

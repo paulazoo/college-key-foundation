@@ -38,34 +38,28 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
   },
   linkContainer: { wordBreak: 'break-word' },
+  linkText: {
+    color: theme.palette.common.black,
+    textDecoration: 'none',
+  },
 }));
 
 function EventButton({ link, ...props }) {
   const classes = useStyles();
 
   return (
-    <Grid container direction='row' alignItems='center' justify='flex-start'>
-      <Grid item>
-        <Box className={classes.linkContainer}>
+    <a
+      rel='noreferrer'
+      target='_blank'
+      href={link}
+      className={classes.linkText}
+    >
+      <Box className={classes.linkContainer}>
+        <Button variant='outlined' color='secondary'>
           <h3 className={classes.link}>{`Link: ${link}`}</h3>
-        </Box>
-      </Grid>
-      {/* <Grid item>
-        <IconButton
-        variant="contained"
-        color="secondary"
-        component={NavLink}
-        to={`/${link}`}
-        style={{
-          padding:0
-        }}
-        >
-          <SvgIcon viewBox="5 6 13 13" style={{height:"50px", width:"50px"}}>
-            <path d="M10 17l5-5-5-5v10z"></path>
-          </SvgIcon>
-      </IconButton>
-    </Grid> */}
-    </Grid>
+        </Button>
+      </Box>
+    </a>
   );
 }
 

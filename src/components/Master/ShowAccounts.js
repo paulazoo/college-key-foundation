@@ -70,7 +70,7 @@ const rows = [
   },
   { id: 'email', label: 'Email' },
   { id: 'phone', label: 'Phone Number' },
-  { id: 'user_type', label: 'Role' },
+  // { id: 'user_type', label: 'Role' },
   // {
   //   id: "actions",
   //   label: "",
@@ -144,13 +144,6 @@ function ShowAccounts({ people, ...props }) {
                       style={{ padding: 0 }}
                     >
                       {person.phone}
-                    </TableCell>
-                    <TableCell
-                      component='th'
-                      scope='row'
-                      style={{ padding: 0 }}
-                    >
-                      {person.user_type}
                     </TableCell>
                   </TableRow>
                 ))}

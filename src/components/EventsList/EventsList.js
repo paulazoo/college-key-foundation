@@ -33,21 +33,56 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DUMMYEVENT = {
-  name: 'Dummy Name',
-  link: 'www.harvard.zoom.us/j/dummyzoom',
-  kind: 'open',
-  description:
-    'This is a dummy event! This is a dummy description, yeah yeah yeah. Im hungry and here are some words.',
-};
+const DUMMYEVENTS = [
+  {
+    name: 'Dummy Name',
+    link: 'www.harvard.zoom.us/j/dummyzoom',
+    kind: 'open',
+    host: 'Random Host',
+    description:
+      'This is a dummy event! This is a dummy description, yeah yeah yeah. Im hungry and here are some words.',
+  },
+  {
+    name: 'Dummy Name two',
+    link: 'www.harvard.zoom.us/j/dummyzoom',
+    kind: 'open',
+    host: 'Random Host',
+    description:
+      'This is a dummy event! This is a dummy description, yeah yeah yeah. Im hungry and here are some words.',
+  },
+  {
+    name: 'Dummy Name three',
+    link:
+      'https://stanford.zoom.us/j/91633490237?pwd=MFAzSnhQb0hMc0lrMFFuVzRWZEJhQT09',
+    kind: 'open',
+    host: 'Random Host',
+    description:
+      'This is a dummy event! This is a dummy description, yeah yeah yeah. Im hungry and here are some words.',
+  },
+  {
+    name: 'Dummy Name',
+    link:
+      'https://stanford.zoom.us/j/91633490237?pwd=MFAzSnhQb0hMc0lrMFFuVzRWZEJhQT09',
+    kind: 'open',
+    host: 'Random Host',
+    description:
+      'This is a dummy event! This is a dummy description, yeah yeah yeah. Im hungry and here are some words.',
+  },
+];
 
 function EventsList(props) {
   const classes = useStyles();
 
   return (
     <>
-      <Grid item>
-        <EventCard event={DUMMYEVENT} />
+      <Grid item xs={12}>
+        <Grid container direction='column' spacing={1}>
+          {DUMMYEVENTS.map((event) => (
+            <Grid item xs={12}>
+              <EventCard event={event} />
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
     </>
   );
