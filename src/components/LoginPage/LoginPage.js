@@ -176,7 +176,7 @@ function LoginPage(props) {
               justify='center'
               spacing={3}
             >
-              {props.user.id ? (
+              {localStorage.getItem('user_token') ? (
                 <Grid item xs={12} className={classes.loginTextContainer}>
                   <Typography className={classes.loginText}>
                     You are logged in!

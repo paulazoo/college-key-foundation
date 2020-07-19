@@ -84,6 +84,7 @@ function NavBar(props) {
 
   const resize = () => {
     const currentHideNav = window.innerWidth <= 760;
+    console.log(window.innerWidth);
     if (currentHideNav !== props.onMobile) {
       console.log('changing onMobile');
       props.setOnMobile(currentHideNav);
@@ -94,7 +95,7 @@ function NavBar(props) {
   useEffect(() => {
     window.addEventListener('resize', resize);
     resize();
-  }, []);
+  }, [window.innerWidth]);
 
   return <>{props.onMobile ? <MobileNavbar /> : <DesktopNavbar />}</>;
 }

@@ -39,11 +39,18 @@ const useStyles = makeStyles((theme) => ({
 export default function MobileDrawer({ menuItems, ...props }) {
   const classes = useStyles();
 
+  const history = useHistory();
+
   const [state, setState] = useState({
     left: false,
   });
 
   const anchor = 'left';
+
+  const handleLogout = () => {
+    props.userLogout();
+    history.push('/');
+  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -54,6 +61,10 @@ export default function MobileDrawer({ menuItems, ...props }) {
     }
 
     setState({ ...state, [anchor]: open });
+  };
+
+  const logoClick = () => {
+    history.push('/');
   };
 
   const list = (anchor) => (
@@ -94,15 +105,33 @@ export default function MobileDrawer({ menuItems, ...props }) {
             <ListItemText style={{ color: 'white' }} primary='Donate' />
           </ListItem>
         </Button>
+        {localStorage.getItem('user_token') ? (
+          <Button
+            color='inherit'
+            className={classes.rightLink}
+            onClick={handleLogout}
+            key='Logout'
+          >
+            <ListItem button key='Logout'>
+              <ListItemIcon style={{ color: 'white' }}>
+                <MenuOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText style={{ color: 'white' }} primary='Logout' />
+            </ListItem>
+          </Button>
+        ) : (
+          <Button color='inherit' component={NavLink} to='/login' key='Login'>
+            <ListItem button key='Login'>
+              <ListItemIcon style={{ color: 'white' }}>
+                <MenuOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText style={{ color: 'white' }} primary='Login' />
+            </ListItem>
+          </Button>
+        )}
       </List>
     </div>
   );
-
-  const history = useHistory();
-
-  const logoClick = () => {
-    history.push('/');
-  };
 
   return (
     <div>
