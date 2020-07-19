@@ -18,4 +18,7 @@ export const initialState = {
     mentees: {},
     newsletterEmails: [],
   },
+  events: {
+    publicEvents: [],
+  },
 };

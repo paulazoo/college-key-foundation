@@ -148,6 +148,14 @@ function EventDetails(props) {
         start_time,
         end_time,
       });
+
+      setEventName('');
+      setEventHost('');
+      setEventKind('');
+      setEventDescription('');
+      setEventLink('');
+      setStartTime(null);
+      setEndTime(null);
     } else {
       setNotPossible(true);
     }

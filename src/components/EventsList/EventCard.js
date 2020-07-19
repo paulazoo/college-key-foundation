@@ -112,9 +112,9 @@ function EventCard({ event, ...props }) {
                 <Grid item className={classes.cardTime}>
                   {event.start_time !== null ? (
                     <>
-                      {`${moment(event.start_time).format(
-                        'ddd, MMMM Do, h:mm A'
-                      )} to ${moment(event.end_time).format('h:mm A')}`}
+                      {`${moment(event.start_time).format('lll')} to ${moment(
+                        event.end_time
+                      ).format('LT')}`}
                     </>
                   ) : (
                     <>Always open.</>

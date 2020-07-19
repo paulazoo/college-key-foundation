@@ -5,6 +5,7 @@ import { initialState } from './initialState';
 import homeReducer from './homeReducer';
 import userReducer from './userReducer';
 import accountReducer from './accountReducer';
+import eventsReducer from './eventsReducer';
 import masterReducer from './masterReducer';
 
 const rootReducer = (state, action) => {
@@ -22,6 +23,7 @@ const appReducer = combineReducers({
   user: userReducer,
   account: accountReducer,
   master: masterReducer,
+  events: eventsReducer,
 });
 
 export default rootReducer;

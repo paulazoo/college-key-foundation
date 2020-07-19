@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   TextField,
@@ -16,6 +16,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
 import EventCard from './EventCard';
+import EventsList from './EventsList';
+import { getPublicEvents } from '../../store/actions/api';
 
 // Custom Components
 
@@ -34,26 +36,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EventsList({ events, ...props }) {
+function Past(props) {
   const classes = useStyles();
+
+  useEffect(() => {
+    props.getPublicEvents();
+  }, []);
 
   return (
     <>
-      <Grid item xs={12}>
-        <Grid container direction='column' spacing={1}>
-          {events
-            .sort(
-              (a, b) =>
-                (a.start_time != null) - (b.start_time != null) ||
-                moment(a.start_time) - moment(b.start_time)
-            )
-            .map((event) => (
-              <Grid item xs={12}>
-                <EventCard event={event} />
-              </Grid>
-            ))}
-        </Grid>
-      </Grid>
+      {props.publicEvents && props.publicEvents.length > 0 ? (
+        <EventsList
+          events={props.publicEvents.filter((e) =>
+            moment(e.end_time).isBefore(moment())
+          )}
+        />
+      ) : (
+        <Typography>No Past Events</Typography>
+      )}
     </>
   );
 }
@@ -61,12 +61,14 @@ function EventsList({ events, ...props }) {
 const mapStateToProps = (state) => ({
   user: state.user,
   account: state.account,
+  publicEvents: state.events.publicEvents,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
+    getPublicEvents: () => dispatch(getPublicEvents()),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventsList);
+export default connect(mapStateToProps, mapDispatchToProps)(Past);

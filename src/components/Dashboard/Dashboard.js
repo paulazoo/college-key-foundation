@@ -28,6 +28,8 @@ import Navbar from '../Navbar/Navbar';
 import MentorDashboard from './MentorDashboard';
 import MenteeDashboard from './MenteeDashboard';
 import EventsList from '../EventsList/EventsList';
+import UpcomingPublic from '../EventsList/UpcomingPublic';
+import Past from '../EventsList/Past';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -113,7 +115,7 @@ function Dashboard(props) {
                   Upcoming Public Events:
                 </Typography>
               </Grid>
-              <EventsList />
+              <UpcomingPublic />
               <Grid item xs={12}>
                 <Typography className={classes.cardsIntro}>
                   Upcoming Private Events:
@@ -124,6 +126,7 @@ function Dashboard(props) {
                   Past Events:
                 </Typography>
               </Grid>
+              <Past />
             </Grid>
           </Card>
         </Grid>

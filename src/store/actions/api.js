@@ -10,6 +10,7 @@ import {
   setAccounts,
   setNewsletterEmails,
   setCurrentlyLoading,
+  setPublicEvents,
 } from './index';
 import { wsConnect } from './websocket';
 
@@ -168,6 +169,26 @@ export const getNewsletterEmails = () => {
     api(`newsletter_emails`, requestOptions)
       .then((response) => {
         dispatch(setNewsletterEmails(response));
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const getPublicEvents = () => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+    };
+    api(`events/public`, requestOptions)
+      .then((response) => {
+        dispatch(setPublicEvents(response));
       })
       .catch((error) => {
         console.error('API Error: ', error);

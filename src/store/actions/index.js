@@ -37,3 +37,7 @@ export function setMentees(payload) {
 export function setNewsletterEmails(payload) {
   return { type: 'SET_NEWSLETTEREMAILS', payload };
 }
+
+export function setPublicEvents(payload) {
+  return { type: 'SET_PUBLICEVENTS', payload };
+}
