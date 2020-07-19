@@ -67,14 +67,34 @@ const useStyles = makeStyles((theme) => ({
   more: {
     marginTop: theme.spacing(2),
   },
-  boldHomeText: {
+  landingText1: {
     fontWeight: 'bold',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
+  },
+  landingText2: {
+    fontWeight: 'bold',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+    },
+  },
+  landingText3: {
+    fontWeight: 'normal',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
   textGrid: {
     textAlign: 'right',
     width: '100%',
     padding: 0,
     paddingRight: theme.spacing(3),
+    paddingBottom: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      paddingBottom: theme.spacing(1),
+      paddingRight: theme.spacing(1),
+    },
   },
   wordDivider: {
     fontWeight: 'bold',
@@ -83,6 +103,9 @@ const useStyles = makeStyles((theme) => ({
   applyButton: {
     fontWeight: 'bold',
     fontSize: 24,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+    },
   },
   dueDateContainer: {
     textAlign: 'center',
@@ -90,6 +113,9 @@ const useStyles = makeStyles((theme) => ({
   dueDate: {
     fontWeight: 'bold',
     fontSize: 18,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
   spacing: {
     height: theme.spacing(8),
@@ -123,35 +149,24 @@ function Landing(props) {
           alt='increase priority'
         />
         <Grid container direction='row' justify='flex-end'>
-          <Grid item xs={4} />
+          <Grid item xs={0} md={4} />
           <Grid item xs={12} className={classes.textGrid}>
-            <Typography
-              color='inherit'
-              variant='h2'
-              className={classes.boldHomeText}
-            >
+            <Typography color='inherit' className={classes.landingText1}>
               REIMAGINING COLLEGE GUIDANCE
             </Typography>
-            <br />
           </Grid>
-          <Grid item xs={6} />
-          <Grid item xs={5} className={classes.textGrid}>
-            <Typography
-              color='inherit'
-              variant='h4'
-              className={classes.boldHomeText}
-            >
+          <Grid item xs={0} md={6} />
+          <Grid item xs={11} md={5} className={classes.textGrid}>
+            <Typography color='inherit' className={classes.landingText2}>
               From underrepresented students to underrepresented students
             </Typography>
-            <br />
           </Grid>
-          <Grid item xs={4} className={classes.textGrid}>
-            <Typography color='inherit' variant='h5'>
+          <Grid item xs={10} md={4} className={classes.textGrid}>
+            <Typography color='inherit' className={classes.landingText3}>
               The College Key Foundation was founded on the idea of free,
               accessible guidance to the college application process for those
               of underprivileged backgrounds
             </Typography>
-            <br />
             <Button
               color='secondary'
               variant='contained'
@@ -233,7 +248,9 @@ function Landing(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  isMobile: state.home.isMobile,
+});
 
 function mapDispatchToProps(dispatch) {
   return {

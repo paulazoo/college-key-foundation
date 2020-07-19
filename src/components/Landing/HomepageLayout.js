@@ -12,9 +12,11 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    [theme.breakpoints.up('sm')]: {
-      height: '80vh',
-      minHeight: 500,
+    height: '80vh',
+    minHeight: 500,
+    [theme.breakpoints.down('sm')]: {
+      height: '40vh',
+      minHeight: 250,
     },
   },
   backdrop: {
