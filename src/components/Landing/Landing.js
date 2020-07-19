@@ -69,18 +69,21 @@ const useStyles = makeStyles((theme) => ({
   },
   landingText1: {
     fontWeight: 'bold',
+    fontSize: 48,
     [theme.breakpoints.down('sm')]: {
       fontSize: 16,
     },
   },
   landingText2: {
     fontWeight: 'bold',
+    fontSize: 32,
     [theme.breakpoints.down('sm')]: {
       fontSize: 12,
     },
   },
   landingText3: {
     fontWeight: 'normal',
+    fontSize: 24,
     [theme.breakpoints.down('sm')]: {
       fontSize: 10,
     },
@@ -90,15 +93,19 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     padding: 0,
     paddingRight: theme.spacing(3),
-    paddingBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(2),
     [theme.breakpoints.down('sm')]: {
       paddingBottom: theme.spacing(1),
       paddingRight: theme.spacing(1),
     },
   },
   wordDivider: {
+    fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
   },
   applyButton: {
     fontWeight: 'bold',
@@ -156,12 +163,12 @@ function Landing(props) {
             </Typography>
           </Grid>
           <Grid item xs={0} md={6} />
-          <Grid item xs={11} md={5} className={classes.textGrid}>
+          <Grid item xs={10} md={5} className={classes.textGrid}>
             <Typography color='inherit' className={classes.landingText2}>
               From underrepresented students to underrepresented students
             </Typography>
           </Grid>
-          <Grid item xs={10} md={4} className={classes.textGrid}>
+          <Grid item xs={8} md={4} className={classes.textGrid}>
             <Typography color='inherit' className={classes.landingText3}>
               The College Key Foundation was founded on the idea of free,
               accessible guidance to the college application process for those
@@ -184,7 +191,7 @@ function Landing(props) {
         </Grid>
       </HomepageLayout>
       <WordDivider spacing={225}>
-        <Typography variant='h3' className={classes.wordDivider}>
+        <Typography className={classes.wordDivider}>
           Our Fellowship Program
         </Typography>
       </WordDivider>

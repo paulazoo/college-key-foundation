@@ -28,9 +28,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     overflow: 'hidden',
   },
-  wordDivider: {
+wordDivider: {
+    fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
   },
 }));
 

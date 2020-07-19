@@ -32,9 +32,13 @@ import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 
 const useStyles = makeStyles((theme) => ({
-  wordDivider: {
+wordDivider: {
+    fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
   },
   loginCard: {
     margin: theme.spacing(8),

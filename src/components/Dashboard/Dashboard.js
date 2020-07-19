@@ -33,9 +33,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.common.teamGreen,
   },
-  wordDivider: {
+wordDivider: {
+    fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
   },
   card: {
     margin: theme.spacing(8),

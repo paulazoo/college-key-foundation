@@ -22,9 +22,13 @@ import WordDivider from '../Shared/WordDivider';
 // Custom Components
 
 const useStyles = makeStyles((theme) => ({
-  wordDivider: {
+wordDivider: {
+    fontSize: 44,
     fontWeight: 'bold',
     color: theme.palette.common.gray,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
   },
   applyCard: {
     margin: theme.spacing(8),

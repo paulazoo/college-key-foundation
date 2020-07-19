@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
     maxWidth: '250px',
     maxHeight: '250px',
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '125px',
+      maxHeight: '125px',
+    },
   },
   title: {
     width: '15rem',
@@ -32,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 24,
     color: theme.palette.common.gray,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+      width: '6rem',
+    },
   },
   textGrid: {
     textAlign: 'center',
@@ -43,6 +51,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'normal',
     fontSize: 14,
     color: theme.palette.common.gray,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 7,
+      width: '6rem',
+    },
   },
 }));
 
@@ -51,7 +63,7 @@ function Three(props) {
 
   return (
     <Grid container direction='row' justify='space-between' spacing={0}>
-      <Grid item xs={1} />
+      <Grid item xs={0} md={1} />
       <Grid item xs={3}>
         <Grid container direction='column' alignItems='center'>
           <Grid item>
