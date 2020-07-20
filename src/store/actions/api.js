@@ -11,6 +11,7 @@ import {
   setNewsletterEmails,
   setCurrentlyLoading,
   setPublicEvents,
+  setEvents,
 } from './index';
 import { wsConnect } from './websocket';
 
@@ -189,6 +190,26 @@ export const getPublicEvents = () => {
     api(`events/public`, requestOptions)
       .then((response) => {
         dispatch(setPublicEvents(response));
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const getEvents = () => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+    };
+    api(`accounts/${getState().account.id}/events`, requestOptions)
+      .then((response) => {
+        dispatch(setEvents(response));
       })
       .catch((error) => {
         console.error('API Error: ', error);

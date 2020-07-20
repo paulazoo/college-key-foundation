@@ -120,99 +120,99 @@ function Profile(props) {
       <Navbar />
       <Grid container direction='row' alignItems='center' justify='center'>
         <Grid item xs={12} className={classes.cardContainer}>
-          <Box border={10} borderColor='#93E3E6'>
-            <Card className={classes.card}>
-              <Grid
-                container
-                direction='row'
-                alignItems='center'
-                justify='center'
-                spacing={3}
-              >
-                <Grid item>
-                  <ProfilePic
-                    account={props.account}
-                    buttonHeight={128}
-                    imgHeight={128}
-                    imgWidth={128}
-                  />
-                </Grid>
-                <Grid item>
-                  <Typography className={classes.text}>
-                    Edit Your Profile Details
-                  </Typography>
-                  <Typography className={classes.textDetails}>
-                    {`Full Name: ${props.account.name}`}
-                  </Typography>
-                  <Typography className={classes.textDetails}>
-                    {`Email: ${props.account.email}`}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} />
-                <Grid item xs={4}>
-                  <TextField
-                    fullWidth
-                    variant='outlined'
-                    value={phone}
-                    onChange={handlePhoneChange}
-                    label='Phone Number'
-                  />
-                </Grid>
-                {props.account.user_type === 'Mentor' && (
-                  <>
-                    <Grid item xs={12} />
-                    <Grid item xs={4}>
-                      <TextField
-                        fullWidth
-                        variant='outlined'
-                        value={school}
-                        onChange={handleSchoolChange}
-                        label='School'
-                      />
-                    </Grid>
-                    <Grid item xs={12} />
-                    <Grid item xs={4}>
-                      <TextField
-                        fullWidth
-                        variant='outlined'
-                        value={gradYear}
-                        onChange={handleGradYearChange}
-                        label='Graduation Year'
-                        error={gradYearError}
-                        helperText='Must be an integer'
-                      />
-                    </Grid>
-                  </>
-                )}
-                <Grid item xs={12} />
-                <Grid item xs={4}>
-                  <TextField
-                    fullWidth
-                    variant='outlined'
-                    value={bio}
-                    multiline
-                    rows={3}
-                    onChange={handleBioChange}
-                    label='Tell Us About Yourself :)'
-                  />
-                </Grid>
-                <Grid item xs={12} />
-                <Grid item xs={5}>
-                  <Grid container direction='row' justify='flex-end'>
-                    <Grid item>
-                      <Button
-                        variant='contained'
-                        color='secondary'
-                        onClick={handleSubmitAccount}
-                      >
-                        Save
-                      </Button>
-                    </Grid>
+          {/* <Box border={10} borderColor='#93E3E6'> */}
+          <Card className={classes.card}>
+            <Grid
+              container
+              direction='row'
+              alignItems='center'
+              justify='center'
+              spacing={3}
+            >
+              <Grid item>
+                <ProfilePic
+                  account={props.account}
+                  buttonHeight={128}
+                  imgHeight={128}
+                  imgWidth={128}
+                />
+              </Grid>
+              <Grid item>
+                <Typography className={classes.text}>
+                  Edit Your Profile Details
+                </Typography>
+                <Typography className={classes.textDetails}>
+                  {`Full Name: ${props.account.name}`}
+                </Typography>
+                <Typography className={classes.textDetails}>
+                  {`Email: ${props.account.email}`}
+                </Typography>
+              </Grid>
+              <Grid item xs={12} />
+              <Grid item xs={4}>
+                <TextField
+                  fullWidth
+                  variant='outlined'
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  label='Phone Number'
+                />
+              </Grid>
+              {props.account.user_type === 'Mentor' && (
+                <>
+                  <Grid item xs={12} />
+                  <Grid item xs={4}>
+                    <TextField
+                      fullWidth
+                      variant='outlined'
+                      value={school}
+                      onChange={handleSchoolChange}
+                      label='School'
+                    />
+                  </Grid>
+                  <Grid item xs={12} />
+                  <Grid item xs={4}>
+                    <TextField
+                      fullWidth
+                      variant='outlined'
+                      value={gradYear}
+                      onChange={handleGradYearChange}
+                      label='Graduation Year'
+                      error={gradYearError}
+                      helperText='Must be an integer'
+                    />
+                  </Grid>
+                </>
+              )}
+              <Grid item xs={12} />
+              <Grid item xs={4}>
+                <TextField
+                  fullWidth
+                  variant='outlined'
+                  value={bio}
+                  multiline
+                  rows={3}
+                  onChange={handleBioChange}
+                  label='Tell Us About Yourself :)'
+                />
+              </Grid>
+              <Grid item xs={12} />
+              <Grid item xs={5}>
+                <Grid container direction='row' justify='flex-end'>
+                  <Grid item>
+                    <Button
+                      variant='contained'
+                      color='secondary'
+                      onClick={handleSubmitAccount}
+                    >
+                      Save
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
-            </Card>
-          </Box>
+            </Grid>
+          </Card>
+          {/* </Box> */}
         </Grid>
       </Grid>
       <Footer />

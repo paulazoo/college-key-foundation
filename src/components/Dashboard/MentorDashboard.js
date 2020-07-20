@@ -29,7 +29,7 @@ function MentorDashboard(props) {
       <Grid container direction='column' spacing={1}>
         {props.user.mentees &&
           props.user.mentees.map((mentee) => (
-            <Grid item>
+            <Grid item key={mentee.id}>
               <ProfileCard account={mentee.account} />
             </Grid>
           ))}

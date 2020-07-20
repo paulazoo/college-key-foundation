@@ -68,8 +68,8 @@ function EventDetails(props) {
       value: eventKind,
       label: 'Event Access',
       valueName: 'eventKind',
-      options: ['Public', 'Invite-Only'],
-      optionValues: ['open', 'invite_only'],
+      options: ['Public', 'Fellows Only', 'Invite-Only'],
+      optionValues: ['open', 'fellows_only', 'invite_only'],
     },
     {
       value: eventHost,
@@ -200,15 +200,29 @@ function EventDetails(props) {
                   </Typography>
                 </Grid>
                 <Grid item xs={9}>
-                  <TextField
-                    variant='outlined'
-                    disabled={element.disabled}
-                    fullWidth
-                    name={element.valueName}
-                    value={element.value}
-                    onChange={handleChange}
-                    placeholder={element.placeholder}
-                  />
+                  {element.label === 'Description' ? (
+                    <TextField
+                      variant='outlined'
+                      disabled={element.disabled}
+                      fullWidth
+                      multiline
+                      rows={4}
+                      name={element.valueName}
+                      value={element.value}
+                      onChange={handleChange}
+                      placeholder={element.placeholder}
+                    />
+                  ) : (
+                    <TextField
+                      variant='outlined'
+                      disabled={element.disabled}
+                      fullWidth
+                      name={element.valueName}
+                      value={element.value}
+                      onChange={handleChange}
+                      placeholder={element.placeholder}
+                    />
+                  )}
                 </Grid>
               </React.Fragment>
             ) : (

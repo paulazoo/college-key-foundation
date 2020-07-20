@@ -15,10 +15,10 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
-import EventsList from './EventsList';
-import { getPublicEvents } from '../../store/actions/api';
+import { getEvents } from '../../store/actions/api';
 
 // Custom Components
+import EventsList from './EventsList';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -39,14 +39,14 @@ function Past(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    props.getPublicEvents();
+    props.getEvents();
   }, []);
 
   return (
     <>
-      {props.publicEvents && props.publicEvents.length > 0 && (
+      {props.events && props.events.length > 0 && (
         <EventsList
-          points={props.publicEvents.filter((e) =>
+          points={props.events.filter((e) =>
             moment(e.end_time).isBefore(moment())
           )}
           title='Your Past Events'
@@ -60,13 +60,13 @@ function Past(props) {
 const mapStateToProps = (state) => ({
   user: state.user,
   account: state.account,
-  publicEvents: state.events.publicEvents,
+  events: state.events.events,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
-    getPublicEvents: () => dispatch(getPublicEvents()),
+    getEvents: () => dispatch(getEvents()),
   };
 }
 

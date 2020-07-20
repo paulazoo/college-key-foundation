@@ -61,7 +61,7 @@ function EventCard({ event, ...props }) {
     if (type === 'open') {
       return <>{' (Public)'}</>;
     }
-    if (type === 'fellow_only') {
+    if (type === 'fellows_only') {
       return <>{' (Fellows Only)'}</>;
     }
     if (type === 'invite_only') {
@@ -71,47 +71,40 @@ function EventCard({ event, ...props }) {
 
   return (
     <Card className={classes.eventCard}>
-      <a
-        rel='noreferrer'
-        target='_blank'
-        href={event.link}
-        className={classes.linkText}
-      >
-        <CardHeader
-          title={(
-            <div className={classes.cardTitle}>
-              <strong className={classes.nameText}>{`${event.name} `}</strong>
-              <div className={classes.roleText}>
-                {event.host ? `Hosted By: ${event.host}` : null}
-              </div>
+      <CardHeader
+        title={(
+          <div className={classes.cardTitle}>
+            <strong className={classes.nameText}>{`${event.name} `}</strong>
+            <div className={classes.roleText}>
+              {event.host ? `Hosted By: ${event.host}` : null}
             </div>
-          )}
-          subheader={(
-            <div>
-              {event.start_time !== null ? (
-                <>
-                  {`${moment(event.start_time).format('lll')} to ${moment(
-                    event.end_time
-                  ).format('LT')}`}
-                </>
-              ) : (
-                <>Always open.</>
-              )}
-              {renderEventType(event.kind)}
-              <Grid container direction='row' justify='center' spacing={1}>
-                <Grid item>
-                  <EventButton className={classes.actions} link={event.link} />
-                </Grid>
-              </Grid>
-            </div>
-          )}
-        />
-        {event.image_url ? (
-          <CardMedia className={classes.media} image={`${event.image_url}`} />
-        ) : (
-          <CardMedia className={classes.media} image={noImageFound} />
+          </div>
         )}
-      </a>
+        subheader={(
+          <div>
+            {event.start_time !== null ? (
+              <>
+                {`${moment(event.start_time).format('lll')} to ${moment(
+                  event.end_time
+                ).format('LT')}`}
+              </>
+            ) : (
+              <>Always open.</>
+            )}
+            {renderEventType(event.kind)}
+            <Grid container direction='row' justify='center' spacing={1}>
+              <Grid item>
+                <EventButton className={classes.actions} link={event.link} />
+              </Grid>
+            </Grid>
+          </div>
+        )}
+      />
+      {event.image_url ? (
+        <CardMedia className={classes.media} image={`${event.image_url}`} />
+      ) : (
+        <CardMedia className={classes.media} image={noImageFound} />
+      )}
     </Card>
   );
 }

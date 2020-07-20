@@ -84,8 +84,8 @@ function Master(props) {
     setOptions(props.accounts);
     setAllOptions(props.accounts);
 
-    setMentorResults(props.accounts.filter((p) => p.user_type === 'Mentor'));
-    setMenteeResults(props.accounts.filter((p) => p.user_type === 'Mentee'));
+    setMentorResults(Object.values(props.mentors).map((m) => m.account));
+    setMenteeResults(Object.values(props.mentees).map((m) => m.account));
   }, [props.accounts]);
 
   return (

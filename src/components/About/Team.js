@@ -32,25 +32,6 @@ const useStyles = makeStyles((theme) => ({
   googleButton: {
     paddingLeft: '22px',
   },
-  prefix: {
-    paddingLeft: '8px',
-    color: '#005086',
-    fontSize: '200%',
-  },
-  suffix: {
-    color: '#61CCD7',
-    fontSize: '200%',
-  },
-  description: {
-    paddingLeft: '8px',
-    color: '#777272',
-  },
-  navleft: {
-    color: '#005086',
-  },
-  navright: {
-    color: '#005086',
-  },
   button: {
     minWidth: 200,
   },

@@ -33,7 +33,7 @@ import Past from '../EventsList/Past';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.common.teamGreen,
+    backgroundColor: theme.palette.common.teamBlue,
   },
   wordDivider: {
     fontSize: 44,
@@ -44,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   card: {
-    margin: theme.spacing(8),
+    backgroundColor: theme.palette.common.teamBlue,
+    // margin: theme.spacing(8),
     padding: theme.spacing(8),
     minHeight: '100vh',
   },
@@ -94,7 +95,7 @@ function Dashboard(props) {
       <Navbar />
       <Grid container direction='row' alignItems='center' justify='center'>
         <Grid item xs={12}>
-          <Card className={classes.card}>
+          <Card className={classes.card} elevation={0}>
             <Grid
               container
               direction='row'
@@ -110,17 +111,7 @@ function Dashboard(props) {
               <Grid item xs={12}>
                 {renderRightDashboard()}
               </Grid>
-              <Grid item xs={12}>
-                <Typography className={classes.cardsIntro}>
-                  Upcoming Events:
-                </Typography>
-              </Grid>
               <Upcoming />
-              <Grid item xs={12}>
-                <Typography className={classes.cardsIntro}>
-                  Past Events:
-                </Typography>
-              </Grid>
               <Past />
             </Grid>
           </Card>

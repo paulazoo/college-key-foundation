@@ -24,12 +24,10 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   title: {
-    margin: 0,
     marginTop: theme.spacing(4),
-    color: theme.palette.common.white,
-    fontWeight: 'light',
-    fontSize: 30,
-    letterSpacing: 0.3,
+    padding: theme.spacing(1),
+    fontWeight: 'bold',
+    fontSize: 24,
   },
   titleContainer: {
     textAlign: 'left',
@@ -58,7 +56,7 @@ function EventsList({ points, title, more, ...props }) {
   return (
     <>
       <Grid item xs={12} className={classes.titleContainer}>
-        <Typography className={classes.title}>{title}</Typography>
+        <Typography className={classes.title}>{`${title}:`}</Typography>
       </Grid>
       <Grid item xs={12} className={classes.cardListGridContainer}>
         {points.length > 0 ? (
@@ -67,8 +65,8 @@ function EventsList({ points, title, more, ...props }) {
               {points
                 .sort(
                   (a, b) =>
-                    (b.start_time != null) - (a.start_time != null) ||
-                    moment(b.start_time) - moment(a.start_time)
+                    (a.start_time != null) - (b.start_time != null) ||
+                    moment(a.start_time) - moment(b.start_time)
                 )
                 .map((point, i) => (
                   <Grid item key={i}>
