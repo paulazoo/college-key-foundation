@@ -56,10 +56,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 48,
   },
-  cardsIntro: {
-    fontWeight: 'bold',
-    fontSize: 24,
-  },
 }));
 
 function Dashboard(props) {
@@ -75,7 +71,6 @@ function Dashboard(props) {
     if (props.account.user_type === 'Mentor') {
       return (
         <>
-          <Typography className={classes.cardsIntro}>Your Mentees:</Typography>
           <MentorDashboard />
         </>
       );
@@ -83,7 +78,6 @@ function Dashboard(props) {
     if (props.account.user_type === 'Mentee') {
       return (
         <>
-          <Typography className={classes.cardsIntro}>Your Mentor:</Typography>
           <MenteeDashboard />
         </>
       );

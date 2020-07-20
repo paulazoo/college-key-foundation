@@ -19,19 +19,51 @@ import ProfileCard from '../ProfilePic/ProfileCard';
 
 // Custom Components
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  dashboard: {
+    display: 'flex',
+  },
+  classroom: {
+    width: '100%',
+    padding: theme.spacing(1),
+    display: 'flex',
+  },
+  cardsIntro: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+}));
 
 function MentorDashboard(props) {
   const classes = useStyles();
 
   return (
     <>
-      <Grid container direction='column' spacing={1}>
+      <Typography className={classes.cardsIntro}>Your Mentees:</Typography>
+      <Grid container direction='row' spacing={1} className={classes.dashboard}>
         {props.user.mentees &&
           props.user.mentees.map((mentee) => (
-            <Grid item key={mentee.id}>
-              <ProfileCard account={mentee.account} />
-            </Grid>
+            <>
+              <Grid item xs={10} key={mentee.id}>
+                <ProfileCard account={mentee.account} />
+              </Grid>
+              <Grid item xs={2} style={{ display: 'flex' }}>
+                <Card className={classes.classroom}>
+                  <Grid
+                    container
+                    direction='row'
+                    alignItems='center'
+                    justify='center'
+                  >
+                    <Grid item>
+                      <Button variant='contained' color='secondary'>
+                        Go To Google Classroom
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Card>
+              </Grid>
+            </>
           ))}
       </Grid>
     </>

@@ -19,18 +19,34 @@ import ProfileCard from '../ProfilePic/ProfileCard';
 
 // Custom Components
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  cardsIntro: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+}));
 
 function MenteeDashboard(props) {
   const classes = useStyles();
 
   return (
     <>
+      {/* <Typography className={classes.cardsIntro}>Your Google Classroom:</Typography> */}
+      <Grid container direction='row' alignItems='center' justify='center'>
+        <Grid item>
+          <Button variant='contained' color='secondary'>
+            Go To Google Classroom
+          </Button>
+        </Grid>
+      </Grid>
+      <Typography className={classes.cardsIntro}>Your Mentor:</Typography>
       <Grid container direction='column'>
         {props.user.mentor && (
-          <Grid item>
-            <ProfileCard account={props.user.mentor.account} />
-          </Grid>
+          <>
+            <Grid item>
+              <ProfileCard account={props.user.mentor.account} />
+            </Grid>
+          </>
         )}
       </Grid>
     </>
