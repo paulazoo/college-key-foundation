@@ -93,7 +93,7 @@ function SkinnyEventCard({ event, ...props }) {
           onClick={handleEventCardClick}
         >
           <CardHeader
-            title={
+            title={(
               <Grid
                 container
                 direction='row'
@@ -121,10 +121,14 @@ function SkinnyEventCard({ event, ...props }) {
                   )}
                 </Grid>
                 <Grid item>
-                  <EventButton className={classes.actions} link={event.link} />
+                  <EventButton
+                    className={classes.actions}
+                    link={event.link}
+                    showJoin
+                  />
                 </Grid>
               </Grid>
-            }
+            )}
           />
         </CardActionArea>
       </Card>

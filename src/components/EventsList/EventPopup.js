@@ -140,9 +140,19 @@ function EventPopup({ event, popupOpen, setPopupOpen, ...props }) {
                 {event.description && event.description}
               </Typography>
             </Grid>
-            <Grid item xs={12} />
             <Grid item xs={12}>
-              <EventButton fullLink link={event.link} />
+              <Typography className={classes.cardDesc}>
+                Link to join will show up 24 hours before event begins.
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <EventButton
+                fullLink
+                link={event.link}
+                showJoin={moment()
+                  .add(1, 'days')
+                  .isAfter(moment(event.start_time))}
+              />
             </Grid>
           </Grid>
         </CardContent>

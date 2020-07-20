@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     bottom: 0,
   },
-  actions: {},
   nameText: {},
   cardTitle: {
     alignItems: 'center',
@@ -127,7 +126,12 @@ function EventCard({ event, ...props }) {
               {renderEventType(event.kind)}
               <Grid container direction='row' justify='center' spacing={1}>
                 <Grid item>
-                  <EventButton className={classes.actions} link={event.link} />
+                  <EventButton
+                    link={event.link}
+                    showJoin={moment()
+                      .add(1, 'days')
+                      .isAfter(moment(event.start_time))}
+                  />
                 </Grid>
               </Grid>
             </div>
