@@ -28,26 +28,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 24,
     color: theme.palette.common.white,
   },
-  toolbar: {
-    justifyContent: 'space-between',
-  },
-  leftLinkActive: {
-    color: theme.palette.common.white,
-  },
-  rightLink: {
-    fontSize: 16,
-    color: theme.palette.common.white,
-    fontWeight: 'bold',
-    marginLeft: theme.spacing(3),
-  },
-  linkSecondary: {
-    color: theme.palette.secondary.main,
-  },
-  appBar: {
-    height: theme.spacing(15),
-    justifyContent: 'center',
-    backgroundColor: theme.palette.primary.main,
-  },
 }));
 
 function DesktopNavbar({ ...props }) {

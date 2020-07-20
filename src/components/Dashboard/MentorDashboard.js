@@ -57,7 +57,7 @@ function MentorDashboard(props) {
                   >
                     <Grid item>
                       <Button variant='contained' color='secondary'>
-                        Go To Google Classroom
+                        Mentee's Google Classroom
                       </Button>
                     </Grid>
                   </Grid>

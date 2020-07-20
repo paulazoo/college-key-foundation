@@ -29,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
   eventCard: {
     width: '100%',
     position: 'relative',
+    height: '100%',
+    overflow: 'auto',
   },
   eventActionArea: {
     position: 'relative',
@@ -38,23 +40,23 @@ const useStyles = makeStyles((theme) => ({
   cardTitle: {
     alignItems: 'center',
     alignContent: 'center',
-    fontSize: 32,
+    fontSize: 26,
   },
   cardTime: {
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: 'light',
     color: theme.palette.common.gray,
     margin: 0,
   },
   cardHost: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   cardKind: {
-    fontSize: 24,
+    fontSize: 18,
   },
   cardDesc: {
-    fontSize: 20,
+    fontSize: 16,
   },
   descContainer: {
     wordBreak: 'break-word',
@@ -140,24 +142,7 @@ function EventPopup({ event, popupOpen, setPopupOpen, ...props }) {
             </Grid>
             <Grid item xs={12} />
             <Grid item xs={12}>
-              <Grid container direction='row' justify='center'>
-                <Grid item>
-                  <a
-                    rel='noreferrer'
-                    target='_blank'
-                    href={event.link}
-                    className={classes.linkText}
-                  >
-                    <Box className={classes.linkContainer}>
-                      <Button variant='contained' color='secondary'>
-                        <h3 className={classes.link}>
-                          {`Link to Join: ${event.link}`}
-                        </h3>
-                      </Button>
-                    </Box>
-                  </a>
-                </Grid>
-              </Grid>
+              <EventButton fullLink link={event.link} />
             </Grid>
           </Grid>
         </CardContent>

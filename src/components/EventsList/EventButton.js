@@ -42,24 +42,56 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.black,
     textDecoration: 'none',
   },
+  buttonContainer: {
+    padding: '10px !important',
+  },
 }));
 
-function EventButton({ link, ...props }) {
+function EventButton({ link, fullLink = false, ...props }) {
   const classes = useStyles();
 
   return (
-    <a
-      rel='noreferrer'
-      target='_blank'
-      href={link}
-      className={classes.linkText}
+    <Grid
+      container
+      direction='row'
+      alignItems='center'
+      justify='center'
+      className={classes.buttonContainer}
+      spacing={2}
     >
-      <Box className={classes.linkContainer}>
-        <Button variant='contained' color='secondary'>
-          <h3 className={classes.link}>Join!</h3>
-        </Button>
-      </Box>
-    </a>
+      <Grid item>
+        <a
+          rel='noreferrer'
+          target='_blank'
+          href={link}
+          className={classes.linkText}
+        >
+          <Box className={classes.linkContainer}>
+            <Button variant='contained' color='primary'>
+              <h3 className={classes.link}>
+                {fullLink ? `Link To Register: ${link}` : 'Register'}
+              </h3>
+            </Button>
+          </Box>
+        </a>
+      </Grid>
+      <Grid item>
+        <a
+          rel='noreferrer'
+          target='_blank'
+          href={link}
+          className={classes.linkText}
+        >
+          <Box className={classes.linkContainer}>
+            <Button variant='contained' color='secondary' disabled>
+              <h3 className={classes.link}>
+                {fullLink ? `Link To Join: ${link}` : 'Join!'}
+              </h3>
+            </Button>
+          </Box>
+        </a>
+      </Grid>
+    </Grid>
   );
 }
 

@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16,
     color: theme.palette.common.white,
     fontWeight: 'bold',
-    marginLeft: theme.spacing(3),
   },
   linkSecondary: {
     color: theme.palette.secondary.main,
@@ -74,7 +73,7 @@ function LoggedInNavbar({ ...props }) {
           justify='space-between'
           alignItems='center'
         >
-          <Grid item xs={3}>
+          <Grid item xs={4}>
             <Grid
               container
               direction='row'
@@ -93,7 +92,7 @@ function LoggedInNavbar({ ...props }) {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={8}>
             <Grid
               container
               direction='row'

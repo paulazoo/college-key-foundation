@@ -50,29 +50,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 24,
     color: 'white',
   },
-  placeholder: theme.spacing(8),
-  toolbar: {
-    justifyContent: 'space-between',
-  },
-  left: {
-    flex: 1,
-  },
-  leftLinkActive: {
-    color: theme.palette.common.white,
-  },
-  right: {
-    flex: 1,
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  rightLink: {
-    fontSize: 16,
-    color: theme.palette.common.white,
-    marginLeft: theme.spacing(3),
-  },
-  linkSecondary: {
-    color: theme.palette.secondary.main,
-  },
 }));
 
 function NavBar(props) {
