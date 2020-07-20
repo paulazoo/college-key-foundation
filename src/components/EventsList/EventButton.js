@@ -66,42 +66,41 @@ function EventButton({
       spacing={2}
     >
       <Grid item>
-        <a
-          rel='noreferrer'
-          target='_blank'
-          href={link}
-          className={classes.linkText}
-        >
-          <Box className={classes.linkContainer}>
-            <Button variant='contained' color='primary'>
-              {registered ? (
-                <h3 className={classes.link}>
-                  {fullLink ? `Link To Unregister: ${link}` : 'Unregister'}
-                </h3>
-              ) : (
-                <h3 className={classes.link}>
-                  {fullLink ? `Link To Register: ${link}` : 'Register'}
-                </h3>
-              )}
-            </Button>
-          </Box>
-        </a>
+        <Box className={classes.linkContainer}>
+          <Button
+            variant='contained'
+            color='primary'
+            rel='noreferrer'
+            target='_blank'
+            href={link}
+          >
+            {registered ? (
+              <h3 className={classes.link}>
+                {fullLink ? `Link To Unregister: ${link}` : 'Unregister'}
+              </h3>
+            ) : (
+              <h3 className={classes.link}>
+                {fullLink ? `Link To Register: ${link}` : 'Register'}
+              </h3>
+            )}
+          </Button>
+        </Box>
       </Grid>
       <Grid item>
-        <a
-          rel='noreferrer'
-          target='_blank'
-          href={link}
-          className={classes.linkText}
-        >
-          <Box className={classes.linkContainer}>
-            <Button variant='contained' color='secondary' disabled={!showJoin}>
-              <h3 className={classes.link}>
-                {fullLink ? `Link To Join: ${link}` : 'Join!'}
-              </h3>
-            </Button>
-          </Box>
-        </a>
+        <Box className={classes.linkContainer}>
+          <Button
+            variant='contained'
+            color='secondary'
+            disabled={!showJoin}
+            rel='noreferrer'
+            target='_blank'
+            href={link}
+          >
+            <h3 className={classes.link}>
+              {fullLink ? `Link To Join: ${link}` : 'Join!'}
+            </h3>
+          </Button>
+        </Box>
       </Grid>
     </Grid>
   );
