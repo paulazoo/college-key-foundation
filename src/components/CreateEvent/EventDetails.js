@@ -51,6 +51,7 @@ function EventDetails(props) {
   const [eventHost, setEventHost] = useState('');
   const [eventKind, setEventKind] = useState('open');
   const [eventDescription, setEventDescription] = useState('');
+  const [eventImageUrl, setEventImageUrl] = useState('');
   const [eventLink, setEventLink] = useState('');
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
@@ -91,6 +92,13 @@ function EventDetails(props) {
       placeholder: 'www.harvard.zoom.us/j/example',
       disabled: false,
     },
+    {
+      value: eventImageUrl,
+      label: 'Image Url',
+      valueName: 'eventImageUrl',
+      placeholder: 'Event card image url',
+      disabled: false,
+    },
   ];
 
   const handleChange = (e) => {
@@ -115,6 +123,10 @@ function EventDetails(props) {
       }
       case 'eventLink': {
         setEventLink(value);
+        break;
+      }
+      case 'eventImageUrl': {
+        setEventImageUrl(value);
         break;
       }
       default:
@@ -145,6 +157,7 @@ function EventDetails(props) {
         kind: eventKind,
         description: eventDescription,
         link: eventLink,
+        image_url: eventImageUrl,
         start_time,
         end_time,
       });
@@ -154,6 +167,7 @@ function EventDetails(props) {
       setEventKind('');
       setEventDescription('');
       setEventLink('');
+      setEventImageUrl('');
       setStartTime(null);
       setEndTime(null);
     } else {
