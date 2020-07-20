@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EventButton({ link, fullLink = false, ...props }) {
+function EventButton({ link, fullLink = false, registered = false, ...props }) {
   const classes = useStyles();
 
   return (
@@ -68,9 +68,15 @@ function EventButton({ link, fullLink = false, ...props }) {
         >
           <Box className={classes.linkContainer}>
             <Button variant='contained' color='primary'>
-              <h3 className={classes.link}>
-                {fullLink ? `Link To Register: ${link}` : 'Register'}
-              </h3>
+              {registered ? (
+                <h3 className={classes.link}>
+                  {fullLink ? `Link To Unregister: ${link}` : 'Unregister'}
+                </h3>
+              ) : (
+                <h3 className={classes.link}>
+                  {fullLink ? `Link To Register: ${link}` : 'Register'}
+                </h3>
+              )}
             </Button>
           </Box>
         </a>
