@@ -7,6 +7,7 @@ import {
   Grid,
   Button,
   Dialog,
+  Box,
   CardActions,
 } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
@@ -58,6 +59,11 @@ const useStyles = makeStyles((theme) => ({
   descContainer: {
     wordBreak: 'break-word',
   },
+  link: {
+    margin: 0,
+    textTransform: 'none',
+  },
+  linkContainer: { wordBreak: 'break-word' },
   linkText: {
     color: theme.palette.common.black,
     textDecoration: 'none',
@@ -136,7 +142,20 @@ function EventPopup({ event, popupOpen, setPopupOpen, ...props }) {
             <Grid item xs={12}>
               <Grid container direction='row' justify='center'>
                 <Grid item>
-                  <EventButton className={classes.actions} link={event.link} />
+                  <a
+                    rel='noreferrer'
+                    target='_blank'
+                    href={event.link}
+                    className={classes.linkText}
+                  >
+                    <Box className={classes.linkContainer}>
+                      <Button variant='contained' color='secondary'>
+                        <h3 className={classes.link}>
+                          {`Link to Join: ${event.link}`}
+                        </h3>
+                      </Button>
+                    </Box>
+                  </a>
                 </Grid>
               </Grid>
             </Grid>

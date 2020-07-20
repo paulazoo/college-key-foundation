@@ -8,7 +8,9 @@ import {
   CardActions,
   CardMedia,
   Grid,
+  IconButton,
 } from '@material-ui/core';
+import InfoIcon from '@material-ui/icons/Info';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 
@@ -19,6 +21,7 @@ import { makeStyles } from '@material-ui/styles';
 
 // Custom Components
 import EventButton from './EventButton';
+import EventPopup from './EventPopup';
 
 const noImageFound = require('../../assets/no-image-found.png');
 
@@ -40,22 +43,38 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
   },
   actions: {},
-  roleText: {
-    fontSize: 15,
-  },
   nameText: {},
   cardTitle: {
     alignItems: 'center',
     alignContent: 'center',
+    paddingTop: '0 !important',
+    paddingRight: '0 !important',
+    paddingLeft: '0 !important',
+    paddingBottom: `${theme.spacing(1)} !important`,
   },
   linkText: {
     color: theme.palette.common.black,
     textDecoration: 'none',
   },
+  infoButton: {
+    padding: 0,
+    height: 29,
+    width: 29,
+  },
+  infoIcon: {
+    height: 29,
+    width: 29,
+  },
 }));
 
 function EventCard({ event, ...props }) {
   const classes = useStyles();
+
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  const handleEventCardClick = () => {
+    setPopupOpen(true);
+  };
 
   const renderEventType = (type) => {
     if (type === 'open') {
@@ -70,42 +89,57 @@ function EventCard({ event, ...props }) {
   };
 
   return (
-    <Card className={classes.eventCard}>
-      <CardHeader
-        title={(
-          <div className={classes.cardTitle}>
-            <strong className={classes.nameText}>{`${event.name} `}</strong>
-            <div className={classes.roleText}>
-              {event.host ? `Hosted By: ${event.host}` : null}
-            </div>
-          </div>
-        )}
-        subheader={(
-          <div>
-            {event.start_time !== null ? (
-              <>
-                {`${moment(event.start_time).format('lll')} to ${moment(
-                  event.end_time
-                ).format('LT')}`}
-              </>
-            ) : (
-              <>Always open.</>
-            )}
-            {renderEventType(event.kind)}
-            <Grid container direction='row' justify='center' spacing={1}>
-              <Grid item>
-                <EventButton className={classes.actions} link={event.link} />
+    <>
+      <EventPopup
+        popupOpen={popupOpen}
+        setPopupOpen={setPopupOpen}
+        event={event}
+      />
+      <Card className={classes.eventCard}>
+        <CardHeader
+          title={
+            <Grid
+              container
+              direction='row'
+              alignItems='center'
+              justify='flex-start'
+              spacing={5}
+            >
+              <Grid item className={classes.cardTitle}>
+                <IconButton onClick={handleEventCardClick}>
+                  <InfoIcon className={classes.infoButton} />
+                </IconButton>
+                <strong className={classes.nameText}>{`${event.name} `}</strong>
               </Grid>
             </Grid>
-          </div>
+          }
+          subheader={
+            <div>
+              {event.start_time !== null ? (
+                <>
+                  {`${moment(event.start_time).format('lll')} to ${moment(
+                    event.end_time
+                  ).format('LT')}`}
+                </>
+              ) : (
+                <>Always open.</>
+              )}
+              {renderEventType(event.kind)}
+              <Grid container direction='row' justify='center' spacing={1}>
+                <Grid item>
+                  <EventButton className={classes.actions} link={event.link} />
+                </Grid>
+              </Grid>
+            </div>
+          }
+        />
+        {event.image_url ? (
+          <CardMedia className={classes.media} image={`${event.image_url}`} />
+        ) : (
+          <CardMedia className={classes.media} image={noImageFound} />
         )}
-      />
-      {event.image_url ? (
-        <CardMedia className={classes.media} image={`${event.image_url}`} />
-      ) : (
-        <CardMedia className={classes.media} image={noImageFound} />
-      )}
-    </Card>
+      </Card>
+    </>
   );
 }
 
