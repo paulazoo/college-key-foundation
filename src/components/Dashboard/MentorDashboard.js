@@ -26,7 +26,7 @@ function MentorDashboard(props) {
 
   return (
     <>
-      <Grid container direction='column'>
+      <Grid container direction='column' spacing={1}>
         {props.user.mentees &&
           props.user.mentees.map((mentee) => (
             <Grid item>
