@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function LoggedInNavBar({ ...props }) {
+function LoggedInNavbar({ ...props }) {
   const classes = useStyles();
   const history = useHistory();
 
@@ -70,7 +70,7 @@ function LoggedInNavBar({ ...props }) {
           justify='space-between'
           alignItems='center'
         >
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Grid
               container
               direction='row'
@@ -89,69 +89,79 @@ function LoggedInNavBar({ ...props }) {
               </Grid>
             </Grid>
           </Grid>
-          {(props.account.email === 'paulazhu@college.harvard.edu' ||
-            props.account.email === 'collegekeyfoundation@gmail.com') && (
-            <Grid item>
-              <Tooltip title='Secret Master Controller!'>
-                <Button
-                  color='inherit'
-                  className={classes.rightLink}
-                  component={NavLink}
-                  to='/master'
-                >
-                  Master
-                </Button>
-              </Tooltip>
+          <Grid item xs={9}>
+            <Grid
+              container
+              direction='row'
+              justify='flex-end'
+              alignItems='center'
+              spacing={10}
+            >
+              {(props.account.email === 'paulazhu@college.harvard.edu' ||
+                props.account.email === 'collegekeyfoundation@gmail.com') && (
+                <Grid item>
+                  <Tooltip title='Secret Master Controller!'>
+                    <Button
+                      color='inherit'
+                      className={classes.rightLink}
+                      component={NavLink}
+                      to='/master'
+                    >
+                      Master
+                    </Button>
+                  </Tooltip>
+                </Grid>
+              )}
+              <Grid item>
+                <Tooltip title='Dashboard'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    component={NavLink}
+                    to='/dashboard'
+                  >
+                    Dashboard
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item>
+                <Tooltip title='Profile'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    component={NavLink}
+                    to='/profile'
+                  >
+                    Profile
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item>
+                <Tooltip title='Donate'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    target='_blank'
+                    href='https://www.gofundme.com/f/the-college-key'
+                  >
+                    Donate
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item>
+                <Tooltip title='Logout'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item xs={1} />
             </Grid>
-          )}
-          <Grid item>
-            <Tooltip title='Dashboard'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                component={NavLink}
-                to='/dashboard'
-              >
-                Dashboard
-              </Button>
-            </Tooltip>
           </Grid>
-          <Grid item>
-            <Tooltip title='Profile'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                component={NavLink}
-                to='/profile'
-              >
-                Profile
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item>
-            <Tooltip title='Donate'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                target='_blank'
-                href='https://www.gofundme.com/f/the-college-key'
-              >
-                Donate
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item>
-            <Tooltip title='Logout'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                onClick={handleLogout}
-              >
-                Logout
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item xs={1} />
         </Grid>
       </Toolbar>
     </MuiAppBar>
@@ -167,4 +177,4 @@ const mapDispatchToProps = (dispatch) => ({
   userLogout: () => dispatch(userLogout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoggedInNavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(LoggedInNavbar);

@@ -32,6 +32,11 @@ export const loggedOutMenuItems = [
     icon: <ViewQuiltIcon />,
   },
   {
+    text: 'Events',
+    link: '/events',
+    icon: <ViewQuiltIcon />,
+  },
+  {
     text: 'Apply',
     link: '/apply',
     icon: <VerticalSplitIcon />,

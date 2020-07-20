@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NavBar({ ...props }) {
+function DesktopNavbar({ ...props }) {
   const classes = useStyles();
   const history = useHistory();
 
@@ -78,4 +78,4 @@ const mapDispatchToProps = (dispatch) => ({
   userLogout: () => dispatch(userLogout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(DesktopNavbar);

@@ -45,6 +45,7 @@ import Apply from './components/Apply/Apply';
 import Dashboard from './components/Dashboard/Dashboard';
 import Master from './components/Master/Master';
 import Profile from './components/Profile/Profile';
+import PublicEvents from './components/PublicEvents/PublicEvents';
 
 require('dotenv').config();
 
@@ -85,6 +86,7 @@ ReactDOM.render(
                 path='/fellowship-program'
                 component={FellowshipProgram}
               />
+              <Route exact path='/events' component={PublicEvents} />
               <Route exact path='/mentees' component={MenteesPage} />
               <Route exact path='/mentors' component={MentorsPage} />
               <Route exact path='/apply' component={Apply} />

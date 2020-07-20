@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function LoggedOutNavBar({ ...props }) {
+function LoggedOutNavbar({ ...props }) {
   const classes = useStyles();
   const history = useHistory();
 
@@ -61,7 +61,7 @@ function LoggedOutNavBar({ ...props }) {
           justify='space-between'
           alignItems='center'
         >
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Grid
               container
               direction='row'
@@ -80,79 +80,102 @@ function LoggedOutNavBar({ ...props }) {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
-            <Tooltip title='Home'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                component={NavLink}
-                to='/'
-              >
-                Home
-              </Button>
-            </Tooltip>
+
+          <Grid item xs={9}>
+            <Grid
+              container
+              direction='row'
+              justify='flex-end'
+              alignItems='center'
+              spacing={10}
+            >
+              <Grid item>
+                <Tooltip title='Home'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    component={NavLink}
+                    to='/'
+                  >
+                    Home
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item>
+                <Tooltip title='About Us'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    component={NavLink}
+                    to='/about-us'
+                  >
+                    About Us
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item>
+                <Tooltip title='Fellowship Program'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    component={NavLink}
+                    to='/fellowship-program'
+                  >
+                    Fellowship Program
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item>
+                <Tooltip title='Events'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    component={NavLink}
+                    to='/events'
+                  >
+                    Events
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item>
+                <Tooltip title='Donate'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    target='_blank'
+                    href='https://www.gofundme.com/f/the-college-key'
+                  >
+                    Donate
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item>
+                <Tooltip title='Apply'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    component={NavLink}
+                    to='/apply'
+                  >
+                    Apply
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item>
+                <Tooltip title='Login'>
+                  <Button
+                    color='inherit'
+                    className={classes.rightLink}
+                    component={NavLink}
+                    to='/login'
+                  >
+                    Login
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item xs={1} />
+            </Grid>
           </Grid>
-          <Grid item>
-            <Tooltip title='About Us'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                component={NavLink}
-                to='/about-us'
-              >
-                About Us
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item>
-            <Tooltip title='Fellowship Program'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                component={NavLink}
-                to='/fellowship-program'
-              >
-                Fellowship Program
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item>
-            <Tooltip title='Donate'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                target='_blank'
-                href='https://www.gofundme.com/f/the-college-key'
-              >
-                Donate
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item>
-            <Tooltip title='Apply'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                component={NavLink}
-                to='/apply'
-              >
-                Apply
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item>
-            <Tooltip title='Login'>
-              <Button
-                color='inherit'
-                className={classes.rightLink}
-                component={NavLink}
-                to='/login'
-              >
-                Login
-              </Button>
-            </Tooltip>
-          </Grid>
-          <Grid item xs={1} />
         </Grid>
       </Toolbar>
     </MuiAppBar>
@@ -167,4 +190,4 @@ const mapDispatchToProps = (dispatch) => ({
   userLogout: () => dispatch(userLogout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoggedOutNavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(LoggedOutNavbar);
