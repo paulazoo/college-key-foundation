@@ -56,7 +56,7 @@ function EventButton({ link, ...props }) {
     >
       <Box className={classes.linkContainer}>
         <Button variant='contained' color='secondary'>
-          <h3 className={classes.link}>{`Join: ${link}`}</h3>
+          <h3 className={classes.link}>Join!</h3>
         </Button>
       </Box>
     </a>

@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: 'normal',
     fontWeight: 'normal',
     color: theme.palette.common.white,
-    fontSize: 24,
+    fontSize: 18,
     [theme.breakpoints.down('sm')]: {
       fontSize: 12,
     },

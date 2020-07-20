@@ -46,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     backgroundColor: theme.palette.primary.main,
   },
+  lastItem: {
+    padding: 0,
+    paddingRight: '10px !important',
+  },
 }));
 
 function LoggedInNavbar({ ...props }) {
@@ -93,9 +97,8 @@ function LoggedInNavbar({ ...props }) {
             <Grid
               container
               direction='row'
-              justify='flex-end'
+              justify='space-between'
               alignItems='center'
-              spacing={10}
             >
               {(props.account.email === 'paulazhu@college.harvard.edu' ||
                 props.account.email === 'collegekeyfoundation@gmail.com') && (
@@ -148,7 +151,7 @@ function LoggedInNavbar({ ...props }) {
                   </Button>
                 </Tooltip>
               </Grid>
-              <Grid item>
+              <Grid item className={classes.lastItem}>
                 <Tooltip title='Logout'>
                   <Button
                     color='inherit'
@@ -159,7 +162,6 @@ function LoggedInNavbar({ ...props }) {
                   </Button>
                 </Tooltip>
               </Grid>
-              <Grid item xs={1} />
             </Grid>
           </Grid>
         </Grid>

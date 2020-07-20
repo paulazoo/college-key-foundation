@@ -44,14 +44,14 @@ function Past(props) {
 
   return (
     <>
-      {props.publicEvents && props.publicEvents.length > 0 ? (
+      {props.publicEvents && props.publicEvents.length > 0 && (
         <EventsList
-          events={props.publicEvents.filter((e) =>
+          points={props.publicEvents.filter((e) =>
             moment(e.end_time).isBefore(moment())
           )}
+          title='Your Past Events'
+          more='past'
         />
-      ) : (
-        <Typography>No Past Events</Typography>
       )}
     </>
   );

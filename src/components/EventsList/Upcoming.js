@@ -44,14 +44,14 @@ function Upcoming(props) {
 
   return (
     <>
-      {props.publicEvents && props.publicEvents.length > 0 ? (
+      {props.publicEvents && props.publicEvents.length > 0 && (
         <EventsList
-          events={props.publicEvents.filter((e) =>
+          points={props.publicEvents.filter((e) =>
             moment().isBefore(moment(e.end_time))
           )}
+          title='Your Upcoming Events'
+          more='upcoming'
         />
-      ) : (
-        <Typography>No Upcoming Events</Typography>
       )}
     </>
   );

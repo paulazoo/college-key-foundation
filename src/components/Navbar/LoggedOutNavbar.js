@@ -85,9 +85,8 @@ function LoggedOutNavbar({ ...props }) {
             <Grid
               container
               direction='row'
-              justify='flex-end'
+              justify='space-between'
               alignItems='center'
-              spacing={10}
             >
               <Grid item>
                 <Tooltip title='Home'>
@@ -161,7 +160,7 @@ function LoggedOutNavbar({ ...props }) {
                   </Button>
                 </Tooltip>
               </Grid>
-              <Grid item>
+              <Grid item className={classes.lastItem}>
                 <Tooltip title='Login'>
                   <Button
                     color='inherit'
@@ -173,7 +172,6 @@ function LoggedOutNavbar({ ...props }) {
                   </Button>
                 </Tooltip>
               </Grid>
-              <Grid item xs={1} />
             </Grid>
           </Grid>
         </Grid>
