@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EventCard({ event, ...props }) {
+function SkinnyEventCard({ event, ...props }) {
   const classes = useStyles();
 
   const [popupOpen, setPopupOpen] = useState(false);
@@ -98,7 +98,7 @@ function EventCard({ event, ...props }) {
                 container
                 direction='row'
                 alignItems='center'
-                justify='space-between'
+                justify='flex-start'
                 spacing={5}
               >
                 <Grid item className={classes.cardTitle}>
@@ -120,15 +120,6 @@ function EventCard({ event, ...props }) {
                     <>Always open.</>
                   )}
                 </Grid>
-              </Grid>
-            }
-            subheader={
-              <Grid
-                container
-                direction='row'
-                alignItems='center'
-                justify='center'
-              >
                 <Grid item>
                   <EventButton className={classes.actions} link={event.link} />
                 </Grid>
@@ -141,4 +132,4 @@ function EventCard({ event, ...props }) {
   );
 }
 
-export default EventCard;
+export default SkinnyEventCard;

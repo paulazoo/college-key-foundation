@@ -15,7 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
-import EventCard from './EventCard';
+import SkinnyEventCard from './SkinnyEventCard';
 
 // Custom Components
 
@@ -49,7 +49,7 @@ function EventsList({ events, ...props }) {
             )
             .map((event) => (
               <Grid item xs={12}>
-                <EventCard event={event} />
+                <SkinnyEventCard event={event} />
               </Grid>
             ))}
         </Grid>

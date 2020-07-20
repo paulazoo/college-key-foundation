@@ -15,7 +15,6 @@ import { makeStyles } from '@material-ui/core/styles';
 // Redux
 import { connect } from 'react-redux';
 import { userLogout, setUser } from '../../store/actions/index';
-import EventCard from './EventCard';
 import EventsList from './EventsList';
 import { getPublicEvents } from '../../store/actions/api';
 
