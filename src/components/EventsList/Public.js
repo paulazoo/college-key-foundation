@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function UpcomingPublic(props) {
+function Public(props) {
   const classes = useStyles();
 
   useEffect(() => {
@@ -71,4 +71,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpcomingPublic);
+export default connect(mapStateToProps, mapDispatchToProps)(Public);

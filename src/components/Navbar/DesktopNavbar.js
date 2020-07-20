@@ -61,7 +61,7 @@ function NavBar({ ...props }) {
   return (
     <>
       <PersonalSnackbar />
-      {localStorage.getItem('user_token') ? (
+      {localStorage.getItem('user_token') && props.user.id ? (
         <LoggedInNavbar />
       ) : (
         <LoggedOutNavbar />

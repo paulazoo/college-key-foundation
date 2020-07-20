@@ -42,13 +42,11 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     margin: theme.spacing(8),
-    marginTop: 0,
     padding: theme.spacing(8),
     height: '40vh',
     [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(3),
       margin: theme.spacing(1),
-      marginTop: '15vh',
     },
   },
   loginTextContainer: {
@@ -126,7 +124,15 @@ function LoginPage(props) {
     if (props.currentlyLoading === true) {
       return (
         <Grid item xs={12}>
-          <CircularProgress />
+          <Grid container direction='row' alignItem='center' justify='center'>
+            <Grid item>
+              <Typography>Please wait while logging in...</Typography>
+            </Grid>
+            <Grid item xs={12} />
+            <Grid item>
+              <CircularProgress />
+            </Grid>
+          </Grid>
         </Grid>
       );
     }

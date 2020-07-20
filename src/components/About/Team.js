@@ -269,9 +269,9 @@ function Team(props) {
                       <Typography className={classes.memberName}>
                         {member.name}
                       </Typography>
-                      <Typography className={classes.memberTeamName}>
+                      {/* <Typography className={classes.memberTeamName}>
                         {teamName}
-                      </Typography>
+                      </Typography> */}
                       <Typography className={classes.memberPosition}>
                         {member.position}
                       </Typography>

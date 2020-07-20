@@ -26,10 +26,14 @@ function MentorDashboard(props) {
 
   return (
     <>
-      {props.user.mentees &&
-        props.user.mentees.map((mentee) => (
-          <ProfileCard account={mentee.account} />
-        ))}
+      <Grid container direction='column'>
+        {props.user.mentees &&
+          props.user.mentees.map((mentee) => (
+            <Grid item>
+              <ProfileCard account={mentee.account} />
+            </Grid>
+          ))}
+      </Grid>
     </>
   );
 }

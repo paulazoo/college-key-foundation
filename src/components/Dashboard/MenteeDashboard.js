@@ -26,7 +26,13 @@ function MenteeDashboard(props) {
 
   return (
     <>
-      {props.user.mentor && <ProfileCard account={props.user.mentor.account} />}
+      <Grid container direction='column'>
+        {props.user.mentor && (
+          <Grid item>
+            <ProfileCard account={props.user.mentor.account} />
+          </Grid>
+        )}
+      </Grid>
     </>
   );
 }
