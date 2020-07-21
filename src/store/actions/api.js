@@ -370,6 +370,32 @@ export const postEvents = (body) => {
   };
 };
 
+export const postImport = () => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify({}),
+    };
+    api(`mentees/import`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: `Google sheets data imported into database!`,
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
 // PUT Calls:
 export const putAccount = (body) => {
   return (dispatch, getState) => {

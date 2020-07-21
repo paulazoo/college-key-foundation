@@ -34,6 +34,7 @@ import ShowAccounts from './ShowAccounts';
 import MatchMentorMentee from './MatchMentorMentee';
 import AccountSearch from './AccountSearch';
 import CreateEvent from '../CreateEvent/CreateEvent';
+import Import from './Import';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontWeight: 'bold',
-    fontSize: 24,
+    fontSize: 48,
   },
   cardUnauthorized: {
     margin: theme.spacing(2),
@@ -104,6 +105,13 @@ function Master(props) {
           <Grid item xs={12} className={classes.textContainer}>
             <Typography className={classes.text}>Master Controls</Typography>
           </Grid>
+
+          <Grid item xs={12}>
+            <Card className={classes.card}>
+              <Import />
+            </Card>
+          </Grid>
+
           <Grid item xs={12}>
             <Card className={classes.card}>
               <AddAccounts />
