@@ -12,6 +12,7 @@ import {
   FormControl,
   Box,
 } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import moment from 'moment';
 
 // Redux
@@ -175,6 +176,33 @@ function EventDetails(props) {
     }
   };
 
+  const renderAccountItem = (person) => {
+    return (
+      <MenuItem value={person.user_id} key={person.id}>
+        <Grid container direction='row' alignItems='center' spacing={1}>
+          <Grid item>
+            {person.image_url && (
+              <img
+                style={{
+                  height: '24px',
+                  width: '24px',
+                  display: 'block',
+                  borderRadius: '50%',
+                }}
+                src={person.image_url}
+                alt='Profile picture'
+              />
+            )}
+          </Grid>
+          <Grid item>{person.email}</Grid>
+          <Grid item xs={12}>
+            {person.name && `(${person.name})`}
+          </Grid>
+        </Grid>
+      </MenuItem>
+    );
+  };
+
   return (
     <>
       <CardContent style={{ padding: 60, paddingTop: 18, paddingBottom: 40 }}>
@@ -276,6 +304,44 @@ function EventDetails(props) {
 
           <Grid item xs={12}>
             <Grid container direction='row' spacing={3}>
+              {eventKind === 'invite_only' && (
+                <>
+                  <Grid
+                    item
+                    xs={3}
+                    style={{
+                      display: 'inline-flex',
+                      textAlign: 'left',
+                      verticalAlign: 'middle',
+                      justifyContent: 'flex-start',
+                    }}
+                  >
+                    <Typography
+                      className={classes.headText}
+                      style={{ alignSelf: 'center' }}
+                    >
+                      Invited People:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={9}>
+                    <Autocomplete
+                      multiple
+                      options={props.accounts}
+                      getOptionLabel={(option) => option.email}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          variant='standard'
+                          label='Select people to invite'
+                        />
+                      )}
+                      renderOption={(option, { selected }) => (
+                        <>{renderAccountItem(option)}</>
+                      )}
+                    />
+                  </Grid>
+                </>
+              )}
               <Grid
                 item
                 xs={3}
@@ -329,6 +395,7 @@ function EventDetails(props) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  accounts: state.master.accounts,
 });
 
 function mapDispatchToProps(dispatch) {

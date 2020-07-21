@@ -1,38 +1,47 @@
-import React, { useState } from 'react';
-import { Button, TextField, Grid, CardContent } from '@material-ui/core';
-
-// Theme
+/* eslint-disable no-use-before-define */
+import React from 'react';
+import Chip from '@material-ui/core/Chip';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
-// Redux
-import { connect } from 'react-redux';
-import { userLogout, setUser } from '../../store/actions/index';
-import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: 500,
+    '& > * + *': {
+      marginTop: theme.spacing(3),
+    },
+  },
+}));
 
-// Custom Components
-
-const useStyles = makeStyles((theme) => ({}));
-
-function Testing(props) {
+export default function Tags() {
   const classes = useStyles();
 
-  const handleClick = () => {
-    props.userLogout();
-  };
-
   return (
-    <>
-      <Button onClick={handleClick}>click me to reset and logout</Button>
-    </>
+    <div className={classes.root}>
+      <Autocomplete
+        multiple
+        options={top100Films}
+        getOptionLabel={(option) => option.email}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant='standard'
+            label='Select people to invite'
+          />
+        )}
+        // renderOption={(option, { selected }) => (
+        //   <>{renderMatchMenuItem(option)}</>
+        // )}
+      />
+    </div>
   );
 }
 
-const mapStateToProps = (state) => ({});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    userLogout: () => dispatch(userLogout()),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Testing);
+// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
+const top100Films = [
+  { email: 'The Shawshank Redemption', year: 1994 },
+  { email: 'The Godfather', year: 1972 },
+  { email: 'The Godfather: Part II', year: 1974 },
+  { email: 'The Dark Knight', year: 2008 },
+];
