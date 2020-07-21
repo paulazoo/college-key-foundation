@@ -55,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontWeight: 'bold',
+    fontSize: 24,
+  },
+  title: {
+    fontWeight: 'bold',
     fontSize: 48,
   },
   cardUnauthorized: {
@@ -103,7 +107,7 @@ function Master(props) {
           spacing={3}
         >
           <Grid item xs={12} className={classes.textContainer}>
-            <Typography className={classes.text}>Master Controls</Typography>
+            <Typography className={classes.title}>Master Controls</Typography>
           </Grid>
 
           <Grid item xs={12}>
