@@ -25,6 +25,7 @@ import { theme } from '../../theme';
 
 // Custom Components
 import EventTime from './EventTime';
+import ChipInput from '../Shared/ChipInput';
 
 const useStyles = makeStyles((theme) => ({
   alignRight: {
@@ -57,6 +58,8 @@ function EventDetails(props) {
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [notPossible, setNotPossible] = useState(false);
+  const [invited, setInvited] = useState([]);
+  const [inputInvited, setInputInvited] = useState('');
   const inputs = [
     {
       value: eventName,
@@ -101,6 +104,7 @@ function EventDetails(props) {
       disabled: false,
     },
   ];
+  const [inviteesAddedPeople, setInviteesAddedPeople] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -133,6 +137,19 @@ function EventDetails(props) {
       default:
         throw new Error('No branch selected in switch statement.');
     }
+  };
+
+  // adding invitees
+  const handleInviteesAddPersonChip = (chip) => {
+    const newAddedPeople = inviteesAddedPeople;
+    newAddedPeople.push(chip);
+    setInviteesAddedPeople(newAddedPeople);
+  };
+
+  const handleInviteesDeletePersonChip = (chip, index) => {
+    const newAddedPeople = inviteesAddedPeople;
+    newAddedPeople.splice(index, 1);
+    setInviteesAddedPeople(newAddedPeople);
   };
 
   const onSubmit = () => {
@@ -174,6 +191,11 @@ function EventDetails(props) {
     } else {
       setNotPossible(true);
     }
+  };
+
+  const validateEmail = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
   };
 
   const renderAccountItem = (person) => {
@@ -324,20 +346,15 @@ function EventDetails(props) {
                     </Typography>
                   </Grid>
                   <Grid item xs={9}>
-                    <Autocomplete
-                      multiple
-                      options={props.accounts}
-                      getOptionLabel={(option) => option.email}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          variant='standard'
-                          label='Select people to invite'
-                        />
-                      )}
-                      renderOption={(option, { selected }) => (
-                        <>{renderAccountItem(option)}</>
-                      )}
+                    <ChipInput
+                      onAdd={(chip) => handleInviteesAddPersonChip(chip)}
+                      onDelete={(chip, index) =>
+                        handleInviteesDeletePersonChip(chip, index)}
+                      onBeforeAdd={(chip) => validateEmail(chip)}
+                      value={inviteesAddedPeople}
+                      fullWidth
+                      variant='outlined'
+                      placeholder='Type ENTER after each email to enter'
                     />
                   </Grid>
                 </>
