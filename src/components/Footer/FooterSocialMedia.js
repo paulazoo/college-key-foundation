@@ -15,9 +15,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 
 // Custom Components
-
-import WhiteInstagramSvg from '../../assets/whiteInstagram.svg';
-import WhiteLinkedinSvg from '../../assets/whiteLinkedin.svg';
+import WhiteFacebookSvg from '../../assets/SocialMedia/whiteFacebook.svg';
+import WhiteTwitterSvg from '../../assets/SocialMedia/whiteTwitter.svg';
+import WhiteInstagramSvg from '../../assets/SocialMedia/whiteInstagram.svg';
+import WhiteLinkedinSvg from '../../assets/SocialMedia/whiteLinkedin.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,6 +67,28 @@ function FooterSocialMedia() {
           >
             <Icon>
               <img src={WhiteLinkedinSvg} width={24} height={24} />
+            </Icon>
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <IconButton
+            size='small'
+            target='_blank'
+            href='https://www.facebook.com/College-Key-Foundation-113328083738629'
+          >
+            <Icon>
+              <img src={WhiteFacebookSvg} width={24} height={24} />
+            </Icon>
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <IconButton
+            size='small'
+            target='_blank'
+            href='https://twitter.com/college__key?s=21&fbclid=IwAR0m1F8EBpX-K5MN1K0U1cT8dRWLCzIZH8FeDuE7Chl-eIZJHqbqvfC59m0'
+          >
+            <Icon>
+              <img src={WhiteTwitterSvg} width={24} height={24} />
             </Icon>
           </IconButton>
         </Grid>

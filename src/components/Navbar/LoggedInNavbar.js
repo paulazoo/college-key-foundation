@@ -73,7 +73,7 @@ function LoggedInNavbar({ ...props }) {
           justify='space-between'
           alignItems='center'
         >
-          <Grid item xs={4}>
+          <Grid item xs={6}>
             <Grid
               container
               direction='row'
@@ -92,7 +92,7 @@ function LoggedInNavbar({ ...props }) {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={6}>
             <Grid
               container
               direction='row'

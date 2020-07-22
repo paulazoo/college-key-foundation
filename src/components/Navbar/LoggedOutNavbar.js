@@ -41,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     backgroundColor: theme.palette.primary.main,
   },
+  lastItem: {
+    padding: 0,
+    paddingRight: '10px !important',
+  },
 }));
 
 function LoggedOutNavbar({ ...props }) {
