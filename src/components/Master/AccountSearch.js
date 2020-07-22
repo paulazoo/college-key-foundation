@@ -67,6 +67,7 @@ function AccountSearch({
       }
 
       setMentorResults(preMentors);
+      console.log(preMentees);
     } else if (newValue === null) {
       setMentorResults(allOptions.filter((p) => p.user_type === 'Mentor'));
       setMenteeResults(allOptions.filter((p) => p.user_type === 'Mentee'));
