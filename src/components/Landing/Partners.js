@@ -114,7 +114,7 @@ function Partners(props) {
               <a
                 rel='noreferrer'
                 target='_blank'
-                href='https://weriseabove.org/'
+                href='https://wrafoundation.org/'
               >
                 <img
                   alt='We Rise Above'
