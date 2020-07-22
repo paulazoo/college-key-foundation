@@ -45,7 +45,7 @@ function AsSeenIn(props) {
   const classes = useStyles();
 
   return (
-    <Box bgcolor={theme.palette.primary.light}>
+    <Box bgcolor={theme.palette.common.white}>
       <Grid container direction='row' alignItems='center' justify='center'>
         <Grid item xs={8}>
           <Grid

@@ -45,7 +45,7 @@ function Partners(props) {
   const classes = useStyles();
 
   return (
-    <Box bgcolor={theme.palette.secondary.light}>
+    <Box bgcolor={theme.palette.common.lightGray}>
       <Grid container direction='row' alignItems='center' justify='center'>
         <Grid item xs={12} md={8}>
           <Grid
