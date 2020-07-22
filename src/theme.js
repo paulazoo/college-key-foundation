@@ -33,6 +33,7 @@ export const theme = createMuiTheme({
       teamGreen: '#93E3B6',
       teamBlue: '#92E1E4',
       lightGray: 'lightgray',
+      greenFoam: '#B4D2D4',
     },
   },
   typography: {
