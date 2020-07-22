@@ -170,14 +170,15 @@ function EventDetails(props) {
       }
 
       props.postEvents({
+        start_time,
+        end_time,
         name: eventName,
         host: eventHost,
         kind: eventKind,
         description: eventDescription,
         link: eventLink,
         image_url: eventImageUrl,
-        start_time,
-        end_time,
+        invitees: inviteesAddedPeople,
       });
 
       setEventName('');
@@ -349,7 +350,8 @@ function EventDetails(props) {
                     <ChipInput
                       onAdd={(chip) => handleInviteesAddPersonChip(chip)}
                       onDelete={(chip, index) =>
-                        handleInviteesDeletePersonChip(chip, index)}
+                        handleInviteesDeletePersonChip(chip, index)
+                      }
                       onBeforeAdd={(chip) => validateEmail(chip)}
                       value={inviteesAddedPeople}
                       fullWidth
