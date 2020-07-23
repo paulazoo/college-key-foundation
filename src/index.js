@@ -8,6 +8,10 @@ import {
 } from 'react-router-dom';
 import AppStateProvider from './state';
 
+// Log Rocket
+import LogRocket from 'logrocket';
+import setupLogRocketReact from 'logrocket-react';
+
 // History
 import history from './store/history';
 
@@ -49,6 +53,12 @@ import PublicEvents from './components/PublicEvents/PublicEvents';
 
 require('dotenv').config();
 
+// set up logrocket
+if (process.env.REACT_APP_APP_ENV === 'production') {
+  LogRocket.init(process.env.REACT_APP_LOGROCKET_KEY);
+  setupLogRocketReact(LogRocket);
+}
+
 // set up Redux persist
 const persistConfig = {
   key: 'root',
@@ -60,11 +70,20 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // set up Redux store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  persistedReducer,
-  composeEnhancers(applyMiddleware(thunk, socketMiddleware))
-  // applyMiddleware(LogRocket.reduxMiddleware())
-);
+
+let store;
+if (process.env.REACT_APP_APP_ENV === 'production') {
+  store = createStore(
+    persistedReducer,
+    composeEnhancers(applyMiddleware(thunk, socketMiddleware)),
+    applyMiddleware(LogRocket.reduxMiddleware())
+  );
+} else {
+  store = createStore(
+    persistedReducer,
+    composeEnhancers(applyMiddleware(thunk, socketMiddleware))
+  );
+}
 const persistor = persistStore(store);
 
 export { persistor };
