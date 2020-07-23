@@ -119,7 +119,7 @@ export const programTeam = [
     name: 'Linda Lin',
     position: 'Program Director',
     text:
-      "Linda Lin is part of Harvard's class of 2020. As a first-gen student, she is excited to connect underserved students with resources in the college application process. As Program Director, Linda plans program activities and events, coordinates with admissions officers and other partners, and oversees fundraising events.",
+      "Linda Lin is part of Harvard's class of 2024. As a first-gen student, she is excited to connect underserved students with resources in the college application process. As Program Director, Linda plans program activities and events, coordinates with admissions officers and other partners, and oversees fundraising events.",
     image: '',
   },
   {

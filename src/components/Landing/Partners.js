@@ -119,7 +119,7 @@ function Partners(props) {
                 <img
                   alt='We Rise Above'
                   className={classes.logoImg}
-                  src={require('../../assets/Partners/WeRiseAbove.PNG')}
+                  // src={require('../../assets/Partners/WeRiseAbove.PNG')}
                 />
               </a>
             </Grid>
