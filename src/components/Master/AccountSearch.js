@@ -50,7 +50,7 @@ function AccountSearch({
       setMentorResults(preMentors);
 
       user = props.mentors[newValue.user_id];
-      if (user.mentees) {
+      if (user && user.mentees) {
         user.mentees.forEach((m) => {
           preMentees.push(m.account);
         });
@@ -62,7 +62,7 @@ function AccountSearch({
       setMenteeResults(preMentees);
 
       user = props.mentees[newValue.user_id];
-      if (user.mentor) {
+      if (user && user.mentor) {
         preMentors.push(user.mentor.account);
       }
 
