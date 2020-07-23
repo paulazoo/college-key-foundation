@@ -1,30 +1,24 @@
 import React from 'react';
 // Icons
-import FeedbackIcon from '@material-ui/icons/Feedback';
-import FiberNewIcon from '@material-ui/icons/FiberNew';
-import SubjectIcon from '@material-ui/icons/Subject';
+import HomeIcon from '@material-ui/icons/Home';
+import GroupIcon from '@material-ui/icons/Group';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 import VerticalSplitIcon from '@material-ui/icons/VerticalSplit';
 
 import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
-import TocIcon from '@material-ui/icons/Toc';
-import ViewCarouselIcon from '@material-ui/icons/ViewCarousel';
-import ReceiptIcon from '@material-ui/icons/Receipt';
-
-import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-
-import ListAltIcon from '@material-ui/icons/ListAlt';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 export const loggedOutMenuItems = [
   {
     text: 'Home',
     link: '/',
-    icon: <FeedbackIcon />,
+    icon: <HomeIcon />,
   },
   {
     text: 'About Us',
     link: '/about-us',
-    icon: <ListAltIcon />,
+    icon: <GroupIcon />,
   },
   {
     text: 'Fellowship Program',
@@ -34,7 +28,7 @@ export const loggedOutMenuItems = [
   {
     text: 'Events',
     link: '/events',
-    icon: <ViewQuiltIcon />,
+    icon: <CalendarTodayIcon />,
   },
   {
     text: 'Apply',
@@ -47,11 +41,11 @@ export const loggedInMenuItems = [
   {
     text: 'Dashboard',
     link: '/dashboard',
-    icon: <FeedbackIcon />,
+    icon: <HomeIcon />,
   },
   {
     text: 'Profile',
     link: '/profile',
-    icon: <ListAltIcon />,
+    icon: <AccountCircleIcon />,
   },
 ];
