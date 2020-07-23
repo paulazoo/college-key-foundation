@@ -55,10 +55,10 @@ export const getLogin = (userToken) => {
           dispatch(setUser(response.user));
           dispatch(setCurrentlyLoading(false));
 
-          LogRocket.identify(response.account.id, {
+          LogRocket.identify(toString(response.account.id), {
             name: response.account.name,
             email: response.account.email,
-            google_id: response.account.google_id,
+            google_id: toString(response.account.google_id),
           });
 
           history.push('/dashboard');
