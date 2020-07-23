@@ -88,12 +88,6 @@ function Profile(props) {
   };
 
   const handleSubmitAccount = () => {
-    console.log({
-      bio,
-      phone,
-      school,
-      grad_year: gradYear,
-    });
     if (
       +gradYear === parseInt(gradYear) ||
       props.account.user_type === 'Mentee' ||

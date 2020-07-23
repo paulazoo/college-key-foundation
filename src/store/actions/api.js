@@ -63,6 +63,13 @@ export const getLogin = (userToken) => {
         }
       })
       .catch((error) => {
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: 'Log in error, please refresh the page',
+          })
+        );
+        dispatch(setCurrentlyLoading(false));
         console.error('API Error: ', error);
       });
   };

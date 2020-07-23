@@ -61,11 +61,8 @@ function NavBar(props) {
 
   const resize = () => {
     const currentHideNav = window.innerWidth <= 760;
-    console.log(window.innerWidth);
     if (currentHideNav !== props.onMobile) {
-      console.log('changing onMobile');
       props.setOnMobile(currentHideNav);
-      console.log(currentHideNav);
     }
   };
 
