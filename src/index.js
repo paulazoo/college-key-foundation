@@ -55,7 +55,15 @@ require('dotenv').config();
 
 // set up logrocket
 if (process.env.REACT_APP_APP_ENV === 'production') {
-  LogRocket.init(process.env.REACT_APP_LOGROCKET_KEY);
+  LogRocket.init(process.env.REACT_APP_LOGROCKET_KEY, {
+    dom: {
+      inputSanitizer: true,
+      textSanitizer: true,
+    },
+    network: {
+      isEnabled: false,
+    },
+  });
   setupLogRocketReact(LogRocket);
 }
 
@@ -75,8 +83,8 @@ let store;
 if (process.env.REACT_APP_APP_ENV === 'production') {
   store = createStore(
     persistedReducer,
-    composeEnhancers(applyMiddleware(thunk, socketMiddleware)),
-    applyMiddleware(LogRocket.reduxMiddleware())
+    composeEnhancers(applyMiddleware(thunk, socketMiddleware))
+    // applyMiddleware(LogRocket.reduxMiddleware())
   );
 } else {
   store = createStore(
