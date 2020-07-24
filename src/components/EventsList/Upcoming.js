@@ -44,9 +44,9 @@ function Upcoming(props) {
 
   return (
     <>
-      {props.events && props.events.length > 0 && (
+      {props.events && Object.keys(props.events).length > 0 && (
         <EventsList
-          points={props.events.filter((e) =>
+          points={Object.values(props.events).filter((e) =>
             moment().isBefore(moment(e.end_time))
           )}
           title='Your Upcoming Events'

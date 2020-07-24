@@ -14,6 +14,15 @@ export default function eventsReducer(state = initialState.events, action) {
         events: action.payload,
       };
 
+    case 'SET_EVENT':
+      return {
+        ...state,
+        events: {
+          ...state.events,
+          ...action.payload,
+        },
+      };
+
     default:
       return state;
   }

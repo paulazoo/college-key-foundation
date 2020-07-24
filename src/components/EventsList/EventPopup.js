@@ -100,12 +100,12 @@ function EventPopup({ event, popupOpen, setPopupOpen, ...props }) {
     >
       <Card className={classes.eventCard}>
         <CardHeader
-          title={
+          title={(
             <div className={classes.cardTitle}>
               <strong className={classes.nameText}>{`${event.name} `}</strong>
             </div>
-          }
-          subheader={
+          )}
+          subheader={(
             <div className={classes.cardTime}>
               {event.start_time !== null ? (
                 <>
@@ -117,7 +117,7 @@ function EventPopup({ event, popupOpen, setPopupOpen, ...props }) {
                 <>Always open.</>
               )}
             </div>
-          }
+          )}
         />
         <CardContent>
           <Grid
@@ -148,10 +148,13 @@ function EventPopup({ event, popupOpen, setPopupOpen, ...props }) {
             <Grid item xs={12}>
               <EventButton
                 fullLink
+                eventId={event.id}
                 link={event.link}
                 showJoin={moment()
                   .add(1, 'days')
                   .isAfter(moment(event.start_time))}
+                showRegister={moment().isBefore(moment(event.end_time))}
+                accountRegistration={event.account_registration}
               />
             </Grid>
           </Grid>

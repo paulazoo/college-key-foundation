@@ -96,7 +96,7 @@ function EventCard({ event, ...props }) {
       />
       <Card className={classes.eventCard}>
         <CardHeader
-          title={
+          title={(
             <Grid
               container
               direction='row'
@@ -111,8 +111,8 @@ function EventCard({ event, ...props }) {
                 <strong className={classes.nameText}>{`${event.name} `}</strong>
               </Grid>
             </Grid>
-          }
-          subheader={
+          )}
+          subheader={(
             <div>
               {event.start_time !== null ? (
                 <>
@@ -127,15 +127,18 @@ function EventCard({ event, ...props }) {
               <Grid container direction='row' justify='center' spacing={1}>
                 <Grid item>
                   <EventButton
+                    eventId={event.id}
                     link={event.link}
                     showJoin={moment()
                       .add(1, 'days')
                       .isAfter(moment(event.start_time))}
+                    showRegister={moment().isBefore(moment(event.end_time))}
+                    accountRegistration={event.account_registration}
                   />
                 </Grid>
               </Grid>
             </div>
-          }
+          )}
         />
         {event.image_url ? (
           <CardMedia className={classes.media} image={`${event.image_url}`} />

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Button,
   Card,
@@ -17,7 +18,6 @@ import {
 } from '@material-ui/core';
 import FolderIcon from '@material-ui/icons/Folder';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -26,9 +26,15 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import moment from 'moment';
 
 // Redux
+import { connect } from 'react-redux';
 
 // Theme
 import { makeStyles } from '@material-ui/styles';
+import {
+  postRegister,
+  postUnregister,
+  postJoin,
+} from '../../store/actions/api';
 
 // Custom Components
 
@@ -48,13 +54,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function EventButton({
+  eventId,
   link,
   fullLink = false,
-  registered = false,
+  accountRegistration = { registered: false, joined: false },
   showJoin,
+  showRegister,
   ...props
 }) {
   const classes = useStyles();
+
+  const handleToggleRegister = () => {
+    if (
+      accountRegistration === null ||
+      accountRegistration.registered === false
+    ) {
+      props.postRegister(eventId);
+    } else if (accountRegistration.registered === true) {
+      props.postUnregister(eventId);
+    }
+  };
+
+  const handleJoin = () => {
+    props.postJoin(eventId);
+  };
 
   return (
     <Grid
@@ -70,18 +93,14 @@ function EventButton({
           <Button
             variant='contained'
             color='primary'
-            rel='noreferrer'
-            target='_blank'
-            href={link}
+            onClick={handleToggleRegister}
+            // disabled={!showRegister}
           >
-            {registered ? (
-              <h3 className={classes.link}>
-                {fullLink ? `Link To Unregister: ${link}` : 'Unregister'}
-              </h3>
+            {accountRegistration !== null &&
+            accountRegistration.registered === true ? (
+              <h3 className={classes.link}>Unregister</h3>
             ) : (
-              <h3 className={classes.link}>
-                {fullLink ? `Link To Register: ${link}` : 'Register'}
-              </h3>
+              <h3 className={classes.link}>Register</h3>
             )}
           </Button>
         </Box>
@@ -95,6 +114,7 @@ function EventButton({
             rel='noreferrer'
             target='_blank'
             href={link}
+            onClick={handleJoin}
           >
             <h3 className={classes.link}>
               {fullLink ? `Link To Join: ${link}` : 'Join!'}
@@ -106,4 +126,12 @@ function EventButton({
   );
 }
 
-export default EventButton;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  postRegister: (eventId) => dispatch(postRegister(eventId)),
+  postUnregister: (eventId) => dispatch(postUnregister(eventId)),
+  postJoin: (eventId) => dispatch(postJoin(eventId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventButton);

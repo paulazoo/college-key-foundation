@@ -13,6 +13,7 @@ import {
   setCurrentlyLoading,
   setPublicEvents,
   setEvents,
+  setEvent,
 } from './index';
 import { wsConnect } from './websocket';
 
@@ -203,7 +204,12 @@ export const getPublicEvents = () => {
     };
     api(`events/public`, requestOptions)
       .then((response) => {
-        dispatch(setPublicEvents(response));
+        const prePublicEvents = {};
+        response.forEach((event) => {
+          prePublicEvents[event.id] = event;
+        });
+
+        dispatch(setPublicEvents(prePublicEvents));
       })
       .catch((error) => {
         console.error('API Error: ', error);
@@ -223,7 +229,12 @@ export const getEvents = () => {
     };
     api(`accounts/${getState().account.id}/events`, requestOptions)
       .then((response) => {
-        dispatch(setEvents(response));
+        const preEvents = {};
+        response.forEach((event) => {
+          preEvents[event.id] = event;
+        });
+
+        dispatch(setEvents(preEvents));
       })
       .catch((error) => {
         console.error('API Error: ', error);
@@ -393,7 +404,9 @@ export const postImport = () => {
         Accept: 'application/json',
         Authorization: `Bearer ${localStorage.getItem('user_token')}`,
       },
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        file_name: 'testing0',
+      }),
     };
     api(`mentees/import`, requestOptions)
       .then((response) => {
@@ -401,6 +414,95 @@ export const postImport = () => {
           setPersonalSnackbar({
             open: true,
             content: `Google sheets data imported into database!`,
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const postRegister = (eventId) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify({}),
+    };
+    api(`events/${eventId}/register`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setEvent({
+            [response.id]: response,
+          })
+        );
+
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: `Registered!`,
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const postUnregister = (eventId) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify({}),
+    };
+    api(`events/${eventId}/unregister`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setEvent({
+            [response.id]: response,
+          })
+        );
+
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: `Unregistered!`,
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const postJoin = (eventId) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify({}),
+    };
+    api(`events/${eventId}/join`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setEvent({
+            [response.id]: response,
           })
         );
       })
