@@ -8,6 +8,7 @@ import {
   Paper,
   Button,
 } from '@material-ui/core';
+import { Redirect } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
@@ -112,7 +113,13 @@ const useStyles = makeStyles((theme) => ({
 function PublicEvents(props) {
   const classes = useStyles();
 
-  return (
+  return localStorage.getItem('user_token') || props.account.id ? (
+    <Redirect
+      to={{
+        pathname: '/dashboard',
+      }}
+    />
+  ) : (
     <>
       <Navbar />
       <WordDivider spacing={125}>
@@ -157,4 +164,10 @@ function PublicEvents(props) {
   );
 }
 
-export default PublicEvents;
+const mapStateToProps = (state) => ({
+  account: state.account,
+});
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PublicEvents);

@@ -22,6 +22,8 @@ import { makeStyles } from '@material-ui/styles';
 // Custom Components
 import EventButton from './EventButton';
 import EventPopup from './EventPopup';
+import PublicEventButton from './PublicEventButton';
+import PublicRegisterPopup from './PublicRegisterPopup';
 
 const noImageFound = require('../../assets/no-image-found.png');
 
@@ -66,10 +68,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EventCard({ event, ...props }) {
+function EventCard({ event, name, ...props }) {
   const classes = useStyles();
 
   const [popupOpen, setPopupOpen] = useState(false);
+  const [publicRegisterPopupOpen, setPublicRegisterPopupOpen] = useState(false);
 
   const handleEventCardClick = () => {
     setPopupOpen(true);
@@ -87,16 +90,51 @@ function EventCard({ event, ...props }) {
     }
   };
 
+  const handlePublicRegisterPopup = () => {
+    setPopupOpen(false);
+    setPublicRegisterPopupOpen(true);
+  };
+
+  const renderEventButton = (name) => {
+    if (name === 'public') {
+      return (
+        <PublicEventButton
+          eventId={event.id}
+          link={event.link}
+          showJoin={moment().add(1, 'days').isAfter(moment(event.start_time))}
+          showRegister={moment().isBefore(moment(event.end_time))}
+          handlePublicRegisterPopup={handlePublicRegisterPopup}
+        />
+      );
+    }
+    return (
+      <EventButton
+        eventId={event.id}
+        link={event.link}
+        showJoin={moment().add(1, 'days').isAfter(moment(event.start_time))}
+        showRegister={moment().isBefore(moment(event.end_time))}
+        accountRegistration={event.account_registration}
+      />
+    );
+  };
+
   return (
     <>
       <EventPopup
         popupOpen={popupOpen}
         setPopupOpen={setPopupOpen}
         event={event}
+        name={name}
+        handlePublicRegisterPopup={handlePublicRegisterPopup}
+      />
+      <PublicRegisterPopup
+        publicRegisterPopupOpen={publicRegisterPopupOpen}
+        setPublicRegisterPopup={setPublicRegisterPopupOpen}
+        event={event}
       />
       <Card className={classes.eventCard}>
         <CardHeader
-          title={(
+          title={
             <Grid
               container
               direction='row'
@@ -111,8 +149,8 @@ function EventCard({ event, ...props }) {
                 <strong className={classes.nameText}>{`${event.name} `}</strong>
               </Grid>
             </Grid>
-          )}
-          subheader={(
+          }
+          subheader={
             <div>
               {event.start_time !== null ? (
                 <>
@@ -125,20 +163,10 @@ function EventCard({ event, ...props }) {
               )}
               {renderEventType(event.kind)}
               <Grid container direction='row' justify='center' spacing={1}>
-                <Grid item>
-                  <EventButton
-                    eventId={event.id}
-                    link={event.link}
-                    showJoin={moment()
-                      .add(1, 'days')
-                      .isAfter(moment(event.start_time))}
-                    showRegister={moment().isBefore(moment(event.end_time))}
-                    accountRegistration={event.account_registration}
-                  />
-                </Grid>
+                <Grid item>{renderEventButton(name)}</Grid>
               </Grid>
             </div>
-          )}
+          }
         />
         {event.image_url ? (
           <CardMedia className={classes.media} image={`${event.image_url}`} />

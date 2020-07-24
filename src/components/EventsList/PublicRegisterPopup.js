@@ -9,20 +9,20 @@ import {
   Dialog,
   Box,
   CardActions,
+  TextField,
 } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 
 // Redux
+import { connect } from 'react-redux';
+import { postPublicRegister } from '../../store/actions/api';
 
 // Theme
 import { makeStyles } from '@material-ui/styles';
 
 // Custom Components
-import EventButton from './EventButton';
-import PublicEventButton from './PublicEventButton';
-import PublicRegisterPopup from './PublicRegisterPopup';
 
 const useStyles = makeStyles((theme) => ({
   eventDialog: {
@@ -74,66 +74,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EventPopup({
+function PublicRegisterPopup({
   event,
-  popupOpen,
-  setPopupOpen,
-  name,
-  handlePublicRegisterPopup,
+  publicRegisterPopupOpen,
+  setPublicRegisterPopup,
   ...props
 }) {
   const classes = useStyles();
 
-  const handleCloseEventPopup = () => {
-    setPopupOpen(false);
+  const [publicName, setPublicName] = useState('');
+  const [publicEmail, setPublicEmail] = useState('');
+
+  const handleChangePublicName = (e) => {
+    setPublicName(e.target.value);
   };
 
-  const renderEventKind = (kind) => {
-    if (kind === 'open') {
-      return <Typography className={classes.cardKind}>Public Event</Typography>;
-    }
-    if (kind === 'invite-only') {
-      return (
-        <Typography className={classes.cardKind}>Private Event</Typography>
-      );
-    }
+  const handleChangePublicEmail = (e) => {
+    setPublicEmail(e.target.value);
   };
 
-  const renderEventButton = (name) => {
-    if (name === 'public') {
-      return (
-        <PublicEventButton
-          eventId={event.id}
-          link={event.link}
-          showJoin={moment().add(1, 'days').isAfter(moment(event.start_time))}
-          showRegister={moment().isBefore(moment(event.end_time))}
-          handleCloseEventPopup={handleCloseEventPopup}
-          handlePublicRegisterPopup={handlePublicRegisterPopup}
-        />
-      );
-    }
-    return (
-      <EventButton
-        eventId={event.id}
-        link={event.link}
-        showJoin={moment().add(1, 'days').isAfter(moment(event.start_time))}
-        showRegister={moment().isBefore(moment(event.end_time))}
-        accountRegistration={event.account_registration}
-      />
-    );
+  const handleClosePublicRegisterPopup = () => {
+    setPublicRegisterPopup(false);
+  };
+
+  const handlePublicRegister = () => {
+    // TODO: required validation
+    props.postPublicRegister(event.id, {
+      public_name: publicName,
+      public_email: publicEmail,
+    });
+    setPublicRegisterPopup(false);
   };
 
   return (
     <Dialog
-      open={popupOpen}
-      onClose={handleCloseEventPopup}
+      open={publicRegisterPopupOpen}
+      onClose={handleClosePublicRegisterPopup}
       className={classes.eventDialog}
     >
       <Card className={classes.eventCard}>
         <CardHeader
           title={(
             <div className={classes.cardTitle}>
-              <strong className={classes.nameText}>{`${event.name} `}</strong>
+              <strong className={classes.nameText}>
+                {`Register for ${event.name}`}
+              </strong>
             </div>
           )}
           subheader={(
@@ -159,34 +144,62 @@ function EventPopup({
             spacing={2}
           >
             <Grid item xs={12}>
-              <Typography className={classes.cardHost}>
-                {event.host && `Hosted by: ${event.host}`}
-              </Typography>
+              <TextField
+                required
+                variant='outlined'
+                fullWidth
+                value={publicName}
+                onChange={handleChangePublicName}
+                label='Your Name'
+              />
             </Grid>
             <Grid item xs={12}>
-              {renderEventKind(event.kind)}
-            </Grid>
-            <Grid item xs={12} className={classes.descContainer}>
-              <Typography className={classes.cardDesc}>
-                {event.description && event.description}
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography className={classes.cardDesc}>
-                Link to join will show up 24 hours before event begins.
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              {renderEventButton(name)}
+              <TextField
+                required
+                variant='outlined'
+                fullWidth
+                value={publicEmail}
+                onChange={handleChangePublicEmail}
+                label='Your Email'
+              />
             </Grid>
           </Grid>
         </CardContent>
         <CardActions>
-          <Button onClick={handleCloseEventPopup}>Close</Button>
+          <Grid container direction='row' justify='space-between'>
+            <Grid item>
+              <Button onClick={handleClosePublicRegisterPopup}>Cancel</Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={handlePublicRegister}
+                type='submit'
+              >
+                Register
+              </Button>
+            </Grid>
+          </Grid>
         </CardActions>
       </Card>
     </Dialog>
   );
 }
 
-export default EventPopup;
+const mapStateToProps = (state) => ({
+  user: state.user,
+  accounts: state.master.accounts,
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    postPublicRegister: (eventId, body) =>
+      dispatch(postPublicRegister(eventId, body)),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PublicRegisterPopup);

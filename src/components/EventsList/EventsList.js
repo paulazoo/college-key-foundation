@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EventsList({ points, title, more, ...props }) {
+function EventsList({ points, title, name, ...props }) {
   const classes = useStyles();
 
   return (
@@ -70,7 +70,7 @@ function EventsList({ points, title, more, ...props }) {
                 )
                 .map((point, i) => (
                   <Grid item key={i}>
-                    <EventCard event={point} theme={point.theme} />
+                    <EventCard event={point} theme={point.theme} name={name} />
                   </Grid>
                 ))}
             </Grid>

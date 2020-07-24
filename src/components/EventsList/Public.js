@@ -44,13 +44,13 @@ function Public(props) {
 
   return (
     <>
-      {props.publicEvents && props.publicEvents.length > 0 && (
+      {props.publicEvents && Object.keys(props.publicEvents).length > 0 && (
         <EventsList
-          points={props.publicEvents.filter((e) =>
+          points={Object.values(props.publicEvents).filter((e) =>
             moment().isBefore(moment(e.end_time))
           )}
           title='Upcoming Public Events'
-          more='public'
+          name='public'
         />
       )}
     </>

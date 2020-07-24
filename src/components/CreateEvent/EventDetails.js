@@ -44,6 +44,13 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.dark,
     fontSize: 20,
     fontWeight: 'bold',
+    alignSelf: 'center',
+  },
+  labelItem: {
+    display: 'inline-flex',
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    justifyContent: 'flex-start',
   },
 }));
 
@@ -233,20 +240,8 @@ function EventDetails(props) {
           {inputs.map((element) =>
             element.label !== 'Event Access' ? (
               <React.Fragment key={element.label}>
-                <Grid
-                  item
-                  xs={3}
-                  style={{
-                    display: 'inline-flex',
-                    textAlign: 'center',
-                    verticalAlign: 'middle',
-                    justifyContent: 'flex-start',
-                  }}
-                >
-                  <Typography
-                    className={classes.headText}
-                    style={{ alignSelf: 'center' }}
-                  >
+                <Grid item xs={3} className={classes.labelItem}>
+                  <Typography className={classes.headText}>
                     {element.label}
                   </Typography>
                 </Grid>
@@ -278,20 +273,8 @@ function EventDetails(props) {
               </React.Fragment>
             ) : (
               <React.Fragment key={element.label}>
-                <Grid
-                  item
-                  xs={3}
-                  style={{
-                    display: 'inline-flex',
-                    textAlign: 'center',
-                    verticalAlign: 'middle',
-                    justifyContent: 'flex-start',
-                  }}
-                >
-                  <Typography
-                    className={classes.headText}
-                    style={{ alignSelf: 'center' }}
-                  >
+                <Grid item xs={3} className={classes.labelItem}>
+                  <Typography className={classes.headText}>
                     {inputs[1].label}
                   </Typography>
                 </Grid>
@@ -329,20 +312,8 @@ function EventDetails(props) {
             <Grid container direction='row' spacing={3}>
               {eventKind === 'invite_only' && (
                 <>
-                  <Grid
-                    item
-                    xs={3}
-                    style={{
-                      display: 'inline-flex',
-                      textAlign: 'left',
-                      verticalAlign: 'middle',
-                      justifyContent: 'flex-start',
-                    }}
-                  >
-                    <Typography
-                      className={classes.headText}
-                      style={{ alignSelf: 'center' }}
-                    >
+                  <Grid item xs={3} className={classes.labelItem}>
+                    <Typography className={classes.headText}>
                       Invited People:
                     </Typography>
                   </Grid>
@@ -350,8 +321,7 @@ function EventDetails(props) {
                     <ChipInput
                       onAdd={(chip) => handleInviteesAddPersonChip(chip)}
                       onDelete={(chip, index) =>
-                        handleInviteesDeletePersonChip(chip, index)
-                      }
+                        handleInviteesDeletePersonChip(chip, index)}
                       onBeforeAdd={(chip) => validateEmail(chip)}
                       value={inviteesAddedPeople}
                       fullWidth
@@ -361,22 +331,8 @@ function EventDetails(props) {
                   </Grid>
                 </>
               )}
-              <Grid
-                item
-                xs={3}
-                style={{
-                  display: 'inline-flex',
-                  textAlign: 'left',
-                  verticalAlign: 'middle',
-                  justifyContent: 'flex-start',
-                }}
-              >
-                <Typography
-                  className={classes.headText}
-                  style={{ alignSelf: 'center' }}
-                >
-                  Event Time
-                </Typography>
+              <Grid item xs={3} className={classes.labelItem}>
+                <Typography className={classes.headText}>Event Time</Typography>
               </Grid>
               <Grid item xs={9}>
                 <EventTime

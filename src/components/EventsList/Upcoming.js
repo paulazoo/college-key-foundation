@@ -50,7 +50,7 @@ function Upcoming(props) {
             moment().isBefore(moment(e.end_time))
           )}
           title='Your Upcoming Events'
-          more='upcoming'
+          name='upcoming'
         />
       )}
     </>

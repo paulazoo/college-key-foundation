@@ -512,6 +512,83 @@ export const postJoin = (eventId) => {
   };
 };
 
+export const postPublicRegister = (eventId, body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    api(`events/${eventId}/public_register`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: `Registered!`,
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+// export const postPublicUnregister = (eventId) => {
+//   return (dispatch, getState) => {
+//     const requestOptions = {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Accept: 'application/json',
+//         Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+//       },
+//       body: JSON.stringify({}),
+//     };
+//     api(`events/${eventId}/unregister`, requestOptions)
+//       .then((response) => {
+//         dispatch(
+//           setEvent({
+//             [response.id]: response,
+//           })
+//         );
+
+//         dispatch(
+//           setPersonalSnackbar({
+//             open: true,
+//             content: `Unregistered!`,
+//           })
+//         );
+//       })
+//       .catch((error) => {
+//         console.error('API Error: ', error);
+//       });
+//   };
+// };
+
+export const postPublicJoin = (eventId) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify({}),
+    };
+    api(`events/${eventId}/public_join`, requestOptions)
+      .then((response) => {})
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
 // PUT Calls:
 export const putAccount = (body) => {
   return (dispatch, getState) => {
