@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 import history from '../history';
-import LogRocket from 'logrocket';
 
 import {
   setUser,
@@ -38,7 +37,7 @@ const api = (path, requestOptions) => {
 // Api Calls:
 
 // GET Calls:
-export const getLogin = (userToken) => {
+export const getLogin = (userToken, callback) => {
   return (dispatch) => {
     const requestOptions = {
       method: 'GET',
@@ -56,13 +55,9 @@ export const getLogin = (userToken) => {
           dispatch(setUser(response.user));
           dispatch(setCurrentlyLoading(false));
 
-          LogRocket.identify(toString(response.account.id), {
-            name: response.account.name,
-            email: response.account.email,
-            google_id: toString(response.account.google_id),
-          });
-
           history.push('/dashboard');
+
+          callback(response.account);
         } else if (response.message === 'You are not a mentor or mentee!') {
           dispatch(
             setPersonalSnackbar({ open: true, content: response.message })

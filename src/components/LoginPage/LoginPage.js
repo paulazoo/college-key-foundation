@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import LogRocket from 'logrocket';
 import GoogleLogin from 'react-google-login';
 import MuiAlert from '@material-ui/lab/Alert';
 import {
@@ -91,10 +92,18 @@ function LoginPage(props) {
     history.push('/apply');
   };
 
+  const getLoginCallback = (account) => {
+    LogRocket.identify(account.id, {
+      name: account.name,
+      email: account.email,
+      google_id: account.google_id,
+    });
+  };
+
   const responseGoogle = (response) => {
     props.setCurrentlyLoading(true);
     localStorage.setItem('user_token', response.tokenId);
-    props.getLogin(response.tokenId);
+    props.getLogin(response.tokenId, getLoginCallback);
   };
 
   const responseGoogleErrors = (response) => {

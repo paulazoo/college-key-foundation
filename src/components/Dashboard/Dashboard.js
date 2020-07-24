@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import LogRocket from 'logrocket';
 import GoogleLogin from 'react-google-login';
 import MuiAlert from '@material-ui/lab/Alert';
 import {
@@ -65,6 +66,11 @@ function Dashboard(props) {
 
   useEffect(() => {
     props.getAccount();
+    LogRocket.identify(props.account.id, {
+      name: props.account.name,
+      email: props.account.email,
+      google_id: props.account.google_id,
+    });
   }, []);
 
   const renderRightDashboard = () => {
