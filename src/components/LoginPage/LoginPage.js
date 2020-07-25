@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(8),
     padding: theme.spacing(8),
-    height: '40vh',
     [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(3),
       margin: theme.spacing(1),
@@ -66,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   main: {
     margin: 0,
     [theme.breakpoints.down('sm')]: {
-      marginBottom: '15vh',
+      height: '90vh',
     },
   },
 }));

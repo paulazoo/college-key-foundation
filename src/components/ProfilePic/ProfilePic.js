@@ -21,7 +21,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../../theme.js';
 
 // Custom Components
-import GmailSvg from '../../assets/Gmail.svg';
+import GmailSvg from '../../assets/SocialMedia/Gmail.svg';
 
 const useStyles = makeStyles((theme) => ({
   welcomeName: {

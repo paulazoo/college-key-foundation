@@ -64,7 +64,7 @@ function LoggedOutNavbar({ ...props }) {
           justify='space-between'
           alignItems='center'
         >
-          <Grid item xs={4}>
+          <Grid item xs={4} sm={5}>
             <Grid
               container
               direction='row'
@@ -74,7 +74,7 @@ function LoggedOutNavbar({ ...props }) {
             >
               <Grid item>
                 <img
-                  src={require('../../assets/collegeKeyNavbarNew.JPG')}
+                  src={require('../../assets/Logos/collegeKeyNavbar.JPG')}
                   alt='fancy banner :D'
                   width='275'
                   height='75'
@@ -84,7 +84,7 @@ function LoggedOutNavbar({ ...props }) {
             </Grid>
           </Grid>
 
-          <Grid item xs={8}>
+          <Grid item xs={8} sm={7}>
             <Grid
               container
               direction='row'

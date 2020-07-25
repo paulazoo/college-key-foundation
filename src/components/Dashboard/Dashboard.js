@@ -49,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
     // margin: theme.spacing(8),
     padding: theme.spacing(8),
     minHeight: '100vh',
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(1),
+    },
   },
   textContainer: {
     textAlign: 'center',
@@ -56,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
   text: {
     fontWeight: 'bold',
     fontSize: 48,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 24,
+    },
   },
 }));
 

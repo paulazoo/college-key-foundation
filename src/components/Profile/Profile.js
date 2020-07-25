@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     padding: theme.spacing(8),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(1),
+    },
   },
   textContainer: {
     textAlign: 'center',
@@ -57,6 +60,9 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContainer: {
     padding: theme.spacing(8),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(1),
+    },
   },
 }));
 
@@ -142,8 +148,8 @@ function Profile(props) {
                   {`Email: ${props.account.email}`}
                 </Typography>
               </Grid>
-              <Grid item xs={12} />
-              <Grid item xs={4}>
+              <Grid item xs={0} md={12} />
+              <Grid item xs={12} md={4}>
                 <TextField
                   fullWidth
                   variant='outlined'
@@ -154,8 +160,8 @@ function Profile(props) {
               </Grid>
               {props.account.user_type === 'Mentor' && (
                 <>
-                  <Grid item xs={12} />
-                  <Grid item xs={4}>
+                  <Grid item xs={0} md={12} />
+                  <Grid item xs={12} md={4}>
                     <TextField
                       fullWidth
                       variant='outlined'
@@ -164,8 +170,8 @@ function Profile(props) {
                       label='School'
                     />
                   </Grid>
-                  <Grid item xs={12} />
-                  <Grid item xs={4}>
+                  <Grid item xs={0} md={12} />
+                  <Grid item xs={12} md={4}>
                     <TextField
                       fullWidth
                       variant='outlined'
@@ -178,8 +184,8 @@ function Profile(props) {
                   </Grid>
                 </>
               )}
-              <Grid item xs={12} />
-              <Grid item xs={4}>
+              <Grid item xs={0} md={12} />
+              <Grid item xs={12} md={4}>
                 <TextField
                   fullWidth
                   variant='outlined'
@@ -191,7 +197,7 @@ function Profile(props) {
                 />
               </Grid>
               <Grid item xs={12} />
-              <Grid item xs={5}>
+              <Grid item xs={12} md={5}>
                 <Grid container direction='row' justify='flex-end'>
                   <Grid item>
                     <Button

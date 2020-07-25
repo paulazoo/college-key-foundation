@@ -63,7 +63,7 @@ function Overview(props) {
             height='90%'
             width='100%'
             alt='Overview Image'
-            src={require('../../assets/foundationCover.png')}
+            src={require('../../assets/Overview/foundationCover.png')}
           />
         </Grid>
         <Grid item xs={12} md={6}>

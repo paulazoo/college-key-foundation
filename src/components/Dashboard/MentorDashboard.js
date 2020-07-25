@@ -44,10 +44,10 @@ function MentorDashboard(props) {
         {props.user.mentees &&
           props.user.mentees.map((mentee) => (
             <>
-              <Grid item xs={10} key={mentee.id}>
+              <Grid item sm={10} key={mentee.id}>
                 <ProfileCard account={mentee.account} />
               </Grid>
-              <Grid item xs={2} style={{ display: 'flex' }}>
+              <Grid item sm={2} style={{ display: 'flex' }}>
                 <Card className={classes.classroom}>
                   <Grid
                     container

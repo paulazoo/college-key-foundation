@@ -163,7 +163,7 @@ function MobileDrawer({ menuItems, ...props }) {
           <Grid item>
             <Button onClick={logoClick}>
               <img
-                src={require('../../assets/squareLogo.PNG')}
+                src={require('../../assets/Logos/squareLogo.PNG')}
                 alt='fancy favicon :D'
                 width='48'
                 height='48'

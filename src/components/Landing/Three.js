@@ -16,8 +16,6 @@ import { userLogout, setUser } from '../../store/actions/index';
 
 // Custom Components
 
-// const image3 = require('../../assets/landingImg3.png');
-
 const useStyles = makeStyles((theme) => ({
   imgResponsive: {
     height: 'auto',
@@ -68,7 +66,7 @@ function Three(props) {
         <Grid container direction='column' alignItems='center'>
           <Grid item>
             <img
-              src={require('../../assets/calGrad.PNG')}
+              src={require('../../assets/Three/calGrad.PNG')}
               className={classes.imgResponsive}
               alt='weekly seminars'
             />
@@ -91,7 +89,7 @@ function Three(props) {
         <Grid container direction='column' alignItems='center'>
           <Grid item>
             <img
-              src={require('../../assets/tableGrad.PNG')}
+              src={require('../../assets/Three/tableGrad.PNG')}
               className={classes.imgResponsive}
               alt='one-on-one mentorship'
             />
@@ -116,7 +114,7 @@ function Three(props) {
         <Grid container direction='column' alignItems='center'>
           <Grid item>
             <img
-              src={require('../../assets/computerGrad.PNG')}
+              src={require('../../assets/Three/computerGrad.PNG')}
               className={classes.imgResponsive}
               alt='optional workshops'
             />
