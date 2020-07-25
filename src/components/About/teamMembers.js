@@ -36,7 +36,8 @@ export const outreachTeam = [
   {
     name: 'Brandon Zhang',
     position: 'Outreach Director',
-    text: '?????????? Stanford Class of 2024',
+    text:
+      'Brandon, part of Stanford’s Class of 2024, helps coordinate panels and partnerships with other organizations seeking to empower students in pursuing their passions. He’s committed to connecting students from underserved and underprivileged backgrounds to resources and other opportunities.',
     image: '',
   },
 ];

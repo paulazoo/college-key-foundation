@@ -9,7 +9,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MuiAppBar from '@material-ui/core/AppBar';
-
 import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
 import {
   BrowserRouter as Router,
@@ -19,6 +18,14 @@ import {
   withRouter,
   useHistory,
 } from 'react-router-dom';
+
+// Redux
+import { connect } from 'react-redux';
+import { userLogout } from '../../store/actions';
+
+// Theme
+
+// Custom Components
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -36,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MobileDrawer({ menuItems, ...props }) {
+function MobileDrawer({ menuItems, ...props }) {
   const classes = useStyles();
 
   const history = useHistory();
@@ -186,3 +193,11 @@ export default function MobileDrawer({ menuItems, ...props }) {
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  userLogout: () => dispatch(userLogout()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MobileDrawer);
