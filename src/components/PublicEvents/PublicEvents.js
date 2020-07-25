@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
 function PublicEvents(props) {
   const classes = useStyles();
 
-  return localStorage.getItem('user_token') || props.account.id ? (
+  return props.account.id ? (
     <Redirect
       to={{
         pathname: '/dashboard',
