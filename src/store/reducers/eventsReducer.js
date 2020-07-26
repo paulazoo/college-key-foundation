@@ -8,7 +8,7 @@ export default function eventsReducer(state = initialState.events, action) {
         publicEvents: action.payload,
       };
 
-    case 'SET_AllEVENTS':
+    case 'SET_ALLEVENTS':
       return {
         ...state,
         allEvents: action.payload,

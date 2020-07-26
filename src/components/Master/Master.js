@@ -64,6 +64,17 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     height: '100vh',
   },
+  mainMaster: {
+    marginLeft: '20vw',
+    padding: 0,
+    paddingRight: theme.spacing(2),
+    width: 'calc(100% - 20vw)',
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '25vw',
+      paddingRight: 0,
+      width: 'calc(100% - 25vw)',
+    },
+  },
 }));
 
 function Master(props) {
@@ -96,7 +107,7 @@ function Master(props) {
               setSelectedMaster={setSelectedMaster}
             />
           </Grid>
-          <Grid item>
+          <Grid item className={classes.mainMaster}>
             <Grid
               className={classes.main}
               container

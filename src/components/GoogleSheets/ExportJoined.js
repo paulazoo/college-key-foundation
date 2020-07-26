@@ -40,18 +40,24 @@ function ExportJoined(props) {
   return (
     <>
       <Grid item xs={12}>
-        <Grid container direction='row' alignItems='center' justify='center'>
-          <Grid item xs={6}>
+        <Grid
+          container
+          direction='row'
+          alignItems='center'
+          justify='center'
+          spacing={2}
+        >
+          <Grid item xs={4}>
             <Typography>Export Registered from</Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <EventSearch
               setEventResult={setEventResult}
               selected={selected}
               setSelected={setSelected}
             />
           </Grid>
-          <Grid item>
+          <Grid item xs={4}>
             <Button
               color='secondary'
               variant='contained'

@@ -67,12 +67,12 @@ export const getLogin = (userToken, callback) => {
         }
       })
       .catch((error) => {
-        dispatch(
-          setPersonalSnackbar({
-            open: true,
-            content: 'Log in error, please refresh the page',
-          })
-        );
+        // dispatch(
+        //   setPersonalSnackbar({
+        //     open: true,
+        //     content: 'Log in error, please refresh the page',
+        //   })
+        // );
         dispatch(setCurrentlyLoading(false));
         console.error('API Error: ', error);
       });
@@ -277,7 +277,6 @@ export const postNewsletterEmails = (body) => {
     };
     api(`newsletter_emails`, requestOptions)
       .then((response) => {
-        console.log(response);
         dispatch(
           setPersonalSnackbar({
             open: true,
@@ -373,7 +372,6 @@ export const postMatch = (body) => {
       },
       body: JSON.stringify(body),
     };
-    console.log(requestOptions);
     api(`mentees/${body.mentee_id}/match`, requestOptions)
       .then((response) => {
         dispatch(
@@ -402,7 +400,6 @@ export const postEvents = (body) => {
     };
     api(`events`, requestOptions)
       .then((response) => {
-        console.log(response);
         dispatch(
           setPersonalSnackbar({
             open: true,
@@ -703,7 +700,6 @@ export const putAccount = (body) => {
       },
       body: JSON.stringify(body),
     };
-    console.log(requestOptions);
     api(`accounts/${getState().account.id}`, requestOptions)
       .then((response) => {
         dispatch(setAccount(response));

@@ -34,13 +34,13 @@ function EventSearch({ selected, setSelected, setEventResult, ...props }) {
 
   const [inputValue, setInputValue] = useState('');
 
-  const [options, setOptions] = useState([
-    { name: 'No Events', kind: 'N/A', start_time: 'N/A' },
-  ]);
+  const [options, setOptions] = useState([]);
 
-  // useEffect(() => {
-  //   setOptions(props.allEvents);
-  // }, [props.allEvents]);
+  useEffect(() => {
+    if (props.allEvents) {
+      setOptions(Object.values(props.allEvents));
+    }
+  }, [props.allEvents]);
 
   const handleChange = (event, newValue) => {
     setSelected(newValue);
@@ -81,7 +81,7 @@ function EventSearch({ selected, setSelected, setEventResult, ...props }) {
         <Grid item>
           <SearchIcon />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item>
           <Autocomplete
             fullWidth
             value={selected}

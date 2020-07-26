@@ -48,9 +48,19 @@ function MasterEventsContainer(props) {
         <Card className={classes.card}>
           <CreateEvent />
         </Card>
+      </Grid>
+      <Grid item xs={12}>
         <All />
-        <ExportRegistered />
-        <ExportJoined />
+      </Grid>
+      <Grid item xs={12}>
+        <Card className={classes.card}>
+          <ExportRegistered />
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card className={classes.card}>
+          <ExportJoined />
+        </Card>
       </Grid>
     </>
   );

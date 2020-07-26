@@ -19,8 +19,8 @@ export const initialState = {
     newsletterEmails: [],
   },
   events: {
-    publicEvents: [],
-    events: [],
-    allEvents: [],
+    publicEvents: {},
+    events: {},
+    allEvents: {},
   },
 };
