@@ -416,6 +416,7 @@ export const postEvents = (body) => {
   };
 };
 
+// Google Sheets Import and Exports (POST):
 export const postImportMenteeMentor = () => {
   return (dispatch, getState) => {
     const requestOptions = {
@@ -425,9 +426,7 @@ export const postImportMenteeMentor = () => {
         Accept: 'application/json',
         Authorization: `Bearer ${localStorage.getItem('user_token')}`,
       },
-      body: JSON.stringify({
-        file_name: 'testing0',
-      }),
+      body: JSON.stringify({}),
     };
     api(`google_sheets/import_mentee_mentor`, requestOptions)
       .then((response) => {
@@ -435,6 +434,88 @@ export const postImportMenteeMentor = () => {
           setPersonalSnackbar({
             open: true,
             content: `Google sheets data imported into database!`,
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const postImportEvents = () => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify({}),
+    };
+    api(`google_sheets/import_events`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: `Google sheets data imported into database!`,
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const postExportRegistered = (eventId) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify({
+        event_id: eventId,
+      }),
+    };
+    api(`google_sheets/export_registered`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: `Database exported into google sheets!`,
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const postExportJoined = (eventId) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify({
+        event_id: eventId,
+      }),
+    };
+    api(`google_sheets/export_joined`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: `Database exported into google sheets!`,
           })
         );
       })

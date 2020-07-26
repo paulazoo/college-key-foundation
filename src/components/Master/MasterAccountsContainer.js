@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 import { getAccounts, getMentors, getMentees } from '../../store/actions/api';
 
 // Custom Components
-import ImportMentorMentee from './ImportMentorMentee';
+import ImportMenteeMentor from '../GoogleSheets/ImportMenteeMentor';
 import MatchMentorMentee from './MatchMentorMentee';
 import AddAccounts from './AddAccounts';
 import AccountSearch from './AccountSearch';
@@ -66,7 +66,7 @@ function MasterAccountsContainer(props) {
     <>
       <Grid item xs={12}>
         <Card className={classes.card}>
-          <ImportMentorMentee />
+          <ImportMenteeMentor />
         </Card>
       </Grid>
 

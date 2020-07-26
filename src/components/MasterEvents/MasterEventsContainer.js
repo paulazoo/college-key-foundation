@@ -19,6 +19,8 @@ import { userLogout, setUser } from '../../store/actions/index';
 import { connect } from 'react-redux';
 import CreateEvent from '../CreateEvent/CreateEvent';
 import All from '../EventsList/All';
+import ExportRegistered from '../GoogleSheets/ExportRegistered';
+import ExportJoined from '../GoogleSheets/ExportJoined';
 
 // Custom Components
 
@@ -47,6 +49,8 @@ function MasterEventsContainer(props) {
           <CreateEvent />
         </Card>
         <All />
+        <ExportRegistered />
+        <ExportJoined />
       </Grid>
     </>
   );

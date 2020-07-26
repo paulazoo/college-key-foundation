@@ -31,7 +31,7 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import MasterAccountsContainer from './MasterAccountsContainer';
 import MasterNewsletterContainer from './MasterNewsletterContainer';
-import MasterEventsContainer from './MasterEventsContainer';
+import MasterEventsContainer from '../MasterEvents/MasterEventsContainer';
 import MasterDrawer from './MasterDrawer.';
 
 const useStyles = makeStyles((theme) => ({

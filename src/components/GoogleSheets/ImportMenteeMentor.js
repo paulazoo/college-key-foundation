@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ImportMentorMentee(props) {
+function ImportMenteeMentor(props) {
   const classes = useStyles();
 
   const handleImport = () => {
@@ -69,4 +69,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImportMentorMentee);
+export default connect(mapStateToProps, mapDispatchToProps)(ImportMenteeMentor);
