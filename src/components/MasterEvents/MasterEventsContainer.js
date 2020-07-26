@@ -21,6 +21,7 @@ import CreateEvent from '../CreateEvent/CreateEvent';
 import All from '../EventsList/All';
 import ExportRegistered from '../GoogleSheets/ExportRegistered';
 import ExportJoined from '../GoogleSheets/ExportJoined';
+import ImportEvents from '../GoogleSheets/ImportEvents';
 
 // Custom Components
 
@@ -46,14 +47,6 @@ function MasterEventsContainer(props) {
     <>
       <Grid item xs={12}>
         <Card className={classes.card}>
-          <CreateEvent />
-        </Card>
-      </Grid>
-      <Grid item xs={12}>
-        <All />
-      </Grid>
-      <Grid item xs={12}>
-        <Card className={classes.card}>
           <ExportRegistered />
         </Card>
       </Grid>
@@ -61,6 +54,19 @@ function MasterEventsContainer(props) {
         <Card className={classes.card}>
           <ExportJoined />
         </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card className={classes.card}>
+          <ImportEvents />
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card className={classes.card}>
+          <CreateEvent />
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <All />
       </Grid>
     </>
   );
