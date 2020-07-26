@@ -80,10 +80,10 @@ function EventSearch({ selected, setSelected, setEventResult, ...props }) {
   return (
     <>
       <Grid container direction='row' justify='flex-start' alignItems='center'>
-        <Grid item xs={2}>
+        <Grid item xs={1}>
           <SearchIcon />
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={11}>
           <Autocomplete
             fullWidth
             value={selected}

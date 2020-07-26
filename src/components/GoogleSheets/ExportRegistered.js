@@ -22,7 +22,7 @@ import EventSearch from '../MasterEvents/EventSearch';
 
 const useStyles = makeStyles((theme) => ({
   exportButton: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
   },
 }));
@@ -48,7 +48,7 @@ function ExportRegistered(props) {
           justify='center'
           spacing={2}
         >
-          <Grid item xs={3}>
+          <Grid item xs={4}>
             <Typography>Export Registered from</Typography>
           </Grid>
           <Grid item xs={6}>
@@ -58,7 +58,7 @@ function ExportRegistered(props) {
               setSelected={setSelected}
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <Button
               color='secondary'
               variant='contained'

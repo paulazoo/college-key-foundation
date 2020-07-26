@@ -47,17 +47,17 @@ function MasterEventsContainer(props) {
     <>
       <Grid item xs={12}>
         <Card className={classes.card}>
+          <ImportEvents />
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card className={classes.card}>
           <ExportRegistered />
         </Card>
       </Grid>
       <Grid item xs={12}>
         <Card className={classes.card}>
           <ExportJoined />
-        </Card>
-      </Grid>
-      <Grid item xs={12}>
-        <Card className={classes.card}>
-          <ImportEvents />
         </Card>
       </Grid>
       <Grid item xs={12}>
