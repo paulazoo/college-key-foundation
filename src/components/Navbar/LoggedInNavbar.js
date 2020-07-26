@@ -85,7 +85,7 @@ function LoggedInNavbar({ ...props }) {
           justify='space-between'
           alignItems='center'
         >
-          <Grid item xs={6}>
+          <Grid item xs={4} md={6}>
             <Grid
               container
               direction='row'
@@ -97,14 +97,14 @@ function LoggedInNavbar({ ...props }) {
                 <img
                   src={require('../../assets/Logos/collegeKeyNavbar.JPG')}
                   alt='fancy banner :D'
-                  width='275'
-                  height='75'
+                  width='245'
+                  height='66'
                   onClick={logoClick}
                 />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={7} md={6}>
             <Grid
               container
               direction='row'
