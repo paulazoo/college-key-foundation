@@ -88,7 +88,7 @@ function MobileDrawer({ menuItems, ...props }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {props.account.email &&
+        {props.account &&
           (props.account.email === 'paulazhu@college.harvard.edu' ||
             props.account.email === 'collegekeyfoundation@gmail.com') && (
             <Button
