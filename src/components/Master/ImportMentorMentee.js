@@ -13,31 +13,34 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { connect } from 'react-redux';
-import { userLogout, setUser } from '../../store/actions/index';
+import { userLogout } from '../../store/actions/index';
+import { postImportMenteeMentor } from '../../store/actions/api';
 
 // Custom Components
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
-import { postImport } from '../../store/actions/api';
 
 const useStyles = makeStyles((theme) => ({
   importButton: {
-    fontSize: 32,
+    fontSize: 24,
     fontWeight: 'bold',
   },
 }));
 
-function Import(props) {
+function ImportMentorMentee(props) {
   const classes = useStyles();
 
   const handleImport = () => {
-    props.postImport();
+    props.postImportMenteeMentor();
   };
 
   return (
     <>
       <Grid item xs={12}>
-        <Grid container direction='row' alignItems='center' justify='center'>
+        <Grid container direction='column' alignItems='center' justify='center'>
+          <Grid item>
+            <Typography>
+              Import Mentee and Mentor Matches from import_mentee_mentor
+            </Typography>
+          </Grid>
           <Grid item>
             <Button
               color='secondary'
@@ -45,7 +48,7 @@ function Import(props) {
               onClick={handleImport}
               className={classes.importButton}
             >
-              IMPORT GOOGLE SHEETS DATA INTO DATABASE
+              Import
             </Button>
           </Grid>
         </Grid>
@@ -62,8 +65,8 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
-    postImport: () => dispatch(postImport()),
+    postImportMenteeMentor: () => dispatch(postImportMenteeMentor()),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Import);
+export default connect(mapStateToProps, mapDispatchToProps)(ImportMentorMentee);

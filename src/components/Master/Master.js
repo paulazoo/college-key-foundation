@@ -29,12 +29,10 @@ import {
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
-import AddAccounts from './AddAccounts';
-import ShowAccounts from './ShowAccounts';
-import MatchMentorMentee from './MatchMentorMentee';
-import AccountSearch from './AccountSearch';
-import CreateEvent from '../CreateEvent/CreateEvent';
-import Import from './Import';
+import MasterAccountsContainer from './MasterAccountsContainer';
+import MasterNewsletterContainer from './MasterNewsletterContainer';
+import MasterEventsContainer from './MasterEventsContainer';
+import MasterDrawer from './MasterDrawer.';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,127 +69,55 @@ const useStyles = makeStyles((theme) => ({
 function Master(props) {
   const classes = useStyles();
 
-  useEffect(() => {
-    props.getAccounts();
-    props.getMentors();
-    props.getMentees();
-    props.getNewsletterEmails();
-  }, []);
+  const [selectedMaster, setSelectedMaster] = useState('Accounts');
 
-  const [allOptions, setAllOptions] = useState([]);
-  const [options, setOptions] = useState([]);
-  const [selected, setSelected] = useState({});
-  const [mentorResults, setMentorResults] = useState([]);
-  const [menteeResults, setMenteeResults] = useState([]);
-
-  // get attendee and room options for search
-  useEffect(() => {
-    setOptions(props.accounts);
-    setAllOptions(props.accounts);
-
-    setMentorResults(Object.values(props.mentors).map((m) => m.account));
-    setMenteeResults(Object.values(props.mentees).map((m) => m.account));
-  }, [props.accounts]);
+  const renderMaster = () => {
+    switch (selectedMaster) {
+      case 'Accounts':
+        return <MasterAccountsContainer />;
+      case 'Newsletter Emails':
+        return <MasterNewsletterContainer />;
+      case 'Events':
+        return <MasterEventsContainer />;
+      default:
+        return <MasterAccountsContainer />;
+    }
+  };
 
   return (
     <div className={classes.root}>
       <Navbar />
       {props.account.email === 'paulazhu@college.harvard.edu' ||
       props.account.email === 'collegekeyfoundation@gmail.com' ? (
-        <Grid
-          className={classes.main}
-          container
-          direction='row'
-          alignItems='center'
-          justify='center'
-          spacing={3}
-        >
-          <Grid item xs={12} className={classes.textContainer}>
-            <Typography className={classes.title}>Master Controls</Typography>
-            {props.onMobile === true && (
-              <Typography>
-                WARNING: I havent designed master layout for mobile yet so this
-                looks bad
-              </Typography>
-            )}
+        <Grid container direction='row'>
+          <Grid item>
+            <MasterDrawer
+              selectedMaster={selectedMaster}
+              setSelectedMaster={setSelectedMaster}
+            />
           </Grid>
-
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <Import />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <AddAccounts />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <MatchMentorMentee
-                mentees={props.accounts.filter((p) => p.user_type === 'Mentee')}
-                mentors={props.accounts.filter((p) => p.user_type === 'Mentor')}
-              />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <Grid
-                container
-                direction='row'
-                alignItems='center'
-                justify='center'
-                spacing={3}
-              >
-                <Grid item xs={12}>
-                  <AccountSearch
-                    options={options}
-                    allOptions={allOptions}
-                    selected={selected}
-                    setSelected={setSelected}
-                    setMentorResults={setMentorResults}
-                    setMenteeResults={setMenteeResults}
-                  />
-                </Grid>
-                <Grid item xs={6} className={classes.textContainer}>
-                  <Typography className={classes.text}>Mentors</Typography>
-                  <Divider />
-                </Grid>
-                <Grid item xs={6} className={classes.textContainer}>
-                  <Typography className={classes.text}>Mentees</Typography>
-                  <Divider />
-                </Grid>
-                <Grid item xs={6}>
-                  <ShowAccounts people={mentorResults} />
-                </Grid>
-                <Grid item xs={6}>
-                  <ShowAccounts people={menteeResults} />
-                </Grid>
+          <Grid item>
+            <Grid
+              className={classes.main}
+              container
+              direction='row'
+              alignItems='center'
+              justify='center'
+              spacing={3}
+            >
+              <Grid item xs={12} className={classes.textContainer}>
+                <Typography className={classes.title}>
+                  Master Controls
+                </Typography>
+                {props.onMobile === true && (
+                  <Typography>
+                    WARNING: Mobile layout is not finished for this page, so
+                    things may look funky.
+                  </Typography>
+                )}
               </Grid>
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <Typography className={classes.text}>
-                Newsletter Emails
-              </Typography>
-              <List>
-                {props.newsletterEmails &&
-                  props.newsletterEmails.map((newsletterEmail) => (
-                    <ListItem>
-                      <ListItemText>{`${newsletterEmail.email}, `}</ListItemText>
-                    </ListItem>
-                  ))}
-              </List>
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <CreateEvent />
-            </Card>
+              {renderMaster()}
+            </Grid>
           </Grid>
         </Grid>
       ) : (
@@ -226,7 +152,6 @@ const mapStateToProps = (state) => ({
   accounts: state.master.accounts,
   mentors: state.master.mentors,
   mentees: state.master.mentees,
-  newsletterEmails: state.master.newsletterEmails,
   onMobile: state.home.onMobile,
 });
 
@@ -236,7 +161,6 @@ function mapDispatchToProps(dispatch) {
     getAccounts: () => dispatch(getAccounts()),
     getMentors: () => dispatch(getMentors()),
     getMentees: () => dispatch(getMentees()),
-    getNewsletterEmails: () => dispatch(getNewsletterEmails()),
   };
 }
 

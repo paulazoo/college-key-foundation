@@ -42,6 +42,10 @@ export function setPublicEvents(payload) {
   return { type: 'SET_PUBLICEVENTS', payload };
 }
 
+export function setAllEvents(payload) {
+  return { type: 'SET_ALLEVENTS', payload };
+}
+
 export function setEvents(payload) {
   return { type: 'SET_EVENTS', payload };
 }

@@ -62,6 +62,7 @@ function EventDetails(props) {
   const [eventDescription, setEventDescription] = useState('');
   const [eventImageUrl, setEventImageUrl] = useState('');
   const [eventLink, setEventLink] = useState('');
+  const [eventPublicLink, setEventPublicLink] = useState('');
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [notPossible, setNotPossible] = useState(false);
@@ -110,6 +111,13 @@ function EventDetails(props) {
       placeholder: 'Event card image url',
       disabled: false,
     },
+    {
+      value: eventPublicLink,
+      label: 'Public Link',
+      valueName: 'eventPublicLink',
+      placeholder: 'Link for public live streaming',
+      disabled: false,
+    },
   ];
   const [inviteesAddedPeople, setInviteesAddedPeople] = useState([]);
 
@@ -139,6 +147,10 @@ function EventDetails(props) {
       }
       case 'eventImageUrl': {
         setEventImageUrl(value);
+        break;
+      }
+      case 'eventPublicLink': {
+        setEventPublicLink(value);
         break;
       }
       default:
@@ -185,6 +197,7 @@ function EventDetails(props) {
         description: eventDescription,
         link: eventLink,
         image_url: eventImageUrl,
+        public_link: eventPublicLink,
         invitees: inviteesAddedPeople,
       });
 
@@ -194,6 +207,7 @@ function EventDetails(props) {
       setEventDescription('');
       setEventLink('');
       setEventImageUrl('');
+      setEventPublicLink('');
       setStartTime(null);
       setEndTime(null);
     } else {
@@ -204,33 +218,6 @@ function EventDetails(props) {
   const validateEmail = (email) => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-  };
-
-  const renderAccountItem = (person) => {
-    return (
-      <MenuItem value={person.user_id} key={person.id}>
-        <Grid container direction='row' alignItems='center' spacing={1}>
-          <Grid item>
-            {person.image_url && (
-              <img
-                style={{
-                  height: '24px',
-                  width: '24px',
-                  display: 'block',
-                  borderRadius: '50%',
-                }}
-                src={person.image_url}
-                alt='Profile picture'
-              />
-            )}
-          </Grid>
-          <Grid item>{person.email}</Grid>
-          <Grid item xs={12}>
-            {person.name && `(${person.name})`}
-          </Grid>
-        </Grid>
-      </MenuItem>
-    );
   };
 
   return (
@@ -321,12 +308,32 @@ function EventDetails(props) {
                     <ChipInput
                       onAdd={(chip) => handleInviteesAddPersonChip(chip)}
                       onDelete={(chip, index) =>
-                        handleInviteesDeletePersonChip(chip, index)}
+                        handleInviteesDeletePersonChip(chip, index)
+                      }
                       onBeforeAdd={(chip) => validateEmail(chip)}
                       value={inviteesAddedPeople}
                       fullWidth
                       variant='outlined'
                       placeholder='Type ENTER after each email to enter'
+                    />
+                  </Grid>
+                </>
+              )}
+              {eventKind === 'public' && (
+                <>
+                  <Grid item xs={3} className={classes.labelItem}>
+                    <Typography className={classes.headText}>
+                      Public Link:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={9}>
+                    <TextField
+                      variant='outlined'
+                      fullWidth
+                      name='Event Public Link'
+                      value={eventPublicLink}
+                      onChange={handleChange}
+                      placeholder='Live streaming link for the public'
                     />
                   </Grid>
                 </>

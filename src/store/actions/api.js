@@ -13,6 +13,7 @@ import {
   setPublicEvents,
   setEvents,
   setEvent,
+  setAllEvents,
 } from './index';
 import { wsConnect } from './websocket';
 
@@ -212,6 +213,31 @@ export const getPublicEvents = () => {
   };
 };
 
+export const getAllEvents = () => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+    };
+    api(`events`, requestOptions)
+      .then((response) => {
+        const preAllEvents = {};
+        response.forEach((event) => {
+          preAllEvents[event.id] = event;
+        });
+
+        dispatch(setAllEvents(preAllEvents));
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
 export const getEvents = () => {
   return (dispatch, getState) => {
     const requestOptions = {
@@ -390,7 +416,7 @@ export const postEvents = (body) => {
   };
 };
 
-export const postImport = () => {
+export const postImportMenteeMentor = () => {
   return (dispatch, getState) => {
     const requestOptions = {
       method: 'POST',
@@ -403,7 +429,7 @@ export const postImport = () => {
         file_name: 'testing0',
       }),
     };
-    api(`mentees/import`, requestOptions)
+    api(`google_sheets/import_mentee_mentor`, requestOptions)
       .then((response) => {
         dispatch(
           setPersonalSnackbar({
