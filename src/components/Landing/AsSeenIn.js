@@ -53,7 +53,7 @@ function AsSeenIn(props) {
             direction='row'
             alignItems='center'
             justify='center'
-            spacing={props.isMobile ? 1 : 3}
+            spacing={props.onMobile ? 1 : 3}
           >
             <Grid item xs={12} className={classes.headTextContainer}>
               <Typography className={classes.headText}>AS SEEN IN</Typography>
@@ -93,7 +93,7 @@ function AsSeenIn(props) {
 }
 
 const mapStateToProps = (state) => ({
-  isMobile: state.home.isMobile,
+  onMobile: state.home.onMobile,
 });
 
 function mapDispatchToProps(dispatch) {

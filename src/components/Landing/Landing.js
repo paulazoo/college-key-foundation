@@ -264,9 +264,7 @@ function Landing(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  isMobile: state.home.isMobile,
-});
+const mapStateToProps = (state) => ({});
 
 function mapDispatchToProps(dispatch) {
   return {

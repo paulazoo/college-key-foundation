@@ -88,7 +88,8 @@ function MobileDrawer({ menuItems, ...props }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {props.account &&
+        {localStorage.getItem('user_token') &&
+          props.account &&
           (props.account.email === 'paulazhu@college.harvard.edu' ||
             props.account.email === 'collegekeyfoundation@gmail.com') && (
             <Button
@@ -213,7 +214,9 @@ function MobileDrawer({ menuItems, ...props }) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  account: state.account,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   userLogout: () => dispatch(userLogout()),

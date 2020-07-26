@@ -53,7 +53,7 @@ function Partners(props) {
             direction='row'
             alignItems='center'
             justify='center'
-            spacing={props.isMobile ? 1 : 4}
+            spacing={props.onMobile ? 1 : 4}
           >
             <Grid item xs={12} className={classes.headTextContainer}>
               <Typography className={classes.headText}>PARTNERS</Typography>
@@ -183,7 +183,9 @@ function Partners(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  onMobile: state.home.onMobile,
+});
 
 function mapDispatchToProps(dispatch) {
   return {

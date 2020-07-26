@@ -108,6 +108,12 @@ function Master(props) {
         >
           <Grid item xs={12} className={classes.textContainer}>
             <Typography className={classes.title}>Master Controls</Typography>
+            {props.onMobile === true && (
+              <Typography>
+                WARNING: I havent designed master layout for mobile yet so this
+                looks bad
+              </Typography>
+            )}
           </Grid>
 
           <Grid item xs={12}>
@@ -221,6 +227,7 @@ const mapStateToProps = (state) => ({
   mentors: state.master.mentors,
   mentees: state.master.mentees,
   newsletterEmails: state.master.newsletterEmails,
+  onMobile: state.home.onMobile,
 });
 
 function mapDispatchToProps(dispatch) {
