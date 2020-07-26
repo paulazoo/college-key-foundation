@@ -150,7 +150,12 @@ function ProfilePic({
                             href={`mailto:${account.email}`}
                           >
                             <Icon>
-                              <img src={GmailSvg} width={24} height={24} />
+                              <img
+                                src={GmailSvg}
+                                alt='Gmail'
+                                width={24}
+                                height={24}
+                              />
                             </Icon>
                           </IconButton>
                         </Grid>
@@ -159,6 +164,7 @@ function ProfilePic({
                             <a
                               href={`mailto:${account.email}`}
                               target='_blank'
+                              rel='noreferrer'
                               className={classes.link}
                             >
                               {account.email}

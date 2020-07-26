@@ -18,6 +18,10 @@ import {
   withRouter,
   useHistory,
 } from 'react-router-dom';
+import DonateSvg from '../../assets/Icons/Donate.svg';
+import MasterSvg from '../../assets/Icons/Master.svg';
+import LoggedInSvg from '../../assets/Icons/LoggedIn.svg';
+import LoggedOutSvg from '../../assets/Icons/LoggedOut.svg';
 
 // Redux
 import { connect } from 'react-redux';
@@ -84,6 +88,23 @@ function MobileDrawer({ menuItems, ...props }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
+        {props.account.email &&
+          (props.account.email === 'paulazhu@college.harvard.edu' ||
+            props.account.email === 'collegekeyfoundation@gmail.com') && (
+            <Button
+              color='inherit'
+              component={NavLink}
+              to='/master'
+              key='Master'
+            >
+              <ListItem button key='Master'>
+                <ListItemIcon style={{ color: 'white' }}>
+                  {MasterSvg}
+                </ListItemIcon>
+                <ListItemText style={{ color: 'white' }} primary='Master' />
+              </ListItem>
+            </Button>
+          )}
         {menuItems.map((item, index) => (
           <Button
             color='inherit'
@@ -106,9 +127,7 @@ function MobileDrawer({ menuItems, ...props }) {
           href='https://www.gofundme.com/f/the-college-key'
         >
           <ListItem button key='Donate'>
-            <ListItemIcon style={{ color: 'white' }}>
-              <MenuOutlinedIcon />
-            </ListItemIcon>
+            <ListItemIcon style={{ color: 'white' }}>{DonateSvg}</ListItemIcon>
             <ListItemText style={{ color: 'white' }} primary='Donate' />
           </ListItem>
         </Button>
@@ -121,7 +140,7 @@ function MobileDrawer({ menuItems, ...props }) {
           >
             <ListItem button key='Logout'>
               <ListItemIcon style={{ color: 'white' }}>
-                <MenuOutlinedIcon />
+                {LoggedInSvg}
               </ListItemIcon>
               <ListItemText style={{ color: 'white' }} primary='Logout' />
             </ListItem>
@@ -130,7 +149,7 @@ function MobileDrawer({ menuItems, ...props }) {
           <Button color='inherit' component={NavLink} to='/login' key='Login'>
             <ListItem button key='Login'>
               <ListItemIcon style={{ color: 'white' }}>
-                <MenuOutlinedIcon />
+                {LoggedOutSvg}
               </ListItemIcon>
               <ListItemText style={{ color: 'white' }} primary='Login' />
             </ListItem>

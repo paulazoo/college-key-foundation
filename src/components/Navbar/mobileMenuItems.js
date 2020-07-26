@@ -1,13 +1,13 @@
 import React from 'react';
+import { Icon } from '@material-ui/core';
 // Icons
 import HomeIcon from '@material-ui/icons/Home';
 import GroupIcon from '@material-ui/icons/Group';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-
-import VerticalSplitIcon from '@material-ui/icons/VerticalSplit';
-
-import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+
+import FellowshipProgramSvg from '../../assets/Icons/FellowshipProgram.svg';
+import ApplySvg from '../../assets/Icons/Apply.svg';
 
 export const loggedOutMenuItems = [
   {
@@ -23,7 +23,11 @@ export const loggedOutMenuItems = [
   {
     text: 'Fellowship Program',
     link: '/fellowship-program',
-    icon: <ViewQuiltIcon />,
+    icon: (
+      <Icon>
+        <img src={FellowshipProgramSvg} alt='icon' width={24} height={24} />
+      </Icon>
+    ),
   },
   {
     text: 'Events',
@@ -33,7 +37,11 @@ export const loggedOutMenuItems = [
   {
     text: 'Apply',
     link: '/apply',
-    icon: <VerticalSplitIcon />,
+    icon: (
+      <Icon>
+        <img src={ApplySvg} alt='icon' width={24} height={24} />
+      </Icon>
+    ),
   },
 ];
 

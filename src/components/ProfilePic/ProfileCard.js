@@ -93,7 +93,12 @@ function ProfileCard({ account, ...props }) {
                           href={`mailto:${account.email}`}
                         >
                           <Icon>
-                            <img src={GmailSvg} width={24} height={24} />
+                            <img
+                              src={GmailSvg}
+                              alt='Gmail'
+                              width={24}
+                              height={24}
+                            />
                           </Icon>
                         </IconButton>
                       </Grid>
