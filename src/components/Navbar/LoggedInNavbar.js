@@ -7,6 +7,7 @@ import {
   Tooltip,
   Link,
   Toolbar,
+  Typography,
 } from '@material-ui/core';
 import MuiAppBar from '@material-ui/core/AppBar';
 
@@ -36,6 +37,17 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16,
     color: theme.palette.common.white,
     fontWeight: 'bold',
+    [theme.breakpoints.down('md')]: {
+      fontSize: 14,
+    },
+  },
+  logInOut: {
+    fontSize: 16,
+    color: theme.palette.secondary.light,
+    fontWeight: 'bold',
+    [theme.breakpoints.down('md')]: {
+      fontSize: 14,
+    },
   },
   linkSecondary: {
     color: theme.palette.secondary.main,
@@ -154,7 +166,7 @@ function LoggedInNavbar({ ...props }) {
                 <Tooltip title='Logout'>
                   <Button
                     color='inherit'
-                    className={classes.rightLink}
+                    className={classes.logInOut}
                     onClick={handleLogout}
                   >
                     Logout

@@ -30,11 +30,6 @@ export const loggedOutMenuItems = [
     ),
   },
   {
-    text: 'Events',
-    link: '/events',
-    icon: <CalendarTodayIcon />,
-  },
-  {
     text: 'Apply',
     link: '/apply',
     icon: (

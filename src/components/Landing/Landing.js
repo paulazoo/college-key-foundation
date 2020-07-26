@@ -70,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
   landingText1: {
     fontWeight: 'bold',
     fontSize: 48,
+    [theme.breakpoints.down('md')]: {
+      fontSize: 32,
+    },
     [theme.breakpoints.down('sm')]: {
       fontSize: 16,
     },
@@ -77,6 +80,9 @@ const useStyles = makeStyles((theme) => ({
   landingText2: {
     fontWeight: 'bold',
     fontSize: 32,
+    [theme.breakpoints.down('md')]: {
+      fontSize: 24,
+    },
     [theme.breakpoints.down('sm')]: {
       fontSize: 12,
     },
@@ -84,6 +90,9 @@ const useStyles = makeStyles((theme) => ({
   landingText3: {
     fontWeight: 'normal',
     fontSize: 24,
+    [theme.breakpoints.down('md')]: {
+      fontSize: 18,
+    },
     [theme.breakpoints.down('sm')]: {
       fontSize: 10,
     },

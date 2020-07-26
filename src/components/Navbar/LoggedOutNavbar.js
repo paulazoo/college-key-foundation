@@ -32,6 +32,17 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16,
     color: theme.palette.common.white,
     fontWeight: 'bold',
+    [theme.breakpoints.down('md')]: {
+      fontSize: 14,
+    },
+  },
+  logInOut: {
+    fontSize: 16,
+    color: theme.palette.secondary.light,
+    fontWeight: 'bold',
+    [theme.breakpoints.down('md')]: {
+      fontSize: 14,
+    },
   },
   linkSecondary: {
     color: theme.palette.secondary.main,
@@ -128,18 +139,6 @@ function LoggedOutNavbar({ ...props }) {
                 </Tooltip>
               </Grid>
               <Grid item>
-                <Tooltip title='Events'>
-                  <Button
-                    color='inherit'
-                    className={classes.rightLink}
-                    component={NavLink}
-                    to='/events'
-                  >
-                    Events
-                  </Button>
-                </Tooltip>
-              </Grid>
-              <Grid item>
                 <Tooltip title='Donate'>
                   <Button
                     color='inherit'
@@ -167,7 +166,7 @@ function LoggedOutNavbar({ ...props }) {
                 <Tooltip title='Login'>
                   <Button
                     color='inherit'
-                    className={classes.rightLink}
+                    className={classes.logInOut}
                     component={NavLink}
                     to='/login'
                   >
