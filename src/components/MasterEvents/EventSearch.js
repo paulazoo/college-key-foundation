@@ -12,6 +12,7 @@ import {
   MenuItem,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import moment from 'moment';
 
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
@@ -66,9 +67,10 @@ function EventSearch({ selected, setSelected, setEventResult, ...props }) {
       <MenuItem value={eventItem.id} key={eventItem.id}>
         <Grid container direction='row' alignItems='center' spacing={1}>
           <Grid item>{eventItem.name}</Grid>
-          <Grid item>{eventItem.kind}</Grid>
+          <Grid item>{`(${eventItem.kind})`}</Grid>
           <Grid item xs={12}>
-            {eventItem.start_time && `(Start time: ${eventItem.start_time})`}
+            {eventItem.start_time &&
+              `Start Time: ${moment(eventItem.start_time).format('lll')}`}
           </Grid>
         </Grid>
       </MenuItem>
@@ -78,10 +80,10 @@ function EventSearch({ selected, setSelected, setEventResult, ...props }) {
   return (
     <>
       <Grid container direction='row' justify='flex-start' alignItems='center'>
-        <Grid item>
+        <Grid item xs={2}>
           <SearchIcon />
         </Grid>
-        <Grid item>
+        <Grid item xs={10}>
           <Autocomplete
             fullWidth
             value={selected}

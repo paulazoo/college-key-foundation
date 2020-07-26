@@ -47,17 +47,17 @@ function ExportJoined(props) {
           justify='center'
           spacing={2}
         >
-          <Grid item xs={4}>
-            <Typography>Export Registered from</Typography>
+          <Grid item xs={3}>
+            <Typography>Export Joined from</Typography>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={6}>
             <EventSearch
               setEventResult={setEventResult}
               selected={selected}
               setSelected={setSelected}
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Button
               color='secondary'
               variant='contained'
@@ -81,7 +81,7 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
   return {
     userLogout: () => dispatch(userLogout()),
-    postExportJoined: () => dispatch(postExportJoined()),
+    postExportJoined: (body) => dispatch(postExportJoined(body)),
   };
 }
 
