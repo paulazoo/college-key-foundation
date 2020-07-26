@@ -34,11 +34,13 @@ function EventSearch({ selected, setSelected, setEventResult, ...props }) {
 
   const [inputValue, setInputValue] = useState('');
 
-  const [options, setOptions] = useState(props.allEvents);
+  const [options, setOptions] = useState([
+    { name: 'No Events', kind: 'N/A', start_time: 'N/A' },
+  ]);
 
-  useEffect(() => {
-    setOptions(props.allEvents);
-  }, [props.allEvents]);
+  // useEffect(() => {
+  //   setOptions(props.allEvents);
+  // }, [props.allEvents]);
 
   const handleChange = (event, newValue) => {
     setSelected(newValue);
@@ -55,7 +57,7 @@ function EventSearch({ selected, setSelected, setEventResult, ...props }) {
 
   const filterOptions = createFilterOptions({
     // matchFrom: 'start',
-    stringify: (option) => option.email,
+    stringify: (option) => option.name,
     limit: 5,
   });
 

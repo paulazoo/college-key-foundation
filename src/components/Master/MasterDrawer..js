@@ -50,7 +50,7 @@ function MasterDrawer({ selectedMaster, setSelectedMaster, ...props }) {
 
   const aboutChoices = [
     { label: 'Accounts' },
-    { label: 'NewsletterEmails' },
+    { label: 'Newsletter Emails' },
     { label: 'Events' },
   ];
 

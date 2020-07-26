@@ -116,7 +116,7 @@ function ShowAccounts({ people, ...props }) {
               {stableSort(people, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((person, index) => (
-                  <TableRow hover tabIndex={-1} key={people.name}>
+                  <TableRow hover tabIndex={-1} key={people.id}>
                     <TableCell
                       component='th'
                       scope='row'

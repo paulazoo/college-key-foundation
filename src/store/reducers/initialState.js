@@ -21,5 +21,6 @@ export const initialState = {
   events: {
     publicEvents: [],
     events: [],
+    allEvents: [],
   },
 };
