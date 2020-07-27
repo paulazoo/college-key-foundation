@@ -113,7 +113,7 @@ ReactDOM.render(
                 path='/fellowship-program'
                 component={FellowshipProgram}
               />
-              <Route exact path='/events' component={PublicEvents} />
+              {/* <Route exact path='/events' component={PublicEvents} /> */}
               <Route exact path='/mentees' component={MenteesPage} />
               <Route exact path='/mentors' component={MentorsPage} />
               <Route exact path='/apply' component={Apply} />
