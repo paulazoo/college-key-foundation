@@ -47,7 +47,7 @@ function All(props) {
         <EventsList
           points={Object.values(props.allEvents)}
           title='All Events'
-          name='upcoming'
+          name='all'
         />
       )}
     </>

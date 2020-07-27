@@ -11,10 +11,14 @@ import {
   IconButton,
 } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 
 // Redux
+import { connect } from 'react-redux';
+import { deleteEvent } from '../../store/actions/api';
 
 // Theme
 import { makeStyles } from '@material-ui/styles';
@@ -30,7 +34,7 @@ const noImageFound = require('../../assets/no-image-found.png');
 const useStyles = makeStyles((theme) => ({
   eventCard: {
     width: theme.spacing(36),
-    height: theme.spacing(42),
+    height: theme.spacing(47),
     position: 'relative',
   },
   eventActionArea: {
@@ -44,21 +48,25 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     bottom: 0,
   },
-  nameText: {},
+  nameText: {
+    fontSize: 20,
+  },
   cardTitle: {
     alignItems: 'center',
     alignContent: 'center',
     paddingTop: '0 !important',
     paddingRight: '0 !important',
     paddingLeft: '0 !important',
+    margin: 0,
     paddingBottom: `${theme.spacing(1)} !important`,
+    textAlign: 'center',
   },
   linkText: {
     color: theme.palette.common.black,
     textDecoration: 'none',
   },
   infoButton: {
-    padding: 0,
+    padding: '0 !important',
     height: 29,
     width: 29,
   },
@@ -76,6 +84,14 @@ function EventCard({ event, name, ...props }) {
 
   const handleEventCardClick = () => {
     setPopupOpen(true);
+  };
+
+  // const handleEditEvent = () => {
+  //   setPopupOpen(true);
+  // };
+
+  const handleDeleteEvent = () => {
+    props.deleteEvent(event.id);
   };
 
   const renderEventType = (type) => {
@@ -139,14 +155,32 @@ function EventCard({ event, name, ...props }) {
               container
               direction='row'
               alignItems='center'
-              justify='flex-start'
-              spacing={5}
+              justify='space-between'
+              spacing={0}
             >
-              <Grid item className={classes.cardTitle}>
-                <IconButton onClick={handleEventCardClick}>
-                  <InfoIcon className={classes.infoButton} />
+              <Grid item xs={1}>
+                <IconButton
+                  onClick={handleEventCardClick}
+                  className={classes.infoButton}
+                >
+                  <InfoIcon className={classes.infoIcon} />
                 </IconButton>
+              </Grid>
+              <Grid item xs={10} className={classes.cardTitle}>
                 <strong className={classes.nameText}>{`${event.name} `}</strong>
+              </Grid>
+              <Grid item xs={1}>
+                {name === 'all' && (
+                  // <IconButton onClick={handleEditEvent}>
+                  //   <EditIcon className={classes.infoButton} />
+                  // </IconButton>
+                  <IconButton
+                    onClick={handleDeleteEvent}
+                    className={classes.infoButton}
+                  >
+                    <DeleteIcon className={classes.infoIcon} />
+                  </IconButton>
+                )}
               </Grid>
             </Grid>
           )}
@@ -178,4 +212,10 @@ function EventCard({ event, name, ...props }) {
   );
 }
 
-export default EventCard;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  deleteEvent: (eventId) => dispatch(deleteEvent(eventId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventCard);

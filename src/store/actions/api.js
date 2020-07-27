@@ -315,7 +315,7 @@ export const postMentors = (body) => {
           dispatch(
             setPersonalSnackbar({
               open: true,
-              content: `Mentor with email ${body.email} was added!`,
+              content: `Mentor with email ${body.email} was added! Please refresh the page.`,
             })
           );
         }
@@ -350,7 +350,7 @@ export const postMentees = (body) => {
           dispatch(
             setPersonalSnackbar({
               open: true,
-              content: `Mentee with email ${body.email} was added!`,
+              content: `Mentee with email ${body.email} was added! Please refresh the page.`,
             })
           );
         }
@@ -403,7 +403,7 @@ export const postEvents = (body) => {
         dispatch(
           setPersonalSnackbar({
             open: true,
-            content: `Event ${body.name} created!`,
+            content: `Event ${body.name} created! Please refresh the page.`,
           })
         );
       })
@@ -707,6 +707,60 @@ export const putAccount = (body) => {
           setPersonalSnackbar({
             open: true,
             content: 'Profile details saved!',
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const putEvent = (eventId, body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    api(`events/${eventId}`, requestOptions)
+      .then((response) => {
+        dispatch(setAccount(response));
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: 'Event updated! Please refresh the page.',
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+// DELETE Calls:
+export const deleteEvent = (eventId) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+    };
+    api(`events/${eventId}`, requestOptions)
+      .then((response) => {
+        dispatch(setAccount(response));
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: 'Event deleted! Please refresh the page.',
           })
         );
       })
