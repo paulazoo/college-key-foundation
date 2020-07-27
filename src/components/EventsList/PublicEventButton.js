@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 function PublicEventButton({
   eventId,
-  link,
+  publicLink,
   fullLink = false,
   showJoin,
   showRegister,
@@ -93,11 +93,11 @@ function PublicEventButton({
             disabled={!showJoin}
             rel='noreferrer'
             target='_blank'
-            href={link}
+            href={publicLink}
             onClick={handleJoin}
           >
             <h3 className={classes.link}>
-              {fullLink ? `Link To Join: ${link}` : 'Join!'}
+              {fullLink ? `Link To Join: ${publicLink}` : 'Join!'}
             </h3>
           </Button>
         </Box>

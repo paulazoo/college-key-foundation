@@ -29,6 +29,7 @@ import AsSeenIn from './AsSeenIn';
 import Partners from './Partners';
 import Overview from './Overview';
 import EmailNewsletter from '../EmailNewsletter/EmailNewsletter';
+import Public from '../EventsList/Public';
 
 const backgroundImage =
   'https://static.wixstatic.com/media/6f9a2f9dd5574440a18d95f4679c14a7.jpg/v1/fit/w_924,h_520/6f9a2f9dd5574440a18d95f4679c14a7.jpg';
@@ -236,6 +237,8 @@ function Landing(props) {
           </Grid>
         </Box>
       </Card>
+      <div className={classes.spacing} />
+      <Public />
       <div className={classes.spacing} />
       <Overview />
       <div className={classes.spacing} />

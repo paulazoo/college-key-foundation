@@ -14,7 +14,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { connect } from 'react-redux';
-import { userLogout, setUser } from '../../store/actions/index';
 import EventsList from './EventsList';
 import { getPublicEvents } from '../../store/actions/api';
 
@@ -58,14 +57,11 @@ function Public(props) {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
-  account: state.account,
   publicEvents: state.events.publicEvents,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    userLogout: () => dispatch(userLogout()),
     getPublicEvents: () => dispatch(getPublicEvents()),
   };
 }

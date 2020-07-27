@@ -105,7 +105,7 @@ function EventPopup({
         <PublicEventButton
           fullLink
           eventId={event.id}
-          link={event.link}
+          publicLink={event.publicLink}
           showJoin={moment().add(1, 'days').isAfter(moment(event.start_time))}
           showRegister={moment().isBefore(moment(event.end_time))}
           handleCloseEventPopup={handleCloseEventPopup}
