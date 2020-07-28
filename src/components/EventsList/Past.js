@@ -46,8 +46,11 @@ function Past(props) {
     <>
       {props.events && Object.keys(props.events).length > 0 && (
         <EventsList
-          points={Object.values(props.events).filter((e) =>
-            moment(e.end_time).isBefore(moment())
+          points={Object.values(props.events).filter(
+            (e) =>
+              !e.end_time ||
+              typeof e.end_time === 'undefined' ||
+              moment(e.end_time).isBefore(moment())
           )}
           title='Your Past Events'
           more='past'

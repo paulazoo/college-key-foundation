@@ -34,7 +34,7 @@ const noImageFound = require('../../assets/no-image-found.png');
 
 const useStyles = makeStyles((theme) => ({
   eventCard: {
-    width: theme.spacing(36),
+    width: theme.spacing(37),
     height: theme.spacing(47),
     position: 'relative',
   },
@@ -179,6 +179,13 @@ function EventCard({ event, name, ...props }) {
     return null;
   };
 
+  const renderEventName = () => {
+    if (name === 'all') {
+      return <>{`${event.name} ID: ${event.id.toString()}`}</>;
+    }
+    return <>{`${event.name} `}</>;
+  };
+
   return (
     <>
       {renderEditEvent()}
@@ -213,7 +220,9 @@ function EventCard({ event, name, ...props }) {
                 </IconButton>
               </Grid>
               <Grid item xs={10} className={classes.cardTitle}>
-                <strong className={classes.nameText}>{`${event.name} `}</strong>
+                <strong className={classes.nameText}>
+                  {renderEventName()}
+                </strong>
               </Grid>
               <Grid item xs={1}>
                 {renderMasterButtons()}

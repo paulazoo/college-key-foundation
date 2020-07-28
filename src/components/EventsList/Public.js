@@ -45,8 +45,11 @@ function Public(props) {
     <>
       {props.publicEvents && Object.keys(props.publicEvents).length > 0 && (
         <EventsList
-          points={Object.values(props.publicEvents).filter((e) =>
-            moment().isBefore(moment(e.end_time))
+          points={Object.values(props.publicEvents).filter(
+            (e) =>
+              !e.end_time ||
+              typeof e.end_time === 'undefined' ||
+              moment().isBefore(moment(e.end_time))
           )}
           title='Upcoming Public Events'
           name='public'

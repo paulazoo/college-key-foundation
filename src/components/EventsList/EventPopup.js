@@ -125,6 +125,13 @@ function EventPopup({
     );
   };
 
+  const renderEventName = () => {
+    if (name === 'all') {
+      return <>{`${event.name} ID: ${event.id.toString()}`}</>;
+    }
+    return <>{`${event.name} `}</>;
+  };
+
   return (
     <Dialog
       open={popupOpen}
@@ -135,7 +142,7 @@ function EventPopup({
         <CardHeader
           title={
             <div className={classes.cardTitle}>
-              <strong className={classes.nameText}>{`${event.name} `}</strong>
+              <strong className={classes.nameText}>{renderEventName()}</strong>
             </div>
           }
           subheader={
