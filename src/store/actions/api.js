@@ -401,10 +401,11 @@ export const postEvents = (body) => {
     };
     api(`events`, requestOptions)
       .then((response) => {
+        dispatch(setEvent({ [response.id]: response }));
         dispatch(
           setPersonalSnackbar({
             open: true,
-            content: `Event ${body.name} created! Please refresh the page.`,
+            content: `Event ${body.name} created!`,
           })
         );
       })
