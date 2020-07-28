@@ -308,8 +308,7 @@ function EventDetails(props) {
                     <ChipInput
                       onAdd={(chip) => handleInviteesAddPersonChip(chip)}
                       onDelete={(chip, index) =>
-                        handleInviteesDeletePersonChip(chip, index)
-                      }
+                        handleInviteesDeletePersonChip(chip, index)}
                       onBeforeAdd={(chip) => validateEmail(chip)}
                       value={inviteesAddedPeople}
                       fullWidth
@@ -330,7 +329,7 @@ function EventDetails(props) {
                     <TextField
                       variant='outlined'
                       fullWidth
-                      name='Event Public Link'
+                      name='eventPublicLink'
                       value={eventPublicLink}
                       onChange={handleChange}
                       placeholder='Live streaming link for the public'

@@ -105,7 +105,7 @@ function EventPopup({
         <PublicEventButton
           fullLink
           eventId={event.id}
-          publicLink={event.publicLink}
+          publicLink={event.public_link}
           showJoin={moment().add(1, 'days').isAfter(moment(event.start_time))}
           showRegister={moment().isBefore(moment(event.end_time))}
           handleCloseEventPopup={handleCloseEventPopup}
@@ -140,12 +140,12 @@ function EventPopup({
     >
       <Card className={classes.eventCard}>
         <CardHeader
-          title={
+          title={(
             <div className={classes.cardTitle}>
               <strong className={classes.nameText}>{renderEventName()}</strong>
             </div>
-          }
-          subheader={
+          )}
+          subheader={(
             <div className={classes.cardTime}>
               {event.start_time !== null ? (
                 <>
@@ -157,7 +157,7 @@ function EventPopup({
                 <>Always open.</>
               )}
             </div>
-          }
+          )}
         />
         <CardContent>
           <Grid
