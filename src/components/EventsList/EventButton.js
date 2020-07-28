@@ -65,7 +65,12 @@ function EventButton({
   const classes = useStyles();
 
   const handleToggleRegister = () => {
-    if (accountRegistration.registered === true) {
+    if (
+      !accountRegistration ||
+      typeof accountRegistration === 'undefined' ||
+      accountRegistration === null ||
+      accountRegistration.registered === true
+    ) {
       props.postUnregister(eventId);
     } else {
       props.postRegister(eventId);
