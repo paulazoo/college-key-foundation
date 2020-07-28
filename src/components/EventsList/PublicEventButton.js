@@ -27,10 +27,10 @@ import moment from 'moment';
 
 // Redux
 import { connect } from 'react-redux';
+import { postPublicRegister, postPublicJoin } from '../../store/actions/api';
 
 // Theme
 import { makeStyles } from '@material-ui/styles';
-import { postPublicRegister, postPublicJoin } from '../../store/actions/api';
 
 // Custom Components
 

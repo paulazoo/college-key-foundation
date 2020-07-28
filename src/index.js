@@ -50,6 +50,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Master from './components/Master/Master';
 import Profile from './components/Profile/Profile';
 import PublicEvents from './components/PublicEvents/PublicEvents';
+import EventPage from './components/EventPage/EventPage';
 
 require('dotenv').config();
 
@@ -119,6 +120,8 @@ ReactDOM.render(
               <Route exact path='/apply' component={Apply} />
               <Route exact path='/terms' component={Terms} />
               <Route exact path='/login' component={LoginPage} />
+              <Route exact path='/events/:eventId' component={EventPage} />
+
               <Route exact path='/testing' component={Testing} />
 
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
