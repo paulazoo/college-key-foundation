@@ -729,11 +729,11 @@ export const putEvent = (eventId, body) => {
     };
     api(`events/${eventId}`, requestOptions)
       .then((response) => {
-        dispatch(setAccount(response));
+        dispatch(setEvent({ [response.id]: response }));
         dispatch(
           setPersonalSnackbar({
             open: true,
-            content: 'Event updated! Please refresh the page.',
+            content: 'Event updated!',
           })
         );
       })
@@ -756,7 +756,7 @@ export const deleteEvent = (eventId) => {
     };
     api(`events/${eventId}`, requestOptions)
       .then((response) => {
-        dispatch(setAccount(response));
+        dispatch(deleteEvent(eventId));
         dispatch(
           setPersonalSnackbar({
             open: true,

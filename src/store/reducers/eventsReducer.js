@@ -27,6 +27,23 @@ export default function eventsReducer(state = initialState.events, action) {
           ...state.events,
           ...action.payload,
         },
+        allEvents: {
+          ...state.events,
+          ...action.payload,
+        },
+      };
+
+    case 'DELETE_EVENT':
+      const { [action.payload]: _e, ...newEvents } = state.events;
+      const { [action.payload]: _ae, ...newAllEvents } = state.allEvents;
+      return {
+        ...state,
+        events: {
+          ...newEvents,
+        },
+        allEvents: {
+          ...newAllEvents,
+        },
       };
 
     default:

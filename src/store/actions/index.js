@@ -53,3 +53,7 @@ export function setEvents(payload) {
 export function setEvent(payload) {
   return { type: 'SET_EVENT', payload };
 }
+
+export function deleteEvent(payload) {
+  return { type: 'DELETE_EVENT', payload };
+}

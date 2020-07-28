@@ -28,6 +28,7 @@ import EventButton from './EventButton';
 import EventPopup from './EventPopup';
 import PublicEventButton from './PublicEventButton';
 import PublicRegisterPopup from './PublicRegisterPopup';
+import EditEvent from '../CreateEvent/EditEvent';
 
 const noImageFound = require('../../assets/no-image-found.png');
 
@@ -81,6 +82,7 @@ function EventCard({ event, name, ...props }) {
 
   const [popupOpen, setPopupOpen] = useState(false);
   const [publicRegisterPopupOpen, setPublicRegisterPopupOpen] = useState(false);
+  const [editEventOpen, setEditEventOpen] = useState(false);
 
   const handleEventCardClick = () => {
     setPopupOpen(true);
@@ -111,6 +113,10 @@ function EventCard({ event, name, ...props }) {
     setPublicRegisterPopupOpen(true);
   };
 
+  const handleEditEventOpen = () => {
+    setEditEventOpen(true);
+  };
+
   const renderEventButton = (name) => {
     if (name === 'public') {
       return (
@@ -134,8 +140,48 @@ function EventCard({ event, name, ...props }) {
     );
   };
 
+  const renderEditEvent = () => {
+    if (name === 'all') {
+      return (
+        <EditEvent
+          event={event}
+          editEventOpen={editEventOpen}
+          setEditEventOpen={setEditEventOpen}
+        />
+      );
+    }
+    return null;
+  };
+
+  const renderMasterButtons = () => {
+    if (name === 'all') {
+      return (
+        <Grid container direction='column'>
+          <Grid item>
+            <IconButton
+              onClick={handleEditEventOpen}
+              className={classes.infoButton}
+            >
+              <EditIcon className={classes.infoIcon} />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <IconButton
+              onClick={handleDeleteEvent}
+              className={classes.infoButton}
+            >
+              <DeleteIcon className={classes.infoIcon} />
+            </IconButton>
+          </Grid>
+        </Grid>
+      );
+    }
+    return null;
+  };
+
   return (
     <>
+      {renderEditEvent()}
       <EventPopup
         popupOpen={popupOpen}
         setPopupOpen={setPopupOpen}
@@ -150,7 +196,7 @@ function EventCard({ event, name, ...props }) {
       />
       <Card className={classes.eventCard}>
         <CardHeader
-          title={(
+          title={
             <Grid
               container
               direction='row'
@@ -170,21 +216,11 @@ function EventCard({ event, name, ...props }) {
                 <strong className={classes.nameText}>{`${event.name} `}</strong>
               </Grid>
               <Grid item xs={1}>
-                {name === 'all' && (
-                  // <IconButton onClick={handleEditEvent}>
-                  //   <EditIcon className={classes.infoButton} />
-                  // </IconButton>
-                  <IconButton
-                    onClick={handleDeleteEvent}
-                    className={classes.infoButton}
-                  >
-                    <DeleteIcon className={classes.infoIcon} />
-                  </IconButton>
-                )}
+                {renderMasterButtons()}
               </Grid>
             </Grid>
-          )}
-          subheader={(
+          }
+          subheader={
             <div>
               {event.start_time !== null ? (
                 <>
@@ -200,7 +236,7 @@ function EventCard({ event, name, ...props }) {
                 <Grid item>{renderEventButton(name)}</Grid>
               </Grid>
             </div>
-          )}
+          }
         />
         {event.image_url ? (
           <CardMedia className={classes.media} image={`${event.image_url}`} />
