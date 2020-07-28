@@ -14,6 +14,7 @@ import {
   setEvents,
   setEvent,
   setAllEvents,
+  deleteEvent,
 } from './index';
 import { wsConnect } from './websocket';
 
@@ -744,7 +745,7 @@ export const putEvent = (eventId, body) => {
 };
 
 // DELETE Calls:
-export const deleteEvent = (eventId) => {
+export const deleteEventApi = (eventId) => {
   return (dispatch, getState) => {
     const requestOptions = {
       method: 'DELETE',
@@ -760,7 +761,7 @@ export const deleteEvent = (eventId) => {
         dispatch(
           setPersonalSnackbar({
             open: true,
-            content: 'Event deleted! Please refresh the page.',
+            content: 'Event deleted!',
           })
         );
       })

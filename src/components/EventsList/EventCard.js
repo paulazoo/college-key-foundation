@@ -18,7 +18,7 @@ import moment from 'moment';
 
 // Redux
 import { connect } from 'react-redux';
-import { deleteEvent } from '../../store/actions/api';
+import { deleteEventApi } from '../../store/actions/api';
 
 // Theme
 import { makeStyles } from '@material-ui/styles';
@@ -93,7 +93,7 @@ function EventCard({ event, name, ...props }) {
   // };
 
   const handleDeleteEvent = () => {
-    props.deleteEvent(event.id);
+    props.deleteEventApi(event.id);
   };
 
   const renderEventType = (type) => {
@@ -196,7 +196,7 @@ function EventCard({ event, name, ...props }) {
       />
       <Card className={classes.eventCard}>
         <CardHeader
-          title={
+          title={(
             <Grid
               container
               direction='row'
@@ -219,8 +219,8 @@ function EventCard({ event, name, ...props }) {
                 {renderMasterButtons()}
               </Grid>
             </Grid>
-          }
-          subheader={
+          )}
+          subheader={(
             <div>
               {event.start_time !== null ? (
                 <>
@@ -236,7 +236,7 @@ function EventCard({ event, name, ...props }) {
                 <Grid item>{renderEventButton(name)}</Grid>
               </Grid>
             </div>
-          }
+          )}
         />
         {event.image_url ? (
           <CardMedia className={classes.media} image={`${event.image_url}`} />
@@ -251,7 +251,7 @@ function EventCard({ event, name, ...props }) {
 const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteEvent: (eventId) => dispatch(deleteEvent(eventId)),
+  deleteEventApi: (eventId) => dispatch(deleteEventApi(eventId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventCard);
