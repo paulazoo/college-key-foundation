@@ -66,7 +66,7 @@ function EventButton({
 
   const handleToggleRegister = () => {
     if (
-      accountRegistration === null ||
+      accountRegistration.registered ||
       accountRegistration.registered === false
     ) {
       props.postRegister(eventId);
