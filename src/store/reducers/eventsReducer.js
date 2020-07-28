@@ -28,7 +28,7 @@ export default function eventsReducer(state = initialState.events, action) {
           ...action.payload,
         },
         allEvents: {
-          ...state.events,
+          ...state.allEvents,
           ...action.payload,
         },
       };
