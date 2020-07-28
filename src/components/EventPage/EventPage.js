@@ -122,7 +122,7 @@ function EventPage({ handlePublicRegisterPopup, ...props }) {
         <PublicEventButton
           fullLink
           eventId={event.id}
-          publicLink={event.publicLink}
+          publicLink={event.public_link}
           showJoin={moment().add(1, 'days').isAfter(moment(event.start_time))}
           showRegister={moment().isBefore(moment(event.end_time))}
           handleCloseEventPopup={() => {}}
@@ -154,12 +154,12 @@ function EventPage({ handlePublicRegisterPopup, ...props }) {
       {event ? (
         <Card className={classes.eventCard}>
           <CardHeader
-            title={
+            title={(
               <div className={classes.cardTitle}>
                 <strong className={classes.nameText}>{`${event.name} `}</strong>
               </div>
-            }
-            subheader={
+            )}
+            subheader={(
               <div className={classes.cardTime}>
                 {event.start_time !== null ? (
                   <>
@@ -171,7 +171,7 @@ function EventPage({ handlePublicRegisterPopup, ...props }) {
                   <>Always open.</>
                 )}
               </div>
-            }
+            )}
           />
           <CardContent>
             <Grid
