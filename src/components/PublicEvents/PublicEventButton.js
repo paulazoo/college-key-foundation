@@ -81,8 +81,12 @@ function PublicEventButton({
 }) {
   const classes = useStyles();
 
-  const handleJoin = () => {
-    props.postPublicJoin(eventId);
+  const handlePublicJoinPopup = () => {
+    handlePublicPopup('join');
+  };
+
+  const handlePublicRegisterPopup = () => {
+    handlePublicPopup('register');
   };
 
   return (
@@ -99,7 +103,7 @@ function PublicEventButton({
           <Button
             variant='contained'
             color='primary'
-            onClick={handlePublicPopup}
+            onClick={handlePublicRegisterPopup}
             className={classes.button}
             // disabled={!showRegister}
           >
@@ -113,10 +117,7 @@ function PublicEventButton({
             variant='contained'
             color='secondary'
             disabled={!showJoin}
-            rel='noreferrer'
-            target='_blank'
-            href={publicLink}
-            onClick={handleJoin}
+            onClick={handlePublicJoinPopup}
             className={classes.button}
           >
             <h3 className={classes.link}>

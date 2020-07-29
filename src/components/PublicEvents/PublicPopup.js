@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Typography,
   Card,
@@ -20,7 +20,11 @@ import moment from 'moment';
 
 // Redux
 import { connect } from 'react-redux';
-import { postPublicRegister, getLogin } from '../../store/actions/api';
+import {
+  postPublicRegister,
+  getLogin,
+  postPublicJoin,
+} from '../../store/actions/api';
 import { userLogout, setCurrentlyLoading } from '../../store/actions/index';
 
 // Theme
@@ -92,7 +96,7 @@ function PublicPopup({
   event,
   publicPopupOpen,
   setPublicPopup,
-  type = 'registered',
+  type,
   ...props
 }) {
   const classes = useStyles();
@@ -104,6 +108,10 @@ function PublicPopup({
   const [errorText, setErrorText] = useState(
     'Login error. Please refresh the page to try again'
   );
+
+  useEffect(() => {
+    console.log(type);
+  }, []);
 
   const handleChangePublicName = (e) => {
     setPublicName(e.target.value);
@@ -123,6 +131,11 @@ function PublicPopup({
       public_name: publicName,
       public_email: publicEmail,
     });
+    setPublicPopup(false);
+  };
+
+  const handlePublicJoin = () => {
+    props.postPublicJoin(event.id);
     setPublicPopup(false);
   };
 
@@ -174,7 +187,9 @@ function PublicPopup({
           title={
             <div className={classes.cardTitle}>
               <strong className={classes.nameText}>
-                {`Register for ${event.name}`}
+                {type === 'register'
+                  ? `Register for ${event.name}`
+                  : `Join ${event.name}!`}
               </strong>
             </div>
           }
@@ -255,14 +270,28 @@ function PublicPopup({
               <Button onClick={handleClosePublicRegisterPopup}>Cancel</Button>
             </Grid>
             <Grid item>
-              <Button
-                variant='contained'
-                color='secondary'
-                onClick={handlePublicRegister}
-                type='submit'
-              >
-                Register
-              </Button>
+              {type === 'register' ? (
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={handlePublicRegister}
+                  type='submit'
+                >
+                  Register
+                </Button>
+              ) : (
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={handlePublicJoin}
+                  type='submit'
+                  target='_blank'
+                  href={event.public_link}
+                  rel='noreferrer'
+                >
+                  Continue to Public Livestream
+                </Button>
+              )}
             </Grid>
           </Grid>
         </CardActions>
@@ -279,6 +308,7 @@ const mapStateToProps = (state) => ({
 
 function mapDispatchToProps(dispatch) {
   return {
+    postPublicJoin: (eventId) => dispatch(postPublicJoin(eventId)),
     postPublicRegister: (eventId, body) =>
       dispatch(postPublicRegister(eventId, body)),
     userLogout: () => dispatch(userLogout()),
