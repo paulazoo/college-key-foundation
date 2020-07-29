@@ -132,6 +132,7 @@ function EventCard({ event, name, ...props }) {
   const handlePublicPopup = (type) => {
     setPopupOpen(false);
     setPublicPopupType(type);
+    console.log(type);
     setPublicPopupOpen(true);
   };
 
@@ -221,16 +222,16 @@ function EventCard({ event, name, ...props }) {
         event={event}
         name={name}
         handlePublicPopup={handlePublicPopup}
-        type={publicPopupType}
       />
       <PublicPopup
+        type={publicPopupType}
         publicPopupOpen={publicPopupOpen}
         setPublicPopup={setPublicPopupOpen}
         event={event}
       />
       <Card className={classes.eventCard}>
         <CardHeader
-          title={(
+          title={
             <Grid
               container
               direction='row'
@@ -255,8 +256,8 @@ function EventCard({ event, name, ...props }) {
                 {renderMasterButtons()}
               </Grid>
             </Grid>
-          )}
-          subheader={(
+          }
+          subheader={
             <div className={classes.subheader}>
               {event.start_time !== null ? (
                 <>
@@ -272,7 +273,7 @@ function EventCard({ event, name, ...props }) {
                 <Grid item>{renderEventButton(name)}</Grid>
               </Grid>
             </div>
-          )}
+          }
         />
         {event.image_url ? (
           <CardMedia className={classes.media} image={`${event.image_url}`} />

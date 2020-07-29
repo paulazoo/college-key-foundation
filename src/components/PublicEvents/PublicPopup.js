@@ -109,10 +109,6 @@ function PublicPopup({
     'Login error. Please refresh the page to try again'
   );
 
-  useEffect(() => {
-    console.log(type);
-  }, []);
-
   const handleChangePublicName = (e) => {
     setPublicName(e.target.value);
   };
@@ -176,6 +172,13 @@ function PublicPopup({
     );
   };
 
+  const renderHeader = () => {
+    if (type === 'register') {
+      return `Register for ${event.name}`;
+    }
+    return `Join ${event.name}`;
+  };
+
   return (
     <Dialog
       open={publicPopupOpen}
@@ -184,16 +187,12 @@ function PublicPopup({
     >
       <Card className={classes.eventCard}>
         <CardHeader
-          title={
+          title={(
             <div className={classes.cardTitle}>
-              <strong className={classes.nameText}>
-                {type === 'register'
-                  ? `Register for ${event.name}`
-                  : `Join ${event.name}!`}
-              </strong>
+              <strong className={classes.nameText}>{renderHeader()}</strong>
             </div>
-          }
-          subheader={
+          )}
+          subheader={(
             <div className={classes.cardTime}>
               {event.start_time !== null ? (
                 <>
@@ -205,7 +204,7 @@ function PublicPopup({
                 <>Always open.</>
               )}
             </div>
-          }
+          )}
         />
         <CardContent>
           <Grid
