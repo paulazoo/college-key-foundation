@@ -23,8 +23,7 @@ import { makeStyles } from '@material-ui/styles';
 
 // Custom Components
 import EventButton from '../EventsList/EventButton';
-import PublicEventButton from '../EventsList/PublicEventButton';
-import PublicRegisterPopup from '../EventsList/PublicRegisterPopup';
+import PublicEventButton from '../PublicEvents/PublicEventButton';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 
@@ -78,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EventPage({ handlePublicRegisterPopup, ...props }) {
+function EventPage({ handlePublicPopup, ...props }) {
   const [name, setName] = useState('public');
 
   const { eventId } = useParams();
@@ -126,7 +125,7 @@ function EventPage({ handlePublicRegisterPopup, ...props }) {
           showJoin={moment().add(1, 'days').isAfter(moment(event.start_time))}
           showRegister={moment().isBefore(moment(event.end_time))}
           handleCloseEventPopup={() => {}}
-          handlePublicRegisterPopup={handlePublicRegisterPopup}
+          handlePublicPopup={handlePublicPopup}
         />
       );
     }
@@ -154,12 +153,12 @@ function EventPage({ handlePublicRegisterPopup, ...props }) {
       {event ? (
         <Card className={classes.eventCard}>
           <CardHeader
-            title={(
+            title={
               <div className={classes.cardTitle}>
                 <strong className={classes.nameText}>{`${event.name} `}</strong>
               </div>
-            )}
-            subheader={(
+            }
+            subheader={
               <div className={classes.cardTime}>
                 {event.start_time !== null ? (
                   <>
@@ -171,7 +170,7 @@ function EventPage({ handlePublicRegisterPopup, ...props }) {
                   <>Always open.</>
                 )}
               </div>
-            )}
+            }
           />
           <CardContent>
             <Grid

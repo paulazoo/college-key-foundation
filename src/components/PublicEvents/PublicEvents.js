@@ -19,7 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
 import WordDivider from '../Shared/WordDivider';
-import Public from '../EventsList/Public';
+import Public from './Public';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 

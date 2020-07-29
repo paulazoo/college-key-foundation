@@ -21,6 +21,13 @@ export default function eventsReducer(state = initialState.events, action) {
       };
 
     case 'SET_EVENT':
+      let newPublicEvents;
+      if (Object.values(action.payload)[0].kind === 'open') {
+        newPublicEvents = { ...state.publicEvents, ...action.payload };
+      } else {
+        newPublicEvents = state.publicEvents;
+      }
+
       return {
         ...state,
         events: {
@@ -31,6 +38,7 @@ export default function eventsReducer(state = initialState.events, action) {
           ...state.allEvents,
           ...action.payload,
         },
+        publicEvents: newPublicEvents,
       };
 
     case 'DELETE_EVENT':

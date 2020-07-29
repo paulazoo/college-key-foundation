@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { connect } from 'react-redux';
-import EventsList from './EventsList';
+import EventsList from '../EventsList/EventsList';
 import { getPublicEvents } from '../../store/actions/api';
 
 // Custom Components

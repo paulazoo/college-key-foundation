@@ -76,7 +76,7 @@ function PublicEventButton({
   fullLink = false,
   showJoin,
   showRegister,
-  handlePublicRegisterPopup,
+  handlePublicPopup,
   ...props
 }) {
   const classes = useStyles();
@@ -99,7 +99,7 @@ function PublicEventButton({
           <Button
             variant='contained'
             color='primary'
-            onClick={handlePublicRegisterPopup}
+            onClick={handlePublicPopup}
             className={classes.button}
             // disabled={!showRegister}
           >

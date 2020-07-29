@@ -10,14 +10,18 @@ import {
   Box,
   CardActions,
   TextField,
+  Divider,
 } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 import { NavLink } from 'react-router-dom';
+import LogRocket from 'logrocket';
+import GoogleLogin from 'react-google-login';
 import moment from 'moment';
 
 // Redux
 import { connect } from 'react-redux';
-import { postPublicRegister } from '../../store/actions/api';
+import { postPublicRegister, getLogin } from '../../store/actions/api';
+import { userLogout, setCurrentlyLoading } from '../../store/actions/index';
 
 // Theme
 import { makeStyles } from '@material-ui/styles';
@@ -72,18 +76,34 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.black,
     textDecoration: 'none',
   },
+  loginTextContainer: {
+    textAlign: 'center',
+  },
+  loginText: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+  spacing: {
+    height: theme.spacing(1),
+  },
 }));
 
-function PublicRegisterPopup({
+function PublicPopup({
   event,
-  publicRegisterPopupOpen,
-  setPublicRegisterPopup,
+  publicPopupOpen,
+  setPublicPopup,
+  type = 'registered',
   ...props
 }) {
   const classes = useStyles();
 
   const [publicName, setPublicName] = useState('');
   const [publicEmail, setPublicEmail] = useState('');
+
+  const [errorDisplayOpen, setErrorDisplayOpen] = useState(false);
+  const [errorText, setErrorText] = useState(
+    'Login error. Please refresh the page to try again'
+  );
 
   const handleChangePublicName = (e) => {
     setPublicName(e.target.value);
@@ -94,7 +114,7 @@ function PublicRegisterPopup({
   };
 
   const handleClosePublicRegisterPopup = () => {
-    setPublicRegisterPopup(false);
+    setPublicPopup(false);
   };
 
   const handlePublicRegister = () => {
@@ -103,25 +123,62 @@ function PublicRegisterPopup({
       public_name: publicName,
       public_email: publicEmail,
     });
-    setPublicRegisterPopup(false);
+    setPublicPopup(false);
+  };
+
+  const getLoginCallback = (account) => {
+    LogRocket.identify(account.id, {
+      name: account.name,
+      email: account.email,
+      google_id: account.google_id,
+    });
+  };
+
+  const responseGoogle = (response) => {
+    props.setCurrentlyLoading(true);
+    localStorage.setItem('user_token', response.tokenId);
+    props.getLogin(response.tokenId, getLoginCallback);
+  };
+
+  const responseGoogleErrors = (response) => {
+    switch (response.error) {
+      case 'popup_closed_by_user':
+        break;
+      case 'idpiframe_initialization_failed':
+        setErrorText('Login error- ensure that cookies are enabled to login.');
+      default:
+        setErrorDisplayOpen(true);
+    }
+  };
+
+  const renderGoogleLogin = () => {
+    return (
+      <GoogleLogin
+        clientId='322643072137-r7mupmjsg74h6g16o6k5vpi7cgsqvlmq.apps.googleusercontent.com'
+        buttonText='Log in with Google'
+        onSuccess={responseGoogle}
+        onFailure={responseGoogleErrors}
+        cookiePolicy='single_host_origin'
+      />
+    );
   };
 
   return (
     <Dialog
-      open={publicRegisterPopupOpen}
+      open={publicPopupOpen}
       onClose={handleClosePublicRegisterPopup}
       className={classes.eventDialog}
     >
       <Card className={classes.eventCard}>
         <CardHeader
-          title={(
+          title={
             <div className={classes.cardTitle}>
               <strong className={classes.nameText}>
                 {`Register for ${event.name}`}
               </strong>
             </div>
-          )}
-          subheader={(
+          }
+          subheader={
             <div className={classes.cardTime}>
               {event.start_time !== null ? (
                 <>
@@ -133,7 +190,7 @@ function PublicRegisterPopup({
                 <>Always open.</>
               )}
             </div>
-          )}
+          }
         />
         <CardContent>
           <Grid
@@ -143,6 +200,33 @@ function PublicRegisterPopup({
             alignItems='center'
             spacing={2}
           >
+            <Grid item xs={12} className={classes.loginTextContainer}>
+              <Typography className={classes.loginText}>
+                Login if Mentor / Mentee
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Grid
+                container
+                direction='row'
+                justify='center'
+                alignItems='center'
+              >
+                <Grid item>{renderGoogleLogin()}</Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={12}>
+              <div className={classes.spacing} />
+            </Grid>
+            <Grid item xs={12}>
+              <Divider />
+            </Grid>
+            <Grid item xs={12}>
+              <div className={classes.spacing} />
+            </Grid>
+            <Grid item xs={12} className={classes.loginTextContainer}>
+              <Typography className={classes.loginText}>OR</Typography>
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 required
@@ -190,16 +274,18 @@ function PublicRegisterPopup({
 const mapStateToProps = (state) => ({
   user: state.user,
   accounts: state.master.accounts,
+  currentlyLoading: state.home.currentlyLoading,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     postPublicRegister: (eventId, body) =>
       dispatch(postPublicRegister(eventId, body)),
+    userLogout: () => dispatch(userLogout()),
+    getLogin: (userToken) => dispatch(getLogin(userToken)),
+    setCurrentlyLoading: (currentlyLoading) =>
+      dispatch(setCurrentlyLoading(currentlyLoading)),
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PublicRegisterPopup);
+export default connect(mapStateToProps, mapDispatchToProps)(PublicPopup);

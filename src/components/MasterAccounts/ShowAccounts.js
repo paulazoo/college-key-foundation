@@ -89,9 +89,7 @@ function ShowAccounts({ people, ...props }) {
   const [orderBy, setOrderBy] = useState(null);
   const [page, setPage] = useState(0);
   const [masterProfileOpen, setMasterProfileOpen] = useState(false);
-  const [masterProfileAccount, setMasterProfileAccount] = useState(
-    props.account
-  );
+  const [masterProfileAccount, setMasterProfileAccount] = useState({});
 
   const handleRequestSort = (__, property) => {
     const _orderBy = property;
@@ -110,15 +108,18 @@ function ShowAccounts({ people, ...props }) {
   const handleMasterProfileOpen = (person) => {
     setMasterProfileOpen(true);
     setMasterProfileAccount(person);
+    console.log(person);
   };
 
   return (
     <>
-      <MasterProfile
-        masterProfileOpen={masterProfileOpen}
-        setMasterProfileOpen={setMasterProfileOpen}
-        account={masterProfileAccount}
-      />
+      {masterProfileAccount && (
+        <MasterProfile
+          account={masterProfileAccount}
+          masterProfileOpen={masterProfileOpen}
+          setMasterProfileOpen={setMasterProfileOpen}
+        />
+      )}
       <Box>
         {people && people.length > 0 ? (
           <Table aria-labelledby='tableTitle'>

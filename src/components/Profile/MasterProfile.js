@@ -81,6 +81,14 @@ function MasterProfile({
   const [gradYear, setGradYear] = useState(account.grad_year);
   const [gradYearError, setGradYearError] = useState(false);
 
+  useEffect(() => {
+    setBio(account.bio);
+    setPhone(account.phone);
+    setSchool(account.school);
+    setEmail(account.email);
+    setGradYear(account.grad_year);
+  }, [account]);
+
   const handleBioChange = (e) => {
     setBio(e.target.value);
   };

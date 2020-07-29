@@ -42,15 +42,15 @@ const useStyles = makeStyles((theme) => ({
   link: {
     margin: 0,
     textTransform: 'none',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: 8,
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   fontSize: 8,
+    // },
   },
   linkContainer: {
     wordBreak: 'break-word',
-    [theme.breakpoints.down('sm')]: {
-      padding: '3px !important',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   padding: '3px !important',
+    // },
   },
   linkText: {
     color: theme.palette.common.black,
@@ -58,19 +58,19 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonContainer: {
     padding: '10px !important',
-    [theme.breakpoints.down('sm')]: {
-      padding: '3px !important',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   padding: '3px !important',
+    // },
   },
   button: {
-    [theme.breakpoints.down('sm')]: {
-      padding: '3px !important',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   padding: '3px !important',
+    // },
   },
   gridItem: {
-    [theme.breakpoints.down('sm')]: {
-      padding: '3px !important',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   padding: '3px !important',
+    // },
   },
 }));
 
