@@ -38,14 +38,35 @@ const useStyles = makeStyles((theme) => ({
   link: {
     margin: 0,
     textTransform: 'none',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 8,
+    },
   },
-  linkContainer: { wordBreak: 'break-word' },
+  linkContainer: {
+    wordBreak: 'break-word',
+    [theme.breakpoints.down('sm')]: {
+      padding: '3px !important',
+    },
+  },
   linkText: {
     color: theme.palette.common.black,
     textDecoration: 'none',
   },
   buttonContainer: {
     padding: '10px !important',
+    [theme.breakpoints.down('sm')]: {
+      padding: '3px !important',
+    },
+  },
+  button: {
+    [theme.breakpoints.down('sm')]: {
+      padding: '3px !important',
+    },
+  },
+  gridItem: {
+    [theme.breakpoints.down('sm')]: {
+      padding: '3px !important',
+    },
   },
 }));
 
@@ -73,19 +94,20 @@ function PublicEventButton({
       className={classes.buttonContainer}
       spacing={2}
     >
-      <Grid item>
+      <Grid item className={classes.gridItem}>
         <Box className={classes.linkContainer}>
           <Button
             variant='contained'
             color='primary'
             onClick={handlePublicRegisterPopup}
+            className={classes.button}
             // disabled={!showRegister}
           >
             <h3 className={classes.link}>Register</h3>
           </Button>
         </Box>
       </Grid>
-      <Grid item>
+      <Grid item className={classes.gridItem}>
         <Box className={classes.linkContainer}>
           <Button
             variant='contained'
@@ -95,6 +117,7 @@ function PublicEventButton({
             target='_blank'
             href={publicLink}
             onClick={handleJoin}
+            className={classes.button}
           >
             <h3 className={classes.link}>
               {fullLink ? `Link To Join: ${publicLink}` : 'Join!'}

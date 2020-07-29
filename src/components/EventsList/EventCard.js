@@ -37,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(37),
     height: theme.spacing(47),
     position: 'relative',
+    [theme.breakpoints.down('sm')]: {
+      width: theme.spacing(20),
+      height: theme.spacing(30),
+    },
   },
   eventActionArea: {
     position: 'relative',
@@ -51,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
   },
   nameText: {
     fontSize: 20,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+    },
   },
   cardTitle: {
     alignItems: 'center',
@@ -70,10 +77,23 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 !important',
     height: 29,
     width: 29,
+    [theme.breakpoints.down('sm')]: {
+      height: 15,
+      width: 15,
+    },
   },
   infoIcon: {
     height: 29,
     width: 29,
+    [theme.breakpoints.down('sm')]: {
+      height: 15,
+      width: 15,
+    },
+  },
+  subheader: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
 }));
 
@@ -203,7 +223,7 @@ function EventCard({ event, name, ...props }) {
       />
       <Card className={classes.eventCard}>
         <CardHeader
-          title={
+          title={(
             <Grid
               container
               direction='row'
@@ -228,9 +248,9 @@ function EventCard({ event, name, ...props }) {
                 {renderMasterButtons()}
               </Grid>
             </Grid>
-          }
-          subheader={
-            <div>
+          )}
+          subheader={(
+            <div className={classes.subheader}>
               {event.start_time !== null ? (
                 <>
                   {`${moment(event.start_time).format('lll')} to ${moment(
@@ -245,7 +265,7 @@ function EventCard({ event, name, ...props }) {
                 <Grid item>{renderEventButton(name)}</Grid>
               </Grid>
             </div>
-          }
+          )}
         />
         {event.image_url ? (
           <CardMedia className={classes.media} image={`${event.image_url}`} />

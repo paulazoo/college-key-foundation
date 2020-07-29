@@ -121,7 +121,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 24,
     [theme.breakpoints.down('sm')]: {
-      fontSize: 12,
+      fontSize: 10,
+      padding: theme.spacing(1),
     },
   },
   dueDateContainer: {
@@ -131,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: 18,
     [theme.breakpoints.down('sm')]: {
-      fontSize: 10,
+      fontSize: 8,
     },
   },
   spacing: {
