@@ -159,6 +159,7 @@ function EditEvent({ event, editEventOpen, setEditEventOpen, ...props }) {
         break;
       }
       case 'eventPublicLink': {
+        console.log(eventPublicLink);
         setEventPublicLink(value);
         break;
       }
@@ -198,6 +199,19 @@ function EditEvent({ event, editEventOpen, setEditEventOpen, ...props }) {
       }
 
       props.putEvent(event.id, {
+        start_time,
+        end_time,
+        name: eventName,
+        host: eventHost,
+        kind: eventKind,
+        description: eventDescription,
+        link: eventLink,
+        image_url: eventImageUrl,
+        public_link: eventPublicLink,
+        invitees: inviteesAddedPeople,
+      });
+
+      console.log({
         start_time,
         end_time,
         name: eventName,
@@ -334,7 +348,7 @@ function EditEvent({ event, editEventOpen, setEditEventOpen, ...props }) {
                     <TextField
                       variant='outlined'
                       fullWidth
-                      name='Event Public Link'
+                      name='eventPublicLink'
                       value={eventPublicLink}
                       onChange={handleChange}
                       placeholder='Live streaming link for the public'

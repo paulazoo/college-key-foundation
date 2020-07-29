@@ -11,7 +11,9 @@ import {
   List,
   ListItem,
   Popover,
+  IconButton,
 } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import CheckIcon from '@material-ui/icons/Check';
@@ -26,6 +28,7 @@ import { theme } from '../../theme';
 
 // Custom Components
 import ProfilePic from '../ProfilePic/ProfilePic';
+import MasterProfile from '../Profile/MasterProfile';
 import EnhancedTableHead from '../Shared/EnhancedTableHead';
 import stableSort from '../Shared/stableSort';
 import getSorting from '../Shared/getSorting';
@@ -70,11 +73,11 @@ const rows = [
   },
   { id: 'email', label: 'Email' },
   { id: 'phone', label: 'Phone Number' },
-  // { id: 'user_type', label: 'Role' },
-  // {
-  //   id: "actions",
-  //   label: "",
-  // },
+  { id: 'id', label: 'ID' },
+  {
+    id: 'edit',
+    label: 'Edit',
+  },
 ];
 
 const rowsPerPage = 10;
@@ -85,6 +88,10 @@ function ShowAccounts({ people, ...props }) {
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState(null);
   const [page, setPage] = useState(0);
+  const [masterProfileOpen, setMasterProfileOpen] = useState(false);
+  const [masterProfileAccount, setMasterProfileAccount] = useState(
+    props.account
+  );
 
   const handleRequestSort = (__, property) => {
     const _orderBy = property;
@@ -100,8 +107,18 @@ function ShowAccounts({ people, ...props }) {
     setPage(page);
   };
 
+  const handleMasterProfileOpen = (person) => {
+    setMasterProfileOpen(true);
+    setMasterProfileAccount(person);
+  };
+
   return (
     <>
+      <MasterProfile
+        masterProfileOpen={masterProfileOpen}
+        setMasterProfileOpen={setMasterProfileOpen}
+        account={masterProfileAccount}
+      />
       <Box>
         {people && people.length > 0 ? (
           <Table aria-labelledby='tableTitle'>
@@ -145,6 +162,29 @@ function ShowAccounts({ people, ...props }) {
                     >
                       {person.phone}
                     </TableCell>
+                    <TableCell
+                      component='th'
+                      scope='row'
+                      style={{ padding: 0 }}
+                    >
+                      {person.id}
+                    </TableCell>
+                    <TableCell
+                      component='th'
+                      scope='row'
+                      style={{ padding: 0 }}
+                    >
+                      <Box display='flex' justifyContent='flex-end'>
+                        <IconButton
+                          onClick={() => {
+                            handleMasterProfileOpen(person);
+                          }}
+                          aria-label='Delete'
+                        >
+                          <EditIcon />
+                        </IconButton>
+                      </Box>
+                    </TableCell>
                   </TableRow>
                 ))}
             </TableBody>
@@ -181,7 +221,9 @@ function ShowAccounts({ people, ...props }) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  account: state.account,
+});
 
 function mapDispatchToProps(dispatch) {
   return {

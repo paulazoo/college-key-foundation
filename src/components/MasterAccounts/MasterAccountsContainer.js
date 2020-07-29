@@ -22,6 +22,7 @@ import MatchMentorMentee from './MatchMentorMentee';
 import AddAccounts from './AddAccounts';
 import AccountSearch from './AccountSearch';
 import ShowAccounts from './ShowAccounts';
+import UnmatchMentorMentee from './UnmatchMentorMentee';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -55,8 +56,8 @@ function MasterAccountsContainer(props) {
 
   // get attendee and room options for search
   useEffect(() => {
-    setOptions(props.accounts);
-    setAllOptions(props.accounts);
+    setOptions(Object.values(props.accounts));
+    setAllOptions(Object.values(props.accounts));
 
     setMentorResults(Object.values(props.mentors).map((m) => m.account));
     setMenteeResults(Object.values(props.mentees).map((m) => m.account));
@@ -79,8 +80,25 @@ function MasterAccountsContainer(props) {
       <Grid item xs={12}>
         <Card className={classes.card}>
           <MatchMentorMentee
-            mentees={props.accounts.filter((p) => p.user_type === 'Mentee')}
-            mentors={props.accounts.filter((p) => p.user_type === 'Mentor')}
+            mentees={Object.values(props.accounts).filter(
+              (p) => p.user_type === 'Mentee'
+            )}
+            mentors={Object.values(props.accounts).filter(
+              (p) => p.user_type === 'Mentor'
+            )}
+          />
+        </Card>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Card className={classes.card}>
+          <UnmatchMentorMentee
+            menteesAccounts={Object.values(props.accounts).filter(
+              (p) => p.user_type === 'Mentee'
+            )}
+            mentorsAccounts={Object.values(props.accounts).filter(
+              (p) => p.user_type === 'Mentor'
+            )}
           />
         </Card>
       </Grid>
@@ -104,18 +122,18 @@ function MasterAccountsContainer(props) {
                 setMenteeResults={setMenteeResults}
               />
             </Grid>
-            <Grid item xs={6} className={classes.textContainer}>
+            <Grid item xs={12} className={classes.textContainer}>
               <Typography className={classes.text}>Mentors</Typography>
               <Divider />
             </Grid>
-            <Grid item xs={6} className={classes.textContainer}>
+            <Grid item xs={12}>
+              <ShowAccounts people={mentorResults} />
+            </Grid>
+            <Grid item xs={12} className={classes.textContainer}>
               <Typography className={classes.text}>Mentees</Typography>
               <Divider />
             </Grid>
-            <Grid item xs={6}>
-              <ShowAccounts people={mentorResults} />
-            </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
               <ShowAccounts people={menteeResults} />
             </Grid>
           </Grid>

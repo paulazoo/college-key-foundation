@@ -26,6 +26,10 @@ export function setAccounts(payload) {
   return { type: 'SET_ACCOUNTS', payload };
 }
 
+export function setMasterAccount(payload) {
+  return { type: 'SET_MASTERACCOUNT', payload };
+}
+
 export function setMentors(payload) {
   return { type: 'SET_MENTORS', payload };
 }

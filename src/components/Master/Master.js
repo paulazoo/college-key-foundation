@@ -29,7 +29,7 @@ import {
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
-import MasterAccountsContainer from './MasterAccountsContainer';
+import MasterAccountsContainer from '../MasterAccounts/MasterAccountsContainer';
 import MasterNewsletterContainer from './MasterNewsletterContainer';
 import MasterEventsContainer from '../MasterEvents/MasterEventsContainer';
 import MasterDrawer from './MasterDrawer.';

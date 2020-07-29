@@ -69,6 +69,17 @@ function EnhancedTableHead({
         </TableCell>
       );
     }
+    if (row.id === 'edit') {
+      return (
+        <TableCell
+          key={`table-cell-'${index}`}
+          align='inherit'
+          style={{ padding: tableCellPadding }}
+        >
+          <Typography variant='body2'>{row.label}</Typography>
+        </TableCell>
+      );
+    }
     return (
       <TableCell
         key={`table-cell-'${index}`}

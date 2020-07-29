@@ -15,6 +15,7 @@ import {
   setEvent,
   setAllEvents,
   deleteEvent,
+  setMasterAccount,
 } from './index';
 import { wsConnect } from './websocket';
 
@@ -113,6 +114,11 @@ export const getAccounts = () => {
     };
     api(`accounts`, requestOptions)
       .then((response) => {
+        const preAccounts = {};
+        response.forEach((account) => {
+          preAccounts[account.id] = account;
+        });
+
         dispatch(setAccounts(response));
       })
       .catch((error) => {
@@ -379,6 +385,32 @@ export const postMatch = (body) => {
           setPersonalSnackbar({
             open: true,
             content: 'Mentee and mentor matched!',
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
+export const postUnmatch = (body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    api(`mentees/${body.mentee_id}/unmatch`, requestOptions)
+      .then((response) => {
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: 'Mentee and mentor unmatched!',
           })
         );
       })
@@ -718,6 +750,33 @@ export const putAccount = (body) => {
   };
 };
 
+export const putMasterAccount = (body) => {
+  return (dispatch, getState) => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+      },
+      body: JSON.stringify(body),
+    };
+    api(`accounts/${getState().account.id}/master_update`, requestOptions)
+      .then((response) => {
+        dispatch(setMasterAccount(response));
+        dispatch(
+          setPersonalSnackbar({
+            open: true,
+            content: 'Profile details saved!',
+          })
+        );
+      })
+      .catch((error) => {
+        console.error('API Error: ', error);
+      });
+  };
+};
+
 export const putEvent = (eventId, body) => {
   return (dispatch, getState) => {
     const requestOptions = {
@@ -729,6 +788,8 @@ export const putEvent = (eventId, body) => {
       },
       body: JSON.stringify(body),
     };
+    console.log(body);
+    console.log(requestOptions);
     api(`events/${eventId}`, requestOptions)
       .then((response) => {
         dispatch(setEvent({ [response.id]: response }));
