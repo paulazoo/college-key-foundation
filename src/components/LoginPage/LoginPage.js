@@ -101,7 +101,7 @@ function LoginPage(props) {
 
   const responseGoogle = (response) => {
     props.setCurrentlyLoading(true);
-    localStorage.setItem('user_token', response.tokenId);
+    sessionStorage.setItem('user_token', response.tokenId);
     props.getLogin(response.tokenId, getLoginCallback);
   };
 
@@ -212,7 +212,7 @@ function LoginPage(props) {
               justify='center'
               spacing={3}
             >
-              {localStorage.getItem('user_token') && props.account.id ? (
+              {sessionStorage.getItem('user_token') && props.account.id ? (
                 <Grid item xs={12} className={classes.loginTextContainer}>
                   <Typography className={classes.loginText}>
                     You are logged in!

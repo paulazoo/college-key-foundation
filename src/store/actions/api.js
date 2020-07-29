@@ -88,7 +88,7 @@ export const getAccount = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
     api(`accounts/${getState().account.id}`, requestOptions)
@@ -109,7 +109,7 @@ export const getAccounts = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
     api(`accounts`, requestOptions)
@@ -134,7 +134,7 @@ export const getMentors = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
     api(`mentors`, requestOptions)
@@ -158,7 +158,7 @@ export const getMentees = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
     api(`mentees`, requestOptions)
@@ -182,7 +182,7 @@ export const getNewsletterEmails = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
     api(`newsletter_emails`, requestOptions)
@@ -202,7 +202,7 @@ export const getPublicEvents = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
     api(`events/public`, requestOptions)
@@ -227,7 +227,7 @@ export const getAllEvents = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
     api(`events`, requestOptions)
@@ -252,7 +252,7 @@ export const getEvents = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
     api(`accounts/${getState().account.id}/events`, requestOptions)
@@ -278,7 +278,7 @@ export const postNewsletterEmails = (body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -305,7 +305,7 @@ export const postMentors = (body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -340,7 +340,7 @@ export const postMentees = (body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -375,7 +375,7 @@ export const postMatch = (body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -401,7 +401,7 @@ export const postUnmatch = (body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -427,7 +427,7 @@ export const postEvents = (body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -455,7 +455,7 @@ export const postImportMenteeMentor = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify({}),
     };
@@ -481,7 +481,7 @@ export const postImportEvents = () => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify({}),
     };
@@ -507,7 +507,7 @@ export const postExportRegistered = (eventId) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify({
         event_id: eventId,
@@ -535,7 +535,7 @@ export const postExportJoined = (eventId) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify({
         event_id: eventId,
@@ -563,7 +563,7 @@ export const postRegister = (eventId) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify({}),
     };
@@ -595,7 +595,7 @@ export const postUnregister = (eventId) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify({}),
     };
@@ -627,7 +627,7 @@ export const postJoin = (eventId) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify({}),
     };
@@ -652,7 +652,7 @@ export const postPublicRegister = (eventId, body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -678,7 +678,7 @@ export const postPublicRegister = (eventId, body) => {
 //       headers: {
 //         'Content-Type': 'application/json',
 //         Accept: 'application/json',
-//         Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+//         Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
 //       },
 //       body: JSON.stringify({}),
 //     };
@@ -710,7 +710,7 @@ export const postPublicJoin = (eventId) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify({}),
     };
@@ -730,7 +730,7 @@ export const putAccount = (body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -757,7 +757,7 @@ export const putMasterAccount = (body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -784,7 +784,7 @@ export const putEvent = (eventId, body) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
       body: JSON.stringify(body),
     };
@@ -814,7 +814,7 @@ export const deleteEventApi = (eventId) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
     api(`events/${eventId}`, requestOptions)

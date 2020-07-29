@@ -11,7 +11,7 @@ import masterReducer from './masterReducer';
 const rootReducer = (state, action) => {
   let newState = state;
   if (action.type === 'USER_LOGOUT') {
-    localStorage.clear();
+    sessionStorage.clear();
     newState = initialState;
   }
 

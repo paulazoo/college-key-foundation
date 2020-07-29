@@ -33,7 +33,7 @@ function DesktopNavbar({ ...props }) {
   const classes = useStyles();
   const history = useHistory();
 
-  const theme = useTheme()
+  const theme = useTheme();
 
   useEffect(() => {
     document.body.style.backgroundColor = theme.palette.common.white;
@@ -42,7 +42,7 @@ function DesktopNavbar({ ...props }) {
   return (
     <>
       <PersonalSnackbar />
-      {localStorage.getItem('user_token') && props.user.id ? (
+      {sessionStorage.getItem('user_token') && props.account.id ? (
         <LoggedInNavbar />
       ) : (
         <LoggedOutNavbar />
@@ -53,6 +53,7 @@ function DesktopNavbar({ ...props }) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  account: state.account,
 });
 
 const mapDispatchToProps = (dispatch) => ({

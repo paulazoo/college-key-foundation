@@ -88,7 +88,7 @@ function MobileDrawer({ menuItems, ...props }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {localStorage.getItem('user_token') &&
+        {sessionStorage.getItem('user_token') &&
           props.account &&
           (props.account.email === 'paulazhu@college.harvard.edu' ||
             props.account.email === 'collegekeyfoundation@gmail.com') && (
@@ -132,7 +132,7 @@ function MobileDrawer({ menuItems, ...props }) {
             <ListItemText style={{ color: 'white' }} primary='Donate' />
           </ListItem>
         </Button>
-        {localStorage.getItem('user_token') ? (
+        {sessionStorage.getItem('user_token') ? (
           <Button
             color='inherit'
             className={classes.rightLink}

@@ -85,7 +85,7 @@ function EventPage({ handlePublicPopup, ...props }) {
   const [event, setEvent] = useState();
 
   useEffect(() => {
-    if (localStorage.getItem('user_token') && props.account.id) {
+    if (sessionStorage.getItem('user_token') && props.account.id) {
       props.getEvents();
     } else {
       props.getPublicEvents();
@@ -93,7 +93,7 @@ function EventPage({ handlePublicPopup, ...props }) {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem('user_token') && props.account.id) {
+    if (sessionStorage.getItem('user_token') && props.account.id) {
       setEvent(props.events[eventId]);
       console.log(props.events);
       setName('upcoming');
@@ -145,7 +145,7 @@ function EventPage({ handlePublicPopup, ...props }) {
     <>
       <Navbar />
       <Typography>
-        {localStorage.getItem('user_token') &&
+        {sessionStorage.getItem('user_token') &&
           props.account.id &&
           "If you're a mentor or mentee, please log in to register!"}
       </Typography>

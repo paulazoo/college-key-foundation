@@ -145,7 +145,7 @@ function PublicPopup({
 
   const responseGoogle = (response) => {
     props.setCurrentlyLoading(true);
-    localStorage.setItem('user_token', response.tokenId);
+    sessionStorage.setItem('user_token', response.tokenId);
     props.getLogin(response.tokenId, getLoginCallback);
   };
 

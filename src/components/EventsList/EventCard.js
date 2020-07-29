@@ -143,7 +143,7 @@ function EventCard({ event, name, ...props }) {
   const renderEventButton = (name) => {
     if (
       name === 'public' &&
-      !localStorage.getItem('user_token') &&
+      !sessionStorage.getItem('user_token') &&
       !props.account?.id
     ) {
       return (

@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 import socketMiddleware from './middleware/socketMiddleware';
 
 // Redux Persist
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage'; // defaults to sessionStorage for web
 import { persistStore, persistReducer } from 'redux-persist';
 
 // set up Redux persist
