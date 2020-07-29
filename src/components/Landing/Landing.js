@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   Button,
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textGrid: {
-    textAlign: 'right',
+    textAlign: 'center',
     width: '100%',
     padding: 0,
     paddingRight: theme.spacing(3),
@@ -161,8 +161,14 @@ function Landing(props) {
 
   const history = useHistory();
 
+  const myRef = useRef(null);
+
   const handleApply = () => {
     history.push('/apply');
+  };
+
+  const handleGoToEvents = () => {
+    myRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -174,25 +180,27 @@ function Landing(props) {
           src={backgroundImage}
           alt='increase priority'
         />
-        <Grid container direction='row' justify='flex-end'>
+        <Grid container direction='row' justify='center'>
           <Grid item xs={0} md={4} />
           <Grid item xs={12} className={classes.textGrid}>
             <Typography color='inherit' className={classes.landingText1}>
               REIMAGINING COLLEGE GUIDANCE
             </Typography>
           </Grid>
-          <Grid item xs={0} md={6} />
+          <Grid item xs={0} md={0} />
           <Grid item xs={10} md={5} className={classes.textGrid}>
             <Typography color='inherit' className={classes.landingText2}>
               From underrepresented students to underrepresented students
             </Typography>
           </Grid>
-          <Grid item xs={8} md={4} className={classes.textGrid}>
+          <Grid item xs={0} md={12} />
+          <Grid item xs={8} md={5} className={classes.textGrid}>
             <Typography color='inherit' className={classes.landingText3}>
               The College Key Foundation was founded on the idea of free,
               accessible guidance to the college application process for those
               of underprivileged backgrounds
             </Typography>
+            <Grid item xs={0} md={12} className={classes.textGrid} />
             <Button
               color='secondary'
               variant='contained'
@@ -203,9 +211,29 @@ function Landing(props) {
             >
               APPLY NOW
             </Button>
+            <Grid item xs={0} md={12} className={classes.textGrid} />
             <Typography className={classes.dueDate}>
               Fellowship applications will be open again in January 2021
             </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.textGrid}>
+            <Grid
+              container
+              direction='row'
+              alignItems='center'
+              justify='center'
+            >
+              <Grid item>
+                <Button
+                  color='primary'
+                  variant='contained'
+                  className={classes.applyButton}
+                  onClick={handleGoToEvents}
+                >
+                  EVENTS
+                </Button>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </HomepageLayout>
@@ -237,7 +265,7 @@ function Landing(props) {
           </Grid>
         </Box>
       </Card>
-      <div className={classes.spacing} />
+      <div ref={myRef} className={classes.spacing} />
       <Public />
       <div className={classes.spacing} />
       <Overview />

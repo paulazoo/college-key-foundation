@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   IconButton,
