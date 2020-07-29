@@ -69,6 +69,8 @@ function App(props) {
     spacing: 8,
   });
 
+  // Logout after each session
+
   return (
     <MuiThemeProvider theme={createdTheme}>
       <Switch>

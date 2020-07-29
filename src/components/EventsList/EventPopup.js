@@ -15,6 +15,7 @@ import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 
 // Redux
+import { connect } from 'react-redux';
 
 // Theme
 import { makeStyles } from '@material-ui/styles';
@@ -99,7 +100,11 @@ function EventPopup({
   };
 
   const renderEventButton = (name) => {
-    if (name === 'public') {
+    if (
+      name === 'public' &&
+      !sessionStorage.getItem('user_token') &&
+      !props.account?.id
+    ) {
       return (
         <PublicEventButton
           fullLink
@@ -197,4 +202,11 @@ function EventPopup({
   );
 }
 
-export default EventPopup;
+const mapStateToProps = (state) => ({
+  user: state.user,
+  account: state.account,
+});
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventPopup);

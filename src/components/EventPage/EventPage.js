@@ -26,6 +26,7 @@ import EventButton from '../EventsList/EventButton';
 import PublicEventButton from '../PublicEvents/PublicEventButton';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import PublicPopup from '../PublicEvents/PublicPopup';
 
 const useStyles = makeStyles((theme) => ({
   eventDialog: {
@@ -77,29 +78,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EventPage({ handlePublicPopup, ...props }) {
+function EventPage({ ...props }) {
   const [name, setName] = useState('public');
 
   const { eventId } = useParams();
 
   const [event, setEvent] = useState();
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [publicPopupOpen, setPublicPopupOpen] = useState(false);
+  const [publicPopupType, setPublicPopupType] = useState('register');
+
+  const loggedIn = sessionStorage.getItem('user_token') && props.account.id;
 
   useEffect(() => {
-    if (sessionStorage.getItem('user_token') && props.account.id) {
+    if (loggedIn) {
       props.getEvents();
     } else {
       props.getPublicEvents();
     }
   }, []);
 
+  const handlePublicPopup = (type) => {
+    setPopupOpen(false);
+    setPublicPopupType(type);
+    console.log(type);
+    setPublicPopupOpen(true);
+  };
+
   useEffect(() => {
-    if (sessionStorage.getItem('user_token') && props.account.id) {
+    if (loggedIn) {
       setEvent(props.events[eventId]);
       console.log(props.events);
       setName('upcoming');
     } else {
       setEvent(props.publicEvents[eventId]);
-      setName('upcoming');
+      setName('public');
     }
   }, [props.events, props.publicEvents]);
   const classes = useStyles();
@@ -116,7 +129,7 @@ function EventPage({ handlePublicPopup, ...props }) {
   };
 
   const renderEventButton = (name) => {
-    if (name === 'public') {
+    if (!loggedIn) {
       return (
         <PublicEventButton
           fullLink
@@ -141,72 +154,91 @@ function EventPage({ handlePublicPopup, ...props }) {
     );
   };
 
+  const renderEvent = () => {
+    if (event && (event.kind === 'open' || loggedIn)) {
+      return (
+        <>
+          <PublicPopup
+            type={publicPopupType}
+            publicPopupOpen={publicPopupOpen}
+            setPublicPopup={setPublicPopupOpen}
+            event={event}
+          />
+          <Card className={classes.eventCard}>
+            <CardHeader
+              title={
+                <div className={classes.cardTitle}>
+                  <strong className={classes.nameText}>
+                    {`${event.name} `}
+                  </strong>
+                </div>
+              }
+              subheader={
+                <div className={classes.cardTime}>
+                  {event.start_time !== null ? (
+                    <>
+                      {`${moment(event.start_time).format(
+                        'ddd, MMMM Do, h:mm A'
+                      )} to ${moment(event.end_time).format('h:mm A')}`}
+                    </>
+                  ) : (
+                    <>Always open.</>
+                  )}
+                </div>
+              }
+            />
+            <CardContent>
+              <Grid
+                container
+                direction='row'
+                justify='flex-start'
+                alignItems='center'
+                spacing={2}
+              >
+                <Grid item xs={12}>
+                  <Typography className={classes.cardHost}>
+                    {event.host && `Hosted by: ${event.host}`}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  {renderEventKind(event.kind)}
+                </Grid>
+                <Grid item xs={12} className={classes.descContainer}>
+                  <Typography className={classes.cardDesc}>
+                    {event.description && event.description}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography className={classes.cardDesc}>
+                    Link to join will show up 24 hours before event begins.
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  {renderEventButton(name)}
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        </>
+      );
+    }
+    if (event && !event.kind === 'open' && !loggedIn) {
+      return <Typography>Sorry! This event is not public ):</Typography>;
+    }
+    if (!event) {
+      return <Typography>Sorry! This event does not exist yet ):</Typography>;
+    }
+  };
+
   return (
     <>
       <Navbar />
       <Typography>
-        {sessionStorage.getItem('user_token') &&
-          props.account.id &&
+        {!loggedIn &&
           "If you're a mentor or mentee, please log in to register!"}
       </Typography>
       <br />
-      {event ? (
-        <Card className={classes.eventCard}>
-          <CardHeader
-            title={
-              <div className={classes.cardTitle}>
-                <strong className={classes.nameText}>{`${event.name} `}</strong>
-              </div>
-            }
-            subheader={
-              <div className={classes.cardTime}>
-                {event.start_time !== null ? (
-                  <>
-                    {`${moment(event.start_time).format(
-                      'ddd, MMMM Do, h:mm A'
-                    )} to ${moment(event.end_time).format('h:mm A')}`}
-                  </>
-                ) : (
-                  <>Always open.</>
-                )}
-              </div>
-            }
-          />
-          <CardContent>
-            <Grid
-              container
-              direction='row'
-              justify='flex-start'
-              alignItems='center'
-              spacing={2}
-            >
-              <Grid item xs={12}>
-                <Typography className={classes.cardHost}>
-                  {event.host && `Hosted by: ${event.host}`}
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                {renderEventKind(event.kind)}
-              </Grid>
-              <Grid item xs={12} className={classes.descContainer}>
-                <Typography className={classes.cardDesc}>
-                  {event.description && event.description}
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography className={classes.cardDesc}>
-                  Link to join will show up 24 hours before event begins.
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                {renderEventButton(name)}
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      ) : (
-        <Typography>Sorry! This event does not exist yet ):</Typography>
-      )}
+      {renderEvent()}
       <Footer />
     </>
   );
