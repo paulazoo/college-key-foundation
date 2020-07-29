@@ -21,8 +21,7 @@ import { connect } from 'react-redux';
 import { putEvent } from '../../store/actions/api';
 
 // Theme
-import { makeStyles } from '@material-ui/core/styles';
-import { theme } from '../../theme';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
 import EventTime from './EventTime';
@@ -327,7 +326,8 @@ function EditEvent({ event, editEventOpen, setEditEventOpen, ...props }) {
                     <ChipInput
                       onAdd={(chip) => handleInviteesAddPersonChip(chip)}
                       onDelete={(chip, index) =>
-                        handleInviteesDeletePersonChip(chip, index)}
+                        handleInviteesDeletePersonChip(chip, index)
+                      }
                       onBeforeAdd={(chip) => validateEmail(chip)}
                       value={inviteesAddedPeople}
                       fullWidth

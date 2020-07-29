@@ -16,9 +16,6 @@ import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import cx from 'classnames';
 
-// Theme
-import theme from '../../theme';
-
 //This was modified from https://github.com/TeamWertarbyte/material-ui-chip-input
 //Thanks to Team Wertarbyte and contributors for building the original
 

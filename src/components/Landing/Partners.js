@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, Grid } from '@material-ui/core';
 
 // Theme
-import { theme } from '../../theme';
-import { makeStyles } from '@material-ui/core/styles';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { connect } from 'react-redux';
@@ -43,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Partners(props) {
   const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <Box bgcolor={theme.palette.common.lightGray}>

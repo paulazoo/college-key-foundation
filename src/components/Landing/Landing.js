@@ -12,8 +12,7 @@ import {
 } from '@material-ui/core';
 
 // Theme
-import { theme } from '../../theme';
-import { makeStyles } from '@material-ui/core/styles';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { connect } from 'react-redux';
@@ -161,6 +160,8 @@ function Landing(props) {
   const classes = useStyles();
 
   const history = useHistory();
+
+  const theme = useTheme();
 
   const myRef = useRef(null);
 

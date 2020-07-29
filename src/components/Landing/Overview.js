@@ -3,8 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Box, Typography, Grid, Button, Card } from '@material-ui/core';
 
 // Theme
-import { theme } from '../../theme';
-import { makeStyles } from '@material-ui/core/styles';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 // Redux
 import { connect } from 'react-redux';

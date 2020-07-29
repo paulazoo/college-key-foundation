@@ -13,8 +13,7 @@ import {
 import { connect } from 'react-redux';
 
 // Theme
-import { theme } from '../../theme';
-import { makeStyles } from '@material-ui/core/styles';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
 import WordDivider from '../Shared/WordDivider';
@@ -180,6 +179,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Team(props) {
   const classes = useStyles();
+  const theme = useTheme();
 
   const renderTeam = (team, teamName, teamColor) => {
     return (

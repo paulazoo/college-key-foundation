@@ -5,8 +5,7 @@ import moment from 'moment';
 // Redux
 
 // Theme
-import { theme } from '../../theme.js';
-import { makeStyles } from '@material-ui/core/styles';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
 import EventCard from './EventCard';

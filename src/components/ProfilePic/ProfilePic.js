@@ -17,8 +17,7 @@ import { connect } from 'react-redux';
 import {} from '../../store/actions/index';
 
 // Theme
-import { makeStyles } from '@material-ui/core/styles';
-import { theme } from '../../theme.js';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
 import GmailSvg from '../../assets/SocialMedia/Gmail.svg';

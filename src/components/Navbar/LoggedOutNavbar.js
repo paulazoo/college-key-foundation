@@ -12,7 +12,7 @@ import {
 import MuiAppBar from '@material-ui/core/AppBar';
 
 // Theme
-import { theme } from '../../theme';
+
 import { makeStyles } from '@material-ui/styles';
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
 import { userLogout } from '../../store/actions';

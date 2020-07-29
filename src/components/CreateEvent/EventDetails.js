@@ -20,8 +20,7 @@ import { connect } from 'react-redux';
 import { postEvents } from '../../store/actions/api';
 
 // Theme
-import { makeStyles } from '@material-ui/core/styles';
-import { theme } from '../../theme';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
 import EventTime from './EventTime';

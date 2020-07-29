@@ -15,8 +15,7 @@ import { connect } from 'react-redux';
 import { userLogout } from '../../store/actions';
 
 // Theme
-import { theme } from '../../theme';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, useTheme } from '@material-ui/styles';
 
 // Custom Components
 import PersonalSnackbar from '../PersonalSnackbar/PersonalSnackbar';
@@ -33,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
 function DesktopNavbar({ ...props }) {
   const classes = useStyles();
   const history = useHistory();
+
+  const theme = useTheme()
 
   useEffect(() => {
     document.body.style.backgroundColor = theme.palette.common.white;

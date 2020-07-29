@@ -38,7 +38,7 @@ import { connect } from 'react-redux';
 import { setOnMobile } from '../../store/actions/index';
 
 // Theme
-import { theme } from '../../theme';
+
 import { makeStyles } from '@material-ui/styles';
 
 // Custom Components

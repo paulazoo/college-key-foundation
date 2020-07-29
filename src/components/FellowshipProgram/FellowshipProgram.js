@@ -14,8 +14,7 @@ import {
 import { connect } from 'react-redux';
 
 // Theme
-import { theme } from '../../theme';
-import { makeStyles } from '@material-ui/core/styles';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
 import WordDivider from '../Shared/WordDivider';

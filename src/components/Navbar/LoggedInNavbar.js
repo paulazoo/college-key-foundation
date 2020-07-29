@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 import { userLogout } from '../../store/actions';
 
 // Theme
-import { theme } from '../../theme';
+
 import { makeStyles } from '@material-ui/styles';
 
 // Custom Components
