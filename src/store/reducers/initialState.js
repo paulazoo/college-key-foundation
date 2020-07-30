@@ -3,7 +3,10 @@ export const initialState = {
   user: {
     user_type: 'Mentee',
   },
-  account: {},
+  account: {
+    account: {},
+    isMaster: false,
+  },
   home: {
     onMobile: false,
     personalSnackbar: {

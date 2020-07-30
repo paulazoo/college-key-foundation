@@ -61,3 +61,7 @@ export function setEvent(payload) {
 export function deleteEvent(payload) {
   return { type: 'DELETE_EVENT', payload };
 }
+
+export function setIsMaster(payload) {
+  return { type: 'SET_ISMASTER', payload };
+}
