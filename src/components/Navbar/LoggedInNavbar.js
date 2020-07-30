@@ -183,7 +183,7 @@ function LoggedInNavbar({ ...props }) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  account: state.account,
+  account: state.account.account,
 });
 
 const mapDispatchToProps = (dispatch) => ({

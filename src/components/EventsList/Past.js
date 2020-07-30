@@ -62,7 +62,7 @@ function Past(props) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  account: state.account,
+  account: state.account.account,
   events: state.events.events,
 });
 

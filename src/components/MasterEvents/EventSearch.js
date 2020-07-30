@@ -114,7 +114,7 @@ function EventSearch({ selected, setSelected, setEventResult, ...props }) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  account: state.account,
+  account: state.account.account,
   allEvents: state.events.allEvents,
 });
 

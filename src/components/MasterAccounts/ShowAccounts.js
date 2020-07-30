@@ -222,7 +222,7 @@ function ShowAccounts({ people, ...props }) {
 }
 
 const mapStateToProps = (state) => ({
-  account: state.account,
+  account: state.account.account,
 });
 
 function mapDispatchToProps(dispatch) {

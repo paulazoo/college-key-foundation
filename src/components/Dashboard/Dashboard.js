@@ -129,7 +129,7 @@ function Dashboard(props) {
 }
 
 const mapStateToProps = (state) => ({
-  account: state.account,
+  account: state.account.account,
   user: state.user,
 });
 

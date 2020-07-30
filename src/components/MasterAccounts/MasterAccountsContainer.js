@@ -145,7 +145,7 @@ function MasterAccountsContainer(props) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  account: state.account,
+  account: state.account.account,
   accounts: state.master.accounts,
   mentors: state.master.mentors,
   mentees: state.master.mentees,

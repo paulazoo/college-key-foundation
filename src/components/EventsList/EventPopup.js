@@ -144,12 +144,12 @@ function EventPopup({
     >
       <Card className={classes.eventCard}>
         <CardHeader
-          title={
+          title={(
             <div className={classes.cardTitle}>
               <strong className={classes.nameText}>{renderEventName()}</strong>
             </div>
-          }
-          subheader={
+          )}
+          subheader={(
             <div className={classes.cardTime}>
               {event.start_time !== null ? (
                 <>
@@ -161,7 +161,7 @@ function EventPopup({
                 <>Always open.</>
               )}
             </div>
-          }
+          )}
         />
         <CardContent>
           <Grid
@@ -204,7 +204,7 @@ function EventPopup({
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  account: state.account,
+  account: state.account.account,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

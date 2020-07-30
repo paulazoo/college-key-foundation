@@ -215,7 +215,7 @@ function MobileDrawer({ menuItems, ...props }) {
 }
 
 const mapStateToProps = (state) => ({
-  account: state.account,
+  account: state.account.account,
 });
 
 const mapDispatchToProps = (dispatch) => ({

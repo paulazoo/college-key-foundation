@@ -59,7 +59,7 @@ function ImportMenteeMentor(props) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  account: state.account,
+  account: state.account.account,
 });
 
 function mapDispatchToProps(dispatch) {

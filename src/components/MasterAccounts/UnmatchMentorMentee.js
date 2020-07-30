@@ -163,7 +163,7 @@ function UnmatchMentorMentee({ menteesAccounts, mentorsAccounts, ...props }) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  account: state.account,
+  account: state.account.account,
   accounts: state.master.accounts,
   mentees: state.master.mentees,
   mentors: state.master.mentors,

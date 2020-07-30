@@ -166,14 +166,14 @@ function EventPage({ ...props }) {
           />
           <Card className={classes.eventCard}>
             <CardHeader
-              title={
+              title={(
                 <div className={classes.cardTitle}>
                   <strong className={classes.nameText}>
                     {`${event.name} `}
                   </strong>
                 </div>
-              }
-              subheader={
+              )}
+              subheader={(
                 <div className={classes.cardTime}>
                   {event.start_time !== null ? (
                     <>
@@ -185,7 +185,7 @@ function EventPage({ ...props }) {
                     <>Always open.</>
                   )}
                 </div>
-              }
+              )}
             />
             <CardContent>
               <Grid
@@ -246,7 +246,7 @@ function EventPage({ ...props }) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  account: state.account,
+  account: state.account.account,
   events: state.events.events,
   publicEvents: state.events.publicEvents,
 });

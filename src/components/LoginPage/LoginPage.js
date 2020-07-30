@@ -232,7 +232,7 @@ function LoginPage(props) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  account: state.account,
+  account: state.account.account,
   currentlyLoading: state.home.currentlyLoading,
 });
 
