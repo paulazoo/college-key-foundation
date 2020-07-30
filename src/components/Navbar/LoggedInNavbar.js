@@ -111,8 +111,7 @@ function LoggedInNavbar({ ...props }) {
               justify='space-between'
               alignItems='center'
             >
-              {(props.account.email === 'paulazhu@college.harvard.edu' ||
-                props.account.email === 'collegekeyfoundation@gmail.com') && (
+              {props.isMaster === true && (
                 <Grid item>
                   <Tooltip title='Secret Master Controller!'>
                     <Button
@@ -184,6 +183,7 @@ function LoggedInNavbar({ ...props }) {
 const mapStateToProps = (state) => ({
   user: state.user,
   account: state.account.account,
+  isMaster: state.account.isMaster,
 });
 
 const mapDispatchToProps = (dispatch) => ({

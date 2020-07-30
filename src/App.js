@@ -29,6 +29,7 @@ import Master from './components/Master/Master';
 import Profile from './components/Profile/Profile';
 import PublicEvents from './components/PublicEvents/PublicEvents';
 import EventPage from './components/EventPage/EventPage';
+import { userLogout } from './store/actions';
 
 function App(props) {
   const createdTheme = createMuiTheme({
@@ -69,8 +70,6 @@ function App(props) {
     spacing: 8,
   });
 
-  // Logout after each session
-
   return (
     <MuiThemeProvider theme={createdTheme}>
       <Switch>
@@ -99,7 +98,9 @@ function App(props) {
 const mapStateToProps = (state) => ({});
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    userLogout: () => dispatch(userLogout()),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -98,8 +98,7 @@ function Master(props) {
   return (
     <div className={classes.root}>
       <Navbar />
-      {props.account.email === 'paulazhu@college.harvard.edu' ||
-      props.account.email === 'collegekeyfoundation@gmail.com' ? (
+      {props.isMaster === true ? (
         <Grid container direction='row'>
           <Grid item>
             <MasterDrawer
@@ -164,6 +163,7 @@ const mapStateToProps = (state) => ({
   mentors: state.master.mentors,
   mentees: state.master.mentees,
   onMobile: state.home.onMobile,
+  isMaster: state.account.isMaster,
 });
 
 function mapDispatchToProps(dispatch) {

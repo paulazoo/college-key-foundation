@@ -173,6 +173,12 @@ function Landing(props) {
     myRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    if (!sessionStorage.getItem('user_token') || !props.account?.id) {
+      props.userLogout();
+    }
+  }, []);
+
   return (
     <div className={classes.root}>
       <Navbar />

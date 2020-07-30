@@ -16,6 +16,7 @@ import {
   setAllEvents,
   deleteEvent,
   setMasterAccount,
+  setIsMaster,
 } from './index';
 import { wsConnect } from './websocket';
 
@@ -58,6 +59,8 @@ export const getLogin = (userToken, callback) => {
           dispatch(setUser(response.user));
           dispatch(setCurrentlyLoading(false));
 
+          dispatch(setIsMaster(response.account.email));
+
           history.push('/dashboard');
 
           callback(response.account);
@@ -91,7 +94,7 @@ export const getAccount = () => {
         Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
-    api(`accounts/${getState().account.id}`, requestOptions)
+    api(`accounts/${getState().account.account.id}`, requestOptions)
       .then((response) => {
         dispatch(setAccount(response.account));
         dispatch(setUser(response.user));
@@ -255,7 +258,7 @@ export const getEvents = () => {
         Authorization: `Bearer ${sessionStorage.getItem('user_token')}`,
       },
     };
-    api(`accounts/${getState().account.id}/events`, requestOptions)
+    api(`accounts/${getState().account.account.id}/events`, requestOptions)
       .then((response) => {
         const preEvents = {};
         response.forEach((event) => {
@@ -734,7 +737,7 @@ export const putAccount = (body) => {
       },
       body: JSON.stringify(body),
     };
-    api(`accounts/${getState().account.id}`, requestOptions)
+    api(`accounts/${getState().account.account.id}`, requestOptions)
       .then((response) => {
         dispatch(setAccount(response));
         dispatch(
@@ -761,7 +764,10 @@ export const putMasterAccount = (body) => {
       },
       body: JSON.stringify(body),
     };
-    api(`accounts/${getState().account.id}/master_update`, requestOptions)
+    api(
+      `accounts/${getState().account.account.id}/master_update`,
+      requestOptions
+    )
       .then((response) => {
         dispatch(setMasterAccount(response));
         dispatch(

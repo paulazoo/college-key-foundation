@@ -90,8 +90,7 @@ function MobileDrawer({ menuItems, ...props }) {
       <List>
         {sessionStorage.getItem('user_token') &&
           props.account &&
-          (props.account.email === 'paulazhu@college.harvard.edu' ||
-            props.account.email === 'collegekeyfoundation@gmail.com') && (
+          props.isMaster === true && (
             <Button
               color='inherit'
               component={NavLink}
@@ -216,6 +215,7 @@ function MobileDrawer({ menuItems, ...props }) {
 
 const mapStateToProps = (state) => ({
   account: state.account.account,
+  isMaster: state.account.isMaster,
 });
 
 const mapDispatchToProps = (dispatch) => ({

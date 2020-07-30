@@ -14,13 +14,19 @@ export default function accountReducer(state = initialState.account, action) {
         newIsMaster = true;
       }
 
+      console.log(action.payload);
+      console.log('Master? ', newIsMaster);
+
       return {
         ...state,
         isMaster: newIsMaster,
       };
 
     case 'SET_ACCOUNT':
-      return action.payload;
+      return {
+        ...state,
+        account: action.payload,
+      };
 
     default:
       return state;
