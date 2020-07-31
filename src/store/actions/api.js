@@ -753,7 +753,7 @@ export const putAccount = (body) => {
   };
 };
 
-export const putMasterAccount = (body) => {
+export const putMasterAccount = (accountId, body) => {
   return (dispatch, getState) => {
     const requestOptions = {
       method: 'PUT',
@@ -764,10 +764,7 @@ export const putMasterAccount = (body) => {
       },
       body: JSON.stringify(body),
     };
-    api(
-      `accounts/${getState().account.account.id}/master_update`,
-      requestOptions
-    )
+    api(`accounts/${accountId}/master_update`, requestOptions)
       .then((response) => {
         dispatch(setMasterAccount(response));
         dispatch(

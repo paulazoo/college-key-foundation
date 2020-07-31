@@ -116,7 +116,7 @@ function MasterProfile({
       gradYear === null
     ) {
       setGradYearError(false);
-      props.putMasterAccount({
+      props.putMasterAccount(account.id, {
         email,
         bio,
         phone,
@@ -239,7 +239,8 @@ const mapStateToProps = (state) => ({});
 
 function mapDispatchToProps(dispatch) {
   return {
-    putMasterAccount: (body) => dispatch(putMasterAccount(body)),
+    putMasterAccount: (accountId, body) =>
+      dispatch(putMasterAccount(accountId, body)),
   };
 }
 
