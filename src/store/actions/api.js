@@ -753,7 +753,7 @@ export const putAccount = (body) => {
   };
 };
 
-export const putMasterAccount = (accountId, body) => {
+export const putMasterAccount = (body) => {
   return (dispatch, getState) => {
     const requestOptions = {
       method: 'PUT',
@@ -764,13 +764,13 @@ export const putMasterAccount = (accountId, body) => {
       },
       body: JSON.stringify(body),
     };
-    api(`accounts/${accountId}/master_update`, requestOptions)
+    api(`accounts/master_update`, requestOptions)
       .then((response) => {
         dispatch(setMasterAccount(response));
         dispatch(
           setPersonalSnackbar({
             open: true,
-            content: 'Profile details saved!',
+            content: 'Profile details saved! Please refresh the page.',
           })
         );
       })

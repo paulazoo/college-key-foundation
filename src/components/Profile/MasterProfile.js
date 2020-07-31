@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     padding: theme.spacing(1),
+    overflowY: 'auto',
   },
   textContainer: {
     textAlign: 'center',
@@ -116,12 +117,13 @@ function MasterProfile({
       gradYear === null
     ) {
       setGradYearError(false);
-      props.putMasterAccount(account.id, {
+      props.putMasterAccount({
         email,
         bio,
         phone,
         school,
         grad_year: gradYear,
+        other_account_id: account.id,
       });
     } else {
       setGradYearError(true);
@@ -239,8 +241,7 @@ const mapStateToProps = (state) => ({});
 
 function mapDispatchToProps(dispatch) {
   return {
-    putMasterAccount: (accountId, body) =>
-      dispatch(putMasterAccount(accountId, body)),
+    putMasterAccount: (body) => dispatch(putMasterAccount(body)),
   };
 }
 
