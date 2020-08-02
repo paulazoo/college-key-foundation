@@ -152,7 +152,8 @@ export const graphicsMarketingTeam = [
   {
     name: 'Emily Bennett',
     position: 'Graphics/Marketing Director',
-    text: '???????.',
+    text:
+      'Emily Bennett is a rising senior at Mauldin High School in South Carolina and as the marketing director, she makes all the email flyers and social media graphics for College Key. She hopes to go somewhere near home for her first 2 years of college and then transfer out to an art school in Southern California. She plans to major in something related to graphic design with a minor in film studies and cinematography!',
     image: '',
   },
 ];
