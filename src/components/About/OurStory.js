@@ -144,22 +144,22 @@ function OurStory(props) {
                 >
                   <Typography className={classes.story}>
                     <p>
-                      The founders of the College Key Foundation, Jacky Huang
-                      (Harvard ’24) and Lucas Leanza (Stanford ’23), are both
-                      FGLI students who met through Questbridge, a college match
-                      program for high achieving low-income students. They not
-                      only formed a mentor-mentee relationship, but also a
-                      friendship that helped with the college application
-                      process and inspired the mentorship model for their
-                      organization. For many first generation students, having
-                      this kind of peer support while navigating the many
-                      aspects in the college application process can make the
-                      process feel less stressful.
+                      The founders of the College Key Foundation, and Lucas
+                      Leanza (Stanford ’23), are both FGLI students who met
+                      through Questbridge, a college match program for high
+                      achieving low-income students. They not only formed a
+                      mentor-mentee relationship, but also a friendship that
+                      helped with the college application process and inspired
+                      the mentorship model for their organization. For many
+                      first generation students, having this kind of peer
+                      support while navigating the many aspects in the college
+                      application process can make the process feel less
+                      stressful.
                     </p>
                     <p>
-                      Thus, Jacky Huang, founder and president of the
-                      organization, realized that individualized support was a
-                      key factor missing from existing guidance programs.
+                      Thus, founder and president of the organization, realized
+                      that individualized support was a key factor missing from
+                      existing guidance programs.
                     </p>
                     <p>
                       His hopes are that the College Key Foundation’s

@@ -8,19 +8,11 @@
 
 export const executiveTeam = [
   {
-    name: 'Jacky Huang',
-    team: 'Executive Team',
-    position: 'President',
-    text:
-      "Jacky, part of Harvard's Class of 2024, was inspired by his mentorship with Lucas to model a one-on-one system to help underrepresented students. He comes from an comprehensive marketing and outreach background and is in charge of the broad logistical aspects of the organization.",
-    image: '',
-  },
-  {
     name: 'Lucas Leanza',
     team: 'Executive Team',
     position: 'Vice-President',
     text:
-      "Lucas, part of Stanford's Class of 2023, is in charge of the organization's broad logistical, outreach, coding and optimization aspects. With a background in educational non-profits, Lucas worked with Jacky last year to create the groundwork for the foundation.",
+      "Lucas, part of Stanford's Class of 2023, is in charge of the organization's broad logistical, outreach, coding and optimization aspects. With a background in educational non-profits, Lucas worked with last year to create the groundwork for the foundation.",
     image: '',
   },
 ];
